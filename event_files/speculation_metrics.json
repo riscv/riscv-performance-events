@@ -1,0 +1,226 @@
+[
+    {
+        "MetricName": "control_flow_pki",
+        "BriefDescription": "The rate of control flow instructions retired per kilo instructions",
+        "MetricExpr": "SPEC.CONTROL_FLOW.RETIRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "control_flow_mpki",
+        "BriefDescription": "The rate of control flow instructions mis-predicted per kilo instructions",
+        "MetricExpr": "SPEC.CONTROL_FLOW.MISPRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "control_flow_mispred_rate",
+        "BriefDescription": "The rate of control flow instructions mis-predicted to the overall control flow instructions",
+        "MetricExpr": "SPEC.CONTROL_FLOW.MISPRED / SPEC.CONTROL_FLOW.RETIRED",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "cond_branch_pki",
+        "BriefDescription": "The rate of conditional branches retired per kilo instructions",
+        "MetricExpr": "SPEC.COND_BRANCH.RETIRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "cond_branch_mpki",
+        "BriefDescription": "The rate of conditional branches mis-predicted per kilo instructions",
+        "MetricExpr": "SPEC.COND_BRANCH.MISPRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "cond_branch_mispred_rate",
+        "BriefDescription": "The rate of conditional branches mis-predicted to the overall conditional branches",
+        "MetricExpr": "SPEC.COND_BRANCH.MISPRED / SPEC.COND_BRANCH.RETIRED",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "indirect_call_pki",
+        "BriefDescription": "The rate of indirect calls retired per kilo instructions",
+        "MetricExpr": "SPEC.INDIRECT_CALL.RETIRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "indirect_call_mpki",
+        "BriefDescription": "The rate of indirect calls mis-predicted per kilo instructions",
+        "MetricExpr": "SPEC.INDIRECT_CALL.MISPRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "indirect_call_mispred_rate",
+        "BriefDescription": "The rate of indirect calls mis-predicted to the overall indirect calls",
+        "MetricExpr": "SPEC.INDIRECT_CALL.MISPRED / SPEC.INDIRECT_CALL.RETIRED",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "direct_call_pki",
+        "BriefDescription": "The rate of direct calls retired per kilo instructions",
+        "MetricExpr": "SPEC.DIRECT_CALL.RETIRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "direct_call_mpki",
+        "BriefDescription": "The rate of direct calls mis-predicted per kilo instructions",
+        "MetricExpr": "SPEC.DIRECT_CALL.MISPRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "direct_call_mispred_rate",
+        "BriefDescription": "The rate of direct calls mis-predicted to the overall direct calls",
+        "MetricExpr": "SPEC.DIRECT_CALL.MISPRED / SPEC.DIRECT_CALL.RETIRED",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "indirect_jump_pki",
+        "BriefDescription": "The rate of indirect jumps retired per kilo instructions",
+        "MetricExpr": "SPEC.INDIRECT_JUMP.RETIRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "indirect_jump_mpki",
+        "BriefDescription": "The rate of indirect jumps mis-predicted per kilo instructions",
+        "MetricExpr": "SPEC.INDIRECT_JUMP.MISPRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "indirect_jump_mispred_rate",
+        "BriefDescription": "The rate of indirect jumps mis-predicted to the overall indirect jumps",
+        "MetricExpr": "SPEC.INDIRECT_JUMP.MISPRED / SPEC.INDIRECT_JUMP.RETIRED",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "direct_jump_pki",
+        "BriefDescription": "The rate of direct jumps retired per kilo instructions",
+        "MetricExpr": "SPEC.DIRECT_JUMP.RETIRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "direct_jump_mpki",
+        "BriefDescription": "The rate of direct jumps mis-predicted per kilo instructions",
+        "MetricExpr": "SPEC.DIRECT_JUMP.MISPRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "direct_jump_mispred_rate",
+        "BriefDescription": "The rate of direct jumps mis-predicted to the overall indirect jumps",
+        "MetricExpr": "SPEC.DIRECT_JUMP.MISPRED / SPEC.DIRECT_JUMP.RETIRED",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "co_routine_swap_pki",
+        "BriefDescription": "The rate of co-routine swaps retired per kilo instructions",
+        "MetricExpr": "SPEC.CO_ROUTINE_SWAP.RETIRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "co_routine_swap_mpki",
+        "BriefDescription": "The rate of co-routine swaps mis-predicted per kilo instructions",
+        "MetricExpr": "SPEC.CO_ROUTINE_SWAP.MISPRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "co_routine_swap_mispred_rate",
+        "BriefDescription": "The rate of co-routine swaps mis-predicted to the overall indirect jumps",
+        "MetricExpr": "SPEC.CO_ROUTINE_SWAP.MISPRED / SPEC.CO_ROUTINE_SWAP.RETIRED",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "return_pki",
+        "BriefDescription": "The rate of function returns retired per kilo instructions",
+        "MetricExpr": "SPEC.RETURN.RETIRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "return_mpki",
+        "BriefDescription": "The rate of function returns mis-predicted per kilo instructions",
+        "MetricExpr": "SPEC.RETURN.MISPRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "return_mispred_rate",
+        "BriefDescription": "The rate of function returns mis-predicted to the overall function returns",
+        "MetricExpr": "SPEC.RETURN.MISPRED / SPEC.RETURN.RETIRED",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "indirect_jump_linkage_pki",
+        "BriefDescription": "The rate of indirect jumps (with linkage) retired per kilo instructions",
+        "MetricExpr": "SPEC.INDIRECT_JUMP_LINKAGE.RETIRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "indirect_jump_linkage_mpki",
+        "BriefDescription": "The rate of indirect jumps (with linkage) mis-predicted per kilo instructions",
+        "MetricExpr": "SPEC.INDIRECT_JUMP_LINKAGE.MISPRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "indirect_jump_linkage_mispred_rate",
+        "BriefDescription": "The rate of indirect jumps (with linkage) mis-predicted to the overall indirect jumps (with linkage)",
+        "MetricExpr": "SPEC.INDIRECT_JUMP_LINKAGE.MISPRED / SPEC.INDIRECT_JUMP_LINKAGE.RETIRED",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "direct_jump_linkage_pki",
+        "BriefDescription": "The rate of direct jumps (with linkage) retired per kilo instructions",
+        "MetricExpr": "SPEC.DIRECT_JUMP_LINKAGE.RETIRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "direct_jump_linkage_mpki",
+        "BriefDescription": "The rate of direct jumps (with linkage) mis-predicted per kilo instructions",
+        "MetricExpr": "SPEC.DIRECT_JUMP_LINKAGE.MISPRED / GEN.INST_RETIRED * 1000",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "direct_jump_linkage_mispred_rate",
+        "BriefDescription": "The rate of direct jumps (with linkage) mis-predicted to the overall direct jumps (with linkage)",
+        "MetricExpr": "SPEC.DIRECT_JUMP_LINKAGE.MISPRED / SPEC.DIRECT_JUMP_LINKAGE.RETIRED",
+        "MetricGroup": "Speculation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "pipeline_width",
+        "BriefDescription": "Maximum number of retired operations per cycle the CPU pipeline can sustain",
+        "MetricExpr": "4"
+    },
+    {
+        "MetricName": "tma_bad_speculation",
+        "BriefDescription": "Fraction of slots wasted due to incorrect speculations",
+        "MetricExpr": "(GEN.INST_ISSUED - GEN.INST_RETIRED + pipeline_width * SPEC.PIPELINE_FLUSH.RECOVERY_CYCLES) / (pipeline_width * GEN.CYCLES))",
+        "MetricGroup": "Speculation,TmaL1",
+        "MetricThreshold": "tma_bad_speculation > 0.15",
+        "PublicDescription": "Fraction of slots wasted due to incorrect speculations. This include slots used to issue uops that do not eventually get retired and slots for which the issue-pipeline was blocked due to recovery from earlier incorrect speculation. For example; wasted work due to miss-predicted branches are categorized under Bad Speculation category. Incorrect data speculation followed by Memory Ordering Nukes is another example.",
+        "ScaleUnit": "100%"
+    }
+]
