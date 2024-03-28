@@ -1,0 +1,20 @@
+[
+    {
+        "EventName": "GEN.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles when the hart is not in halt state",
+        "PublicDescription": "Cycles when the hart is not in halt state. The cycles are counted with real (potentially variable) frequency the hart is working at"
+    },
+    {
+        "EventName": "GEN.INST_RETIRED",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of instructions retired",
+        "PublicDescription": "Number of instructions retired"
+    },
+    {
+        "EventName": "GEN.INST_ISSUED",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of instructions issued",
+        "PublicDescription": "Number of instructions issued"
+    }
+]
