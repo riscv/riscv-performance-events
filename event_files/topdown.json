@@ -1,0 +1,20 @@
+[
+    {
+        "EventName": "TOPDON.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots available for an unhalted hart",
+        "PublicDescription": "TMA slots available for an unhalted hart"
+    },
+    {
+        "EventName": "TOPDON.FRONTEND_BOUND",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the frontend did not supply enough operations",
+        "PublicDescription": "TMA slots unused due to the frontend did not supply enough operations"
+    },
+    {
+        "EventName": "TOPDON.BACEND_BOUND",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the due to lack of backend resources",
+        "PublicDescription": "TMA slots unused due to the due to lack of backend resources"
+    }
+]

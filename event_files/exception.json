@@ -1,0 +1,14 @@
+[
+    {
+        "EventName": "EXCEPTION.LOAD.PF",
+        "EventCode": "0x0",
+        "BriefDescription": "Load page faults",
+        "PublicDescription": "Load page faults"
+    },
+    {
+        "EventName": "EXCEPTION.LOAD.AM",
+        "EventCode": "0x0",
+        "BriefDescription": "Load address misaligned",
+        "PublicDescription": "Load address misaligned"
+    }
+]
