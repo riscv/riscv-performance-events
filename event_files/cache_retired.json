@@ -1,0 +1,20 @@
+[
+    {
+        "EventName": "CACHE_RETIRED.L1D.LOAD.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which missed L1D cache",
+        "PublicDescription": "Retired load instruction which missed L1D cache"
+    },
+    {
+        "EventName": "CACHE_RETIRED.L1D.LOAD.HIT",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which hit L1D cache",
+        "PublicDescription": "Retired load instruction which hit L1D cache"
+    },
+    {
+        "EventName": "CACHE_RETIRED.L1D.LOAD.HIT_INFLIGHT",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss",
+        "PublicDescription": "Retired load instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss"
+    }
+]

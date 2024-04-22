@@ -1,0 +1,9 @@
+[
+    {
+        "MetricName": "l1d_cache_spec_mpki",
+        "BriefDescription": "The rate of speculative L1 data cache misses per kilo instructions retired",
+        "MetricExpr": "(CACHE_SPEC.L1D.LOAD.MISS + CACHE_SPEC.L1D.STORE.MISS) / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    }
+]
