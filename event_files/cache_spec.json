@@ -54,11 +54,29 @@
         "PublicDescription": "Prefetcher requests issued by L1D to next level cache."
     },
     {
-        "EventName": "CACHE_SPEC.L1.WB",
+        "EventName": "CACHE_SPEC.L1D.WB",
         "EventCode": "0x0",
         "BriefDescription": "Writebacks from L1D to next level cache or memory.",
         "PublicDescription": "Writebacks from L1D to next level cache or memory."
-    }
+    },
+    {
+        "EventName": "CACHE_SPEC.L1I.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "L1I cache misses.",
+        "PublicDescription": "L1I cache misses."
+    },
+    {
+        "EventName": "CACHE_SPEC.L1I.HIT",
+        "EventCode": "0x0",
+        "BriefDescription": "L1I cache hits.",
+        "PublicDescription": "L1I cache hits."
+    },
+    {
+        "EventName": "CACHE_SPEC.L1I.HIT_INFLIGHT",
+        "EventCode": "0x0",
+        "BriefDescription": "L1I cache hits data is not yet in cache but was already requested by preceding miss.",
+        "PublicDescription": "L1I cache hits data is not yet in cache but was already requested by preceding miss."
+    },
     {
         "EventName": "CACHE_SPEC.L2.LOAD.ACCESS",
         "EventCode": "0x0",
