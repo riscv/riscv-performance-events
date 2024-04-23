@@ -1,9 +1,16 @@
 [
     {
-        "MetricName": "l1d_cache_spec_mpki",
-        "BriefDescription": "The rate of speculative L1 data cache misses per kilo instructions retired",
-        "MetricExpr": "(CACHE_SPEC.L1D.LOAD.MISS + CACHE_SPEC.L1D.STORE.MISS) / RETIRED.INST * 1000",
+        "MetricName": "CACHE_SPEC.L1D.LOAD.MPKI",
+        "BriefDescription": "The rate of speculative L1 data cache misses caused by data loads per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L1D.LOAD.MISS / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L1D.LOAD.MISS_RATE",
+        "BriefDescription": "The ratio of speculative L1D cache misses to the total number of L1D accesses caused by data loads",
+        "MetricExpr": "CACHE_SPEC.L1D.LOAD.MISS / CACHE_SPEC.L1D.LOAD.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1per cache access"
     }
 ]
