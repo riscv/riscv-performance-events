@@ -217,7 +217,7 @@
     {
         "MetricName": "tma_bad_speculation",
         "BriefDescription": "Fraction of slots wasted due to incorrect speculations",
-        "MetricExpr": "(GEN.INST_ISSUED - RETIRED.INST + pipeline_width * PRD_SPEC.PIPELINE_FLUSH.RECOVERY_CYCLES) / (pipeline_width * GEN.CYCLES))",
+        "MetricExpr": "(SPEC.INST_ISSUED - RETIRED.INST + pipeline_width * PRD_SPEC.PIPELINE_FLUSH.RECOVERY_CYCLES) / (pipeline_width * GEN.CYCLES))",
         "MetricGroup": "Prediction,TmaL1",
         "MetricThreshold": "tma_bad_speculation > 0.15",
         "PublicDescription": "Fraction of slots wasted due to incorrect speculations. This include slots used to issue uops that do not eventually get retired and slots for which the issue-pipeline was blocked due to recovery from earlier incorrect speculation. For example; wasted work due to miss-predicted branches are categorized under Bad Speculation category. Incorrect data speculation followed by Memory Ordering Nukes is another example.",

@@ -1,24 +1,24 @@
 [
     {
-        "EventName": "TLB_SPEC.L1D.LOAD.ACCESS",
+        "EventName": "TLB_RETIRED.L1D.LOAD.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Address translation requests for load instructions. Speculatively executed instructions are also taken into account.",
         "PublicDescription": "Address translation requests for load instructions. Speculatively executed instructions are also taken into account."
     },
     {
-        "EventName": "TLB_SPEC.L1I.ACCESS",
+        "EventName": "TLB_RETIRED.L1I.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Address translation requests for instruction fetch",
         "PublicDescription": "Address translation requests for instruction fetch"
     },
     {
-        "EventName": "TLB_SPEC.L1D.LOAD.MISS",
+        "EventName": "TLB_RETIRED.L1D.LOAD.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Address translation requests for load instructions which missed L1 TLB. Speculatively executed instructions are also taken into account.",
         "PublicDescription": "Address translation requests for load instructions which missed L1 TLB. Speculatively executed instructions are also taken into account."
     },
     {
-        "EventName": "TLB_SPEC.L1D.LOAD.MISS_CYCLES",
+        "EventName": "TLB_RETIRED.L1D.LOAD.MISS_CYCLES",
         "EventCode": "0x0",
         "BriefDescription": "Cycles while L1 TLB waits translation. Speculatively executed instructions are also taken into account.",
         "PublicDescription": "Cycles while L1 TLB waits translation. Speculatively executed instructions are also taken into account."
