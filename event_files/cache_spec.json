@@ -18,7 +18,7 @@
         "PublicDescription": "L1D cache hits for load instructions. Speculatively executed instructions are also taken into account."
     },
     {
-        "EventName": "CACHE_SPEC.L1D.LOAD.HIT_INFLIGHT",
+        "EventName": "CACHE_SPEC.L1D.LOAD.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "L1D cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
         "PublicDescription": "L1D cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
@@ -42,7 +42,7 @@
         "PublicDescription": "L1D cache hits for store instructions. Speculatively executed instructions are also taken into account."
     },
     {
-        "EventName": "CACHE_SPEC.L1D.STORE.HIT_INFLIGHT",
+        "EventName": "CACHE_SPEC.L1D.STORE.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "L1D cache hits for store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
         "PublicDescription": "L1D cache hits for store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
@@ -72,7 +72,7 @@
         "PublicDescription": "L1I cache hits."
     },
     {
-        "EventName": "CACHE_SPEC.L1I.HIT_INFLIGHT",
+        "EventName": "CACHE_SPEC.L1I.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "L1I cache hits data is not yet in cache but was already requested by preceding miss.",
         "PublicDescription": "L1I cache hits data is not yet in cache but was already requested by preceding miss."
@@ -96,7 +96,7 @@
         "PublicDescription": "L2 cache hits for load instructions. Speculatively executed instructions are also taken into account."
     },
     {
-        "EventName": "CACHE_SPEC.L2.LOAD.HIT_INFLIGHT",
+        "EventName": "CACHE_SPEC.L2.LOAD.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "L2 cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
         "PublicDescription": "L2 cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
@@ -120,7 +120,7 @@
         "PublicDescription": "L2 cache hits for store instructions. Speculatively executed instructions are also taken into account."
     },
     {
-        "EventName": "CACHE_SPEC.L2.STORE.HIT_INFLIGHT",
+        "EventName": "CACHE_SPEC.L2.STORE.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "L2 cache hits for store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
         "PublicDescription": "L2 cache hits for store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
@@ -156,7 +156,7 @@
         "PublicDescription": "L2 cache misses caused by prefetcher."
     },
     {
-        "EventName": "CACHE_SPEC.L2.PF.HIT_INFLIGHT",
+        "EventName": "CACHE_SPEC.L2.PF.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "L2 cache hits caused by prefetcher where data is not yet in cache but was already requested by preceding miss.",
         "PublicDescription": "L2 cache hits caused by prefetcher where data is not yet in cache but was already requested by preceding miss."
