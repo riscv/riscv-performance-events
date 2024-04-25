@@ -18,7 +18,7 @@
         "PublicDescription": "L1D cache hits for load instructions. Speculatively executed instructions are also taken into account."
     },
     {
-        "EventName": "CACHE_SPEC.L1D.LOAD.HIT_INFLIGHT",
+        "EventName": "CACHE_SPEC.L1D.LOAD.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "L1D cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
         "PublicDescription": "L1D cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
