@@ -42,12 +42,6 @@
         "PublicDescription": "Direct calls retired. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'"
     },
     {
-        "EventName": "PRD_RETIRED.DIRECT_CALL.MISPRED",
-        "EventCode": "0x0",
-        "BriefDescription": "Indirect calls mis-predicted",
-        "PublicDescription": "Indirect calls mis-predicted. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'"
-    },
-    {
         "EventName": "PRD_RETIRED.INDIRECT_JUMP",
         "EventCode": "0x0",
         "BriefDescription": "Indirect jumps (without linkage) retired",
@@ -64,12 +58,6 @@
         "EventCode": "0x0",
         "BriefDescription": "Direct jumps (without linkage) retired",
         "PublicDescription": "Direct jumps (without linkage) retired. Direct jumps (without linkage) are defined using following encodings: 'JAL x0'; 'C.J'"
-    },
-    {
-        "EventName": "PRD_RETIRED.DIRECT_JUMP.MISPRED",
-        "EventCode": "0x0",
-        "BriefDescription": "Direct jumps (without linkage) mis-predicted",
-        "PublicDescription": "Direct jumps (without linkage) mis-predicted. Direct jumps (without linkage) are defined using following encodings: 'JAL x0'; 'C.J'"
     },
     {
         "EventName": "PRD_RETIRED.CO_ROUTINE_SWAP",
@@ -112,11 +100,5 @@
         "EventCode": "0x0",
         "BriefDescription": "Other direct jumps (with linkage) retired",
         "PublicDescription": "Other direct jumps (with linkage) retired. Other direct jump (with linkage) are defined using following encodings: 'JAL rd where rd != (x0, x1, or x5)'"
-    },
-    {
-        "EventName": "PRD_RETIRED.DIRECT_JUMP_LINKAGE.MISPRED",
-        "EventCode": "0x0",
-        "BriefDescription": "Other direct jumps (with linkage) mis-predicted",
-        "PublicDescription": "Other direct jumps (with linkage) mis-predicted. Other direct jumps (with linkage) are defined using following encodings: 'JAL rd where rd != (x0, x1, or x5)'"
     }
 ]
