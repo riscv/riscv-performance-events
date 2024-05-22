@@ -14,7 +14,7 @@
     {
         "EventName": "CACHE_SPEC.L1D.LOAD.HIT",
         "EventCode": "0x0",
-        "BriefDescription": "L1D cache hits for load instructions. Speculatively executed instructions are also taken into account.",
+        "BriefDescription": "L1D cache hits for load instructions. Speculatively executed instructions are also taken into account. Open: what about store forwarding? should it be accounted as hit or separately?",
         "PublicDescription": "L1D cache hits for load instructions. Speculatively executed instructions are also taken into account."
     },
     {
@@ -166,5 +166,11 @@
         "EventCode": "0x0",
         "BriefDescription": "Writebacks to next level cache or memory.",
         "PublicDescription": "Writebacks to next level cache or memory."
+    },
+    {
+        "EventName": "CACHE_SPEC.SNOOP.OTHER_CORE_HITM",
+        "EventCode": "0x0",
+        "BriefDescription": "Private cache misses where data was found in another core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.",
+        "PublicDescription": "Private cache misses where data was found in another core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines."
     }
 ]
