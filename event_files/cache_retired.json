@@ -48,6 +48,12 @@
         "PublicDescription": "Retired store instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss"
     },
     {
+        "EventName": "CACHE_RETIRED.L1I.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired instruction with L1 Instruction cache miss on fetching",
+        "PublicDescription": "Retired instruction with L1 Instruction cache miss on fetching"
+    },
+    {
         "EventName": "CACHE_RETIRED.L2.LOAD.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Retired load instruction which got data from L2 or from some next level in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc.",
