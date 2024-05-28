@@ -54,6 +54,12 @@
         "PublicDescription": "Prefetcher requests issued by L1D to next level cache."
     },
     {
+        "EventName": "CACHE_SPEC.L1D.PF.UNUSED",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of cachelines brought into L1D by prefetcher and evicted without being accessed even once.",
+        "PublicDescription": "Number of cachelines brought into L1D by prefetcher and evicted without being accessed even once."
+    },
+    {
         "EventName": "CACHE_SPEC.L1D.WB",
         "EventCode": "0x0",
         "BriefDescription": "Writebacks from L1D to next level cache or memory.",
@@ -80,50 +86,52 @@
     {
         "EventName": "CACHE_SPEC.L2.LOAD.ACCESS",
         "EventCode": "0x0",
-        "BriefDescription": "L2 cache accesses for load instructions. Speculatively executed instructions are also taken into account.",
-        "PublicDescription": "L2 cache accesses for load instructions. Speculatively executed instructions are also taken into account."
+        "BriefDescription": "L2 cache accesses initiated by load instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L2 cache accesses initiated by load instructions. Speculatively executed instructions are also taken into account."
     },
     {
         "EventName": "CACHE_SPEC.L2.LOAD.MISS",
         "EventCode": "0x0",
-        "BriefDescription": "L2 cache misses for loads instructions. Speculatively executed instructions are also taken into account.",
-        "PublicDescription": "L2 cache misses for load instructions. Speculatively executed instructions are also taken into account."
+        "BriefDescription": "L2 cache misses initiated by loads instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L2 cache misses initiated by load instructions. Speculatively executed instructions are also taken into account."
     },
     {
         "EventName": "CACHE_SPEC.L2.LOAD.HIT",
         "EventCode": "0x0",
-        "BriefDescription": "L2 cache hits for load instructions. Speculatively executed instructions are also taken into account.",
-        "PublicDescription": "L2 cache hits for load instructions. Speculatively executed instructions are also taken into account."
+        "BriefDescription": "L2 cache hits initiated by load instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L2 cache hits initiated by load instructions. Speculatively executed instructions are also taken into account."
     },
     {
         "EventName": "CACHE_SPEC.L2.LOAD.MERGE",
         "EventCode": "0x0",
-        "BriefDescription": "L2 cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
-        "PublicDescription": "L2 cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
+        "BriefDescription": "L2 cache hits initiated by load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L2 cache hits initiated by load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
+        "TBD": "Is it really needed? What are scenarious when this event triggers?"
     },
     {
         "EventName": "CACHE_SPEC.L2.STORE.ACCESS",
         "EventCode": "0x0",
-        "BriefDescription": "L2 cache accesses for store instructions. Speculatively executed instructions are also taken into account.",
-        "PublicDescription": "L2 cache accesses for store instructions. Speculatively executed instructions are also taken into account."
+        "BriefDescription": "L2 cache accesses initiated by store instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L2 cache accesses initiated by store instructions. Speculatively executed instructions are also taken into account."
     },
     {
         "EventName": "CACHE_SPEC.L2.STORE.MISS",
         "EventCode": "0x0",
-        "BriefDescription": "L2 cache misses for store instructions. Speculatively executed instructions are also taken into account.",
-        "PublicDescription": "L2 cache misses for store instructions. Speculatively executed instructions are also taken into account."
+        "BriefDescription": "L2 cache misses initiated by store instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L2 cache misses initiated by store instructions. Speculatively executed instructions are also taken into account."
     },
     {
         "EventName": "CACHE_SPEC.L2.STORE.HIT",
         "EventCode": "0x0",
-        "BriefDescription": "L2 cache hits for store instructions. Speculatively executed instructions are also taken into account.",
-        "PublicDescription": "L2 cache hits for store instructions. Speculatively executed instructions are also taken into account."
+        "BriefDescription": "L2 cache hits initiated by store instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L2 cache hits initiated by store instructions. Speculatively executed instructions are also taken into account."
     },
     {
         "EventName": "CACHE_SPEC.L2.STORE.MERGE",
         "EventCode": "0x0",
-        "BriefDescription": "L2 cache hits for store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
-        "PublicDescription": "L2 cache hits for store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
+        "BriefDescription": "L2 cache hits initiated by store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L2 cache hits initiated by store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
+        "TBD": "Is it really needed? What are scenarious when this event triggers?"
     },
     {
         "EventName": "CACHE_SPEC.L2.STORE.HIT.RFO",
@@ -162,15 +170,123 @@
         "PublicDescription": "L2 cache hits caused by prefetcher where data is not yet in cache but was already requested by preceding miss."
     },
     {
+        "EventName": "CACHE_SPEC.L2.PF.UNUSED",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of cachelines brought into L2 by prefetcher and evicted without being accessed even once.",
+        "PublicDescription": "Number of cachelines brought into L2 by prefetcher and evicted without being accessed even once."
+    },
+    {
         "EventName": "CACHE_SPEC.L2.WB",
         "EventCode": "0x0",
         "BriefDescription": "Writebacks to next level cache or memory.",
         "PublicDescription": "Writebacks to next level cache or memory."
     },
     {
-        "EventName": "CACHE_SPEC.SNOOP.OTHER_CORE_HITM",
+        "EventName": "CACHE_SPEC.SNOOP.OTHER_CORE_HIT_MODIFIED",
         "EventCode": "0x0",
         "BriefDescription": "Private cache misses where data was found in another core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.",
         "PublicDescription": "Private cache misses where data was found in another core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines."
+    },
+    {
+        "EventName": "CACHE_SPEC.SNOOP.THIS_CORE_HIT_MODIFIED",
+        "EventCode": "0x0",
+        "BriefDescription": "Snoop requests which found cacheline in the core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.",
+        "PublicDescription": "Snoop requests which found cacheline in the core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.LOAD.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache accesses for load instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L3 cache accesses for load instructions. Speculatively executed instructions are also taken into account."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.LOAD.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache misses for loads instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L3 cache misses for load instructions. Speculatively executed instructions are also taken into account."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.LOAD.HIT",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache hits for load instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L3 cache hits for load instructions. Speculatively executed instructions are also taken into account."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.LOAD.MERGE",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L3 cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.STORE.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache accesses for store instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L3 cache accesses for store instructions. Speculatively executed instructions are also taken into account."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.STORE.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache misses for store instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L3 cache misses for store instructions. Speculatively executed instructions are also taken into account."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.STORE.HIT",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache hits for store instructions. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L3 cache hits for store instructions. Speculatively executed instructions are also taken into account."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.STORE.MERGE",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache hits for store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L3 cache hits for store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.STORE.HIT.RFO",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache hits for store instructions with the purpose to get exclusive ownership. Speculatively executed instructions are also taken into account.",
+        "PublicDescription": "L3 cache hits for store instructions with the purpose to get exclusive ownership. Speculatively executed instructions are also taken into account."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.PF.ISSUED",
+        "EventCode": "0x0",
+        "BriefDescription": "Prefetcher requests issued by L3 to next level cache or memory.",
+        "PublicDescription": "Prefetcher requests issued by L3 to next level cache or memory."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.PF.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache accesses caused by prefetcher.",
+        "PublicDescription": "L3 cache accesses caused by prefetcher."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.PF.HIT",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache hits caused by prefetcher.",
+        "PublicDescription": "L3 cache hits caused by prefetcher."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.PF.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache misses caused by prefetcher.",
+        "PublicDescription": "L3 cache misses caused by prefetcher."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.PF.MERGE",
+        "EventCode": "0x0",
+        "BriefDescription": "L3 cache hits caused by prefetcher where data is not yet in cache but was already requested by preceding miss.",
+        "PublicDescription": "L3 cache hits caused by prefetcher where data is not yet in cache but was already requested by preceding miss."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.PF.UNUSED",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of cachelines brought into L3 by prefetcher and evicted without being accessed even once.",
+        "PublicDescription": "Number of cachelines brought into L3 by prefetcher and evicted without being accessed even once."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.WB",
+        "EventCode": "0x0",
+        "BriefDescription": "Writebacks to next level cache or memory.",
+        "PublicDescription": "Writebacks to next level cache or memory."
     }
 ]
