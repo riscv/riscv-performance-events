@@ -24,6 +24,12 @@
         "PublicDescription": "L1D cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
     },
     {
+        "EventName": "CACHE_SPEC.L1D.LOAD.MISS_OUTSTANDING.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles while at least one load L1 data cache miss in progress.",
+        "PublicDescription": "Cycles while at least one load L1 data cache miss in progress."
+    },
+    {
         "EventName": "CACHE_SPEC.L1D.STORE.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "L1D cache accesses for store instructions. Speculatively executed instructions are also taken into account.",
@@ -84,6 +90,12 @@
         "PublicDescription": "L1I cache hits data is not yet in cache but was already requested by preceding miss."
     },
     {
+        "EventName": "CACHE_SPEC.L1I.MISS_OUTSTANDING.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles with L1 Instruction cache miss in progress.",
+        "PublicDescription": "Cycles with L1 Instruction cache miss in progress."
+    },
+    {
         "EventName": "CACHE_SPEC.L2.LOAD.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "L2 cache accesses initiated by load instructions. Speculatively executed instructions are also taken into account.",
@@ -107,6 +119,12 @@
         "BriefDescription": "L2 cache hits initiated by load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
         "PublicDescription": "L2 cache hits initiated by load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
         "TBD": "Is it really needed? What are scenarious when this event triggers?"
+    },
+    {
+        "EventName": "CACHE_SPEC.L2.LOAD.MISS_OUTSTANDING.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles while at least one load L2 cache miss in progress.",
+        "PublicDescription": "Cycles while at least one load L2 cache miss in progress."
     },
     {
         "EventName": "CACHE_SPEC.L2.STORE.ACCESS",
@@ -216,6 +234,12 @@
         "EventCode": "0x0",
         "BriefDescription": "L3 cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.",
         "PublicDescription": "L3 cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account."
+    },
+    {
+        "EventName": "CACHE_SPEC.L3.LOAD.MISS_OUTSTANDING.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles while at least one load L3 cache miss in progress.",
+        "PublicDescription": "Cycles while at least one load L3 cache miss in progress."
     },
     {
         "EventName": "CACHE_SPEC.L3.STORE.ACCESS",
