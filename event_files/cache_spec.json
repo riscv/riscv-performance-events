@@ -72,6 +72,12 @@
         "PublicDescription": "Writebacks from L1D to next level cache or memory."
     },
     {
+        "EventName": "CACHE_SPEC.L1I.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "L1I cache accesses.",
+        "PublicDescription": "L1I cache accesses."
+    },
+    {
         "EventName": "CACHE_SPEC.L1I.MISS",
         "EventCode": "0x0",
         "BriefDescription": "L1I cache misses.",

@@ -11,6 +11,174 @@
         "BriefDescription": "The ratio of speculative L1D cache misses to the total number of L1D accesses caused by data loads",
         "MetricExpr": "CACHE_SPEC.L1D.LOAD.MISS / CACHE_SPEC.L1D.LOAD.ACCESS",
         "MetricGroup": "Cache",
-        "ScaleUnit": "1per cache access"
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L1D.LOAD.MERGE.PKI",
+        "BriefDescription": "The rate of speculative L1 data cache accesses which merged with previous cache miss per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L1D.LOAD.MERGE / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L1D.STORE.MPKI",
+        "BriefDescription": "The rate of speculative L1 data cache misses caused by data stores per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L1D.STORE.MISS / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L1D.STORE.MISS_RATE",
+        "BriefDescription": "The ratio of speculative L1D cache misses to the total number of L1D accesses caused by data stores",
+        "MetricExpr": "CACHE_SPEC.L1D.STORE.MISS / CACHE_SPEC.L1D.STORE.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L1D.PF.ISSUED.PKI",
+        "BriefDescription": "The rate of prefetcher requests issued by L1D to next level cache per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L1D.PF.ISSUED / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L1D.PF.UNUSED.RATE",
+        "BriefDescription": "The ratio of unused cachelines brought into L1D by prefetcher to the total number of prefetcher requests issued by L1D",
+        "MetricExpr": "CACHE_SPEC.L1D.PF.UNUSED / CACHE_SPEC.L1D.PF.ISSUED",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L1I.MPKI",
+        "BriefDescription": "The rate of L1 instruction cache misses per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L1I.MISS / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L1I.MISS_RATE",
+        "BriefDescription": "The ratio of L1 instruction cache misses to the total number of L1I accesses",
+        "MetricExpr": "CACHE_SPEC.L1I.MISS / CACHE_SPEC.L1I.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L1I.MERGE.PKI",
+        "BriefDescription": "The rate of L1 instruction cache accesses which merged with previous cache miss per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L1I.MERGE / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L1I.MISS.IMPACT",
+        "BriefDescription": "The approximate ratio of cycles lost due to L1I misses",
+        "MetricExpr": "CACHE_SPEC.L1I.MISS_OUTSTANDING.CYCLES / GEN.CYCLES",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L2.LOAD.MPKI",
+        "BriefDescription": "The rate of speculative L2 cache misses caused by data loads per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L2.LOAD.MISS / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L2.LOAD.MISS_RATE",
+        "BriefDescription": "The ratio of speculative L2 cache misses to the total number of L2 accesses caused by data loads",
+        "MetricExpr": "CACHE_SPEC.L2.LOAD.MISS / CACHE_SPEC.L2.LOAD.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L2.STORE.MPKI",
+        "BriefDescription": "The rate of speculative L2 cache misses caused by data stores per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L2.STORE.MISS / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L2.STORE.MISS_RATE",
+        "BriefDescription": "The ratio of speculative L2 cache misses to the total number of L2 accesses caused by data stores",
+        "MetricExpr": "CACHE_SPEC.L2.STORE.MISS / CACHE_SPEC.L2.STORE.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L2.STORE.HIT.RFO.PKI",
+        "BriefDescription": "The rate of L2 cache hits for store instructions with the purpose to get exclusive ownership per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L2.STORE.HIT.RFO / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L2.PF.ISSUED.PKI",
+        "BriefDescription": "The rate of prefetcher requests issued by L2 to next level cache per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L2.PF.ISSUED / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L2.PF.MPKI",
+        "BriefDescription": "The rate of L2 cache misses caused by prefetcher per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L2.PF.MISS / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L2.PF.UNUSED.RATE",
+        "BriefDescription": "The ratio of unused cachelines brought into L2 by prefetcher to the total number of prefetcher requests issued by L2",
+        "MetricExpr": "CACHE_SPEC.L2.PF.UNUSED / CACHE_SPEC.L2.PF.ISSUED",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L3.LOAD.MPKI",
+        "BriefDescription": "The rate of speculative L3 cache misses caused by data loads per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L3.LOAD.MISS / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L3.LOAD.MISS_RATE",
+        "BriefDescription": "The ratio of speculative L3 cache misses to the total number of L3 accesses caused by data loads",
+        "MetricExpr": "CACHE_SPEC.L3.LOAD.MISS / CACHE_SPEC.L3.LOAD.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L3.STORE.MPKI",
+        "BriefDescription": "The rate of speculative L3 cache misses caused by data stores per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L3.STORE.MISS / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L3.STORE.MISS_RATE",
+        "BriefDescription": "The ratio of speculative L3 cache misses to the total number of L3 accesses caused by data stores",
+        "MetricExpr": "CACHE_SPEC.L3.STORE.MISS / CACHE_SPEC.L3.STORE.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L3.PF.ISSUED.PKI",
+        "BriefDescription": "The rate of prefetcher requests issued by L3 to next level cache per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L3.PF.ISSUED / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L3.PF.MPKI",
+        "BriefDescription": "The rate of L3 cache misses caused by prefetcher per kilo instructions retired",
+        "MetricExpr": "CACHE_SPEC.L3.PF.MISS / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE_SPEC.L3.PF.UNUSED.RATE",
+        "BriefDescription": "The ratio of unused cachelines brought into L3 by prefetcher to the total number of prefetcher requests issued by L3",
+        "MetricExpr": "CACHE_SPEC.L3.PF.UNUSED / CACHE_SPEC.L3.PF.ISSUED",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
     }
 ]

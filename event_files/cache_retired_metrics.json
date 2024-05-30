@@ -14,6 +14,13 @@
         "ScaleUnit": "100%"
     },
     {
+        "MetricName": "CACHE_RETIRED.L1D.LOAD.MERGE.PKI",
+        "BriefDescription": "The rate of retired L1 data load cache misses which merged with previous cache miss per kilo instructions retired",
+        "MetricExpr": "CACHE_RETIRED.L1D.LOAD.MERGE / RETIRED.INST * 1000",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
         "MetricName": "CACHE_RETIRED.L1I.MPKI",
         "BriefDescription": "The rate of retired instructions with L1 instruction cache misses per kilo instructions retired",
         "MetricExpr": "CACHE_RETIRED.L1I.MISS / RETIRED.INST * 1000",
