@@ -7,7 +7,7 @@
     },
     {
         "MetricName": "TOPDOWN.SLOTS_V2",
-        "BriefDescription": "TTMA slots available for an unhalted hart",
+        "BriefDescription": "TMA slots available for an unhalted hart",
         "PublicDescription": "TMA slots available for an unhalted hart",
         "MetricExpr": "pipeline_width * GEN.CYCLES.SMT.CORE"
     },
