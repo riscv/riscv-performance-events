@@ -206,13 +206,13 @@
         "PublicDescription": "Writebacks to next level cache or memory."
     },
     {
-        "EventName": "CACHE_SPEC.SNOOP.OTHER_CORE_HIT_MODIFIED",
+        "EventName": "CACHE_SPEC.SNOOP.LOCAL_REQ_REMOTE_HITM",
         "EventCode": "0x0",
         "BriefDescription": "Private cache misses where data was found in another core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.",
         "PublicDescription": "Private cache misses where data was found in another core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines."
     },
     {
-        "EventName": "CACHE_SPEC.SNOOP.THIS_CORE_HIT_MODIFIED",
+        "EventName": "CACHE_SPEC.SNOOP.REMOTE_REQ_LOCAL_HITM",
         "EventCode": "0x0",
         "BriefDescription": "Snoop requests which found cacheline in the core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.",
         "PublicDescription": "Snoop requests which found cacheline in the core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines."
