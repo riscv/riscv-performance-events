@@ -14,7 +14,7 @@
     {
         "EventName": "TOPDOWN.BACKEND_BOUND",
         "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to the due to lack of backend resources",
-        "PublicDescription": "TMA slots unused due to the due to lack of backend resources"
+        "BriefDescription": "TMA slots unused due to the lack of backend resources",
+        "PublicDescription": "TMA slots unused due to the lack of backend resources"
     }
 ]
