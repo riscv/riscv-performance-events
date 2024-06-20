@@ -12,30 +12,43 @@
         "MetricExpr": "pipeline_width * GEN.CYCLES.SMT.CORE"
     },
     {
-        "EventName": "TOPDOWN.FRONTEND_BOUND",
+        "EventName": "TOPDOWN.FRONTEND_BOUND.SLOTS",
         "EventCode": "0x0",
         "BriefDescription": "TMA slots unused due to the frontend did not supply enough operations",
         "PublicDescription": "TMA slots unused due to the frontend did not supply enough operations"
     },
     {
-        "EventName": "TOPDOWN.BACKEND_BOUND",
-        "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to the due to lack of backend resources",
-        "PublicDescription": "TMA slots unused due to the due to lack of backend resources"
-    },
-    {
-        "EventName": "TOPDOWN.BAD_SPECULATION",
+        "EventName": "TOPDOWN.BAD_SPECULATION.SLOTS",
         "EventCode": "0x0",
         "BriefDescription": "TMA slots wasted due to incorrect speculations.",
         "PublicDescription": "TMA slots wasted due to incorrect speculations. This include slots used to issue uops that do not eventually get retired and slots for which the issue-pipeline was blocked due to recovery from earlier incorrect speculation. For example; wasted slots due to miss-predicted branches should be accounted by this event. Incorrect data speculation followed by Memory Ordering Nukes is another example."
     },
     {
-        "MetricName": "TOPDOWN.BAD_SPECULATION_V2",
-        "BriefDescription": "Fraction of slots wasted due to incorrect speculations",
-        "MetricExpr": "GEN.UOP_ISSUED - GEN.UOP_RETIRED + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES",
-        "MetricGroup": "Prediction,TmaL1",
-        "MetricThreshold": "tma_bad_speculation > 0.15",
-        "PublicDescription": "Fraction of slots wasted due to incorrect speculations. This include slots used to issue uops that do not eventually get retired and slots for which the issue-pipeline was blocked due to recovery from earlier incorrect speculation. For example; wasted work due to miss-predicted branches are categorized under Bad Speculation category. Incorrect data speculation followed by Memory Ordering Nukes is another example.",
-        "ScaleUnit": "100%"
+        "MetricName": "TOPDOWN.BAD_SPECULATION.SLOTS_V2",
+        "BriefDescription": "TMA slots wasted due to incorrect speculations",
+        "MetricExpr": "GEN.UOP_ISSUED - GEN.UOP_RETIRED + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the due to lack of backend resources",
+        "PublicDescription": "TMA slots unused due to the due to lack of backend resources"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the due to stalls caused by load and store instructions",
+        "PublicDescription": "TMA slots unused due to the due to stalls caused by load and store instructions"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.CORE_BOUND.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the non-memory stalls",
+        "PublicDescription": "TMA slots unused due to the non-memory stalls"
+    },
+    {
+        "MetricName": "TOPDOWN.BACKEND_BOUND.CORE_BOUND.SLOTS_V2",
+        "BriefDescription": "TMA slots unused due to the non-memory stalls",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.SLOTS"
     }
 ]
