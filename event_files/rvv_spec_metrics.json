@@ -1,72 +1,72 @@
 [
     {
         "MetricName": "RVV_RETIRED.FLOPC_SINGLE",
-        "BriefDescription": "Vector single-precision floating point operations retired per cycle",
+        "BriefDescription": "Vector single-precision floating point operations executed per cycle",
         "MetricExpr": "RVV_RETIRED.ELEMENT.FP_SINGLE / GEN.CYCLES"
     },
     {
         "MetricName": "RVV_RETIRED.FLOPC_DOUBLE",
-        "BriefDescription": "Vector double-precision floating point operations retired per cycle",
+        "BriefDescription": "Vector double-precision floating point operations executed per cycle",
         "MetricExpr": "RVV_RETIRED.ELEMENT.FP_DOUBLE / GEN.CYCLES"
     },
     {
         "MetricName": "RVV_RETIRED.FLOP",
-        "BriefDescription": "Vector floating point operations retired",
+        "BriefDescription": "Vector floating point operations executed",
         "MetricExpr": "RVV_RETIRED.ELEMENT.FP_SINGLE + RVV_RETIRED.ELEMENT.FP_DOUBLE"
     },
     {
         "MetricName": "RVV_RETIRED.FLOPC",
-        "BriefDescription": "Vector floating point operations retired per cycle",
+        "BriefDescription": "Vector floating point operations executed per cycle",
         "MetricExpr": "RVV_RETIRED.FLOP / GEN.CYCLES"
     },
     {
         "MetricName": "RVV_RETIRED.GFLOP",
-        "BriefDescription": "Vector giga floating point operations retired",
+        "BriefDescription": "Vector giga floating point operations executed",
         "MetricExpr": "RVV_RETIRED.FLOP / 1000000000.0"
     },
     {
         "MetricName": "RVV_RETIRED.TFLOP",
-        "BriefDescription": "Vector tera floating point operations retired",
+        "BriefDescription": "Vector tera floating point operations executed",
         "MetricExpr": "RVV_RETIRED.FLOP / 1000000000000.0"
     },
     {
         "MetricName": "RVV_RETIRED.IOPC_8",
-        "BriefDescription": "Vector 8-bits integer operations retired per cycle",
+        "BriefDescription": "Vector 8-bits integer operations executed per cycle",
         "MetricExpr": "RVV_RETIRED.ELEMENT.INT8 / GEN.CYCLES"
     },
     {
         "MetricName": "RVV_RETIRED.IOPC_16",
-        "BriefDescription": "Vector 16-bits integer operations retired per cycle",
+        "BriefDescription": "Vector 16-bits integer operations executed per cycle",
         "MetricExpr": "RVV_RETIRED.ELEMENT.INT16 / GEN.CYCLES"
     },
     {
         "MetricName": "RVV_RETIRED.IOPC_32",
-        "BriefDescription": "Vector 32-bits integer operations retired per cycle",
+        "BriefDescription": "Vector 32-bits integer operations executed per cycle",
         "MetricExpr": "RVV_RETIRED.ELEMENT.INT32 / GEN.CYCLES"
     },
     {
         "MetricName": "RVV_RETIRED.IOPC_64",
-        "BriefDescription": "Vector 64-bits integer operations retired per cycle",
+        "BriefDescription": "Vector 64-bits integer operations executed per cycle",
         "MetricExpr": "RVV_RETIRED.ELEMENT.INT64 / GEN.CYCLES"
     },
     {
         "MetricName": "RVV_RETIRED.IOP",
-        "BriefDescription": "Vector integer operations retired",
+        "BriefDescription": "Vector integer operations executed",
         "MetricExpr": "RVV_RETIRED.ELEMENT.INT8 + RVV_RETIRED.ELEMENT.INT16 + RVV_RETIRED.ELEMENT.INT32 + RVV_RETIRED.ELEMENT.INT8 + RVV_RETIRED.ELEMENT.INT64"
     },
     {
         "MetricName": "RVV_RETIRED.IOPC",
-        "BriefDescription": "Vector integer operations retired per cycle",
+        "BriefDescription": "Vector integer operations executed per cycle",
         "MetricExpr": "RVV_RETIRED.IOP / GEN.CYCLES"
     },
     {
         "MetricName": "RVV_RETIRED.TIOP",
-        "BriefDescription": "Vector tera integer operations retired",
+        "BriefDescription": "Vector tera integer operations executed",
         "MetricExpr": "RVV_RETIRED.IOP / 1000000000000"
     },
     {
         "MetricName": "RVV_RETIRED.TOP",
-        "BriefDescription": "Vector tera operations retired",
+        "BriefDescription": "Vector tera operations executed",
         "MetricExpr": "RVV_RETIRED.TFLOP + RVV_RETIRED.TIOP"
     }
 ]
