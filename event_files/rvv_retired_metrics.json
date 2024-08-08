@@ -52,7 +52,7 @@
     {
         "MetricName": "RVV_RETIRED.IOP",
         "BriefDescription": "Vector integer operations retired",
-        "MetricExpr": "RVV_RETIRED.ELEMENT.INT8 + RVV_RETIRED.ELEMENT.INT16 + RVV_RETIRED.ELEMENT.INT32 + RVV_RETIRED.ELEMENT.INT8 + RVV_RETIRED.ELEMENT.INT64"
+        "MetricExpr": "RVV_RETIRED.ELEMENT.INT8 + RVV_RETIRED.ELEMENT.INT16 + RVV_RETIRED.ELEMENT.INT32 + RVV_RETIRED.ELEMENT.INT64"
     },
     {
         "MetricName": "RVV_RETIRED.IOPC",

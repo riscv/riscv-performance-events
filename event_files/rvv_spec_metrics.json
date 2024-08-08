@@ -52,7 +52,7 @@
     {
         "MetricName": "RVV_SPEC.IOP",
         "BriefDescription": "Vector integer operations executed",
-        "MetricExpr": "RVV_SPEC.ELEMENT.INT8 + RVV_SPEC.ELEMENT.INT16 + RVV_SPEC.ELEMENT.INT32 + RVV_SPEC.ELEMENT.INT8 + RVV_SPEC.ELEMENT.INT64"
+        "MetricExpr": "RVV_SPEC.ELEMENT.INT8 + RVV_SPEC.ELEMENT.INT16 + RVV_SPEC.ELEMENT.INT32 + RVV_SPEC.ELEMENT.INT64"
     },
     {
         "MetricName": "RVV_SPEC.IOPC",
