@@ -6,9 +6,33 @@
         "PublicDescription": "Load page faults"
     },
     {
-        "EventName": "EXCEPTION.LOAD.AM",
+        "EventName": "EXCEPTION.CODE.PF",
+        "EventCode": "0x0",
+        "BriefDescription": "Instructions fetch page faults",
+        "PublicDescription": "Instructions fetch page faults"
+    },
+    {
+        "EventName": "EXCEPTION.LOAD.MISALIGNED",
         "EventCode": "0x0",
         "BriefDescription": "Load address misaligned",
         "PublicDescription": "Load address misaligned"
+    },
+    {
+        "EventName": "EXCEPTION.STORE.MISALIGNED",
+        "EventCode": "0x0",
+        "BriefDescription": "Store address misaligned",
+        "PublicDescription": "Store address misaligned"
+    },
+    {
+        "EventName": "EXCEPTION.ILLEGAL.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "Instruction access faults",
+        "PublicDescription": "Instruction access faults"
+    },
+    {
+        "EventName": "EXCEPTION.ILLEGAL.INST",
+        "EventCode": "0x0",
+        "BriefDescription": "Illegal instructions",
+        "PublicDescription": "Illegal instructions"
     }
 ]
