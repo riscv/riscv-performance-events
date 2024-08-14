@@ -1,0 +1,50 @@
+[
+    {
+        "EventName": "TLB_RETIRED.L1.LOAD.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "Address translation requests for load instructions",
+        "PublicDescription": "Address translation requests for load instructions"
+    },
+    {
+        "EventName": "TLB_RETIRED.L1.LOAD.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Address translation requests for load instructions which missed L1 TLB",
+        "PublicDescription": "Address translation requests for load instructions which missed L1 TLB"
+    },
+    {
+        "EventName": "TLB_RETIRED.L1.LOAD.MISS_OUTSTANDING.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles while at least one load L1 TLB miss in progress",
+        "PublicDescription": "Cycles while at least one load L1 TLB miss in progress"
+    },
+    {
+        "EventName": "TLB_RETIRED.L1.STORE.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "Address translation requests for store instructions",
+        "PublicDescription": "Address translation requests for store instructions"
+    },
+    {
+        "EventName": "TLB_RETIRED.L1.STORE.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Address translation requests for store instructions which missed L1 TLB",
+        "PublicDescription": "Address translation requests for store instructions which missed L1 TLB"
+    },
+    {
+        "EventName": "TLB_RETIRED.L2.LOAD.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Address translation requests for load instructions which missed L2 TLB",
+        "PublicDescription": "Address translation requests for load instructions which missed L2 TLB"
+    },
+    {
+        "EventName": "TLB_RETIRED.L2.STORE.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Address translation requests for store instructions which missed L2 TLB",
+        "PublicDescription": "Address translation requests for store instructions which missed L2 TLB"
+    },
+    {
+        "EventName": "TLB_RETIRED.L2.LOAD.MISS_OUTSTANDING.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles while at least one load L2 TLB miss in progress",
+        "PublicDescription": "Cycles while at least one load L2 TLB miss in progress"
+    }
+]
