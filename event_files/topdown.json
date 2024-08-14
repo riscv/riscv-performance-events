@@ -1,20 +1,65 @@
 [
     {
-        "EventName": "TOPDON.SLOTS",
+        "EventName": "TOPDOWN.SLOTS",
         "EventCode": "0x0",
         "BriefDescription": "TMA slots available for an unhalted hart",
         "PublicDescription": "TMA slots available for an unhalted hart"
     },
     {
-        "EventName": "TOPDON.FRONTEND_BOUND",
+<<<<<<< HEAD
+        "MetricName": "TOPDOWN.SLOTS_V2",
+        "BriefDescription": "TMA slots available for an unhalted hart",
+        "PublicDescription": "TMA slots available for an unhalted hart",
+        "MetricExpr": "pipeline_width * GEN.CYCLES.SMT.CORE"
+    },
+    {
+        "EventName": "TOPDOWN.FRONTEND_BOUND.SLOTS",
+=======
+        "EventName": "TOPDOWN.FRONTEND_BOUND",
+>>>>>>> origin/main
         "EventCode": "0x0",
         "BriefDescription": "TMA slots unused due to the frontend did not supply enough operations",
         "PublicDescription": "TMA slots unused due to the frontend did not supply enough operations"
     },
     {
-        "EventName": "TOPDON.BACEND_BOUND",
+<<<<<<< HEAD
+        "EventName": "TOPDOWN.BAD_SPECULATION.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots wasted due to incorrect speculations.",
+        "PublicDescription": "TMA slots wasted due to incorrect speculations. This include slots used to issue uops that do not eventually get retired and slots for which the issue-pipeline was blocked due to recovery from earlier incorrect speculation. For example; wasted slots due to miss-predicted branches should be accounted by this event. Incorrect data speculation followed by Memory Ordering Nukes is another example."
+    },
+    {
+        "MetricName": "TOPDOWN.BAD_SPECULATION.SLOTS_V2",
+        "BriefDescription": "TMA slots wasted due to incorrect speculations",
+        "MetricExpr": "GEN.UOP_ISSUED - GEN.UOP_RETIRED + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.SLOTS",
         "EventCode": "0x0",
         "BriefDescription": "TMA slots unused due to the due to lack of backend resources",
         "PublicDescription": "TMA slots unused due to the due to lack of backend resources"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the due to stalls caused by load and store instructions",
+        "PublicDescription": "TMA slots unused due to the due to stalls caused by load and store instructions"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.CORE_BOUND.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the non-memory stalls",
+        "PublicDescription": "TMA slots unused due to the non-memory stalls"
+    },
+    {
+        "MetricName": "TOPDOWN.BACKEND_BOUND.CORE_BOUND.SLOTS_V2",
+        "BriefDescription": "TMA slots unused due to the non-memory stalls",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.SLOTS"
+=======
+        "EventName": "TOPDOWN.BACKEND_BOUND",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the lack of backend resources",
+        "PublicDescription": "TMA slots unused due to the lack of backend resources"
+>>>>>>> origin/main
     }
 ]

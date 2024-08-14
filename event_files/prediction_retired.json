@@ -1,134 +1,122 @@
 [
     {
-        "EventName": "PRD.CONTROL_FLOW.RETIRED",
+        "EventName": "PRD_RETIRED.CONTROL_FLOW",
         "EventCode": "0x0",
         "BriefDescription": "Control flow instructions retired",
         "PublicDescription": "Control flow instructions retired"
     },
     {
-        "EventName": "PRD.CONTROL_FLOW.MISPRED",
+        "EventName": "PRD_RETIRED.CONTROL_FLOW.MISPRED",
         "EventCode": "0x0",
         "BriefDescription": "Control flow instructions mis-predicted",
         "PublicDescription": "Control flow instructions mis-predicted"
     },
     {
-        "EventName": "PRD.COND_BRANCH.RETIRED",
+        "EventName": "PRD_RETIRED.COND_BRANCH",
         "EventCode": "0x0",
         "BriefDescription": "Conditional branches retired",
         "PublicDescription": "Conditional branches retired"
     },
     {
-        "EventName": "PRD.COND_BRANCH.MISPRED",
+        "EventName": "PRD_RETIRED.COND_BRANCH.MISPRED",
         "EventCode": "0x0",
         "BriefDescription": "Conditional branches mis-predicted",
         "PublicDescription": "Conditional branches mis-predicted"
     },
     {
-        "EventName": "PRD.INDIRECT_CALL.RETIRED",
+        "EventName": "PRD_RETIRED.INDIRECT_CALL",
         "EventCode": "0x0",
         "BriefDescription": "Indirect calls retired",
         "PublicDescription": "Indirect calls retired. Indirect calls are defined using following encodings: 'JALR x1, rs where rs != x5'; 'JALR x5, rs where rs != x1'; 'C.JALR rs1 where rs1 != x5'"
     },
     {
-        "EventName": "PRD.INDIRECT_CALL.MISPRED",
+        "EventName": "PRD_RETIRED.INDIRECT_CALL.MISPRED",
         "EventCode": "0x0",
         "BriefDescription": "Indirect calls mis-predicted",
         "PublicDescription": "Indirect calls mis-predicted. Indirect calls are defined using following encodings: 'JALR x1, rs where rs != x5'; 'JALR x5, rs where rs != x1'; 'C.JALR rs1 where rs1 != x5'"
     },
     {
-        "EventName": "PRD.DIRECT_CALL.RETIRED",
+        "EventName": "PRD_RETIRED.DIRECT_CALL",
         "EventCode": "0x0",
         "BriefDescription": "Direct calls retired",
         "PublicDescription": "Direct calls retired. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'"
     },
     {
-        "EventName": "PRD.DIRECT_CALL.MISPRED",
+        "EventName": "PRD_RETIRED.DIRECT_CALL.MISPRED",
         "EventCode": "0x0",
         "BriefDescription": "Indirect calls mis-predicted",
         "PublicDescription": "Indirect calls mis-predicted. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'"
     },
     {
-        "EventName": "PRD.INDIRECT_JUMP.RETIRED",
+        "EventName": "PRD_RETIRED.INDIRECT_JUMP",
         "EventCode": "0x0",
         "BriefDescription": "Indirect jumps (without linkage) retired",
         "PublicDescription": "Indirect jumps (without linkage) retired. Indirect jumps (without linkage) are defined using following encodings: 'JALR x0, rs where rs != (x1 or x5)'; 'C.JR rs1 where rs1 != (x1 or x5)'"
     },
     {
-        "EventName": "PRD.INDIRECT_JUMP.MISPRED",
+        "EventName": "PRD_RETIRED.INDIRECT_JUMP.MISPRED",
         "EventCode": "0x0",
         "BriefDescription": "Indirect jumps (without linkage) mis-predicted",
         "PublicDescription": "Indirect jumps (without linkage) mis-predicted. Indirect jumps (without linkage) are defined using following encodings: 'JALR x0, rs where rs != (x1 or x5)'; 'C.JR rs1 where rs1 != (x1 or x5)'"
     },
     {
-        "EventName": "PRD.DIRECT_JUMP.RETIRED",
+        "EventName": "PRD_RETIRED.DIRECT_JUMP",
         "EventCode": "0x0",
         "BriefDescription": "Direct jumps (without linkage) retired",
         "PublicDescription": "Direct jumps (without linkage) retired. Direct jumps (without linkage) are defined using following encodings: 'JAL x0'; 'C.J'"
     },
     {
-        "EventName": "PRD.DIRECT_JUMP.MISPRED",
+        "EventName": "PRD_RETIRED.DIRECT_JUMP.MISPRED",
         "EventCode": "0x0",
         "BriefDescription": "Direct jumps (without linkage) mis-predicted",
         "PublicDescription": "Direct jumps (without linkage) mis-predicted. Direct jumps (without linkage) are defined using following encodings: 'JAL x0'; 'C.J'"
     },
     {
-        "EventName": "PRD.CO_ROUTINE_SWAP.RETIRED",
+        "EventName": "PRD_RETIRED.CO_ROUTINE_SWAP",
         "EventCode": "0x0",
         "BriefDescription": "Co-routine swaps retired",
         "PublicDescription": "Co-routine swaps retired. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'"
     },
     {
-        "EventName": "PRD.CO_ROUTINE_SWAP.MISPRED",
+        "EventName": "PRD_RETIRED.CO_ROUTINE_SWAP.MISPRED",
         "EventCode": "0x0",
         "BriefDescription": "Co-routine swaps mis-predicted",
         "PublicDescription": "Co-routine swaps mis-predicted. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'"
     },
     {
-        "EventName": "PRD.RETURN.RETIRED",
+        "EventName": "PRD_RETIRED.RETURN",
         "EventCode": "0x0",
         "BriefDescription": "Function returns retired",
         "PublicDescription": "Function returns retired. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'"
     },
     {
-        "EventName": "PRD.RETURN.MISPRED",
+        "EventName": "PRD_RETIRED.RETURN.MISPRED",
         "EventCode": "0x0",
         "BriefDescription": "Function returns mis-predicted",
         "PublicDescription": "Function returns mis-predicted. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'"
     },
     {
-        "EventName": "PRD.INDIRECT_JUMP_LINKAGE.RETIRED",
+        "EventName": "PRD_RETIRED.INDIRECT_JUMP_LINKAGE",
         "EventCode": "0x0",
         "BriefDescription": "Other indirect jumps (with linkage) retired",
         "PublicDescription": "Other indirect jumps (with linkage) retired. Other indirect jump (with linkage) are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'"
     },
     {
-        "EventName": "PRD.INDIRECT_JUMP_LINKAGE.MISPRED",
+        "EventName": "PRD_RETIRED.INDIRECT_JUMP_LINKAGE.MISPRED",
         "EventCode": "0x0",
         "BriefDescription": "Other indirect jumps (with linkage) mis-predicted",
         "PublicDescription": "Other indirect jumps (with linkage) mis-predicted. Other indirect jumps (with linkage) are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'"
     },
     {
-        "EventName": "PRD.DIRECT_JUMP_LINKAGE.RETIRED",
+        "EventName": "PRD_RETIRED.DIRECT_JUMP_LINKAGE",
         "EventCode": "0x0",
         "BriefDescription": "Other direct jumps (with linkage) retired",
         "PublicDescription": "Other direct jumps (with linkage) retired. Other direct jump (with linkage) are defined using following encodings: 'JAL rd where rd != (x0, x1, or x5)'"
     },
     {
-        "EventName": "PRD.DIRECT_JUMP_LINKAGE.MISPRED",
+        "EventName": "PRD_RETIRED.DIRECT_JUMP_LINKAGE.MISPRED",
         "EventCode": "0x0",
         "BriefDescription": "Other direct jumps (with linkage) mis-predicted",
         "PublicDescription": "Other direct jumps (with linkage) mis-predicted. Other direct jumps (with linkage) are defined using following encodings: 'JAL rd where rd != (x0, x1, or x5)'"
-    },
-    {
-        "EventName": "PRD.PIPELINE_FLUSH.ALL",
-        "EventCode": "0x0",
-        "BriefDescription": "Counts pipeline flushes due to all reasons",
-        "PublicDescription": "Counts pipeline flushes due to all reasons - such as branch misprediction, memory disambiguation, serializing instructions"
-    },
-    {
-        "EventName": "PRD.PIPELINE_FLUSH.RECOVERY_CYCLES",
-        "EventCode": "0x0",
-        "BriefDescription": "Cycles to recover from pipeline flushes",
-        "PublicDescription": "Cycles to recover from pipeline flushes due to any reason. Examples: branch misprediction, memory disambiguation, serializing instruction"
     }
 ]
