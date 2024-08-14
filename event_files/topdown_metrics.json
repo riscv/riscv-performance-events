@@ -18,7 +18,7 @@
     {
         "MetricName": "TOPDOWN.RETIRING",
         "BriefDescription": "Fraction of slots utilized by useful work i.e. issued uops that eventually get retired",
-        "MetricExpr": "GEN.UOP_RETIRED / TOPDOWN.SLOTS",
+        "MetricExpr": "RETIRED.UOP / TOPDOWN.SLOTS",
         "MetricThreshold": "TOPDOWN.RETIRING > 0.75",
         "PublicDescription": "Fraction of slots utilized by useful work i.e. issued uops that eventually get retired. Ideally all pipeline slots would be attributed to the Retiring category. Retiring of 100% would indicate the maximum Pipeline_Width throughput was achieved. Maximizing Retiring typically increases the Instructions-per-cycle (IPC).",
         "ScaleUnit": "100%"

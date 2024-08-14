@@ -34,5 +34,11 @@
         "EventCode": "0x0",
         "BriefDescription": "Number of FPU instructions retired",
         "PublicDescription": "Number of FPU instructions retired"
+    },
+    {
+        "EventName": "RETIRED.UOP",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of micro-operations retired",
+        "PublicDescription": "Number of micro-operations retired"
     }
 ]
