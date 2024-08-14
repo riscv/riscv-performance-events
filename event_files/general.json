@@ -4,5 +4,50 @@
         "EventCode": "0x0",
         "BriefDescription": "Cycles when the hart is not in halt state",
         "PublicDescription": "Cycles when the hart is not in halt state. The cycles are counted with real (potentially variable) frequency the hart is working at"
+<<<<<<< HEAD
+    },
+    {
+        "EventName": "GEN.INST_RETIRED",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of instructions retired",
+        "PublicDescription": "Number of instructions retired"
+    },
+    {
+        "EventName": "GEN.INST_ISSUED",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of instructions issued",
+        "PublicDescription": "Number of instructions issued"
+    },
+    {
+        "EventName": "GEN.UOP_RETIRED",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of micro-operations retired",
+        "PublicDescription": "Number of micro-operations retired"
+    },
+    {
+        "EventName": "GEN.UOP_ISSUED",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of micro-operations issued",
+        "PublicDescription": "Number of micro-operations issued"
+    },
+    {
+        "EventName": "GEN.CYCLES.SMT.CORE",
+        "EventCode": "0x0",
+        "BriefDescription": "This event counts core cycles for SMT mode by evenly distributing cycles counts between all active harts in the same physical core. For no-SMT case this event should exactly match the GEN.CYCLES.",
+        "PublicDescription": "This event counts core cycles for SMT mode by evenly distributing cycles counts between all active harts in the same physical core. For no-SMT case this event should exactly match the GEN.CYCLES."
+    },
+    {
+        "EventName": "GEN.CYCLES.SMT.ONE_HART_ACTIVE",
+        "EventCode": "0x0",
+        "BriefDescription": "This event counts cycles when all other harts on the physical core are halted.",
+        "PublicDescription": "This event counts cycles when all other harts on the physical core are halted."
+    },
+    {
+        "MetricName": "GEN.CYCLES.SMT.CORE_V2",
+        "BriefDescription": "This event counts core cycles for 2-way SMT mode",
+        "PublicDescription": "This event counts core cycles for 2-way SMT mode",
+        "MetricExpr": "(GEN.CYCLES / 2) * (1 + GEN.CYCLES.SMT.ONE_HART_ACTIVE/GEN.CYCLES)"
+=======
+>>>>>>> origin/main
     }
 ]
