@@ -1,0 +1,72 @@
+[
+    {
+        "MetricName": "RVV_SPEC.FLOPC_SINGLE",
+        "BriefDescription": "Vector single-precision floating point operations executed per cycle",
+        "MetricExpr": "RVV_SPEC.ELEMENT.FP_SINGLE / GEN.CYCLES"
+    },
+    {
+        "MetricName": "RVV_SPEC.FLOPC_DOUBLE",
+        "BriefDescription": "Vector double-precision floating point operations executed per cycle",
+        "MetricExpr": "RVV_SPEC.ELEMENT.FP_DOUBLE / GEN.CYCLES"
+    },
+    {
+        "MetricName": "RVV_SPEC.FLOP",
+        "BriefDescription": "Vector floating point operations executed",
+        "MetricExpr": "RVV_SPEC.ELEMENT.FP_SINGLE + RVV_SPEC.ELEMENT.FP_DOUBLE"
+    },
+    {
+        "MetricName": "RVV_SPEC.FLOPC",
+        "BriefDescription": "Vector floating point operations executed per cycle",
+        "MetricExpr": "RVV_SPEC.FLOP / GEN.CYCLES"
+    },
+    {
+        "MetricName": "RVV_SPEC.GFLOP",
+        "BriefDescription": "Vector giga floating point operations executed",
+        "MetricExpr": "RVV_SPEC.FLOP / 1000000000.0"
+    },
+    {
+        "MetricName": "RVV_SPEC.TFLOP",
+        "BriefDescription": "Vector tera floating point operations executed",
+        "MetricExpr": "RVV_SPEC.FLOP / 1000000000000.0"
+    },
+    {
+        "MetricName": "RVV_SPEC.IOPC_8",
+        "BriefDescription": "Vector 8-bits integer operations executed per cycle",
+        "MetricExpr": "RVV_SPEC.ELEMENT.INT8 / GEN.CYCLES"
+    },
+    {
+        "MetricName": "RVV_SPEC.IOPC_16",
+        "BriefDescription": "Vector 16-bits integer operations executed per cycle",
+        "MetricExpr": "RVV_SPEC.ELEMENT.INT16 / GEN.CYCLES"
+    },
+    {
+        "MetricName": "RVV_SPEC.IOPC_32",
+        "BriefDescription": "Vector 32-bits integer operations executed per cycle",
+        "MetricExpr": "RVV_SPEC.ELEMENT.INT32 / GEN.CYCLES"
+    },
+    {
+        "MetricName": "RVV_SPEC.IOPC_64",
+        "BriefDescription": "Vector 64-bits integer operations executed per cycle",
+        "MetricExpr": "RVV_SPEC.ELEMENT.INT64 / GEN.CYCLES"
+    },
+    {
+        "MetricName": "RVV_SPEC.IOP",
+        "BriefDescription": "Vector integer operations executed",
+        "MetricExpr": "RVV_SPEC.ELEMENT.INT8 + RVV_SPEC.ELEMENT.INT16 + RVV_SPEC.ELEMENT.INT32 + RVV_SPEC.ELEMENT.INT64"
+    },
+    {
+        "MetricName": "RVV_SPEC.IOPC",
+        "BriefDescription": "Vector integer operations executed per cycle",
+        "MetricExpr": "RVV_SPEC.IOP / GEN.CYCLES"
+    },
+    {
+        "MetricName": "RVV_SPEC.TIOP",
+        "BriefDescription": "Vector tera integer operations executed",
+        "MetricExpr": "RVV_SPEC.IOP / 1000000000000"
+    },
+    {
+        "MetricName": "RVV_SPEC.TOP",
+        "BriefDescription": "Vector tera operations executed",
+        "MetricExpr": "RVV_SPEC.TFLOP + RVV_SPEC.TIOP"
+    }
+]
