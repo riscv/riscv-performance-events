@@ -1,0 +1,38 @@
+[
+    {
+        "EventName": "RETIRED.INST",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of instructions retired",
+        "PublicDescription": "Number of instructions retired"
+    },
+    {
+        "EventName": "RETIRED.MEM_LOAD",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of memory load instructions retired",
+        "PublicDescription": "Number of memory load instructions retired"
+    },
+    {
+        "EventName": "RETIRED.MEM_LOAD.UC",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of memory load instructions retired which accessed uncacheble memory",
+        "PublicDescription": "Number of memory load instructions retired which accessed uncacheble memory"
+    },
+    {
+        "EventName": "RETIRED.MEM_STORE",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of memory store instructions retired",
+        "PublicDescription": "Number of memory store instructions retired"
+    },
+    {
+        "EventName": "RETIRED.INT",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of integer instructions retired",
+        "PublicDescription": "Number of integer instructions retired"
+    },
+    {
+        "EventName": "RETIRED.FPU",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of FPU instructions retired",
+        "PublicDescription": "Number of FPU instructions retired"
+    }
+]
