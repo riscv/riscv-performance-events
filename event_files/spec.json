@@ -28,5 +28,11 @@
         "EventCode": "0x0",
         "BriefDescription": "Number of FPU instructions issued",
         "PublicDescription": "Number of FPU instructions issued"
+    },
+    {
+        "EventName": "SPEC.UOP_ISSUED",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of micro-operations issued",
+        "PublicDescription": "Number of micro-operations issued"
     }
 ]

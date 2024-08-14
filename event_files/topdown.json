@@ -6,7 +6,6 @@
         "PublicDescription": "TMA slots available for an unhalted hart"
     },
     {
-<<<<<<< HEAD
         "MetricName": "TOPDOWN.SLOTS_V2",
         "BriefDescription": "TMA slots available for an unhalted hart",
         "PublicDescription": "TMA slots available for an unhalted hart",
@@ -14,15 +13,11 @@
     },
     {
         "EventName": "TOPDOWN.FRONTEND_BOUND.SLOTS",
-=======
-        "EventName": "TOPDOWN.FRONTEND_BOUND",
->>>>>>> origin/main
         "EventCode": "0x0",
         "BriefDescription": "TMA slots unused due to the frontend did not supply enough operations",
         "PublicDescription": "TMA slots unused due to the frontend did not supply enough operations"
     },
     {
-<<<<<<< HEAD
         "EventName": "TOPDOWN.BAD_SPECULATION.SLOTS",
         "EventCode": "0x0",
         "BriefDescription": "TMA slots wasted due to incorrect speculations.",
@@ -31,7 +26,7 @@
     {
         "MetricName": "TOPDOWN.BAD_SPECULATION.SLOTS_V2",
         "BriefDescription": "TMA slots wasted due to incorrect speculations",
-        "MetricExpr": "GEN.UOP_ISSUED - GEN.UOP_RETIRED + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES"
+        "MetricExpr": "SPEC.UOP_ISSUED - RETIRED.UOP + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES"
     },
     {
         "EventName": "TOPDOWN.BACKEND_BOUND.SLOTS",
@@ -55,11 +50,5 @@
         "MetricName": "TOPDOWN.BACKEND_BOUND.CORE_BOUND.SLOTS_V2",
         "BriefDescription": "TMA slots unused due to the non-memory stalls",
         "MetricExpr": "TOPDOWN.BACKEND_BOUND.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.SLOTS"
-=======
-        "EventName": "TOPDOWN.BACKEND_BOUND",
-        "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to the lack of backend resources",
-        "PublicDescription": "TMA slots unused due to the lack of backend resources"
->>>>>>> origin/main
     }
 ]
