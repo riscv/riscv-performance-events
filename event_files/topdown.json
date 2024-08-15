@@ -47,50 +47,50 @@
         "PublicDescription": "TMA slots unused due to the lack of backend resources"
     },
     {
-        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.SLOTS",
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS",
         "EventCode": "0x0",
         "BriefDescription": "TMA slots unused due to the stalls caused by load and store instructions",
         "PublicDescription": "TMA slots unused due to the stalls caused by load and store instructions"
     },
     {
-        "EventName": "TOPDOWN.BACKEND_BOUND.CORE_BOUND.SLOTS",
+        "EventName": "TOPDOWN.BACKEND_BOUND.CORE.SLOTS",
         "EventCode": "0x0",
         "BriefDescription": "TMA slots unused due to the non-memory stalls",
         "PublicDescription": "TMA slots unused due to the non-memory stalls"
     },
     {
-        "MetricName": "TOPDOWN.BACKEND_BOUND.CORE_BOUND.SLOTS_V2",
+        "MetricName": "TOPDOWN.BACKEND_BOUND.CORE.SLOTS_V2",
         "BriefDescription": "TMA slots unused due to the non-memory stalls",
-        "MetricExpr": "TOPDOWN.BACKEND_BOUND.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.SLOTS"
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS"
     },
     {
-        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L1_BOUND.SLOTS",
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.L1_MISS.SLOTS",
         "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to the stalls caused by load instructions without missing L1 data cache",
-        "PublicDescription": "TMA slots unused due to the stalls caused by load instructions without missing L1 data cache"
+        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L1 data cache",
+        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L1 data cache"
     },
     {
-        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L2_BOUND.SLOTS",
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.L2_MISS.SLOTS",
         "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to the stalls caused by load instructions which hit L2 cache",
-        "PublicDescription": "TMA slots unused due to the stalls caused by load instructions which hit L2 cache"
+        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L2 cache",
+        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L2 cache"
     },
     {
-        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L3_BOUND.SLOTS",
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.L3_MISS.SLOTS",
         "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to the stalls caused by load instructions which hit L3 cache",
-        "PublicDescription": "TMA slots unused due to the stalls caused by load instructions which hit L3 cache"
+        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L3 cache",
+        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L3 cache"
     },
     {
-        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DRAM_BOUND.SLOTS",
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS",
         "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to the stalls caused by load instructions which got data from external memory (DRAM)",
-        "PublicDescription": "TMA slots unused due to the stalls caused by load instructions which got data from external memory (DRAM)"
+        "BriefDescription": "TMA slots wasted while waiting for address generation and translation",
+        "PublicDescription": "TMA slots wasted while waiting for address generation and translation"
     },
     {
-        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.TLB_BOUND.SLOTS",
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS",
         "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to TLB misses caused by load instructions",
-        "PublicDescription": "TMA slots unused due to TLB misses caused by load instructions"
+        "BriefDescription": "TMA slots wasted while waiting for address generation and translation",
+        "PublicDescription": "TMA slots wasted while waiting for address generation and translation"
     }
 ]

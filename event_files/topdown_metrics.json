@@ -24,6 +24,14 @@
         "ScaleUnit": "100%"
     },
     {
+        "MetricName": "TOPDOWN.BAD_SPECULATION.OTHER",
+        "BriefDescription": "Fraction of slots wasted due to reasons other than control flow mis-speculations or memory ordering violations",
+        "MetricExpr": "TOPDOWN.BAD_SPECULATION.MEM_ORDERING.SLOTS / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.BAD_SPECULATION.MEM_ORDERING > 0.1",
+        "PublicDescription": "Fraction of slots wasted due to reasons other than control flow mis-speculations or memory ordering violations",
+        "ScaleUnit": "100%"
+    },
+    {
         "MetricName": "TOPDOWN.FRONTEND_BOUND",
         "BriefDescription": "Fraction of slots unused due to the frontend did not supply enough operations",
         "MetricExpr": "TOPDOWN.FRONTEND_BOUND.SLOTS / TOPDOWN.SLOTS",
@@ -50,7 +58,7 @@
     {
         "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND",
         "BriefDescription": "Fraction of slots unused due to the memory subsystem stalls inside the backend",
-        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.SLOTS / TOPDOWN.SLOTS",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS / TOPDOWN.SLOTS",
         "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND > 0.15",
         "PublicDescription": "Fraction of slots unused due to the memory subsystem stalls inside the backend. Memory Bound estimates fraction of slots where pipeline is likely stalled due to demand load or store instructions. This accounts mainly for (1) non-completed in-flight memory demand loads which coincides with execution units starvation; in addition to (2) cases where stores could impose backpressure on the pipeline when many of them get buffered at the same time (less common out of the two).",
         "ScaleUnit": "100%"
@@ -58,49 +66,57 @@
     {
         "MetricName": "TOPDOWN.BACKEND_BOUND.CORE_BOUND",
         "BriefDescription": "Fraction of slots unused due to the memory subsystem stalls inside the backend",
-        "MetricExpr": "TOPDOWN.BACKEND_BOUND.CORE_BOUND.SLOTS / TOPDOWN.SLOTS",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.CORE.SLOTS / TOPDOWN.SLOTS",
         "MetricThreshold": "TOPDOWN.BACKEND_BOUND.CORE_BOUND > 0.15",
         "PublicDescription": "Fraction of slots unused due to the non-memory stalls inside the backend. Shortage in hardware compute resources or dependencies in software instructions are both categorized under Core Bound. Hence it may indicate the machine ran out of an out-of-order resource; certain execution units are overloaded or dependencies in program's data- or instruction-flow are limiting the performance (e.g. chained long-latency arithmetic operations).",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L1_BOUND",
-        "BriefDescription": "Fraction of slots unused due to the stalls caused by load instructions without missing L1 data cache",
-        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L1_BOUND.SLOTS / TOPDOWN.SLOTS",
+        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.ADDR_BOUND",
+        "BriefDescription": "Fraction of slots wasted while waiting for address generation and translation",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND > 0.15",
+        "PublicDescription": "Fraction of slots wasted while waiting for address generation and translation",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND",
+        "BriefDescription": "Fraction of slots wasted while waiting for data",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND > 0.15",
+        "PublicDescription": "Fraction of slots wasted while waiting for data",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.L1_BOUND",
+        "BriefDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from L1 data cache",
+        "MetricExpr": "(TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L1_MISS.SLOTS) / TOPDOWN.SLOTS",
         "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L1_BOUND > 0.1",
-        "PublicDescription": "Fraction of slots unused due to the stalls caused by load instructions without missing L1 data cache",
+        "PublicDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from L1 data cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L2_BOUND",
-        "BriefDescription": "Fraction of slots unused due to the stalls caused by load instructions which hit L2 cache",
-        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L2_BOUND.SLOTS / TOPDOWN.SLOTS",
+        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.L2_BOUND",
+        "BriefDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from L2 cache",
+        "MetricExpr": "(TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L1_MISS.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.L2_MISS.SLOTS) / TOPDOWN.SLOTS",
         "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L2_BOUND > 0.1",
-        "PublicDescription": "Fraction of slots unused due to the stalls caused by load instructions which hit L2 cache",
+        "PublicDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from L2 cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L3_BOUND",
-        "BriefDescription": "Fraction of slots unused due to the stalls caused by load instructions which hit L3 cache",
-        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L3_BOUND.SLOTS / TOPDOWN.SLOTS",
+        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.L3_BOUND",
+        "BriefDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from L3 cache",
+        "MetricExpr": "(TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L2_MISS.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L3_MISS.SLOTS) / TOPDOWN.SLOTS",
         "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L3_BOUND > 0.1",
-        "PublicDescription": "Fraction of slots unused due to the stalls caused by load instructions which hit L3 cache",
+        "PublicDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from L3 cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DRAM_BOUND",
+        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.DRAM_BOUND",
         "BriefDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from external memory (DRAM)",
-        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DRAM_BOUND.SLOTS / TOPDOWN.SLOTS",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L3_MISS.SLOTS / TOPDOWN.SLOTS",
         "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DRAM_BOUND > 0.1",
         "PublicDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from external memory (DRAM)",
-        "ScaleUnit": "100%"
-    },
-    {
-        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.TLB_BOUND",
-        "BriefDescription": "Fraction of slots unused due to TLB misses caused by load instructions",
-        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.TLB_BOUND.SLOTS / TOPDOWN.SLOTS",
-        "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.TLB_BOUND > 0.1",
-        "PublicDescription": "Fraction of slots unused due to TLB misses caused by load instructions",
         "ScaleUnit": "100%"
     }
 ]
