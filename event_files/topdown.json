@@ -64,33 +64,46 @@
         "MetricExpr": "TOPDOWN.BACKEND_BOUND.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS"
     },
     {
-        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.L1_MISS.SLOTS",
-        "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L1 data cache",
-        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L1 data cache"
-    },
-    {
-        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.L2_MISS.SLOTS",
-        "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L2 cache",
-        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L2 cache"
-    },
-    {
-        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.L3_MISS.SLOTS",
-        "EventCode": "0x0",
-        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L3 cache",
-        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L3 cache"
-    },
-    {
         "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS",
         "EventCode": "0x0",
         "BriefDescription": "TMA slots wasted while waiting for address generation and translation",
         "PublicDescription": "TMA slots wasted while waiting for address generation and translation"
     },
     {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L1_MISS.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots wasted while waiting for address translation which missed L1 TLB",
+        "PublicDescription": "TMA slots wasted while waiting for address translation which missed L1 TLB"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L2_MISS.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots wasted while waiting for address translation which missed L2 TLB",
+        "PublicDescription": "TMA slots wasted while waiting for address translation which missed L2 TLB"
+    },
+    {
         "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS",
         "EventCode": "0x0",
-        "BriefDescription": "TMA slots wasted while waiting for address generation and translation",
-        "PublicDescription": "TMA slots wasted while waiting for address generation and translation"
+        "BriefDescription": "TMA slots wasted while waiting for data",
+        "PublicDescription": "TMA slots wasted while waiting for data"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L1_MISS.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L1 data cache",
+        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L1 data cache"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L2_MISS.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L2 cache",
+        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L2 cache"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L3_MISS.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L3 cache",
+        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L3 cache"
     }
+    
 ]

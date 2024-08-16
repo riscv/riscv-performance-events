@@ -1,12 +1,12 @@
 [
     {
-        "EventName": "EXCEPTION.LOAD.PF",
+        "EventName": "EXCEPTION.DATA.PAGE_FAULTS",
         "EventCode": "0x0",
-        "BriefDescription": "Load page faults",
-        "PublicDescription": "Load page faults"
+        "BriefDescription": "Data load/store page faults",
+        "PublicDescription": "Data load/store page faults"
     },
     {
-        "EventName": "EXCEPTION.CODE.PF",
+        "EventName": "EXCEPTION.CODE.PAGE_FAULTS",
         "EventCode": "0x0",
         "BriefDescription": "Instructions fetch page faults",
         "PublicDescription": "Instructions fetch page faults"

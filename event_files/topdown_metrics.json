@@ -80,6 +80,30 @@
         "ScaleUnit": "100%"
     },
     {
+        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.ADDR_BOUND.TLB_L1_BOUND",
+        "BriefDescription": "Fraction of slots wasted while waiting for address translation without missing L1 TLB",
+        "MetricExpr": "(TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L1_MISS.SLOTS) / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND > 0.15",
+        "PublicDescription": "Fraction of slots wasted while waiting for address generation without missing L1 TLB",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.ADDR_BOUND.TLB_L2_BOUND",
+        "BriefDescription": "Fraction of slots wasted while waiting for address translation which hit L2 TLB",
+        "MetricExpr": "(TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L1_MISS.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L2_MISS.SLOTS) / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND > 0.15",
+        "PublicDescription": "Fraction of slots wasted while waiting for address generation which hit L2 TLB",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.ADDR_BOUND.PAGE_WALK_BOUND",
+        "BriefDescription": "Fraction of slots wasted while waiting for address translation which needed page walk (missed all TLB levels)",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L2_MISS.SLOTS / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND > 0.15",
+        "PublicDescription": "Fraction of slots wasted while waiting for address translation which needed page walk (missed all TLB levels)",
+        "ScaleUnit": "100%"
+    },
+    {
         "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND",
         "BriefDescription": "Fraction of slots wasted while waiting for data",
         "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS / TOPDOWN.SLOTS",
@@ -112,11 +136,11 @@
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.DRAM_BOUND",
-        "BriefDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from external memory (DRAM)",
+        "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.EXTERNAL_MEM_BOUND",
+        "BriefDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from external memory",
         "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L3_MISS.SLOTS / TOPDOWN.SLOTS",
-        "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DRAM_BOUND > 0.1",
-        "PublicDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from external memory (DRAM)",
+        "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.EXTERNAL_MEM_BOUND > 0.1",
+        "PublicDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from external memory",
         "ScaleUnit": "100%"
     }
 ]
