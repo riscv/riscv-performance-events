@@ -1,5 +1,11 @@
 = RISC-V Performance Events Specification
 
+The RISC-V Performance Events spec is in development.
+
+Meeting slides and other TG docs reside in the TG's https://drive.google.com/drive/folders/1Cpl_reM3Yd4tF2ELaz888eFIg5h2QLld?usp=drive_link[[.underline]#Gdrive folder.#]
+
+Meeting minutes reside in the TG's https://github.com/riscv-admin/performance-events/tree/main[[.underline]#admin github#].
+
 == License
 
 This work is licensed under a Creative Commons Attribution 4.0 International License (CC-BY-4.0). For details, see the link:LICENSE[LICENSE] file.
