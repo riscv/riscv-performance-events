@@ -16,11 +16,5 @@
         "EventCode": "0x0",
         "BriefDescription": "This event counts cycles when all other harts on the physical core are halted.",
         "PublicDescription": "This event counts cycles when all other harts on the physical core are halted."
-    },
-    {
-        "MetricName": "GEN.CYCLES.SMT.CORE_V2",
-        "BriefDescription": "This event counts core cycles for 2-way SMT mode",
-        "PublicDescription": "This event counts core cycles for 2-way SMT mode",
-        "MetricExpr": "(GEN.CYCLES / 2) * (1 + GEN.CYCLES.SMT.ONE_HART_ACTIVE/GEN.CYCLES)"
     }
 ]

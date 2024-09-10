@@ -44,8 +44,8 @@
     {
         "EventName": "PRD_RETIRED.DIRECT_CALL.MISPRED",
         "EventCode": "0x0",
-        "BriefDescription": "Indirect calls mis-predicted",
-        "PublicDescription": "Indirect calls mis-predicted. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'"
+        "BriefDescription": "Direct calls mis-predicted",
+        "PublicDescription": "Direct calls mis-predicted. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'"
     },
     {
         "EventName": "PRD_RETIRED.INDIRECT_JUMP",

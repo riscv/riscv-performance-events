@@ -1,5 +1,21 @@
 [
     {
+        "MetricName": "TOPDOWN.SLOTS",
+        "BriefDescription": "For implementations which do not provide TOPDOWN.SLOTS as explicit event it is possible to calculate it as metric using GEN.CYCLES.SMT.CORE (or regular GEN.CYCLES if SMT is not relevant) event.",
+        "PublicDescription": "For implementations which do not provide TOPDOWN.SLOTS as explicit event it is possible to calculate it as metric using GEN.CYCLES.SMT.CORE (or regular GEN.CYCLES if SMT is not relevant) event.",
+        "MetricExpr": "pipeline_width * GEN.CYCLES.SMT.CORE"
+    },
+    {
+        "MetricName": "TOPDOWN.BAD_SPECULATION.SLOTS",
+        "BriefDescription": "For implementations which do not provide TOPDOWN.BAD_SPECULATION.SLOTS as explicit event it is possible to calculate it as metric. It consiste of two part - the number of cancelled operations (SPEC.UOP_ISSUED - RETIRED.UOP) and the number of slots wasted on recovery from pipeline flush (pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES)",
+        "MetricExpr": "SPEC.UOP_ISSUED - RETIRED.UOP + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES"
+    },
+    {
+        "MetricName": "TOPDOWN.BACKEND_BOUND.CORE.SLOTS",
+        "BriefDescription": "For implementations which do not provide TOPDOWN.BACKEND_BOUND.CORE.SLOTS as explicit event it is possible to calculate it as metric by subtracting memory bound slots from all backend bound slots",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS"
+    },
+    {
         "MetricName": "TOPDOWN.BAD_SPECULATION",
         "BriefDescription": "Fraction of slots wasted due to incorrect speculations",
         "MetricExpr": "TOPDOWN.BAD_SPECULATION.SLOTS / TOPDOWN.SLOTS",

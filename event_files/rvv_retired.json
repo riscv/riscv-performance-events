@@ -24,10 +24,10 @@
         "PublicDescription": "Number of 8-bit integer element operation retired. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.INT8 counter by 16. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT8 will be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
-        "EventName": "RVV_RETIRED.ELEMENT.UNMASKED.INT8",
+        "EventName": "RVV_RETIRED.ELEMENT.IGNMASK.INT8",
         "EventCode": "0x0",
         "BriefDescription": "Number of 8-bit integer element operation retired not taking into account masking",
-        "PublicDescription": "Number of 8-bit integer element operation retired. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.UNMASKED.INT8 counter by 16. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT8 will still be incremented by 16. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
+        "PublicDescription": "Number of 8-bit integer element operation retired not taking into account masking. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT8 counter by 16. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT8 will still be incremented by 16. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
         "EventName": "RVV_RETIRED.ELEMENT.INT16",
@@ -36,22 +36,22 @@
         "PublicDescription": "Number of 16-bit integer element operation retired. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.INT16 counter by 8. Masked-out elements should not increment the counter - so in the previous example half of the lanes are masked the RVV_RETIRED.ELEMENT.INT16 counter will be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
-        "EventName": "RVV_RETIRED.ELEMENT.UNMASKED.INT16",
+        "EventName": "RVV_RETIRED.ELEMENT.IGNMASK.INT16",
         "EventCode": "0x0",
         "BriefDescription": "Number of 16-bit integer element operation retired not taking into account masking",
-        "PublicDescription": "Number of 16-bit integer element operation retired. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.UNMASKED.INT16 counter by 8. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT16 counter will still be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
+        "PublicDescription": "Number of 16-bit integer element operation retired not taking into account masking. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT16 counter by 8. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT16 counter will still be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
         "EventName": "RVV_RETIRED.ELEMENT.INT32",
         "EventCode": "0x0",
         "BriefDescription": "Number of 32-bit integer element operation retired",
-        "PublicDescription": "Number of 32-bit integer element operation retired. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.UNMASKED.INT16 counter by 4. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT32 counter will be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
+        "PublicDescription": "Number of 32-bit integer element operation retired. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT16 counter by 4. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT32 counter will be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
-        "EventName": "RVV_RETIRED.ELEMENT.UNMASKED.INT32",
+        "EventName": "RVV_RETIRED.ELEMENT.IGNMASK.INT32",
         "EventCode": "0x0",
         "BriefDescription": "Number of 32-bit integer element operation retired not taking into account masking",
-        "PublicDescription": "Number of 32-bit integer element operation retired. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.UNMASKED.INT16 counter by 4. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT32 counter will still be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
+        "PublicDescription": "Number of 32-bit integer element operation retired not taking into account masking. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT16 counter by 4. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT32 counter will still be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
         "EventName": "RVV_RETIRED.ELEMENT.INT64",
@@ -60,10 +60,10 @@
         "PublicDescription": "Number of 64-bit integer element operation retired. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.INT64 counter by 2. Masked-out elements should not increment the counter - so in the previous example half of the lanes are masked the RVV_RETIRED.ELEMENT.INT64 counter will be incremented by 1. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
-        "EventName": "RVV_RETIRED.ELEMENT.UNMASKED.INT64",
+        "EventName": "RVV_RETIRED.ELEMENT.IGNMASK.INT64",
         "EventCode": "0x0",
         "BriefDescription": "Number of 64-bit integer element operation retired not taking into account masking",
-        "PublicDescription": "Number of 64-bit integer element operation retired. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.UNMASKED.INT64 counter by 2. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT64 counter will still be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
+        "PublicDescription": "Number of 64-bit integer element operation retired not taking into account masking. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT64 counter by 2. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT64 counter will still be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
         "EventName": "RVV_RETIRED.ELEMENT.FP_SINGLE",
@@ -72,10 +72,10 @@
         "PublicDescription": "Number of single-precision floating point element operation retired. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.FP_SINGLE counter by 4. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_SINGLE counter will be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
-        "EventName": "RVV_RETIRED.ELEMENT.UNMASKED.FP_SINGLE",
+        "EventName": "RVV_RETIRED.ELEMENT.IGNMASK.FP_SINGLE",
         "EventCode": "0x0",
         "BriefDescription": "Number of single-precision floating point element operation retired not taking into account masking",
-        "PublicDescription": "Number of single-precision floating point element operation retired. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.UNMASKED.FP_SINGLE counter by 4. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_SINGLE counter will still be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
+        "PublicDescription": "Number of single-precision floating point element operation retired not taking into account masking. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.FP_SINGLE counter by 4. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_SINGLE counter will still be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
         "EventName": "RVV_RETIRED.ELEMENT.FP_DOUBLE",
@@ -84,9 +84,9 @@
         "PublicDescription": "Number of double-precision floating point element operation retired. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.FP_DOUBLE counter by 2. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_DOUBLE counter will be incremented by 1. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     },
     {
-        "EventName": "RVV_RETIRED.ELEMENT.UNMASKED.FP_DOUBLE",
+        "EventName": "RVV_RETIRED.ELEMENT.IGNMASK.FP_DOUBLE",
         "EventCode": "0x0",
         "BriefDescription": "Number of double-precision floating point element operation retired not taking into account masking",
-        "PublicDescription": "Number of double-precision floating point element operation retired. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.UNMASKED.FP_DOUBLE counter by 2. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_DOUBLE counter will still be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
+        "PublicDescription": "Number of double-precision floating point element operation retired not taking into account masking. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.FP_DOUBLE counter by 2. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_DOUBLE counter will still be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition."
     }
 ]

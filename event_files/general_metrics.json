@@ -1,0 +1,8 @@
+[
+    {
+        "MetricName": "GEN.CYCLES.SMT.CORE_V2",
+        "BriefDescription": "For implementations which do not provide GEN.CYCLES.SMT.CORE as explicit event it is possible to calculate it as metrics using GEN.CYCLES.SMT.ONE_HART_ACTIVE event if it is supported. This will work only for cases with 2 harts per physical core",
+        "PublicDescription": "For implementations which do not provide GEN.CYCLES.SMT.CORE as explicit event it is possible to calculate it as metrics using GEN.CYCLES.SMT.ONE_HART_ACTIVE event if it is supported. This will work only for cases with 2 harts per physical core",
+        "MetricExpr": "(GEN.CYCLES / 2) * (1 + GEN.CYCLES.SMT.ONE_HART_ACTIVE/GEN.CYCLES)"
+    }
+]
