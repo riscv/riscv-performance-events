@@ -1,9 +1,9 @@
-= RISC-V Example Specification Document (Zexmpl)
+= RISC-V Performance Events
 Authors: Author 1, Author 2
 :docgroup: RISC-V Task Group
-:description: RISC-V Example Specification Document (Zexmpl)
+:description: RISC-V Performance Events
 :company: RISC-V.org
-:revdate: 1/2023
+:revdate: 09/2024
 :revnumber: 1.0
 :revremark: This document is under development. Expect potential changes. Visit http://riscv.org/spec-state for further details.
 :revinfo:
@@ -53,14 +53,14 @@ Attribution 4.0 International License (CC-BY 4.0). The full
 license text is available at
 https://creativecommons.org/licenses/by/4.0/.
 
-Copyright 2023 by RISC-V International.
+Copyright 2024 by RISC-V International.
 
 [preface]
 include::contributors.adoc[]
 
 include::intro.adoc[]
-include::chapter2.adoc[]
+include::body.adoc[]
 
 // The index must precede the bibliography
-include::index.adoc[]
-include::bibliography.adoc[]
+//include::index.adoc[]
+//include::bibliography.adoc[]

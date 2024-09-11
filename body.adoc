@@ -1,0 +1,571 @@
+[[body]]
+== Groups
+
+All the events and metrics are split between several groups which are described in details sub-sections below.
+In addition most of the groups are further split into 2 variants:
+* RETIRED - for events counted at retirement. For example, CACHE_RETIRED.L2.LOAD.MISS event will count L2 misses caused by retired load instructions
+* SPEC - for speculative events. For example, CACHE_SPEC.L2.LOAD.MISS event will count L2 misses caused by load instructions regardless of whether they were retired or not.
+
+In general RETIRED events look more useful for performance analysis. In addition in the future it may be possible to provide more context for them - e.g. precise sample IP. But on the other hand they it may be significantly more expensive to implement. It is up to implementations to decide if they want to provide RETIRED, SPEC or both variants of a group.
+
+=== GEN
+
+This group contains general events not specific to a particular part of CPU pipeline. 
+
+.GEN group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|GEN.CYCLES |Cycles when the hart is not in halt state. The cycles are counted with real (potentially variable) frequency the hart is working at
+|GEN.CYCLES.SMT.CORE |This event counts core cycles for SMT mode by evenly distributing cycles counts between all active harts in the same physical core. For no-SMT case this event should exactly match the GEN.CYCLES.
+|GEN.CYCLES.SMT.ONE_HART_ACTIVE |This event counts cycles when all other harts on the physical core are halted.
+|===
+
+[%unbreakable]
+
+.GEN group metrics
+[%unbreakable]
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|GEN.CYCLES.SMT.CORE |For implementations which do not provide GEN.CYCLES.SMT.CORE as explicit event it is possible to calculate it as metrics using GEN.CYCLES.SMT.ONE_HART_ACTIVE event if it is supported. This will work only for cases with 2 harts per physical core |(GEN.CYCLES / 2) * (1 + GEN.CYCLES.SMT.ONE_HART_ACTIVE/GEN.CYCLES)
+|===
+
+[%unbreakable]
+
+
+=== RETIRED
+
+This group contains events measured at retirement which didn't fall into any specific group below.
+
+.RETIRED group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|RETIRED.INST |Number of instructions retired
+|RETIRED.MEM_LOAD |Number of memory load instructions retired.
+|RETIRED.MEM_LOAD.UC |Number of memory load instructions retired which accessed uncacheble memory.
+|RETIRED.MEM_STORE |Number of memory store instructions retired.
+|RETIRED.INT |Number of integer instructions retired
+|RETIRED.FPU |Number of FPU instructions retired
+|RETIRED.UOP |Number of micro-operations retired
+|===
+
+[%unbreakable]
+
+=== SPEC
+
+This group contains speculative events which didn't fall into any specific group below.
+
+.SPEC group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|SPEC.INST_ISSUED |Number of instructions issued
+|SPEC.MEM_LOAD_ISSUED |Number of memory load instructions issued
+|SPEC.MEM_STORE_ISSUED |Number of memory store instructions issued
+|SPEC.INT_ISSUED |Number of integer instructions issued
+|SPEC.FPU_ISSUED |Number of FPU instructions issued
+|SPEC.UOP_ISSUED |Number of micro-operations issued
+|===
+
+[%unbreakable]
+
+=== PRD_RETIRED
+
+Retirement prediction group which contains events and metrics for measuring things branch mispredictions, data mis-speculations etc.
+
+.PRD_RETIRED group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|PRD_RETIRED.CONTROL_FLOW |Control flow instructions retired
+|PRD_RETIRED.CONTROL_FLOW.MISPRED |Control flow instructions mis-predicted
+|PRD_RETIRED.COND_BRANCH |Conditional branches retired
+|PRD_RETIRED.COND_BRANCH.MISPRED |Conditional branches mis-predicted
+|PRD_RETIRED.INDIRECT_CALL |Indirect calls retired. Indirect calls are defined using following encodings: 'JALR x1, rs where rs != x5'; 'JALR x5, rs where rs != x1'; 'C.JALR rs1 where rs1 != x5'
+|PRD_RETIRED.INDIRECT_CALL.MISPRED |Indirect calls mis-predicted. Indirect calls are defined using following encodings: 'JALR x1, rs where rs != x5'; 'JALR x5, rs where rs != x1'; 'C.JALR rs1 where rs1 != x5'
+|PRD_RETIRED.DIRECT_CALL |Direct calls retired. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'
+|PRD_RETIRED.DIRECT_CALL.MISPRED |Direct calls mis-predicted. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'
+|PRD_RETIRED.INDIRECT_JUMP |Indirect jumps (without linkage) retired. Indirect jumps (without linkage) are defined using following encodings: 'JALR x0, rs where rs != (x1 or x5)'; 'C.JR rs1 where rs1 != (x1 or x5)'
+|PRD_RETIRED.INDIRECT_JUMP.MISPRED |Indirect jumps (without linkage) mis-predicted. Indirect jumps (without linkage) are defined using following encodings: 'JALR x0, rs where rs != (x1 or x5)'; 'C.JR rs1 where rs1 != (x1 or x5)'
+|PRD_RETIRED.DIRECT_JUMP |Direct jumps (without linkage) retired. Direct jumps (without linkage) are defined using following encodings: 'JAL x0'; 'C.J'
+|PRD_RETIRED.DIRECT_JUMP.MISPRED |Direct jumps (without linkage) mis-predicted. Direct jumps (without linkage) are defined using following encodings: 'JAL x0'; 'C.J'
+|PRD_RETIRED.CO_ROUTINE_SWAP |Co-routine swaps retired. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'
+|PRD_RETIRED.CO_ROUTINE_SWAP.MISPRED |Co-routine swaps mis-predicted. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'
+|PRD_RETIRED.RETURN |Function returns retired. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'
+|PRD_RETIRED.RETURN.MISPRED |Function returns mis-predicted. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'
+|PRD_RETIRED.INDIRECT_JUMP_LINKAGE |Other indirect jumps (with linkage) retired. Other indirect jump (with linkage) are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'
+|PRD_RETIRED.INDIRECT_JUMP_LINKAGE.MISPRED |Other indirect jumps (with linkage) mis-predicted. Other indirect jumps (with linkage) are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'
+|PRD_RETIRED.DIRECT_JUMP_LINKAGE |Other direct jumps (with linkage) retired. Other direct jump (with linkage) are defined using following encodings: 'JAL rd where rd != (x0, x1, or x5)'
+|PRD_RETIRED.DIRECT_JUMP_LINKAGE.MISPRED |Other direct jumps (with linkage) mis-predicted. Other direct jumps (with linkage) are defined using following encodings: 'JAL rd where rd != (x0, x1, or x5)'
+|===
+
+[%unbreakable]
+
+.PRD_RETIRED group metrics
+[%unbreakable]
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|PRD_RETIRED.CONTROL_FLOW.PKI |The rate of control flow instructions retired per kilo instructions |PRD_RETIRED.CONTROL_FLOW / RETIRED.INST * 1000
+|PRD_RETIRED.CONTROL_FLOW.MPKI |The rate of control flow instructions mis-predicted per kilo instructions |PRD_RETIRED.CONTROL_FLOW.MISPRED / RETIRED.INST * 1000
+|PRD_RETIRED.CONTROL_FLOW.MISPRED_RATE |The rate of control flow instructions mis-predicted to the overall control flow instructions |PRD_RETIRED.CONTROL_FLOW.MISPRED / PRD_RETIRED.CONTROL_FLOW.RETIRED
+|PRD_RETIRED.COND_BRANCH.PKI |The rate of conditional branches retired per kilo instructions |PRD_RETIRED.COND_BRANCH / RETIRED.INST * 1000
+|PRD_RETIRED.COND_BRANCH.MPKI |The rate of conditional branches mis-predicted per kilo instructions |PRD_RETIRED.COND_BRANCH.MISPRED / RETIRED.INST * 1000
+|PRD_RETIRED.COND_BRANCH.MISPRED_RATE |The rate of conditional branches mis-predicted to the overall conditional branches |PRD_RETIRED.COND_BRANCH.MISPRED / PRD_RETIRED.COND_BRANCH.RETIRED
+|PRD_RETIRED.INDIRECT_CALL.PKI |The rate of indirect calls retired per kilo instructions |PRD_RETIRED.INDIRECT_CALL / RETIRED.INST * 1000
+|PRD_RETIRED.INDIRECT_CALL.MPKI |The rate of indirect calls mis-predicted per kilo instructions |PRD_RETIRED.INDIRECT_CALL.MISPRED / RETIRED.INST * 1000
+|PRD_RETIRED.INDIRECT_CALL.MISPRED_RATE |The rate of indirect calls mis-predicted to the overall indirect calls |PRD_RETIRED.INDIRECT_CALL.MISPRED / PRD_RETIRED.INDIRECT_CALL.RETIRED
+|PRD_RETIRED.DIRECT_CALL.PKI |The rate of direct calls retired per kilo instructions |PRD_RETIRED.DIRECT_CALL / RETIRED.INST * 1000
+|PRD_RETIRED.DIRECT_CALL.MPKI |The rate of direct calls mis-predicted per kilo instructions |PRD_RETIRED.DIRECT_CALL.MISPRED / RETIRED.INST * 1000
+|PRD_RETIRED.DIRECT_CALL.MISPRED_RATE |The rate of direct calls mis-predicted to the overall direct calls |PRD_RETIRED.DIRECT_CALL.MISPRED / PRD_RETIRED.DIRECT_CALL.RETIRED
+|PRD_RETIRED.INDIRECT_JUMP.PKI |The rate of indirect jumps retired per kilo instructions |PRD_RETIRED.INDIRECT_JUMP / RETIRED.INST * 1000
+|PRD_RETIRED.INDIRECT_JUMP.MPKI |The rate of indirect jumps mis-predicted per kilo instructions |PRD_RETIRED.INDIRECT_JUMP.MISPRED / RETIRED.INST * 1000
+|PRD_RETIRED.INDIRECT_JUMP.MISPRED_RATE |The rate of indirect jumps mis-predicted to the overall indirect jumps |PRD_RETIRED.INDIRECT_JUMP.MISPRED / PRD_RETIRED.INDIRECT_JUMP.RETIRED
+|PRD_RETIRED.DIRECT_JUMP.PKI |The rate of direct jumps retired per kilo instructions |PRD_RETIRED.DIRECT_JUMP / RETIRED.INST * 1000
+|PRD_RETIRED.DIRECT_JUMP.MPKI |The rate of direct jumps mis-predicted per kilo instructions |PRD_RETIRED.DIRECT_JUMP.MISPRED / RETIRED.INST * 1000
+|PRD_RETIRED.DIRECT_JUMP.MISPRED_RATE |The rate of direct jumps mis-predicted to the overall indirect jumps |PRD_RETIRED.DIRECT_JUMP.MISPRED / PRD_RETIRED.DIRECT_JUMP.RETIRED
+|PRD_RETIRED.CO_ROUTINE_SWAP.PKI |The rate of co-routine swaps retired per kilo instructions |PRD_RETIRED.CO_ROUTINE_SWAP / RETIRED.INST * 1000
+|PRD_RETIRED.CO_ROUTINE_SWAP.MPKI |The rate of co-routine swaps mis-predicted per kilo instructions |PRD_RETIRED.CO_ROUTINE_SWAP.MISPRED / RETIRED.INST * 1000
+|PRD_RETIRED.CO_ROUTINE_SWAP.MISPRED_RATE |The rate of co-routine swaps mis-predicted to the overall indirect jumps |PRD_RETIRED.CO_ROUTINE_SWAP.MISPRED / PRD_RETIRED.CO_ROUTINE_SWAP.RETIRED
+|PRD_RETIRED.RETURN.PKI |The rate of function returns retired per kilo instructions |PRD_RETIRED.RETURN / RETIRED.INST * 1000
+|PRD_RETIRED.RETURN.MPKI |The rate of function returns mis-predicted per kilo instructions |PRD_RETIRED.RETURN.MISPRED / RETIRED.INST * 1000
+|PRD_RETIRED.RETURN.MISPRED_RATE |The rate of function returns mis-predicted to the overall function returns |PRD_RETIRED.RETURN.MISPRED / PRD_RETIRED.RETURN.RETIRED
+|PRD_RETIRED.INDIRECT_JUMP_LINKAGE.PKI |The rate of indirect jumps (with linkage) retired per kilo instructions |PRD_RETIRED.INDIRECT_JUMP_LINKAGE / RETIRED.INST * 1000
+|PRD_RETIRED.INDIRECT_JUMP_LINKAGE.MPKI |The rate of indirect jumps (with linkage) mis-predicted per kilo instructions |PRD_RETIRED.INDIRECT_JUMP_LINKAGE.MISPRED / RETIRED.INST * 1000
+|PRD_RETIRED.INDIRECT_JUMP_LINKAGE.MISPRED_RATE |The rate of indirect jumps (with linkage) mis-predicted to the overall indirect jumps (with linkage) |PRD_RETIRED.INDIRECT_JUMP_LINKAGE.MISPRED / PRD_RETIRED.INDIRECT_JUMP_LINKAGE.RETIRED
+|PRD_RETIRED.DIRECT_JUMP_LINKAGE.PKI |The rate of direct jumps (with linkage) retired per kilo instructions |PRD_RETIRED.DIRECT_JUMP_LINKAGE / RETIRED.INST * 1000
+|PRD_RETIRED.DIRECT_JUMP_LINKAGE.MPKI |The rate of direct jumps (with linkage) mis-predicted per kilo instructions |PRD_RETIRED.DIRECT_JUMP_LINKAGE.MISPRED / RETIRED.INST * 1000
+|PRD_RETIRED.DIRECT_JUMP_LINKAGE.MISPRED_RATE |The rate of direct jumps (with linkage) mis-predicted to the overall direct jumps (with linkage) |PRD_RETIRED.DIRECT_JUMP_LINKAGE.MISPRED / PRD_RETIRED.DIRECT_JUMP_LINKAGE.RETIRED
+|===
+
+[%unbreakable]
+
+=== PRD_SPEC
+
+Speculation prediction group. Unlike most of the groups below prediction events mostly naturally counted only at retirement time. So this group contains only a few events which make sense to count speculatively.
+
+.PRD_SPEC group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|PRD_SPEC.PIPELINE_FLUSH.ALL |Counts pipeline flushes due to all reasons - such as branch misprediction, memory disambiguation, serializing instructions
+|PRD_SPEC.PIPELINE_FLUSH.RECOVERY_CYCLES |Cycles to recover from pipeline flushes due to any reason. Examples: branch misprediction, memory disambiguation, serializing instruction
+|===
+
+[%unbreakable]
+
+=== CACHE_RETIRED
+
+This group contains events and metrics for data and instruction caches (all levels) counted at retirement.
+
+.CACHE_RETIRED group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|CACHE_RETIRED.L1D.LOAD.ACCESS |Retired load instruction which accessed L1D cache
+|CACHE_RETIRED.L1D.LOAD.MISS |Retired load instruction which missed L1D cache
+|CACHE_RETIRED.L1D.LOAD.HIT |Retired load instruction which hit L1D cache
+|CACHE_RETIRED.L1D.LOAD.MERGE |Retired load instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss
+|CACHE_RETIRED.L1D.STORE.ACCESS |Retired store instruction which accessed L1D cache
+|CACHE_RETIRED.L1D.STORE.MISS |Retired store instruction which missed L1D cache
+|CACHE_RETIRED.L1D.STORE.HIT |Retired store instruction which hit L1D cache
+|CACHE_RETIRED.L1D.STORE.MERGE |Retired store instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss
+|CACHE_RETIRED.L1I.MISS |Retired instruction with L1 Instruction cache miss on fetching
+|CACHE_RETIRED.L2.LOAD.ACCESS |Retired load instruction which got data from L2 or from some next level in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc.
+|CACHE_RETIRED.L2.LOAD.MISS |Retired load instruction which got data from some next level (relative to L2) in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc.
+|CACHE_RETIRED.L2.LOAD.HIT |Retired load instruction which got data from L2 cache
+|CACHE_RETIRED.L3.LOAD.ACCESS |Retired load instruction which got data from L3 cache or from some next level in memory hierarchy - local mmemory, remote cache, remote memory, etc.
+|CACHE_RETIRED.L3.LOAD.MISS |Retired load instruction which got data from some next level (relative to L3) in memory hierarchy - local mmemory, remote cache, remote memory, etc.
+|CACHE_RETIRED.L3.LOAD.HIT |Retired load instruction which got data from L3 cache
+|CACHE_RETIRED.L3.LOAD.MISS.LOCAL_MEMORY |Retired load instruction which got data from local memory.
+|CACHE_RETIRED.L3.LOAD.MISS.REMOTE_MEMORY |Retired load instruction which got data from remote memory (memory attached to remote socket).
+|CACHE_RETIRED.L3.LOAD.MISS.REMOTE_CACHE |Retired load instruction which got data from remote cache (cache on remote socket).
+|===
+
+[%unbreakable]
+
+.CACHE_RETIRED group metrics
+[%unbreakable]
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|CACHE_RETIRED.L1D.LOAD.MPKI |The rate of retired L1 data load cache misses per kilo instructions retired |CACHE_RETIRED.L1D.LOAD.MISS / RETIRED.INST * 1000
+|CACHE_RETIRED.L1D.LOAD.MISS_RATE |The ratio of retired L1D cache load misses to the total number of retired L1D load accesses |CACHE_RETIRED.L1D.LOAD.MISS / CACHE_RETIRED.L1D.LOAD.ACCESS
+|CACHE_RETIRED.L1D.LOAD.MERGE.PKI |The rate of retired L1 data load cache misses which merged with previous cache miss per kilo instructions retired |CACHE_RETIRED.L1D.LOAD.MERGE / RETIRED.INST * 1000
+|CACHE_RETIRED.L1I.MPKI |The rate of retired instructions with L1 instruction cache misses per kilo instructions retired |CACHE_RETIRED.L1I.MISS / RETIRED.INST * 1000
+|CACHE_RETIRED.L1D.STORE.MPKI |The rate of retired L1 data store cache misses per kilo instructions retired |CACHE_RETIRED.L1D.STORE.MISS  / RETIRED.INST * 1000
+|CACHE_RETIRED.L1D.STORE.MISS_RATE |The ratio of retired L1D cache store misses to the total number of retired L1D store accesses |CACHE_RETIRED.L1D.STORE.MISS / CACHE_RETIRED.L1D.STORE.ACCESS
+|CACHE_RETIRED.L2.LOAD.MPKI |The rate of retired L2 data load cache misses per kilo instructions retired |CACHE_RETIRED.L2.LOAD.MISS / RETIRED.INST * 1000
+|CACHE_RETIRED.L2.LOAD.MISS_RATE |The ratio of retired L2 cache load misses to the total number of retired L2 load accesses |CACHE_RETIRED.L2.LOAD.MISS / CACHE_RETIRED.L2.LOAD.ACCESS
+|CACHE_RETIRED.L3.LOAD.MPKI |The rate of retired L3 data load cache misses per kilo instructions retired |CACHE_RETIRED.L3.LOAD.MISS / RETIRED.INST * 1000
+|CACHE_RETIRED.L3.LOAD.MISS_RATE |The ratio of retired L3 cache load misses to the total number of retired L3 load accesses |CACHE_RETIRED.L3.LOAD.MISS / CACHE_RETIRED.L3.LOAD.ACCESS
+|===
+
+[%unbreakable]
+
+=== CACHE_SPEC
+
+This group contains events and metrics for data and instruction caches (all levels) counted speculatively.
+
+.CACHE_SPEC group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|CACHE_SPEC.L1D.LOAD.ACCESS |L1D cache accesses for load instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L1D.LOAD.MISS |L1D cache misses for load instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L1D.LOAD.HIT |L1D cache hits for load instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L1D.LOAD.MERGE |L1D cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L1D.LOAD.MISS_OUTSTANDING.CYCLES |Cycles while at least one load L1 data cache miss in progress.
+|CACHE_SPEC.L1D.STORE.ACCESS |L1D cache accesses for store instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L1D.STORE.MISS |L1D cache misses for store instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L1D.STORE.HIT |L1D cache hits for store instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L1D.STORE.MERGE |L1D cache hits for store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L1D.PF.ISSUED |Prefetcher requests issued by L1D to next level cache.
+|CACHE_SPEC.L1D.PF.UNUSED |Number of cachelines brought into L1D by prefetcher and evicted without being accessed even once.
+|CACHE_SPEC.L1D.WB |Writebacks from L1D to next level cache or memory.
+|CACHE_SPEC.L1I.ACCESS |L1I cache accesses.
+|CACHE_SPEC.L1I.MISS |L1I cache misses.
+|CACHE_SPEC.L1I.HIT |L1I cache hits.
+|CACHE_SPEC.L1I.MERGE |L1I cache hits data is not yet in cache but was already requested by preceding miss.
+|CACHE_SPEC.L1I.MISS_OUTSTANDING.CYCLES |Cycles with L1 Instruction cache miss in progress.
+|CACHE_SPEC.L2.LOAD.ACCESS |L2 cache accesses initiated by load instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L2.LOAD.MISS |L2 cache misses initiated by load instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L2.LOAD.HIT |L2 cache hits initiated by load instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L2.LOAD.MERGE |L2 cache hits initiated by load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L2.LOAD.MISS_OUTSTANDING.CYCLES |Cycles while at least one load L2 cache miss in progress.
+|CACHE_SPEC.L2.STORE.ACCESS |L2 cache accesses initiated by store instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L2.STORE.MISS |L2 cache misses initiated by store instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L2.STORE.HIT |L2 cache hits initiated by store instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L2.STORE.MERGE |L2 cache hits initiated by store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L2.STORE.HIT.RFO |L2 cache hits for store instructions with the purpose to get exclusive ownership. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L2.PF.ISSUED |Prefetcher requests issued by L2 to next level cache or memory.
+|CACHE_SPEC.L2.PF.ACCESS |L2 cache accesses caused by prefetcher.
+|CACHE_SPEC.L2.PF.HIT |L2 cache hits caused by prefetcher.
+|CACHE_SPEC.L2.PF.MISS |L2 cache misses caused by prefetcher.
+|CACHE_SPEC.L2.PF.MERGE |L2 cache hits caused by prefetcher where data is not yet in cache but was already requested by preceding miss.
+|CACHE_SPEC.L2.PF.UNUSED |Number of cachelines brought into L2 by prefetcher and evicted without being accessed even once.
+|CACHE_SPEC.L2.WB |Writebacks to next level cache or memory.
+|CACHE_SPEC.SNOOP.LOCAL_REQ_REMOTE_HITM |Private cache misses where data was found in another core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.
+|CACHE_SPEC.SNOOP.REMOTE_REQ_LOCAL_HITM |Snoop requests which found cacheline in the core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.
+|CACHE_SPEC.L3.LOAD.ACCESS |L3 cache accesses for load instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L3.LOAD.MISS |L3 cache misses for load instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L3.LOAD.HIT |L3 cache hits for load instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L3.LOAD.MERGE |L3 cache hits for load instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L3.LOAD.MISS_OUTSTANDING.CYCLES |Cycles while at least one load L3 cache miss in progress.
+|CACHE_SPEC.L3.STORE.ACCESS |L3 cache accesses for store instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L3.STORE.MISS |L3 cache misses for store instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L3.STORE.HIT |L3 cache hits for store instructions. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L3.STORE.MERGE |L3 cache hits for store instructions where data is not yet in cache but was already requested by preceding miss. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L3.STORE.HIT.RFO |L3 cache hits for store instructions with the purpose to get exclusive ownership. Speculatively executed instructions are also taken into account.
+|CACHE_SPEC.L3.PF.ISSUED |Prefetcher requests issued by L3 to next level cache or memory.
+|CACHE_SPEC.L3.PF.ACCESS |L3 cache accesses caused by prefetcher.
+|CACHE_SPEC.L3.PF.HIT |L3 cache hits caused by prefetcher.
+|CACHE_SPEC.L3.PF.MISS |L3 cache misses caused by prefetcher.
+|CACHE_SPEC.L3.PF.MERGE |L3 cache hits caused by prefetcher where data is not yet in cache but was already requested by preceding miss.
+|CACHE_SPEC.L3.PF.UNUSED |Number of cachelines brought into L3 by prefetcher and evicted without being accessed even once.
+|CACHE_SPEC.L3.WB |Writebacks to next level cache or memory.
+|===
+
+[%unbreakable]
+
+.CACHE_SPEC group metrics
+[%unbreakable]
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|CACHE_SPEC.L1D.LOAD.MPKI |The rate of speculative L1 data cache misses caused by data loads per kilo instructions retired |CACHE_SPEC.L1D.LOAD.MISS / RETIRED.INST * 1000
+|CACHE_SPEC.L1D.LOAD.MISS_RATE |The ratio of speculative L1D cache misses to the total number of L1D accesses caused by data loads |CACHE_SPEC.L1D.LOAD.MISS / CACHE_SPEC.L1D.LOAD.ACCESS
+|CACHE_SPEC.L1D.LOAD.MERGE.PKI |The rate of speculative L1 data cache accesses which merged with previous cache miss per kilo instructions retired |CACHE_SPEC.L1D.LOAD.MERGE / RETIRED.INST * 1000
+|CACHE_SPEC.L1D.STORE.MPKI |The rate of speculative L1 data cache misses caused by data stores per kilo instructions retired |CACHE_SPEC.L1D.STORE.MISS / RETIRED.INST * 1000
+|CACHE_SPEC.L1D.STORE.MISS_RATE |The ratio of speculative L1D cache misses to the total number of L1D accesses caused by data stores |CACHE_SPEC.L1D.STORE.MISS / CACHE_SPEC.L1D.STORE.ACCESS
+|CACHE_SPEC.L1D.PF.ISSUED.PKI |The rate of prefetcher requests issued by L1D to next level cache per kilo instructions retired |CACHE_SPEC.L1D.PF.ISSUED / RETIRED.INST * 1000
+|CACHE_SPEC.L1D.PF.UNUSED.RATE |The ratio of unused cachelines brought into L1D by prefetcher to the total number of prefetcher requests issued by L1D |CACHE_SPEC.L1D.PF.UNUSED / CACHE_SPEC.L1D.PF.ISSUED
+|CACHE_SPEC.L1I.MPKI |The rate of L1 instruction cache misses per kilo instructions retired |CACHE_SPEC.L1I.MISS / RETIRED.INST * 1000
+|CACHE_SPEC.L1I.MISS_RATE |The ratio of L1 instruction cache misses to the total number of L1I accesses |CACHE_SPEC.L1I.MISS / CACHE_SPEC.L1I.ACCESS
+|CACHE_SPEC.L1I.MERGE.PKI |The rate of L1 instruction cache accesses which merged with previous cache miss per kilo instructions retired |CACHE_SPEC.L1I.MERGE / RETIRED.INST * 1000
+|CACHE_SPEC.L1I.MISS.IMPACT |The approximate ratio of cycles lost due to L1I misses |CACHE_SPEC.L1I.MISS_OUTSTANDING.CYCLES / GEN.CYCLES
+|CACHE_SPEC.L2.LOAD.MPKI |The rate of speculative L2 cache misses caused by data loads per kilo instructions retired |CACHE_SPEC.L2.LOAD.MISS / RETIRED.INST * 1000
+|CACHE_SPEC.L2.LOAD.MISS_RATE |The ratio of speculative L2 cache misses to the total number of L2 accesses caused by data loads |CACHE_SPEC.L2.LOAD.MISS / CACHE_SPEC.L2.LOAD.ACCESS
+|CACHE_SPEC.L2.STORE.MPKI |The rate of speculative L2 cache misses caused by data stores per kilo instructions retired |CACHE_SPEC.L2.STORE.MISS / RETIRED.INST * 1000
+|CACHE_SPEC.L2.STORE.MISS_RATE |The ratio of speculative L2 cache misses to the total number of L2 accesses caused by data stores |CACHE_SPEC.L2.STORE.MISS / CACHE_SPEC.L2.STORE.ACCESS
+|CACHE_SPEC.L2.STORE.HIT.RFO.PKI |The rate of L2 cache hits for store instructions with the purpose to get exclusive ownership per kilo instructions retired |CACHE_SPEC.L2.STORE.HIT.RFO / RETIRED.INST * 1000
+|CACHE_SPEC.L2.PF.ISSUED.PKI |The rate of prefetcher requests issued by L2 to next level cache per kilo instructions retired |CACHE_SPEC.L2.PF.ISSUED / RETIRED.INST * 1000
+|CACHE_SPEC.L2.PF.MPKI |The rate of L2 cache misses caused by prefetcher per kilo instructions retired |CACHE_SPEC.L2.PF.MISS / RETIRED.INST * 1000
+|CACHE_SPEC.L2.PF.UNUSED.RATE |The ratio of unused cachelines brought into L2 by prefetcher to the total number of prefetcher requests issued by L2 |CACHE_SPEC.L2.PF.UNUSED / CACHE_SPEC.L2.PF.ISSUED
+|CACHE_SPEC.L3.LOAD.MPKI |The rate of speculative L3 cache misses caused by data loads per kilo instructions retired |CACHE_SPEC.L3.LOAD.MISS / RETIRED.INST * 1000
+|CACHE_SPEC.L3.LOAD.MISS_RATE |The ratio of speculative L3 cache misses to the total number of L3 accesses caused by data loads |CACHE_SPEC.L3.LOAD.MISS / CACHE_SPEC.L3.LOAD.ACCESS
+|CACHE_SPEC.L3.STORE.MPKI |The rate of speculative L3 cache misses caused by data stores per kilo instructions retired |CACHE_SPEC.L3.STORE.MISS / RETIRED.INST * 1000
+|CACHE_SPEC.L3.STORE.MISS_RATE |The ratio of speculative L3 cache misses to the total number of L3 accesses caused by data stores |CACHE_SPEC.L3.STORE.MISS / CACHE_SPEC.L3.STORE.ACCESS
+|CACHE_SPEC.L3.PF.ISSUED.PKI |The rate of prefetcher requests issued by L3 to next level cache per kilo instructions retired |CACHE_SPEC.L3.PF.ISSUED / RETIRED.INST * 1000
+|CACHE_SPEC.L3.PF.MPKI |The rate of L3 cache misses caused by prefetcher per kilo instructions retired |CACHE_SPEC.L3.PF.MISS / RETIRED.INST * 1000
+|CACHE_SPEC.L3.PF.UNUSED.RATE |The ratio of unused cachelines brought into L3 by prefetcher to the total number of prefetcher requests issued by L3 |CACHE_SPEC.L3.PF.UNUSED / CACHE_SPEC.L3.PF.ISSUED
+|===
+
+[%unbreakable]
+
+=== TLB_RETIRED
+
+This group contains events and metrics for data and instruction TLB caches (all levels) counted at retirement.
+
+.RVV_RETIRED group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|RVV_RETIRED.ALL |Number of RVV instructions retired
+|RVV_RETIRED.INT |Number of integer RVV instructions retired
+|RVV_RETIRED.FP |Number of floating point RVV instructions retired
+|RVV_RETIRED.ELEMENT.INT8 |Number of 8-bit integer element operation retired. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.INT8 counter by 16. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT8 will be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.INT8 |Number of 8-bit integer element operation retired not taking into account masking. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT8 counter by 16. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT8 will still be incremented by 16. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.INT16 |Number of 16-bit integer element operation retired. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.INT16 counter by 8. Masked-out elements should not increment the counter - so in the previous example half of the lanes are masked the RVV_RETIRED.ELEMENT.INT16 counter will be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.INT16 |Number of 16-bit integer element operation retired not taking into account masking. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT16 counter by 8. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT16 counter will still be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.INT32 |Number of 32-bit integer element operation retired. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT16 counter by 4. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT32 counter will be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.INT32 |Number of 32-bit integer element operation retired not taking into account masking. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT16 counter by 4. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT32 counter will still be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.INT64 |Number of 64-bit integer element operation retired. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.INT64 counter by 2. Masked-out elements should not increment the counter - so in the previous example half of the lanes are masked the RVV_RETIRED.ELEMENT.INT64 counter will be incremented by 1. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.INT64 |Number of 64-bit integer element operation retired not taking into account masking. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT64 counter by 2. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT64 counter will still be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.FP_SINGLE |Number of single-precision floating point element operation retired. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.FP_SINGLE counter by 4. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_SINGLE counter will be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.FP_SINGLE |Number of single-precision floating point element operation retired not taking into account masking. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.FP_SINGLE counter by 4. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_SINGLE counter will still be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.FP_DOUBLE |Number of double-precision floating point element operation retired. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.FP_DOUBLE counter by 2. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_DOUBLE counter will be incremented by 1. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.FP_DOUBLE |Number of double-precision floating point element operation retired not taking into account masking. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.FP_DOUBLE counter by 2. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_DOUBLE counter will still be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|===
+
+[%unbreakable]
+
+.TLB_RETIRED group metrics
+[%unbreakable]
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|TLB_RETIRED.L1.LOAD.MPKI |The rate of L1 TLB misses caused by data loads per kilo instructions retired |TLB_RETIRED.L1.LOAD.MISS / RETIRED.INST * 1000
+|TLB_RETIRED.L1.LOAD.MISS_RATE |The ratio of L1 TLB load misses to the total number of L1 TLB load accesses |TLB_RETIRED.L1.LOAD.MISS / TLB_RETIRED.L1.LOAD.ACCESS
+|TLB_RETIRED.L1.STORE.MPKI |The rate of L1 TLB misses caused by data stores per kilo instructions retired |TLB_RETIRED.L1.STORE.MISS / RETIRED.INST * 1000
+|TLB_RETIRED.L1.STORE.MISS_RATE |The ratio of L1 TLB store misses to the total number of L1 TLB store accesses |TLB_RETIRED.L1.STORE.MISS / TLB_RETIRED.L1.STORE.ACCESS
+|TLB_RETIRED.L2.LOAD.MPKI |The rate of L2 TLB misses caused by data loads per kilo instructions retired |TLB_RETIRED.L2.LOAD.MISS / RETIRED.INST * 1000
+|TLB_RETIRED.L2.LOAD.MISS_RATE |The ratio of L2 TLB load misses to the total number of L2 TLB load accesses |TLB_RETIRED.L2.LOAD.MISS / TLB_RETIRED.L2.LOAD.ACCESS
+|TLB_RETIRED.L2.STORE.MPKI |The rate of L2 TLB misses caused by data stores per kilo instructions retired |TLB_RETIRED.L2.STORE.MISS / RETIRED.INST * 1000
+|TLB_RETIRED.L2.STORE.MISS_RATE |The ratio of L2 TLB store misses to the total number of L2 TLB store accesses |TLB_RETIRED.L2.STORE.MISS / TLB_RETIRED.L2.STORE.ACCESS
+|TLB_RETIRED.L1.MISS.IMPACT |The approximate ratio of cycles lost due to TLB (all levels) missed by load instructions |TLB_RETIRED.L1.LOAD.MISS_OUTSTANDING.CYCLES / GEN.CYCLES
+|TLB_RETIRED.L2.MISS.IMPACT |The approximate ratio of cycles lost due to L2 TLB missed by load instructions |TLB_RETIRED.L2.LOAD.MISS_OUTSTANDING.CYCLES / GEN.CYCLES
+|TLB_RETIRED.L2.HIT.IMPACT |The approximate ratio of cycles lost due to L1 TLB missed and L2 TLB hit by load instructions |(TLB_RETIRED.L1.LOAD.MISS_OUTSTANDING.CYCLES - TLB_RETIRED.L2.LOAD.MISS_OUTSTANDING.CYCLES) / GEN.CYCLES
+|===
+
+[%unbreakable]
+
+=== TLB_SPEC
+
+This group contains events and metrics for data and instruction TLB caches (all levels) counted speculatively.
+
+.TLB_SPEC group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|TLB_SPEC.L1.LOAD.ACCESS |Address translation requests for load instructions. Speculatively executed instructions are also taken into account.
+|TLB_SPEC.L1.CODE.ACCESS |Address translation requests for instructions fetch
+|TLB_SPEC.L1.LOAD.MISS |Address translation requests for load instructions which missed L1 TLB. Speculatively executed instructions are also taken into account.
+|TLB_SPEC.L1.CODE.MISS |Address translation requests for instructions fetch which missed L1 TLB
+|TLB_SPEC.L1.LOAD.MISS_OUTSTANDING.CYCLES |Cycles while at least one load L1 TLB miss in progress. Speculatively executed instructions are also taken into account.
+|TLB_SPEC.L1.CODE.MISS_OUTSTANDING.CYCLES |Cycles while at least one L1 TLB miss for instructions fetch in progress
+|TLB_SPEC.L1.STORE.ACCESS |Address translation requests for store instructions. Speculatively executed instructions are also taken into account.
+|TLB_SPEC.L1.STORE.MISS |Address translation requests for store instructions which missed L1 TLB. Speculatively executed instructions are also taken into account.
+|TLB_SPEC.L2.LOAD.MISS |Address translation requests for load instructions which missed L2 TLB. Speculatively executed instructions are also taken into account.
+|TLB_SPEC.L2.STORE.MISS |Address translation requests for store instructions which missed L2 TLB. Speculatively executed instructions are also taken into account.
+|TLB_SPEC.L2.CODE.MISS |Address translation requests for instruction fetch which missed L2 TLB
+|TLB_SPEC.L2.LOAD.MISS_OUTSTANDING.CYCLES |Cycles while at least one load L2 TLB miss in progress. Speculatively executed instructions are also taken into account.
+|TLB_SPEC.L2.CODE.MISS_OUTSTANDING.CYCLES |Cycles while at least one L2 TLB miss for instructions fetch in progress
+|===
+
+[%unbreakable]
+
+.TLB_SPEC group metrics
+[%unbreakable]
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|TLB_SPEC.L1.LOAD.MPKI |The rate of L1 TLB misses caused by data loads per kilo instructions retired |TLB_SPEC.L1.LOAD.MISS / RETIRED.INST * 1000
+|TLB_SPEC.L1.LOAD.MISS_RATE |The ratio of L1 TLB load misses to the total number of L1 TLB load accesses |TLB_SPEC.L1.LOAD.MISS / TLB_SPEC.L1.LOAD.ACCESS
+|TLB_SPEC.L1.STORE.MPKI |The rate of L1 TLB misses caused by data stores per kilo instructions retired |TLB_SPEC.L1.STORE.MISS / RETIRED.INST * 1000
+|TLB_SPEC.L1.STORE.MISS_RATE |The ratio of L1 TLB store misses to the total number of L1 TLB store accesses |TLB_SPEC.L1.STORE.MISS / TLB_SPEC.L1.STORE.ACCESS
+|TLB_SPEC.L1.CODE.MPKI |The rate of L1 TLB misses caused by instruction fetches per kilo instructions retired |TLB_SPEC.L1.CODE.MISS / RETIRED.INST * 1000
+|TLB_SPEC.L1.CODE.MISS_RATE |The ratio of L1 TLB instruction fetch misses to the total number of L1 TLB instruction fetch accesses |TLB_SPEC.L1.CODE.MISS / TLB_SPEC.L1.CODE.ACCESS
+|TLB_SPEC.L2.LOAD.MPKI |The rate of L2 TLB misses caused by data loads per kilo instructions retired |TLB_SPEC.L2.LOAD.MISS / RETIRED.INST * 1000
+|TLB_SPEC.L2.LOAD.MISS_RATE |The ratio of L2 TLB load misses to the total number of L2 TLB load accesses |TLB_SPEC.L2.LOAD.MISS / TLB_SPEC.L2.LOAD.ACCESS
+|TLB_SPEC.L2.STORE.MPKI |The rate of L2 TLB misses caused by data stores per kilo instructions retired |TLB_SPEC.L2.STORE.MISS / RETIRED.INST * 1000
+|TLB_SPEC.L2.STORE.MISS_RATE |The ratio of L2 TLB store misses to the total number of L2 TLB store accesses |TLB_SPEC.L2.STORE.MISS / TLB_SPEC.L2.STORE.ACCESS
+|TLB_SPEC.L2.CODE.MPKI |The rate of L2 TLB misses caused by instruction fetches per kilo instructions retired |TLB_SPEC.L2.CODE.MISS / RETIRED.INST * 1000
+|TLB_SPEC.L2.CODE.MISS_RATE |The ratio of L2 TLB instruction fetch misses to the total number of L2 TLB instruction fetch accesses |TLB_SPEC.L2.CODE.MISS / TLB_SPEC.L2.CODE.ACCESS
+|TLB_SPEC.L1.MISS.IMPACT |The approximate ratio of cycles lost due to TLB (all levels) missed by load instructions |TLB_SPEC.L1.LOAD.MISS_OUTSTANDING.CYCLES / GEN.CYCLES
+|TLB_SPEC.L2.MISS.IMPACT |The approximate ratio of cycles lost due to L2 TLB missed by load instructions |TLB_SPEC.L2.LOAD.MISS_OUTSTANDING.CYCLES / GEN.CYCLES
+|TLB_SPEC.L2.HIT.IMPACT |The approximate ratio of cycles lost due to L1 TLB missed and L2 TLB hit by load instructions |(TLB_SPEC.L1.LOAD.MISS_OUTSTANDING.CYCLES - TLB_SPEC.L2.LOAD.MISS_OUTSTANDING.CYCLES) / GEN.CYCLES
+|===
+
+[%unbreakable]
+
+=== TOPDOWN
+
+This group contains events and metrics related for Topdown Microarchitecture Analysis (TMA) methodology.
+
+.TOPDOWN group events
+[%unbreakable]
+[width="100%",cols="70%,30%",options="header",]
+|===
+|Name |Description
+|TOPDOWN.SLOTS |TMA slots available for an unhalted hart
+|TOPDOWN.FRONTEND_BOUND.SLOTS |TMA slots unused due to the frontend did not supply enough operations
+|TOPDOWN.BAD_SPECULATION.SLOTS |TMA slots wasted due to incorrect speculations. This include slots used to issue uops that do not eventually get retired and slots for which the issue-pipeline was blocked due to recovery from earlier incorrect speculation. For example; wasted slots due to miss-predicted branches should be accounted by this event. Incorrect data speculation followed by Memory Ordering Nukes is another example.
+|TOPDOWN.BAD_SPECULATION.CONTROL_FLOW.SLOTS |TMA slots wasted due to incorrect control flow speculations.
+|TOPDOWN.BAD_SPECULATION.MEM_ORDERING.SLOTS |TMA slots wasted due to memory ordering violations.
+|TOPDOWN.BACKEND_BOUND.SLOTS |TMA slots unused due to the lack of backend resources
+|TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS |TMA slots unused due to the stalls caused by load and store instructions
+|TOPDOWN.BACKEND_BOUND.CORE.SLOTS |TMA slots unused due to the non-memory stalls
+|TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS |TMA slots wasted while waiting for address generation and translation
+|TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L1_MISS.SLOTS |TMA slots wasted while waiting for address translation which missed L1 TLB
+|TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L2_MISS.SLOTS |TMA slots wasted while waiting for address translation which missed L2 TLB
+|TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS |TMA slots wasted while waiting for data
+|TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L1_MISS.SLOTS |TMA slots unused due to the stalls caused by memory instructions which missed L1 data cache
+|TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L2_MISS.SLOTS |TMA slots unused due to the stalls caused by memory instructions which missed L2 cache
+|TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L3_MISS.SLOTS |TMA slots unused due to the stalls caused by memory instructions which missed L3 cache
+|===
+
+[%unbreakable]
+
+.TOPDOWN group metrics
+[%unbreakable]
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|TOPDOWN.SLOTS |For implementations which do not provide TOPDOWN.SLOTS as explicit event it is possible to calculate it as metric using GEN.CYCLES.SMT.CORE (or regular GEN.CYCLES if SMT is not relevant) event. |pipeline_width * GEN.CYCLES.SMT.CORE
+|TOPDOWN.BAD_SPECULATION.SLOTS |For implementations which do not provide TOPDOWN.BAD_SPECULATION.SLOTS as explicit event it is possible to calculate it as metric. It consiste of two part - the number of cancelled operations (SPEC.UOP_ISSUED - RETIRED.UOP) and the number of slots wasted on recovery from pipeline flush (pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES) |SPEC.UOP_ISSUED - RETIRED.UOP + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES
+|TOPDOWN.BACKEND_BOUND.CORE.SLOTS |For implementations which do not provide TOPDOWN.BACKEND_BOUND.CORE.SLOTS as explicit event it is possible to calculate it as metric by subtracting memory bound slots from all backend bound slots |TOPDOWN.BACKEND_BOUND.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS
+|TOPDOWN.BAD_SPECULATION |Fraction of slots wasted due to incorrect speculations. This include slots used to issue uops that do not eventually get retired and slots for which the issue-pipeline was blocked due to recovery from earlier incorrect speculation. |TOPDOWN.BAD_SPECULATION.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.BAD_SPECULATION.CONTROL_FLOW |Fraction of slots wasted due to incorrect control flow speculations |TOPDOWN.BAD_SPECULATION.CONTROL_FLOW.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.BAD_SPECULATION.MEM_ORDERING |Fraction of slots wasted due to memory ordering violations |TOPDOWN.BAD_SPECULATION.MEM_ORDERING.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.BAD_SPECULATION.OTHER |Fraction of slots wasted due to reasons other than control flow mis-speculations or memory ordering violations |TOPDOWN.BAD_SPECULATION.MEM_ORDERING.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.FRONTEND_BOUND |Fraction of slots unused due to the frontend did not supply enough operations. Frontend Bound denotes unutilized slots when there is no Backend stall - i.e. when Frontend delivered no uops while Backend could have accepted them. For example, stalls due to instruction cache misses would be categorized under Frontend Bound. |TOPDOWN.FRONTEND_BOUND.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.RETIRING |Fraction of slots utilized by useful work i.e. issued uops that eventually get retired. Ideally all pipeline slots would be attributed to the Retiring category. Retiring of 100% would indicate the maximum Pipeline_Width throughput was achieved. Maximizing Retiring typically increases the Instructions-per-cycle (IPC). |RETIRED.UOP / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND |Fraction of slots unused due to the due to lack of backend resources. Backend Bound denotes unutilized slots due to a lack of required resources for accepting new uops in the Backend. |TOPDOWN.BACKEND_BOUND.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.MEMORY_BOUND |Fraction of slots unused due to the memory subsystem stalls inside the backend. Memory Bound estimates fraction of slots where pipeline is likely stalled due to demand load or store instructions. This accounts mainly for (1) non-completed in-flight memory demand loads which coincides with execution units starvation; in addition to (2) cases where stores could impose backpressure on the pipeline when many of them get buffered at the same time (less common out of the two). |TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.CORE_BOUND |Fraction of slots unused due to the non-memory stalls inside the backend. Shortage in hardware compute resources or dependencies in software instructions are both categorized under Core Bound. Hence it may indicate the machine ran out of an out-of-order resource; certain execution units are overloaded or dependencies in program's data- or instruction-flow are limiting the performance (e.g. chained long-latency arithmetic operations). |TOPDOWN.BACKEND_BOUND.CORE.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.ADDR_BOUND |Fraction of slots wasted while waiting for address generation and translation |TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.ADDR_BOUND.TLB_L1_BOUND |Fraction of slots wasted while waiting for address generation without missing L1 TLB |(TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L1_MISS.SLOTS) / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.ADDR_BOUND.TLB_L2_BOUND |Fraction of slots wasted while waiting for address generation which hit L2 TLB |(TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L1_MISS.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L2_MISS.SLOTS) / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.ADDR_BOUND.PAGE_WALK_BOUND |Fraction of slots wasted while waiting for address translation which needed page walk (missed all TLB levels) |TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L2_MISS.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND |Fraction of slots wasted while waiting for data |TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.L1_BOUND |Fraction of slots unused due to the stalls caused by load instructions which got data from L1 data cache |(TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L1_MISS.SLOTS) / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.L2_BOUND |Fraction of slots unused due to the stalls caused by load instructions which got data from L2 cache |(TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L1_MISS.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.L2_MISS.SLOTS) / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.L3_BOUND |Fraction of slots unused due to the stalls caused by load instructions which got data from L3 cache |(TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L2_MISS.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L3_MISS.SLOTS) / TOPDOWN.SLOTS
+|TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.EXTERNAL_MEM_BOUND |Fraction of slots unused due to the stalls caused by load instructions which got data from external memory |TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L3_MISS.SLOTS / TOPDOWN.SLOTS
+|===
+
+[%unbreakable]
+
+=== RVV_RETIRED
+
+This group contains events and metrics related to vectorized operations counted at retirement.
+
+.RVV_RETIRED group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|RVV_RETIRED.ALL |Number of RVV instructions retired
+|RVV_RETIRED.INT |Number of integer RVV instructions retired
+|RVV_RETIRED.FP |Number of floating point RVV instructions retired
+|RVV_RETIRED.ELEMENT.INT8 |Number of 8-bit integer element operation retired. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.INT8 counter by 16. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT8 will be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.INT8 |Number of 8-bit integer element operation retired not taking into account masking. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT8 counter by 16. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT8 will still be incremented by 16. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.INT16 |Number of 16-bit integer element operation retired. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.INT16 counter by 8. Masked-out elements should not increment the counter - so in the previous example half of the lanes are masked the RVV_RETIRED.ELEMENT.INT16 counter will be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.INT16 |Number of 16-bit integer element operation retired not taking into account masking. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT16 counter by 8. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT16 counter will still be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.INT32 |Number of 32-bit integer element operation retired. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT16 counter by 4. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT32 counter will be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.INT32 |Number of 32-bit integer element operation retired not taking into account masking. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT16 counter by 4. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT32 counter will still be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.INT64 |Number of 64-bit integer element operation retired. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.INT64 counter by 2. Masked-out elements should not increment the counter - so in the previous example half of the lanes are masked the RVV_RETIRED.ELEMENT.INT64 counter will be incremented by 1. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.INT64 |Number of 64-bit integer element operation retired not taking into account masking. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.INT64 counter by 2. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.INT64 counter will still be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.FP_SINGLE |Number of single-precision floating point element operation retired. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.FP_SINGLE counter by 4. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_SINGLE counter will be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.FP_SINGLE |Number of single-precision floating point element operation retired not taking into account masking. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.FP_SINGLE counter by 4. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_SINGLE counter will still be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.FP_DOUBLE |Number of double-precision floating point element operation retired. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.FP_DOUBLE counter by 2. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_DOUBLE counter will be incremented by 1. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_RETIRED.ELEMENT.IGNMASK.FP_DOUBLE |Number of double-precision floating point element operation retired not taking into account masking. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_RETIRED.ELEMENT.IGNMASK.FP_DOUBLE counter by 2. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_RETIRED.ELEMENT.FP_DOUBLE counter will still be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|===
+
+[%unbreakable]
+
+.RVV_RETIRED group metrics
+[%unbreakable]
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|RVV_RETIRED.FLOPC_SINGLE |Vector single-precision floating point operations retired per cycle |RVV_RETIRED.ELEMENT.FP_SINGLE / GEN.CYCLES
+|RVV_RETIRED.FLOPC_DOUBLE |Vector double-precision floating point operations retired per cycle |RVV_RETIRED.ELEMENT.FP_DOUBLE / GEN.CYCLES
+|RVV_RETIRED.FLOP |Vector floating point operations retired |RVV_RETIRED.ELEMENT.FP_SINGLE + RVV_RETIRED.ELEMENT.FP_DOUBLE
+|RVV_RETIRED.FLOPC |Vector floating point operations retired per cycle |RVV_RETIRED.FLOP / GEN.CYCLES
+|RVV_RETIRED.GFLOP |Vector giga floating point operations retired |RVV_RETIRED.FLOP / 1000000000.0
+|RVV_RETIRED.TFLOP |Vector tera floating point operations retired |RVV_RETIRED.FLOP / 1000000000000.0
+|RVV_RETIRED.IOPC_8 |Vector 8-bits integer operations retired per cycle |RVV_RETIRED.ELEMENT.INT8 / GEN.CYCLES
+|RVV_RETIRED.IOPC_16 |Vector 16-bits integer operations retired per cycle |RVV_RETIRED.ELEMENT.INT16 / GEN.CYCLES
+|RVV_RETIRED.IOPC_32 |Vector 32-bits integer operations retired per cycle |RVV_RETIRED.ELEMENT.INT32 / GEN.CYCLES
+|RVV_RETIRED.IOPC_64 |Vector 64-bits integer operations retired per cycle |RVV_RETIRED.ELEMENT.INT64 / GEN.CYCLES
+|RVV_RETIRED.IOP |Vector integer operations retired |RVV_RETIRED.ELEMENT.INT8 + RVV_RETIRED.ELEMENT.INT16 + RVV_RETIRED.ELEMENT.INT32 + RVV_RETIRED.ELEMENT.INT64
+|RVV_RETIRED.IOPC |Vector integer operations retired per cycle |RVV_RETIRED.IOP / GEN.CYCLES
+|RVV_RETIRED.TIOP |Vector tera integer operations retired |RVV_RETIRED.IOP / 1000000000000
+|RVV_RETIRED.TOP |Vector tera operations retired |RVV_RETIRED.TFLOP + RVV_RETIRED.TIOP
+|===
+
+[%unbreakable]
+
+=== RVV_SPEC
+
+This group contains events and metrics related to vectorized operations counted speculatively.
+
+.RVV_SPEC group events
+[%unbreakable]
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|RVV_SPEC.ALL |Number of RVV instructions executed
+|RVV_SPEC.INT |Number of integer RVV instructions executed
+|RVV_SPEC.FP |Number of floating point RVV instructions executed
+|RVV_SPEC.ELEMENT.INT8 |Number of 8-bit integer element operation executed. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_SPEC.ELEMENT.INT8 counter by 16. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_SPEC.ELEMENT.INT8 will be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.IGNMASK.INT8 |Number of 8-bit integer element operation executed. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_SPEC.ELEMENT.IGNMASK.INT8 counter by 16. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_SPEC.ELEMENT.INT8 will still be incremented by 16. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.INT16 |Number of 16-bit integer element operation executed. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_SPEC.ELEMENT.INT16 counter by 8. Masked-out elements should not increment the counter - so in the previous example half of the lanes are masked the RVV_SPEC.ELEMENT.INT16 counter will be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.IGNMASK.INT16 |Number of 16-bit integer element operation executed. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_SPEC.ELEMENT.IGNMASK.INT16 counter by 8. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_SPEC.ELEMENT.INT16 counter will still be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.INT32 |Number of 32-bit integer element operation executed. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_SPEC.ELEMENT.INT16 counter by 4. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_SPEC.ELEMENT.INT32 counter will be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.IGNMASK.INT32 |Number of 32-bit integer element operation executed. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_SPEC.ELEMENT.IGNMASK.INT16 counter by 4. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_SPEC.ELEMENT.INT32 counter will still be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.INT64 |Number of 64-bit integer element operation executed. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_SPEC.ELEMENT.INT64 counter by 2. Masked-out elements should not increment the counter - so in the previous example half of the lanes are masked the RVV_SPEC.ELEMENT.INT64 counter will be incremented by 1. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.IGNMASK.INT64 |Number of 64-bit integer element operation executed. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV_SPEC.ELEMENT.IGNMASK.INT64 counter by 2. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_SPEC.ELEMENT.INT64 counter will still be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.FP_SINGLE |Number of single-precision floating point element operation executed. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_SPEC.ELEMENT.FP_SINGLE counter by 4. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_SPEC.ELEMENT.FP_SINGLE counter will be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.IGNMASK.FP_SINGLE |Number of single-precision floating point element operation executed. For example, if we have SEW=32, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_SPEC.ELEMENT.IGNMASK.FP_SINGLE counter by 4. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_SPEC.ELEMENT.FP_SINGLE counter will still be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.FP_DOUBLE |Number of double-precision floating point element operation executed. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_SPEC.ELEMENT.FP_DOUBLE counter by 2. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV_SPEC.ELEMENT.FP_DOUBLE counter will be incremented by 1. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|RVV_SPEC.ELEMENT.IGNMASK.FP_DOUBLE |Number of double-precision floating point element operation executed. For example, if we have SEW=64, LMUL=1, VLEN=128 and doing vector FP arith instruction - it should increment the RVV_SPEC.ELEMENT.IGNMASK.FP_DOUBLE counter by 2. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV_SPEC.ELEMENT.FP_DOUBLE counter will still be incremented by 2. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
+|===
+
+[%unbreakable]
+
+.RVV_SPEC group metrics
+[%unbreakable]
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|RVV_SPEC.FLOPC_SINGLE |Vector single-precision floating point operations executed per cycle |RVV_SPEC.ELEMENT.FP_SINGLE / GEN.CYCLES
+|RVV_SPEC.FLOPC_DOUBLE |Vector double-precision floating point operations executed per cycle |RVV_SPEC.ELEMENT.FP_DOUBLE / GEN.CYCLES
+|RVV_SPEC.FLOP |Vector floating point operations executed |RVV_SPEC.ELEMENT.FP_SINGLE + RVV_SPEC.ELEMENT.FP_DOUBLE
+|RVV_SPEC.FLOPC |Vector floating point operations executed per cycle |RVV_SPEC.FLOP / GEN.CYCLES
+|RVV_SPEC.GFLOP |Vector giga floating point operations executed |RVV_SPEC.FLOP / 1000000000.0
+|RVV_SPEC.TFLOP |Vector tera floating point operations executed |RVV_SPEC.FLOP / 1000000000000.0
+|RVV_SPEC.IOPC_8 |Vector 8-bits integer operations executed per cycle |RVV_SPEC.ELEMENT.INT8 / GEN.CYCLES
+|RVV_SPEC.IOPC_16 |Vector 16-bits integer operations executed per cycle |RVV_SPEC.ELEMENT.INT16 / GEN.CYCLES
+|RVV_SPEC.IOPC_32 |Vector 32-bits integer operations executed per cycle |RVV_SPEC.ELEMENT.INT32 / GEN.CYCLES
+|RVV_SPEC.IOPC_64 |Vector 64-bits integer operations executed per cycle |RVV_SPEC.ELEMENT.INT64 / GEN.CYCLES
+|RVV_SPEC.IOP |Vector integer operations executed |RVV_SPEC.ELEMENT.INT8 + RVV_SPEC.ELEMENT.INT16 + RVV_SPEC.ELEMENT.INT32 + RVV_SPEC.ELEMENT.INT64
+|RVV_SPEC.IOPC |Vector integer operations executed per cycle |RVV_SPEC.IOP / GEN.CYCLES
+|RVV_SPEC.TIOP |Vector tera integer operations executed |RVV_SPEC.IOP / 1000000000000
+|RVV_SPEC.TOP |Vector tera operations executed |RVV_SPEC.TFLOP + RVV_SPEC.TIOP
+|===
+
+[%unbreakable]
