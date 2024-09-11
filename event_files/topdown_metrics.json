@@ -88,6 +88,14 @@
         "ScaleUnit": "100%"
     },
     {
+        "MetricName": "TOPDOWN.BACKEND_BOUND.CORE.SERIALIZING",
+        "BriefDescription": "Fraction of slots unused due to serializing operations like fence or csr accesses",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.CORE.SERIALIZING.SLOTS / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.BACKEND_BOUND.CORE.SERIALIZING > 0.1",
+        "PublicDescription": "Fraction of slots unused due to serializing operations like fence or csr accesses.",
+        "ScaleUnit": "100%"
+    },
+    {
         "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.ADDR_BOUND",
         "BriefDescription": "Fraction of slots wasted while waiting for address generation and translation",
         "MetricExpr": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS / TOPDOWN.SLOTS",

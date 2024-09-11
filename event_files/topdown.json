@@ -48,6 +48,12 @@
         "PublicDescription": "TMA slots unused due to the non-memory stalls"
     },
     {
+        "EventName": "TOPDOWN.BACKEND_BOUND.CORE.SERIALIZING.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of slots wasted due to serializing operations like fence or csr accesses",
+        "PublicDescription": "Number of slots wasted due to serializing operations like fence or csr accesses"
+    },
+    {
         "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS",
         "EventCode": "0x0",
         "BriefDescription": "TMA slots wasted while waiting for address generation and translation",
