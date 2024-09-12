@@ -3,6 +3,7 @@
 
 All the events and metrics are split between several groups which are described in details sub-sections below.
 In addition most of the groups are further split into 2 variants:
+
 * RETIRED - for events counted at retirement. For example, CACHE_RETIRED.L2.LOAD.MISS event will count L2 misses caused by retired load instructions
 * SPEC - for speculative events. For example, CACHE_SPEC.L2.LOAD.MISS event will count L2 misses caused by load instructions regardless of whether they were retired or not.
 
