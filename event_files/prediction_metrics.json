@@ -1,211 +1,211 @@
 [
     {
-        "MetricName": "PRD_RETIRED.CONTROL_FLOW.PKI",
+        "MetricName": "CTRL_FLOW.PKI",
         "BriefDescription": "The rate of control flow instructions retired per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.CONTROL_FLOW / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "PRD_RETIRED.CONTROL_FLOW.MPKI",
+        "MetricName": "CTRL_FLOW.MPKI",
         "BriefDescription": "The rate of control flow instructions mis-predicted per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.CONTROL_FLOW.MISPRED / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.MISPRED.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1MPKI"
     },
     {
-        "MetricName": "PRD_RETIRED.CONTROL_FLOW.MISPRED_RATE",
-        "BriefDescription": "The rate of control flow instructions mis-predicted to the overall control flow instructions",
-        "MetricExpr": "PRD_RETIRED.CONTROL_FLOW.MISPRED / PRD_RETIRED.CONTROL_FLOW.RETIRED",
+        "MetricName": "CTRL_FLOW.MISPRED.RATE",
+        "BriefDescription": "The rate of control flow instructions mis-predicted to the overall predicted control flow instructions",
+        "MetricExpr": "CTRL_FLOW.MISPRED.RET / (CTRL_FLOW.RET - CTRL_FLOW.DIR_CALL.RET - CTRL_FLOW.DIR_JUMP.RET - CTRL_FLOW.DIR_JUMP_LINKAGE.RET)",
         "MetricGroup": "Prediction",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "PRD_RETIRED.COND_BRANCH.PKI",
+        "MetricName": "CTRL_FLOW.BRANCH.PKI",
         "BriefDescription": "The rate of conditional branches retired per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.COND_BRANCH / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.BRANCH.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "PRD_RETIRED.COND_BRANCH.MPKI",
+        "MetricName": "CTRL_FLOW.BRANCH.MPKI",
         "BriefDescription": "The rate of conditional branches mis-predicted per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.COND_BRANCH.MISPRED / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.BRANCH.MISPRED.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1MPKI"
     },
     {
-        "MetricName": "PRD_RETIRED.COND_BRANCH.MISPRED_RATE",
+        "MetricName": "CTRL_FLOW.BRANCH.MISPRED.RATE",
         "BriefDescription": "The rate of conditional branches mis-predicted to the overall conditional branches",
-        "MetricExpr": "PRD_RETIRED.COND_BRANCH.MISPRED / PRD_RETIRED.COND_BRANCH.RETIRED",
+        "MetricExpr": "CTRL_FLOW.BRANCH.MISPRED.RET / CTRL_FLOW.BRANCH.RET",
         "MetricGroup": "Prediction",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "PRD_RETIRED.INDIRECT_CALL.PKI",
+        "MetricName": "CTRL_FLOW.IND_CALL.PKI",
         "BriefDescription": "The rate of indirect calls retired per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.INDIRECT_CALL / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.IND_CALL.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "PRD_RETIRED.INDIRECT_CALL.MPKI",
+        "MetricName": "CTRL_FLOW.IND_CALL.MPKI",
         "BriefDescription": "The rate of indirect calls mis-predicted per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.INDIRECT_CALL.MISPRED / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.IND_CALL.MISPRED.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1MPKI"
     },
     {
-        "MetricName": "PRD_RETIRED.INDIRECT_CALL.MISPRED_RATE",
+        "MetricName": "CTRL_FLOW.IND_CALL.MISPRED_RATE",
         "BriefDescription": "The rate of indirect calls mis-predicted to the overall indirect calls",
-        "MetricExpr": "PRD_RETIRED.INDIRECT_CALL.MISPRED / PRD_RETIRED.INDIRECT_CALL.RETIRED",
+        "MetricExpr": "CTRL_FLOW.IND_CALL.MISPRED.RET / CTRL_FLOW.IND_CALL.RET",
         "MetricGroup": "Prediction",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "PRD_RETIRED.DIRECT_CALL.PKI",
+        "MetricName": "CTRL_FLOW.DIR_CALL.PKI",
         "BriefDescription": "The rate of direct calls retired per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.DIRECT_CALL / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.DIR_CALL.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "PRD_RETIRED.DIRECT_CALL.MPKI",
+        "MetricName": "CTRL_FLOW.DIR_CALL.MPKI",
         "BriefDescription": "The rate of direct calls mis-predicted per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.DIRECT_CALL.MISPRED / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.DIR_CALL.MISPRED.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1MPKI"
     },
     {
-        "MetricName": "PRD_RETIRED.DIRECT_CALL.MISPRED_RATE",
+        "MetricName": "CTRL_FLOW.DIR_CALL.MISPRED.RATE",
         "BriefDescription": "The rate of direct calls mis-predicted to the overall direct calls",
-        "MetricExpr": "PRD_RETIRED.DIRECT_CALL.MISPRED / PRD_RETIRED.DIRECT_CALL.RETIRED",
+        "MetricExpr": "CTRL_FLOW.DIR_CALL.MISPRED.RET / CTRL_FLOW.DIR_CALL.RET",
         "MetricGroup": "Prediction",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "PRD_RETIRED.INDIRECT_JUMP.PKI",
+        "MetricName": "CTRL_FLOW.IND_JUMP.PKI",
         "BriefDescription": "The rate of indirect jumps retired per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.INDIRECT_JUMP / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.IND_JUMP.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "PRD_RETIRED.INDIRECT_JUMP.MPKI",
+        "MetricName": "CTRL_FLOW.IND_JUMP.MPKI",
         "BriefDescription": "The rate of indirect jumps mis-predicted per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.INDIRECT_JUMP.MISPRED / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.IND_JUMP.MISPRED.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1MPKI"
     },
     {
-        "MetricName": "PRD_RETIRED.INDIRECT_JUMP.MISPRED_RATE",
+        "MetricName": "CTRL_FLOW.IND_JUMP.MISPRED.RATE",
         "BriefDescription": "The rate of indirect jumps mis-predicted to the overall indirect jumps",
-        "MetricExpr": "PRD_RETIRED.INDIRECT_JUMP.MISPRED / PRD_RETIRED.INDIRECT_JUMP.RETIRED",
+        "MetricExpr": "CTRL_FLOW.IND_JUMP.MISPRED.RET / CTRL_FLOW.IND_JUMP.RET",
         "MetricGroup": "Prediction",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "PRD_RETIRED.DIRECT_JUMP.PKI",
+        "MetricName": "CTRL_FLOW.DIR_JUMP.PKI",
         "BriefDescription": "The rate of direct jumps retired per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.DIRECT_JUMP / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.DIR_JUMP.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "PRD_RETIRED.DIRECT_JUMP.MPKI",
+        "MetricName": "CTRL_FLOW.DIR_JUMP.MPKI",
         "BriefDescription": "The rate of direct jumps mis-predicted per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.DIRECT_JUMP.MISPRED / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.DIR_JUMP.MISPRED.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1MPKI"
     },
     {
-        "MetricName": "PRD_RETIRED.DIRECT_JUMP.MISPRED_RATE",
+        "MetricName": "CTRL_FLOW.DIR_JUMP.MISPRED.RATE",
         "BriefDescription": "The rate of direct jumps mis-predicted to the overall indirect jumps",
-        "MetricExpr": "PRD_RETIRED.DIRECT_JUMP.MISPRED / PRD_RETIRED.DIRECT_JUMP.RETIRED",
+        "MetricExpr": "CTRL_FLOW.DIR_JUMP.MISPRED.RET / CTRL_FLOW.DIR_JUMP.RET",
         "MetricGroup": "Prediction",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "PRD_RETIRED.CO_ROUTINE_SWAP.PKI",
+        "MetricName": "CTRL_FLOW.CORE_SWAP.PKI",
         "BriefDescription": "The rate of co-routine swaps retired per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.CO_ROUTINE_SWAP / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.COR_SWAP.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "PRD_RETIRED.CO_ROUTINE_SWAP.MPKI",
+        "MetricName": "CTRL_FLOW.COR_SWAP.MPKI",
         "BriefDescription": "The rate of co-routine swaps mis-predicted per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.CO_ROUTINE_SWAP.MISPRED / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.COR_SWAP.MISPRED.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1MPKI"
     },
     {
-        "MetricName": "PRD_RETIRED.CO_ROUTINE_SWAP.MISPRED_RATE",
+        "MetricName": "CTRL_FLOW.COR_SWAP.MISPRED.RATE",
         "BriefDescription": "The rate of co-routine swaps mis-predicted to the overall indirect jumps",
-        "MetricExpr": "PRD_RETIRED.CO_ROUTINE_SWAP.MISPRED / PRD_RETIRED.CO_ROUTINE_SWAP.RETIRED",
+        "MetricExpr": "CTRL_FLOW.COR_SWAP.MISPRED.RET / CTRL_FLOW.COR_SWAP.RET",
         "MetricGroup": "Prediction",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "PRD_RETIRED.RETURN.PKI",
+        "MetricName": "CTRL_FLOW.RETURN.PKI",
         "BriefDescription": "The rate of function returns retired per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.RETURN / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.RETURN.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "PRD_RETIRED.RETURN.MPKI",
+        "MetricName": "CTRL_FLOW.RETURN.MPKI",
         "BriefDescription": "The rate of function returns mis-predicted per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.RETURN.MISPRED / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.RETURN.MISPRED.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1MPKI"
     },
     {
-        "MetricName": "PRD_RETIRED.RETURN.MISPRED_RATE",
+        "MetricName": "CTRL_FLOW.RETURN.MISPRED.RATE",
         "BriefDescription": "The rate of function returns mis-predicted to the overall function returns",
-        "MetricExpr": "PRD_RETIRED.RETURN.MISPRED / PRD_RETIRED.RETURN.RETIRED",
+        "MetricExpr": "CTRL_FLOW.RETURN.MISPRED.RET / CTRL_FLOW.RETURN.RET",
         "MetricGroup": "Prediction",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "PRD_RETIRED.INDIRECT_JUMP_LINKAGE.PKI",
+        "MetricName": "CTRL_FLOW.IND_JUMP_LINKAGE.PKI",
         "BriefDescription": "The rate of indirect jumps (with linkage) retired per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.INDIRECT_JUMP_LINKAGE / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.IND_JUMP_LINKAGE.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "PRD_RETIRED.INDIRECT_JUMP_LINKAGE.MPKI",
+        "MetricName": "CTRL_FLOW.IND_JUMP_LINKAGE.MPKI",
         "BriefDescription": "The rate of indirect jumps (with linkage) mis-predicted per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.INDIRECT_JUMP_LINKAGE.MISPRED / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.IND_JUMP_LINKAGE.MISPRED.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1MPKI"
     },
     {
-        "MetricName": "PRD_RETIRED.INDIRECT_JUMP_LINKAGE.MISPRED_RATE",
+        "MetricName": "CTRL_FLOW.IND_JUMP_LINKAGE.MISPRED.RATE",
         "BriefDescription": "The rate of indirect jumps (with linkage) mis-predicted to the overall indirect jumps (with linkage)",
-        "MetricExpr": "PRD_RETIRED.INDIRECT_JUMP_LINKAGE.MISPRED / PRD_RETIRED.INDIRECT_JUMP_LINKAGE.RETIRED",
+        "MetricExpr": "CTRL_FLOW.IND_JUMP_LINKAGE.MISPRED.RET / CTRL_FLOW.IND_JUMP_LINKAGE.RET",
         "MetricGroup": "Prediction",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "PRD_RETIRED.DIRECT_JUMP_LINKAGE.PKI",
+        "MetricName": "CTRL_FLOW.DIR_JUMP_LINKAGE.PKI",
         "BriefDescription": "The rate of direct jumps (with linkage) retired per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.DIRECT_JUMP_LINKAGE / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.DIR_JUMP_LINKAGE.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "PRD_RETIRED.DIRECT_JUMP_LINKAGE.MPKI",
+        "MetricName": "CTRL_FLOW.DIR_JUMP_LINKAGE.MPKI",
         "BriefDescription": "The rate of direct jumps (with linkage) mis-predicted per kilo instructions",
-        "MetricExpr": "PRD_RETIRED.DIRECT_JUMP_LINKAGE.MISPRED / RETIRED.INST * 1000",
+        "MetricExpr": "CTRL_FLOW.DIR_JUMP_LINKAGE.MISPRED.RET / RETIRED.INST * 1000",
         "MetricGroup": "Prediction",
         "ScaleUnit": "1MPKI"
     },
     {
-        "MetricName": "PRD_RETIRED.DIRECT_JUMP_LINKAGE.MISPRED_RATE",
+        "MetricName": "CTRL_FLOW.DIR_JUMP_LINKAGE.MISPRED.RATE",
         "BriefDescription": "The rate of direct jumps (with linkage) mis-predicted to the overall direct jumps (with linkage)",
-        "MetricExpr": "PRD_RETIRED.DIRECT_JUMP_LINKAGE.MISPRED / PRD_RETIRED.DIRECT_JUMP_LINKAGE.RETIRED",
+        "MetricExpr": "CTRL_FLOW.DIR_JUMP_LINKAGE.MISPRED.RET / CTRL_FLOW.DIR_JUMP_LINKAGE.RET",
         "MetricGroup": "Prediction",
         "ScaleUnit": "100%"
     }

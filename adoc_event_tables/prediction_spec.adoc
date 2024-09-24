@@ -1,0 +1,8 @@
+.CTRL_FLOW group events
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|FLUSH.SPEC |Counts pipeline flushes due to all reasons - such as branch misprediction, memory disambiguation, serializing instructions
+|FLUSH.CYCLES |Cycles to recover from pipeline flushes due to any reason. Examples: branch misprediction, memory disambiguation, serializing instruction
+|===
+

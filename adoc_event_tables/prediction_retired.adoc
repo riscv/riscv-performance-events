@@ -1,0 +1,26 @@
+.CTRL_FLOW group events
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|CTRL_FLOW.RET |Control flow instructions retired
+|CTRL_FLOW.MISPRED.RET |Control flow instructions mis-predicted
+|CTRL_FLOW.BRANCH.RET |Conditional branches retired
+|CTRL_FLOW.BRANCH.MISPRED.RET |Conditional branches mis-predicted
+|CTRL_FLOW.IND_CALL.RET |Indirect calls retired. Indirect calls are defined using following encodings: 'JALR x1, rs where rs != x5'; 'JALR x5, rs where rs != x1'; 'C.JALR rs1 where rs1 != x5'
+|CTRL_FLOW.IND_CALL.MISPRED.RET |Indirect calls mis-predicted. Indirect calls are defined using following encodings: 'JALR x1, rs where rs != x5'; 'JALR x5, rs where rs != x1'; 'C.JALR rs1 where rs1 != x5'
+|CTRL_FLOW.DIR_CALL.RET |Direct calls retired. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'
+|CTRL_FLOW.DIR_CALL.MISPRED.RET |Direct calls mis-predicted. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'
+|CTRL_FLOW.IND_JUMP.RET |Indirect jumps (without linkage) retired. Indirect jumps (without linkage) are defined using following encodings: 'JALR x0, rs where rs != (x1 or x5)'; 'C.JR rs1 where rs1 != (x1 or x5)'
+|CTRL_FLOW.IND_JUMP.MISPRED.RET |Indirect jumps (without linkage) mis-predicted. Indirect jumps (without linkage) are defined using following encodings: 'JALR x0, rs where rs != (x1 or x5)'; 'C.JR rs1 where rs1 != (x1 or x5)'
+|CTRL_FLOW.DIR_JUMP.RET |Direct jumps (without linkage) retired. Direct jumps (without linkage) are defined using following encodings: 'JAL x0'; 'C.J'
+|CTRL_FLOW.DIR_JUMP.MISPRED.RET |Direct jumps (without linkage) mis-predicted. Direct jumps (without linkage) are defined using following encodings: 'JAL x0'; 'C.J'
+|CTRL_FLOW.COR_SWAP.RET |Co-routine swaps retired. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'
+|CTRL_FLOW.CORE_SWAP.MISPRED.RET |Co-routine swaps mis-predicted. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'
+|CTRL_FLOW.RETURN.RET |Function returns retired. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'
+|CTRL_FLOW.RETURN.MISPRED.RET |Function returns mis-predicted. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'
+|CTRL_FLOW.IND_JUMP_LINKAGE.RET |Other indirect jumps (with linkage) retired. Other indirect jump (with linkage) are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'
+|CTRL_FLOW.IND_JUMP_LINKAGE.MISPRED.RET |Other indirect jumps (with linkage) mis-predicted. Other indirect jumps (with linkage) are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'
+|CTRL_FLOW.DIR_JUMP_LINKAGE.RET |Other direct jumps (with linkage) retired. Other direct jump (with linkage) are defined using following encodings: 'JAL rd where rd != (x0, x1, or x5)'
+|CTRL_FLOW.DIR_JUMP_LINKAGE.MISPRED.RET |Other direct jumps (with linkage) mis-predicted. Other direct jumps (with linkage) are defined using following encodings: 'JAL rd where rd != (x0, x1, or x5)'
+|===
+

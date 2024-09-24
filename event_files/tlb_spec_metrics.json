@@ -1,106 +1,106 @@
 [
     {
-        "MetricName": "TLB_SPEC.L1.LOAD.MPKI",
+        "MetricName": "TLB.L1.LOAD.MPKI.SPEC",
         "BriefDescription": "The rate of L1 TLB misses caused by data loads per kilo instructions retired",
-        "MetricExpr": "TLB_SPEC.L1.LOAD.MISS / RETIRED.INST * 1000",
+        "MetricExpr": "TLB.L1.LOAD.MISS.SPEC / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "TLB_SPEC.L1.LOAD.MISS_RATE",
+        "MetricName": "TLB.L1.LOAD.MISS.RATE.SPEC",
         "BriefDescription": "The ratio of L1 TLB load misses to the total number of L1 TLB load accesses",
-        "MetricExpr": "TLB_SPEC.L1.LOAD.MISS / TLB_SPEC.L1.LOAD.ACCESS",
+        "MetricExpr": "TLB.L1.LOAD.MISS.SPEC / TLB.L1.LOAD.ACCESS.SPEC",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB_SPEC.L1.STORE.MPKI",
+        "MetricName": "TLB.L1.STORE.MPKI.SPEC",
         "BriefDescription": "The rate of L1 TLB misses caused by data stores per kilo instructions retired",
-        "MetricExpr": "TLB_SPEC.L1.STORE.MISS / RETIRED.INST * 1000",
+        "MetricExpr": "TLB.L1.STORE.MISS.SPEC / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "TLB_SPEC.L1.STORE.MISS_RATE",
+        "MetricName": "TLB.L1.STORE.MISS.RATE.SPEC",
         "BriefDescription": "The ratio of L1 TLB store misses to the total number of L1 TLB store accesses",
-        "MetricExpr": "TLB_SPEC.L1.STORE.MISS / TLB_SPEC.L1.STORE.ACCESS",
+        "MetricExpr": "TLB.L1.STORE.MISS.SPEC / TLB.L1.STORE.ACCESS.SPEC",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB_SPEC.L1.CODE.MPKI",
+        "MetricName": "TLB.L1.CODE.MPKI.SPEC",
         "BriefDescription": "The rate of L1 TLB misses caused by instruction fetches per kilo instructions retired",
-        "MetricExpr": "TLB_SPEC.L1.CODE.MISS / RETIRED.INST * 1000",
+        "MetricExpr": "TLB.L1.CODE.MISS.SPEC / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "TLB_SPEC.L1.CODE.MISS_RATE",
+        "MetricName": "TLB.L1.CODE.MISS.RATE.SPEC",
         "BriefDescription": "The ratio of L1 TLB instruction fetch misses to the total number of L1 TLB instruction fetch accesses",
-        "MetricExpr": "TLB_SPEC.L1.CODE.MISS / TLB_SPEC.L1.CODE.ACCESS",
+        "MetricExpr": "TLB.L1.CODE.MISS.SPEC / TLB.L1.CODE.ACCESS",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB_SPEC.L2.LOAD.MPKI",
+        "MetricName": "TLB.L2.LOAD.MPKI.SPEC",
         "BriefDescription": "The rate of L2 TLB misses caused by data loads per kilo instructions retired",
-        "MetricExpr": "TLB_SPEC.L2.LOAD.MISS / RETIRED.INST * 1000",
+        "MetricExpr": "TLB.L2.LOAD.MISS.SPEC / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "TLB_SPEC.L2.LOAD.MISS_RATE",
+        "MetricName": "TLB.L2.LOAD.MISS.RATE.SPEC",
         "BriefDescription": "The ratio of L2 TLB load misses to the total number of L2 TLB load accesses",
-        "MetricExpr": "TLB_SPEC.L2.LOAD.MISS / TLB_SPEC.L2.LOAD.ACCESS",
+        "MetricExpr": "TLB.L2.LOAD.MISS.SPEC / TLB.L2.LOAD.ACCESS.SPEC",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB_SPEC.L2.STORE.MPKI",
+        "MetricName": "TLB.L2.STORE.MPKI.SPEC",
         "BriefDescription": "The rate of L2 TLB misses caused by data stores per kilo instructions retired",
-        "MetricExpr": "TLB_SPEC.L2.STORE.MISS / RETIRED.INST * 1000",
+        "MetricExpr": "TLB.L2.STORE.MISS.SPEC / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "TLB_SPEC.L2.STORE.MISS_RATE",
+        "MetricName": "TLB.L2.STORE.MISS.RATE.SPEC",
         "BriefDescription": "The ratio of L2 TLB store misses to the total number of L2 TLB store accesses",
-        "MetricExpr": "TLB_SPEC.L2.STORE.MISS / TLB_SPEC.L2.STORE.ACCESS",
+        "MetricExpr": "TLB.L2.STORE.MISS.SPEC / TLB.L2.STORE.ACCESS",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB_SPEC.L2.CODE.MPKI",
+        "MetricName": "TLB.L2.CODE.MPKI.SPEC",
         "BriefDescription": "The rate of L2 TLB misses caused by instruction fetches per kilo instructions retired",
-        "MetricExpr": "TLB_SPEC.L2.CODE.MISS / RETIRED.INST * 1000",
+        "MetricExpr": "TLB.L2.CODE.MISS.SPEC / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "TLB_SPEC.L2.CODE.MISS_RATE",
+        "MetricName": "TLB.L2.CODE.MISS.RATE.SPEC",
         "BriefDescription": "The ratio of L2 TLB instruction fetch misses to the total number of L2 TLB instruction fetch accesses",
-        "MetricExpr": "TLB_SPEC.L2.CODE.MISS / TLB_SPEC.L2.CODE.ACCESS",
+        "MetricExpr": "TLB.L2.CODE.MISS.SPEC / TLB.L2.CODE.ACCESS.SPEC",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB_SPEC.L1.MISS.IMPACT",
+        "MetricName": "TLB.L1.MISS.IMPACT",
         "BriefDescription": "The approximate ratio of cycles lost due to TLB (all levels) missed by load instructions",
-        "MetricExpr": "TLB_SPEC.L1.LOAD.MISS_OUTSTANDING.CYCLES / GEN.CYCLES",
+        "MetricExpr": "TLB.L1.LOAD.MISS_OUTSTANDING.CYCLES / CYCLES.HART",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB_SPEC.L2.MISS.IMPACT",
+        "MetricName": "TLB.L2.MISS.IMPACT",
         "BriefDescription": "The approximate ratio of cycles lost due to L2 TLB missed by load instructions",
-        "MetricExpr": "TLB_SPEC.L2.LOAD.MISS_OUTSTANDING.CYCLES / GEN.CYCLES",
+        "MetricExpr": "TLB.L2.LOAD.MISS_OUTSTANDING.CYCLES / CYCLES.HART",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB_SPEC.L2.HIT.IMPACT",
+        "MetricName": "TLB.L2.HIT.IMPACT",
         "BriefDescription": "The approximate ratio of cycles lost due to L1 TLB missed and L2 TLB hit by load instructions",
-        "MetricExpr": "(TLB_SPEC.L1.LOAD.MISS_OUTSTANDING.CYCLES - TLB_SPEC.L2.LOAD.MISS_OUTSTANDING.CYCLES) / GEN.CYCLES",
+        "MetricExpr": "(TLB.L1.LOAD.MISS_OUTSTANDING.CYCLES - TLB.L2.LOAD.MISS_OUTSTANDING.CYCLES) / CYCLES.HART",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     }

@@ -1,20 +1,8 @@
 [
     {
-        "EventName": "GEN.CYCLES",
+        "EventName": "CYCLES.HART",
         "EventCode": "0x0",
         "BriefDescription": "Cycles when the hart is not in halt state",
         "PublicDescription": "Cycles when the hart is not in halt state. The cycles are counted with real (potentially variable) frequency the hart is working at"
-    },
-    {
-        "EventName": "GEN.CYCLES.SMT.CORE",
-        "EventCode": "0x0",
-        "BriefDescription": "This event counts core cycles for SMT mode by evenly distributing cycles counts between all active harts in the same physical core. For no-SMT case this event should exactly match the GEN.CYCLES.",
-        "PublicDescription": "This event counts core cycles for SMT mode by evenly distributing cycles counts between all active harts in the same physical core. For no-SMT case this event should exactly match the GEN.CYCLES."
-    },
-    {
-        "EventName": "GEN.CYCLES.SMT.ONE_HART_ACTIVE",
-        "EventCode": "0x0",
-        "BriefDescription": "This event counts cycles when all other harts on the physical core are halted.",
-        "PublicDescription": "This event counts cycles when all other harts on the physical core are halted."
     }
 ]

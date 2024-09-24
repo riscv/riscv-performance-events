@@ -1,50 +1,38 @@
 [
     {
-        "EventName": "TLB_RETIRED.L1.LOAD.ACCESS",
+        "EventName": "TLB.L1.LOAD.ACCESS.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Address translation requests for load instructions",
-        "PublicDescription": "Address translation requests for load instructions"
+        "BriefDescription": "Address translation requests for retired load instructions",
+        "PublicDescription": "Address translation requests for retired load instructions"
     },
     {
-        "EventName": "TLB_RETIRED.L1.LOAD.MISS",
+        "EventName": "TLB.L1.LOAD.MISS.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Address translation requests for load instructions which missed L1 TLB",
-        "PublicDescription": "Address translation requests for load instructions which missed L1 TLB"
+        "BriefDescription": "Address translation requests for retired load instructions which missed L1 TLB",
+        "PublicDescription": "Address translation requests for retired load instructions which missed L1 TLB"
     },
     {
-        "EventName": "TLB_RETIRED.L1.LOAD.MISS_OUTSTANDING.CYCLES",
+        "EventName": "TLB.L1.STORE.ACCESS.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Cycles while at least one load L1 TLB miss in progress",
-        "PublicDescription": "Cycles while at least one load L1 TLB miss in progress"
+        "BriefDescription": "Address translation requests for retired store instructions",
+        "PublicDescription": "Address translation requests for retired store instructions"
     },
     {
-        "EventName": "TLB_RETIRED.L1.STORE.ACCESS",
+        "EventName": "TLB.L1.STORE.MISS.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Address translation requests for store instructions",
-        "PublicDescription": "Address translation requests for store instructions"
+        "BriefDescription": "Address translation requests for retired store instructions which missed L1 TLB",
+        "PublicDescription": "Address translation requests for retired store instructions which missed L1 TLB"
     },
     {
-        "EventName": "TLB_RETIRED.L1.STORE.MISS",
+        "EventName": "TLB.L2.LOAD.MISS.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Address translation requests for store instructions which missed L1 TLB",
-        "PublicDescription": "Address translation requests for store instructions which missed L1 TLB"
+        "BriefDescription": "Address translation requests for retired load instructions which missed L2 TLB",
+        "PublicDescription": "Address translation requests for retired load instructions which missed L2 TLB"
     },
     {
-        "EventName": "TLB_RETIRED.L2.LOAD.MISS",
+        "EventName": "TLB.L2.STORE.MISS.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Address translation requests for load instructions which missed L2 TLB",
-        "PublicDescription": "Address translation requests for load instructions which missed L2 TLB"
-    },
-    {
-        "EventName": "TLB_RETIRED.L2.STORE.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Address translation requests for store instructions which missed L2 TLB",
-        "PublicDescription": "Address translation requests for store instructions which missed L2 TLB"
-    },
-    {
-        "EventName": "TLB_RETIRED.L2.LOAD.MISS_OUTSTANDING.CYCLES",
-        "EventCode": "0x0",
-        "BriefDescription": "Cycles while at least one load L2 TLB miss in progress",
-        "PublicDescription": "Cycles while at least one load L2 TLB miss in progress"
+        "BriefDescription": "Address translation requests for retired store instructions which missed L2 TLB",
+        "PublicDescription": "Address translation requests for retired store instructions which missed L2 TLB"
     }
 ]

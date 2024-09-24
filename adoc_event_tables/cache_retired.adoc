@@ -1,0 +1,24 @@
+.CACHE group events
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|CACHE.L1D.LOAD.ACCESS.RET |Retired load instruction which accessed L1D cache
+|CACHE.L1D.LOAD.MISS.RET |Retired load instruction which missed L1D cache
+|CACHE.L1D.LOAD.HIT.RET |Retired load instruction which hit L1D cache
+|CACHE.L1D.LOAD.MERGE.RET |Retired load instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss
+|CACHE.L1D.STORE.ACCESS.RET |Retired store instruction which accessed L1D cache
+|CACHE.L1D.STORE.MISS.RET |Retired store instruction which missed L1D cache
+|CACHE.L1D.STORE.HIT.RET |Retired store instruction which hit L1D cache
+|CACHE.L1D.STORE.MERGE.RET |Retired store instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss
+|CACHE.L1I.MISS.RET |Retired instruction with L1 Instruction cache miss on fetching
+|CACHE.L2.LOAD.ACCESS.RET |Retired load instruction which got data from L2 or from some next level in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc.
+|CACHE.L2.LOAD.MISS.RET |Retired load instruction which got data from some next level (relative to L2) in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc.
+|CACHE.L2.LOAD.HIT.RET |Retired load instruction which got data from L2 cache
+|CACHE.L3.LOAD.ACCESS.RET |Retired load instruction which got data from L3 cache or from some next level in memory hierarchy - local mmemory, remote cache, remote memory, etc.
+|CACHE.L3.LOAD.MISS.RET |Retired load instruction which got data from some next level (relative to L3) in memory hierarchy - local mmemory, remote cache, remote memory, etc.
+|CACHE.L3.LOAD.HIT.RET |Retired load instruction which got data from L3 cache
+|CACHE.L3.LOAD.MISS.LOCAL_MEMORY.RET |Retired load instruction which got data from local memory.
+|CACHE.L3.LOAD.MISS.REMOTE_MEMORY.RET |Retired load instruction which got data from remote memory (memory attached to remote socket).
+|CACHE.L3.LOAD.MISS.REMOTE_CACHE.RET |Retired load instruction which got data from remote cache (cache on remote socket).
+|===
+

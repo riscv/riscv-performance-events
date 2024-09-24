@@ -1,71 +1,71 @@
 [
     {
-        "MetricName": "CACHE_RETIRED.L1D.LOAD.MPKI",
+        "MetricName": "CACHE.L1D.LOAD.MPKI.RET",
         "BriefDescription": "The rate of retired L1 data load cache misses per kilo instructions retired",
-        "MetricExpr": "CACHE_RETIRED.L1D.LOAD.MISS / RETIRED.INST * 1000",
+        "MetricExpr": "CACHE.L1D.LOAD.MISS.RET / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "CACHE_RETIRED.L1D.LOAD.MISS_RATE",
+        "MetricName": "CACHE.L1D.LOAD.MISS.RATE.RET",
         "BriefDescription": "The ratio of retired L1D cache load misses to the total number of retired L1D load accesses",
-        "MetricExpr": "CACHE_RETIRED.L1D.LOAD.MISS / CACHE_RETIRED.L1D.LOAD.ACCESS",
+        "MetricExpr": "CACHE.L1D.LOAD.MISS.RET / CACHE.L1D.LOAD.ACCESS.RET",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "CACHE_RETIRED.L1D.LOAD.MERGE.PKI",
+        "MetricName": "CACHE.L1D.LOAD.MERGE.PKI.RET",
         "BriefDescription": "The rate of retired L1 data load cache misses which merged with previous cache miss per kilo instructions retired",
-        "MetricExpr": "CACHE_RETIRED.L1D.LOAD.MERGE / RETIRED.INST * 1000",
+        "MetricExpr": "CACHE.L1D.LOAD.MERGE.RET / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "CACHE_RETIRED.L1I.MPKI",
+        "MetricName": "CACHE.L1I.MPKI.RET",
         "BriefDescription": "The rate of retired instructions with L1 instruction cache misses per kilo instructions retired",
-        "MetricExpr": "CACHE_RETIRED.L1I.MISS / RETIRED.INST * 1000",
+        "MetricExpr": "CACHE.L1I.MISS.RET / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "CACHE_RETIRED.L1D.STORE.MPKI",
+        "MetricName": "CACHE.L1D.STORE.MPKI.RET",
         "BriefDescription": "The rate of retired L1 data store cache misses per kilo instructions retired",
-        "MetricExpr": "CACHE_RETIRED.L1D.STORE.MISS  / RETIRED.INST * 1000",
+        "MetricExpr": "CACHE.L1D.STORE.MISS.RET  / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "CACHE_RETIRED.L1D.STORE.MISS_RATE",
+        "MetricName": "CACHE.L1D.STORE.MISS.RATE.RET",
         "BriefDescription": "The ratio of retired L1D cache store misses to the total number of retired L1D store accesses",
-        "MetricExpr": "CACHE_RETIRED.L1D.STORE.MISS / CACHE_RETIRED.L1D.STORE.ACCESS",
+        "MetricExpr": "CACHE.L1D.STORE.MISS.RET / CACHE.L1D.STORE.ACCESS.RET",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "CACHE_RETIRED.L2.LOAD.MPKI",
+        "MetricName": "CACHE.L2.LOAD.MPKI.RET",
         "BriefDescription": "The rate of retired L2 data load cache misses per kilo instructions retired",
-        "MetricExpr": "CACHE_RETIRED.L2.LOAD.MISS / RETIRED.INST * 1000",
+        "MetricExpr": "CACHE.L2.LOAD.MISS.RET / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "CACHE_RETIRED.L2.LOAD.MISS_RATE",
+        "MetricName": "CACHE.L2.LOAD.MISS.RATE.RET",
         "BriefDescription": "The ratio of retired L2 cache load misses to the total number of retired L2 load accesses",
-        "MetricExpr": "CACHE_RETIRED.L2.LOAD.MISS / CACHE_RETIRED.L2.LOAD.ACCESS",
+        "MetricExpr": "CACHE.L2.LOAD.MISS.RET / CACHE.L2.LOAD.ACCESS.RET",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "CACHE_RETIRED.L3.LOAD.MPKI",
+        "MetricName": "CACHE.L3.LOAD.MPKI.RET",
         "BriefDescription": "The rate of retired L3 data load cache misses per kilo instructions retired",
-        "MetricExpr": "CACHE_RETIRED.L3.LOAD.MISS / RETIRED.INST * 1000",
+        "MetricExpr": "CACHE.L3.LOAD.MISS.RET / RETIRED.INST * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "CACHE_RETIRED.L3.LOAD.MISS_RATE",
+        "MetricName": "CACHE.L3.LOAD.MISS.RATE.RET",
         "BriefDescription": "The ratio of retired L3 cache load misses to the total number of retired L3 load accesses",
-        "MetricExpr": "CACHE_RETIRED.L3.LOAD.MISS / CACHE_RETIRED.L3.LOAD.ACCESS",
+        "MetricExpr": "CACHE.L3.LOAD.MISS.RET / CACHE.L3.LOAD.ACCESS.RET",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     }

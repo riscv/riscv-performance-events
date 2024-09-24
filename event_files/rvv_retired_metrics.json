@@ -1,72 +1,72 @@
 [
     {
-        "MetricName": "RVV_RETIRED.FLOPC_SINGLE",
+        "MetricName": "RVV.FLOPC_SINGLE.RET",
         "BriefDescription": "Vector single-precision floating point operations retired per cycle",
-        "MetricExpr": "RVV_RETIRED.ELEMENT.FP_SINGLE / GEN.CYCLES"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.FP_SINGLE.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV_RETIRED.FLOPC_DOUBLE",
+        "MetricName": "RVV.FLOPC_DOUBLE.RET",
         "BriefDescription": "Vector double-precision floating point operations retired per cycle",
-        "MetricExpr": "RVV_RETIRED.ELEMENT.FP_DOUBLE / GEN.CYCLES"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.FP_DOUBLE.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV_RETIRED.FLOP",
+        "MetricName": "RVV.FLOP.RET",
         "BriefDescription": "Vector floating point operations retired",
-        "MetricExpr": "RVV_RETIRED.ELEMENT.FP_SINGLE + RVV_RETIRED.ELEMENT.FP_DOUBLE"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.FP_SINGLE.RET + RVV.ELEMENT.UNMASKED.FP_DOUBLE.RET"
     },
     {
-        "MetricName": "RVV_RETIRED.FLOPC",
+        "MetricName": "RVV.FLOPC.RET",
         "BriefDescription": "Vector floating point operations retired per cycle",
-        "MetricExpr": "RVV_RETIRED.FLOP / GEN.CYCLES"
+        "MetricExpr": "RVV.FLOP.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV_RETIRED.GFLOP",
+        "MetricName": "RVV.GFLOP.RET",
         "BriefDescription": "Vector giga floating point operations retired",
-        "MetricExpr": "RVV_RETIRED.FLOP / 1000000000.0"
+        "MetricExpr": "RVV.FLOP.RET / 1000000000.0"
     },
     {
-        "MetricName": "RVV_RETIRED.TFLOP",
+        "MetricName": "RVV.TFLOP.RET",
         "BriefDescription": "Vector tera floating point operations retired",
-        "MetricExpr": "RVV_RETIRED.FLOP / 1000000000000.0"
+        "MetricExpr": "RVV.FLOP.RET / 1000000000000.0"
     },
     {
-        "MetricName": "RVV_RETIRED.IOPC_8",
+        "MetricName": "RVV.IOPC_8.RET",
         "BriefDescription": "Vector 8-bits integer operations retired per cycle",
-        "MetricExpr": "RVV_RETIRED.ELEMENT.INT8 / GEN.CYCLES"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.INT8.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV_RETIRED.IOPC_16",
+        "MetricName": "RVV.IOPC_16.RET",
         "BriefDescription": "Vector 16-bits integer operations retired per cycle",
-        "MetricExpr": "RVV_RETIRED.ELEMENT.INT16 / GEN.CYCLES"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.INT16.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV_RETIRED.IOPC_32",
+        "MetricName": "RVV.IOPC_32.RET",
         "BriefDescription": "Vector 32-bits integer operations retired per cycle",
-        "MetricExpr": "RVV_RETIRED.ELEMENT.INT32 / GEN.CYCLES"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.INT32.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV_RETIRED.IOPC_64",
+        "MetricName": "RVV.IOPC_64.RET",
         "BriefDescription": "Vector 64-bits integer operations retired per cycle",
-        "MetricExpr": "RVV_RETIRED.ELEMENT.INT64 / GEN.CYCLES"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.INT64.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV_RETIRED.IOP",
+        "MetricName": "RVV.IOP.RET",
         "BriefDescription": "Vector integer operations retired",
-        "MetricExpr": "RVV_RETIRED.ELEMENT.INT8 + RVV_RETIRED.ELEMENT.INT16 + RVV_RETIRED.ELEMENT.INT32 + RVV_RETIRED.ELEMENT.INT64"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.INT8.RET + RVV.ELEMENT.UNMASKED.INT16.RET + RVV.ELEMENT.UNMASKED.INT32.RET + RVV.ELEMENT.UNMASKED.INT64.RET"
     },
     {
-        "MetricName": "RVV_RETIRED.IOPC",
+        "MetricName": "RVV.IOPC.RET",
         "BriefDescription": "Vector integer operations retired per cycle",
-        "MetricExpr": "RVV_RETIRED.IOP / GEN.CYCLES"
+        "MetricExpr": "RVV.IOP.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV_RETIRED.TIOP",
+        "MetricName": "RVV.TIOP.RET",
         "BriefDescription": "Vector tera integer operations retired",
-        "MetricExpr": "RVV_RETIRED.IOP / 1000000000000"
+        "MetricExpr": "RVV.IOP.RET / 1000000000000"
     },
     {
-        "MetricName": "RVV_RETIRED.TOP",
+        "MetricName": "RVV.TOP.RET",
         "BriefDescription": "Vector tera operations retired",
-        "MetricExpr": "RVV_RETIRED.TFLOP + RVV_RETIRED.TIOP"
+        "MetricExpr": "RVV.TFLOP.RET + RVV.TIOP.RET"
     }
 ]

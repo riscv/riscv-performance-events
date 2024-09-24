@@ -2,8 +2,8 @@
     {
         "EventName": "TOPDOWN.SLOTS",
         "EventCode": "0x0",
-        "BriefDescription": "TMA slots available for an unhalted hart",
-        "PublicDescription": "TMA slots available for an unhalted hart"
+        "BriefDescription": "TMA slots available for an unhalted hart. In case of SMT the counts are distributed cycles between all active harts in the same physical core.",
+        "PublicDescription": "TMA slots available for an unhalted hart. In case of SMT the counts are distributed cycles between all active harts in the same physical core."
     },
     {
         "EventName": "TOPDOWN.FRONTEND_BOUND.SLOTS",

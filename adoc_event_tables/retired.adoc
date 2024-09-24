@@ -1,0 +1,13 @@
+.RETIRED group events
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|RETIRED.INST |Number of instructions retired
+|RETIRED.MEM_LOAD |Number of memory load instructions retired
+|RETIRED.MEM_LOAD.UC |Number of memory load instructions retired which accessed uncacheble memory
+|RETIRED.MEM_STORE |Number of memory store instructions retired
+|RETIRED.INT |Number of integer instructions retired
+|RETIRED.FPU |Number of FPU instructions retired
+|RETIRED.UOP |Number of micro-operations retired
+|===
+

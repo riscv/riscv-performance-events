@@ -1,0 +1,20 @@
+.RVV group metrics
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|RVV.FLOPC_SINGLE.RET |Vector single-precision floating point operations retired per cycle |RVV.ELEMENT.UNMASKED.FP_SINGLE.RET / CYCLES.HART
+|RVV.FLOPC_DOUBLE.RET |Vector double-precision floating point operations retired per cycle |RVV.ELEMENT.UNMASKED.FP_DOUBLE.RET / CYCLES.HART
+|RVV.FLOP.RET |Vector floating point operations retired |RVV.ELEMENT.UNMASKED.FP_SINGLE.RET + RVV.ELEMENT.UNMASKED.FP_DOUBLE.RET
+|RVV.FLOPC.RET |Vector floating point operations retired per cycle |RVV.FLOP.RET / CYCLES.HART
+|RVV.GFLOP.RET |Vector giga floating point operations retired |RVV.FLOP.RET / 1000000000.0
+|RVV.TFLOP.RET |Vector tera floating point operations retired |RVV.FLOP.RET / 1000000000000.0
+|RVV.IOPC_8.RET |Vector 8-bits integer operations retired per cycle |RVV.ELEMENT.UNMASKED.INT8.RET / CYCLES.HART
+|RVV.IOPC_16.RET |Vector 16-bits integer operations retired per cycle |RVV.ELEMENT.UNMASKED.INT16.RET / CYCLES.HART
+|RVV.IOPC_32.RET |Vector 32-bits integer operations retired per cycle |RVV.ELEMENT.UNMASKED.INT32.RET / CYCLES.HART
+|RVV.IOPC_64.RET |Vector 64-bits integer operations retired per cycle |RVV.ELEMENT.UNMASKED.INT64.RET / CYCLES.HART
+|RVV.IOP.RET |Vector integer operations retired |RVV.ELEMENT.UNMASKED.INT8.RET + RVV.ELEMENT.UNMASKED.INT16.RET + RVV.ELEMENT.UNMASKED.INT32.RET + RVV.ELEMENT.UNMASKED.INT64.RET
+|RVV.IOPC.RET |Vector integer operations retired per cycle |RVV.IOP.RET / CYCLES.HART
+|RVV.TIOP.RET |Vector tera integer operations retired |RVV.IOP.RET / 1000000000000
+|RVV.TOP.RET |Vector tera operations retired |RVV.TFLOP.RET + RVV.TIOP.RET
+|===
+

@@ -1,0 +1,20 @@
+.RVV group metrics
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|RVV.FLOPC_SINGLE.SPEC |Vector single-precision floating point operations executed per cycle |RVV.ELEMENT.UNMASKED.FP_SINGLE.SPEC / CYCLES.HART
+|RVV.FLOPC_DOUBLE.SPEC |Vector double-precision floating point operations executed per cycle |RVV.ELEMENT.UNMASKED.FP_DOUBLE.SPEC / CYCLES.HART
+|RVV.FLOP.SPEC |Vector floating point operations executed |RVV.ELEMENT.UNMASKED.FP_SINGLE.SPEC + RVV.ELEMENT.UNMASKED.FP_DOUBLE.SPEC
+|RVV.FLOPC.SPEC |Vector floating point operations executed per cycle |RVV.FLOP.SPEC / CYCLES.HART.SPEC
+|RVV.GFLOP.SPEC |Vector giga floating point operations executed |RVV.FLOP.SPEC / 1000000000.0
+|RVV.TFLOP.SPEC |Vector tera floating point operations executed |RVV.FLOP.SPEC / 1000000000000.0
+|RVV.IOPC_8.SPEC |Vector 8-bits integer operations executed per cycle |RVV.ELEMENT.UNMASKED.INT8.SPEC / CYCLES.HART
+|RVV.IOPC_16.SPEC |Vector 16-bits integer operations executed per cycle |RVV.ELEMENT.UNMASKED.INT16.SPEC / CYCLES.HART
+|RVV.IOPC_32.SPEC |Vector 32-bits integer operations executed per cycle |RVV.ELEMENT.UNMASKED.INT32.SPEC / CYCLES.HART
+|RVV.IOPC_64.SPEC |Vector 64-bits integer operations executed per cycle |RVV.ELEMENT.UNMASKED.INT64.SPEC / CYCLES.HART
+|RVV.IOP.SPEC |Vector integer operations executed |RVV.ELEMENT.UNMASKED.INT8.SPEC + RVV.ELEMENT.UNMASKED.INT16.SPEC + RVV.ELEMENT.UNMASKED.INT32.SPEC + RVV.ELEMENT.UNMASKED.INT64.SPEC
+|RVV.IOPC.SPEC |Vector integer operations executed per cycle |RVV.IOP.SPEC / CYCLES.HART
+|RVV.TIOP.SPEC |Vector tera integer operations executed |RVV.IOP.SPEC / 1000000000000
+|RVV.TOP.SPEC |Vector tera operations executed |RVV.TFLOP.SPEC + RVV.TIOP.SPEC
+|===
+
