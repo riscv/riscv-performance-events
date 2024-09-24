@@ -81,10 +81,7 @@ The TMA methodology categorizes CPU execution time at a high level first. This s
 
 Given the highly sophisticated microarchitecture, the first interesting question is how and where to do the first level breakdown? TMA chooses the issue point as it is the natural border that splits the frontend and backend portions of machine.
 
-At issue point it classifies each pipeline-slot into one of four base categories: Frontend Bound, Backend Bound, Bad Speculation and Retiring, as illustrated by next figure:
-
-image::tma_algorithm.png[]
-
+At issue point it classifies each pipeline-slot into one of four base categories: Frontend Bound, Backend Bound, Bad Speculation and Retiring.
 If a uop is issued in a given cycle, it would eventually either get retired or cancelled. Thus it can be attributed to either Retiring or Bad Speculation respectively. Otherwise it can be split into whether there was a backend-stall or not. A backend-stall is a backpressure mechanism the Backend asserts upon resource unavailability (e.g. lack of load buffer entries). In such a case TMA attributes the stall to the Backend, since even if the Frontend was ready with more uops it would not be able to pass them down the pipeline. If there was no backend-stall, it means the Frontend should have delivered some uops while the Backend was ready to accept them; hence it is tagged with Frontend Bound.
 
 include::adoc_event_tables/topdown.adoc[]
