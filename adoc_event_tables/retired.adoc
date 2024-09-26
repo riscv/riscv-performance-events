@@ -2,12 +2,12 @@
 [width="100%",cols="30%,70%",options="header",]
 |===
 |Name |Description
-|RETIRED.INST |Number of instructions retired
-|RETIRED.MEM_LOAD |Number of memory load instructions retired
-|RETIRED.MEM_LOAD.UC |Number of memory load instructions retired which accessed uncacheble memory
-|RETIRED.MEM_STORE |Number of memory store instructions retired
-|RETIRED.INT |Number of integer instructions retired
-|RETIRED.FPU |Number of FPU instructions retired
-|RETIRED.UOP |Number of micro-operations retired
+|INST.RET |Number of instructions retired
+|INST.LOAD.RET |Number of memory load instructions retired
+|INST.LOAD.UC.RET |Number of memory load instructions retired which accessed uncacheble memory
+|INST.STORE.RET |Number of memory store instructions retired
+|INST.INT.RET |Number of integer instructions retired
+|INST.FPU.RET |Number of FPU instructions retired
+|UOP.RET |Number of micro-operations retired
 |===
 

@@ -2,9 +2,9 @@
 [width="100%",cols="30%,70%",options="header",]
 |===
 |Name |Description
-|RVV.ALL.SPEC |Number of RVV instructions executed
-|RVV.INT.SPEC |Number of integer RVV instructions executed
-|RVV.FP.SPEC |Number of floating point RVV instructions executed
+|INST.RVV.SPEC |Number of RVV instructions executed
+|INST.RVV.INT.SPEC |Number of integer RVV instructions executed
+|INST.RVV.FP.SPEC |Number of floating point RVV instructions executed
 |RVV.ELEMENT.UNMASKED.INT8.SPEC |Number of 8-bit integer element operation executed. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV.ELEMENT.UNMASKED.INT8 counter by 16. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV.ELEMENT.UNMASKED.INT8 will be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
 |RVV.ELEMENT.INT8.SPEC |Number of 8-bit integer element operation executed. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV.ELEMENT.INT8 counter by 16. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV.ELEMENT.INT8 will still be incremented by 16. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
 |RVV.ELEMENT.UNMASKED.INT16.SPEC |Number of 16-bit integer element operation executed. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV.ELEMENT.UNMASKED.INT16 counter by 8. Masked-out elements should not increment the counter - so in the previous example half of the lanes are masked the RVV.ELEMENT.UNMASKED.INT16 counter will be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.

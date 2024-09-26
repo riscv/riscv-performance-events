@@ -2,31 +2,31 @@
 [width="100%",cols="25%,40%,35%",options="header",]
 |===
 |Name |Description |Formula
-|CACHE.L1D.LOAD.MPKI.SPEC |The rate of speculative L1 data cache misses caused by data loads per kilo instructions retired |CACHE.L1D.LOAD.MISS.SPEC / RETIRED.INST * 1000
-|CACHE.L1D.LOAD.MISS.RATE.SPEC |The ratio of speculative L1D cache misses to the total number of L1D accesses caused by data loads |CACHE.L1D.LOAD.MISS.SPEC / CACHE.L1D.LOAD.ACCESS.SPEC
-|CACHE.L1D.LOAD.MERGE.PKI.SPEC |The rate of speculative L1 data cache accesses which merged with previous cache miss per kilo instructions retired |CACHE.L1D.LOAD.MERGE.SPEC / RETIRED.INST * 1000
-|CACHE.L1D.STORE.MPKI.SPEC |The rate of speculative L1 data cache misses caused by data stores per kilo instructions retired |CACHE.L1D.STORE.MISS.SPEC / RETIRED.INST * 1000
-|CACHE.L1D.STORE.MISS.RATE.SPEC |The ratio of speculative L1D cache misses to the total number of L1D accesses caused by data stores |CACHE.L1D.STORE.MISS.SPEC / CACHE.L1D.STORE.ACCESS.SPEC
-|CACHE.L1D.PREF.ISSUED.PKI |The rate of prefetcher requests issued by L1D to next level cache per kilo instructions retired |CACHE.L1D.PREF.ISSUED / RETIRED.INST * 1000
+|CACHE.L1D.LOAD.SPEC.MPKI |The rate of speculative L1 data cache misses caused by data loads per kilo instructions retired |CACHE.L1D.LOAD.MISS.SPEC / INST.RET * 1000
+|CACHE.L1D.LOAD.MISS.SPEC.RATE |The ratio of speculative L1D cache misses to the total number of L1D accesses caused by data loads |CACHE.L1D.LOAD.MISS.SPEC / CACHE.L1D.LOAD.ACCESS.SPEC
+|CACHE.L1D.LOAD.MERGE.SPEC.PKI |The rate of speculative L1 data cache accesses which merged with previous cache miss per kilo instructions retired |CACHE.L1D.LOAD.MERGE.SPEC / INST.RET * 1000
+|CACHE.L1D.STORE.SPEC.MPKI |The rate of speculative L1 data cache misses caused by data stores per kilo instructions retired |CACHE.L1D.STORE.MISS.SPEC / INST.RET * 1000
+|CACHE.L1D.STORE.MISS.SPEC.RATE |The ratio of speculative L1D cache misses to the total number of L1D accesses caused by data stores |CACHE.L1D.STORE.MISS.SPEC / CACHE.L1D.STORE.ACCESS.SPEC
+|CACHE.L1D.PREF.ISSUED.PKI |The rate of prefetcher requests issued by L1D to next level cache per kilo instructions retired |CACHE.L1D.PREF.ISSUED / INST.RET * 1000
 |CACHE.L1D.PREF.UNUSED.RATE |The ratio of unused cachelines brought into L1D by prefetcher to the total number of prefetcher requests issued by L1D |CACHE.L1D.PREF.UNUSED / CACHE.L1D.PREF.ISSUED
-|CACHE.L1I.MPKI.SPEC |The rate of L1 instruction cache misses per kilo instructions retired |CACHE.L1I.MISS.SPEC / RETIRED.INST * 1000
-|CACHE.L1I.MISS.RATE.SPEC |The ratio of L1 instruction cache misses to the total number of L1I accesses |CACHE.L1I.MISS.SPEC / CACHE.L1I.ACCESS.SPEC
-|CACHE.L1I.MERGE.PKI.SPEC |The rate of L1 instruction cache accesses which merged with previous cache miss per kilo instructions retired |CACHE.L1I.MERGE.SPEC / RETIRED.INST * 1000
+|CACHE.L1I.SPEC.MPKI |The rate of L1 instruction cache misses per kilo instructions retired |CACHE.L1I.MISS.SPEC / INST.RET * 1000
+|CACHE.L1I.MISS.SPEC.RATE |The ratio of L1 instruction cache misses to the total number of L1I accesses |CACHE.L1I.MISS.SPEC / CACHE.L1I.ACCESS.SPEC
+|CACHE.L1I.MERGE.SPEC.PKI |The rate of L1 instruction cache accesses which merged with previous cache miss per kilo instructions retired |CACHE.L1I.MERGE.SPEC / INST.RET * 1000
 |CACHE.L1I.MISS.IMPACT |The approximate ratio of cycles lost due to L1I misses |CACHE.L1I.MISS_OUTSTANDING.CYCLES / CYCLES.HART
-|CACHE.L2.LOAD.MPKI.SPEC |The rate of speculative L2 cache misses caused by data loads per kilo instructions retired |CACHE.L2.LOAD.MISS.SPEC / RETIRED.INST * 1000
-|CACHE.L2.LOAD.MISS.RATE.SPEC |The ratio of speculative L2 cache misses to the total number of L2 accesses caused by data loads |CACHE.L2.LOAD.MISS.SPEC / CACHE.L2.LOAD.ACCESS.SPEC
-|CACHE.L2.STORE.MPKI.SPEC |The rate of speculative L2 cache misses caused by data stores per kilo instructions retired |CACHE.L2.STORE.MISS.SPEC / RETIRED.INST * 1000
-|CACHE.L2.STORE.MISS.RATE.SPEC |The ratio of speculative L2 cache misses to the total number of L2 accesses caused by data stores |CACHE.L2.STORE.MISS.SPEC / CACHE.L2.STORE.ACCESS.SPEC
-|CACHE.L2.STORE.HIT.RFO.PKI.SPEC |The rate of L2 cache hits for store instructions with the purpose to get exclusive ownership per kilo instructions retired |CACHE.L2.STORE.HIT.RFO.SPEC / RETIRED.INST * 1000
-|CACHE.L2.PREF.ISSUED.PKI |The rate of prefetcher requests issued by L2 to next level cache per kilo instructions retired |CACHE.L2.PREF.ISSUED / RETIRED.INST * 1000
-|CACHE.L2.PREF.MPKI |The rate of L2 cache misses caused by prefetcher per kilo instructions retired |CACHE.L2.PREF.MISS / RETIRED.INST * 1000
+|CACHE.L2.LOAD.SPEC.MPKI |The rate of speculative L2 cache misses caused by data loads per kilo instructions retired |CACHE.L2.LOAD.MISS.SPEC / INST.RET * 1000
+|CACHE.L2.LOAD.MISS.SPEC.RATE |The ratio of speculative L2 cache misses to the total number of L2 accesses caused by data loads |CACHE.L2.LOAD.MISS.SPEC / CACHE.L2.LOAD.ACCESS.SPEC
+|CACHE.L2.STORE.SPEC.MPKI |The rate of speculative L2 cache misses caused by data stores per kilo instructions retired |CACHE.L2.STORE.MISS.SPEC / INST.RET * 1000
+|CACHE.L2.STORE.MISS.SPEC.RATE |The ratio of speculative L2 cache misses to the total number of L2 accesses caused by data stores |CACHE.L2.STORE.MISS.SPEC / CACHE.L2.STORE.ACCESS.SPEC
+|CACHE.L2.STORE.HIT.RFO.SPEC.PKI |The rate of L2 cache hits for store instructions with the purpose to get exclusive ownership per kilo instructions retired |CACHE.L2.STORE.HIT.RFO.SPEC / INST.RET * 1000
+|CACHE.L2.PREF.ISSUED.PKI |The rate of prefetcher requests issued by L2 to next level cache per kilo instructions retired |CACHE.L2.PREF.ISSUED / INST.RET * 1000
+|CACHE.L2.PREF.MPKI |The rate of L2 cache misses caused by prefetcher per kilo instructions retired |CACHE.L2.PREF.MISS / INST.RET * 1000
 |CACHE.L2.PREF.UNUSED.RATE |The ratio of unused cachelines brought into L2 by prefetcher to the total number of prefetcher requests issued by L2 |CACHE.L2.PREF.UNUSED / CACHE.L2.PF.ISSUED
-|CACHE.L3.LOAD.MPKI.SPEC |The rate of speculative L3 cache misses caused by data loads per kilo instructions retired |CACHE.L3.LOAD.MISS.SPEC / RETIRED.INST * 1000
-|CACHE.L3.LOAD.MISS.RATE.SPEC |The ratio of speculative L3 cache misses to the total number of L3 accesses caused by data loads |CACHE.L3.LOAD.MISS.SPEC / CACHE.L3.LOAD.ACCESS.SPEC
-|CACHE.L3.STORE.MPKI.SPEC |The rate of speculative L3 cache misses caused by data stores per kilo instructions retired |CACHE.L3.STORE.MISS.SPEC / RETIRED.INST * 1000
-|CACHE.L3.STORE.MISS.RATE.SPEC |The ratio of speculative L3 cache misses to the total number of L3 accesses caused by data stores |CACHE.L3.STORE.MISS.SPEC / CACHE.L3.STORE.ACCESS.SPEC
-|CACHE.L3.PREF.ISSUED.PKI |The rate of prefetcher requests issued by L3 to next level cache per kilo instructions retired |CACHE.L3.PREF.ISSUED / RETIRED.INST * 1000
-|CACHE.L3.PREF.MPKI |The rate of L3 cache misses caused by prefetcher per kilo instructions retired |CACHE.L3.PREF.MISS / RETIRED.INST * 1000
+|CACHE.L3.LOAD.SPEC.MPKI |The rate of speculative L3 cache misses caused by data loads per kilo instructions retired |CACHE.L3.LOAD.MISS.SPEC / INST.RET * 1000
+|CACHE.L3.LOAD.MISS.SPEC.RATE |The ratio of speculative L3 cache misses to the total number of L3 accesses caused by data loads |CACHE.L3.LOAD.MISS.SPEC / CACHE.L3.LOAD.ACCESS.SPEC
+|CACHE.L3.STORE.SPEC.MPKI |The rate of speculative L3 cache misses caused by data stores per kilo instructions retired |CACHE.L3.STORE.MISS.SPEC / INST.RET * 1000
+|CACHE.L3.STORE.MISS.SPEC.RATE |The ratio of speculative L3 cache misses to the total number of L3 accesses caused by data stores |CACHE.L3.STORE.MISS.SPEC / CACHE.L3.STORE.ACCESS.SPEC
+|CACHE.L3.PREF.ISSUED.PKI |The rate of prefetcher requests issued by L3 to next level cache per kilo instructions retired |CACHE.L3.PREF.ISSUED / INST.RET * 1000
+|CACHE.L3.PREF.MPKI |The rate of L3 cache misses caused by prefetcher per kilo instructions retired |CACHE.L3.PREF.MISS / INST.RET * 1000
 |CACHE.L3.PREF.UNUSED.RATE |The ratio of unused cachelines brought into L3 by prefetcher to the total number of prefetcher requests issued by L3 |CACHE.L3.PREF.UNUSED / CACHE.L3.PREF.ISSUED
 |===
 

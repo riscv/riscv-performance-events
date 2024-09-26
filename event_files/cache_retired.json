@@ -72,6 +72,12 @@
         "PublicDescription": "Retired load instruction which got data from L2 cache"
     },
     {
+        "EventName": "CACHE.L2.LOAD.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which hit L2 cache with data not yet in cache but was already requested by preceding miss",
+        "PublicDescription": "Retired load instruction which hit L2 cache with data not yet in cache but was already requested by preceding miss"
+    },
+    {
         "EventName": "CACHE.L3.LOAD.ACCESS.RET",
         "EventCode": "0x0",
         "BriefDescription": "Retired load instruction which got data from L3 cache or from some next level in memory hierarchy - local mmemory, remote cache, remote memory, etc.",
@@ -90,19 +96,25 @@
         "PublicDescription": "Retired load instruction which got data from L3 cache"
     },
     {
-        "EventName": "CACHE.L3.LOAD.MISS.LOCAL_MEMORY.RET",
+        "EventName": "CACHE.L3.LOAD.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which hit L3 cache with data not yet in cache but was already requested by preceding miss",
+        "PublicDescription": "Retired load instruction which hit L3 cache with data not yet in cache but was already requested by preceding miss"
+    },
+    {
+        "EventName": "CACHE.LOAD.LOCAL_MEMORY.RET",
         "EventCode": "0x0",
         "BriefDescription": "Retired load instruction which got data from local memory.",
         "PublicDescription": "Retired load instruction which got data from local memory."
     },
     {
-        "EventName": "CACHE.L3.LOAD.MISS.REMOTE_MEMORY.RET",
+        "EventName": "CACHE.LOAD.REMOTE_MEMORY.RET",
         "EventCode": "0x0",
         "BriefDescription": "Retired load instruction which got data from remote memory (memory attached to remote socket).",
         "PublicDescription": "Retired load instruction which got data from remote memory (memory attached to remote socket)."
     },
     {
-        "EventName": "CACHE.L3.LOAD.MISS.REMOTE_CACHE.RET",
+        "EventName": "CACHE.LOAD.REMOTE_CACHE.RET",
         "EventCode": "0x0",
         "BriefDescription": "Retired load instruction which got data from remote cache (cache on remote socket).",
         "PublicDescription": "Retired load instruction which got data from remote cache (cache on remote socket)."

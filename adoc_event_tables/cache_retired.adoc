@@ -14,11 +14,13 @@
 |CACHE.L2.LOAD.ACCESS.RET |Retired load instruction which got data from L2 or from some next level in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc.
 |CACHE.L2.LOAD.MISS.RET |Retired load instruction which got data from some next level (relative to L2) in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc.
 |CACHE.L2.LOAD.HIT.RET |Retired load instruction which got data from L2 cache
+|CACHE.L2.LOAD.MERGE.RET |Retired load instruction which hit L2 cache with data not yet in cache but was already requested by preceding miss
 |CACHE.L3.LOAD.ACCESS.RET |Retired load instruction which got data from L3 cache or from some next level in memory hierarchy - local mmemory, remote cache, remote memory, etc.
 |CACHE.L3.LOAD.MISS.RET |Retired load instruction which got data from some next level (relative to L3) in memory hierarchy - local mmemory, remote cache, remote memory, etc.
 |CACHE.L3.LOAD.HIT.RET |Retired load instruction which got data from L3 cache
-|CACHE.L3.LOAD.MISS.LOCAL_MEMORY.RET |Retired load instruction which got data from local memory.
-|CACHE.L3.LOAD.MISS.REMOTE_MEMORY.RET |Retired load instruction which got data from remote memory (memory attached to remote socket).
-|CACHE.L3.LOAD.MISS.REMOTE_CACHE.RET |Retired load instruction which got data from remote cache (cache on remote socket).
+|CACHE.L3.LOAD.MERGE.RET |Retired load instruction which hit L3 cache with data not yet in cache but was already requested by preceding miss
+|CACHE.LOAD.LOCAL_MEMORY.RET |Retired load instruction which got data from local memory.
+|CACHE.LOAD.REMOTE_MEMORY.RET |Retired load instruction which got data from remote memory (memory attached to remote socket).
+|CACHE.LOAD.REMOTE_CACHE.RET |Retired load instruction which got data from remote cache (cache on remote socket).
 |===
 

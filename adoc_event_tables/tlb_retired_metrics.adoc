@@ -2,13 +2,13 @@
 [width="100%",cols="25%,40%,35%",options="header",]
 |===
 |Name |Description |Formula
-|TLB.L1.LOAD.MPKI.RET |The rate of L1 TLB misses caused by data loads per kilo instructions retired |TLB.L1.LOAD.MISS.RET / RETIRED.INST * 1000
-|TLB.L1.LOAD.MISS.RATE |The ratio of L1 TLB load misses to the total number of L1 TLB load accesses retired |TLB.L1.LOAD.MISS.RET / TLB.L1.LOAD.ACCESS.RET
-|TLB.L1.STORE.MPKI.RET |The rate of L1 TLB misses caused by data stores per kilo instructions retired |TLB.L1.STORE.MISS.RET / RETIRED.INST * 1000
-|TLB.L1.STORE.MISS.RATE |The ratio of L1 TLB store misses to the total number of L1 TLB store accesses retired |TLB.L1.STORE.MISS.RET / TLB.L1.STORE.ACCESS.RET
-|TLB.L2.LOAD.MPKI.RET |The rate of L2 TLB misses caused by data loads per kilo instructions retired |TLB.L2.LOAD.MISS.RET / RETIRED.INST * 1000
-|TLB.L2.LOAD.MISS.RATE |The ratio of L2 TLB load misses to the total number of L2 TLB load accesses retired |TLB.L2.LOAD.MISS.RET / TLB.L2.LOAD.ACCESS.RET
-|TLB.L2.STORE.MPKI.RET |The rate of L2 TLB misses caused by data stores per kilo instructions retired |TLB.L2.STORE.MISS.RET / RETIRED.INST * 1000
-|TLB.L2.STORE.MISS.RATE |The ratio of L2 TLB store misses to the total number of L2 TLB store accesses retired |TLB.L2.STORE.MISS.RET / TLB.L2.STORE.ACCESS.RET
+|TLB.L1.LOAD.RET.MPKI |The rate of L1 TLB misses caused by data loads per kilo instructions retired |TLB.L1.LOAD.MISS.RET / INST.RET * 1000
+|TLB.L1.LOAD.RET.MISS.RATE |The ratio of L1 TLB load misses to the total number of L1 TLB load accesses retired |TLB.L1.LOAD.MISS.RET / TLB.L1.LOAD.ACCESS.RET
+|TLB.L1.STORE.RET.MPKI |The rate of L1 TLB misses caused by data stores per kilo instructions retired |TLB.L1.STORE.MISS.RET / INST.RET * 1000
+|TLB.L1.STORE.MISS.RET.RATE |The ratio of L1 TLB store misses to the total number of L1 TLB store accesses retired |TLB.L1.STORE.MISS.RET / TLB.L1.STORE.ACCESS.RET
+|TLB.L2.LOAD.RET.MPKI |The rate of L2 TLB misses caused by data loads per kilo instructions retired |TLB.L2.LOAD.MISS.RET / INST.RET * 1000
+|TLB.L2.LOAD.MISS.RET.RATE |The ratio of L2 TLB load misses to the total number of L2 TLB load accesses retired |TLB.L2.LOAD.MISS.RET / TLB.L2.LOAD.ACCESS.RET
+|TLB.L2.STORE.RET.MPKI |The rate of L2 TLB misses caused by data stores per kilo instructions retired |TLB.L2.STORE.MISS.RET / INST.RET * 1000
+|TLB.L2.STORE.MISS.RET.RATE |The ratio of L2 TLB store misses to the total number of L2 TLB store accesses retired |TLB.L2.STORE.MISS.RET / TLB.L2.STORE.ACCESS.RET
 |===
 

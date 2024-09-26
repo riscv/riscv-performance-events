@@ -2,35 +2,35 @@
 [width="100%",cols="25%,40%,35%",options="header",]
 |===
 |Name |Description |Formula
-|CTRL_FLOW.PKI |The rate of control flow instructions retired per kilo instructions |CTRL_FLOW.RET / RETIRED.INST * 1000
-|CTRL_FLOW.MPKI |The rate of control flow instructions mis-predicted per kilo instructions |CTRL_FLOW.MISPRED.RET / RETIRED.INST * 1000
+|CTRL_FLOW.PKI |The rate of control flow instructions retired per kilo instructions |CTRL_FLOW.RET / INST.RET * 1000
+|CTRL_FLOW.MPKI |The rate of control flow instructions mis-predicted per kilo instructions |CTRL_FLOW.MISPRED.RET / INST.RET * 1000
 |CTRL_FLOW.MISPRED.RATE |The rate of control flow instructions mis-predicted to the overall predicted control flow instructions |CTRL_FLOW.MISPRED.RET / (CTRL_FLOW.RET - CTRL_FLOW.DIR_CALL.RET - CTRL_FLOW.DIR_JUMP.RET - CTRL_FLOW.DIR_JUMP_LINKAGE.RET)
-|CTRL_FLOW.BRANCH.PKI |The rate of conditional branches retired per kilo instructions |CTRL_FLOW.BRANCH.RET / RETIRED.INST * 1000
-|CTRL_FLOW.BRANCH.MPKI |The rate of conditional branches mis-predicted per kilo instructions |CTRL_FLOW.BRANCH.MISPRED.RET / RETIRED.INST * 1000
+|CTRL_FLOW.BRANCH.PKI |The rate of conditional branches retired per kilo instructions |CTRL_FLOW.BRANCH.RET / INST.RET * 1000
+|CTRL_FLOW.BRANCH.MPKI |The rate of conditional branches mis-predicted per kilo instructions |CTRL_FLOW.BRANCH.MISPRED.RET / INST.RET * 1000
 |CTRL_FLOW.BRANCH.MISPRED.RATE |The rate of conditional branches mis-predicted to the overall conditional branches |CTRL_FLOW.BRANCH.MISPRED.RET / CTRL_FLOW.BRANCH.RET
-|CTRL_FLOW.IND_CALL.PKI |The rate of indirect calls retired per kilo instructions |CTRL_FLOW.IND_CALL.RET / RETIRED.INST * 1000
-|CTRL_FLOW.IND_CALL.MPKI |The rate of indirect calls mis-predicted per kilo instructions |CTRL_FLOW.IND_CALL.MISPRED.RET / RETIRED.INST * 1000
+|CTRL_FLOW.IND_CALL.PKI |The rate of indirect calls retired per kilo instructions |CTRL_FLOW.IND_CALL.RET / INST.RET * 1000
+|CTRL_FLOW.IND_CALL.MPKI |The rate of indirect calls mis-predicted per kilo instructions |CTRL_FLOW.IND_CALL.MISPRED.RET / INST.RET * 1000
 |CTRL_FLOW.IND_CALL.MISPRED_RATE |The rate of indirect calls mis-predicted to the overall indirect calls |CTRL_FLOW.IND_CALL.MISPRED.RET / CTRL_FLOW.IND_CALL.RET
-|CTRL_FLOW.DIR_CALL.PKI |The rate of direct calls retired per kilo instructions |CTRL_FLOW.DIR_CALL.RET / RETIRED.INST * 1000
-|CTRL_FLOW.DIR_CALL.MPKI |The rate of direct calls mis-predicted per kilo instructions |CTRL_FLOW.DIR_CALL.MISPRED.RET / RETIRED.INST * 1000
+|CTRL_FLOW.DIR_CALL.PKI |The rate of direct calls retired per kilo instructions |CTRL_FLOW.DIR_CALL.RET / INST.RET * 1000
+|CTRL_FLOW.DIR_CALL.MPKI |The rate of direct calls mis-predicted per kilo instructions |CTRL_FLOW.DIR_CALL.MISPRED.RET / INST.RET * 1000
 |CTRL_FLOW.DIR_CALL.MISPRED.RATE |The rate of direct calls mis-predicted to the overall direct calls |CTRL_FLOW.DIR_CALL.MISPRED.RET / CTRL_FLOW.DIR_CALL.RET
-|CTRL_FLOW.IND_JUMP.PKI |The rate of indirect jumps retired per kilo instructions |CTRL_FLOW.IND_JUMP.RET / RETIRED.INST * 1000
-|CTRL_FLOW.IND_JUMP.MPKI |The rate of indirect jumps mis-predicted per kilo instructions |CTRL_FLOW.IND_JUMP.MISPRED.RET / RETIRED.INST * 1000
+|CTRL_FLOW.IND_JUMP.PKI |The rate of indirect jumps retired per kilo instructions |CTRL_FLOW.IND_JUMP.RET / INST.RET * 1000
+|CTRL_FLOW.IND_JUMP.MPKI |The rate of indirect jumps mis-predicted per kilo instructions |CTRL_FLOW.IND_JUMP.MISPRED.RET / INST.RET * 1000
 |CTRL_FLOW.IND_JUMP.MISPRED.RATE |The rate of indirect jumps mis-predicted to the overall indirect jumps |CTRL_FLOW.IND_JUMP.MISPRED.RET / CTRL_FLOW.IND_JUMP.RET
-|CTRL_FLOW.DIR_JUMP.PKI |The rate of direct jumps retired per kilo instructions |CTRL_FLOW.DIR_JUMP.RET / RETIRED.INST * 1000
-|CTRL_FLOW.DIR_JUMP.MPKI |The rate of direct jumps mis-predicted per kilo instructions |CTRL_FLOW.DIR_JUMP.MISPRED.RET / RETIRED.INST * 1000
+|CTRL_FLOW.DIR_JUMP.PKI |The rate of direct jumps retired per kilo instructions |CTRL_FLOW.DIR_JUMP.RET / INST.RET * 1000
+|CTRL_FLOW.DIR_JUMP.MPKI |The rate of direct jumps mis-predicted per kilo instructions |CTRL_FLOW.DIR_JUMP.MISPRED.RET / INST.RET * 1000
 |CTRL_FLOW.DIR_JUMP.MISPRED.RATE |The rate of direct jumps mis-predicted to the overall indirect jumps |CTRL_FLOW.DIR_JUMP.MISPRED.RET / CTRL_FLOW.DIR_JUMP.RET
-|CTRL_FLOW.CORE_SWAP.PKI |The rate of co-routine swaps retired per kilo instructions |CTRL_FLOW.COR_SWAP.RET / RETIRED.INST * 1000
-|CTRL_FLOW.COR_SWAP.MPKI |The rate of co-routine swaps mis-predicted per kilo instructions |CTRL_FLOW.COR_SWAP.MISPRED.RET / RETIRED.INST * 1000
+|CTRL_FLOW.CORE_SWAP.PKI |The rate of co-routine swaps retired per kilo instructions |CTRL_FLOW.COR_SWAP.RET / INST.RET * 1000
+|CTRL_FLOW.COR_SWAP.MPKI |The rate of co-routine swaps mis-predicted per kilo instructions |CTRL_FLOW.COR_SWAP.MISPRED.RET / INST.RET * 1000
 |CTRL_FLOW.COR_SWAP.MISPRED.RATE |The rate of co-routine swaps mis-predicted to the overall indirect jumps |CTRL_FLOW.COR_SWAP.MISPRED.RET / CTRL_FLOW.COR_SWAP.RET
-|CTRL_FLOW.RETURN.PKI |The rate of function returns retired per kilo instructions |CTRL_FLOW.RETURN.RET / RETIRED.INST * 1000
-|CTRL_FLOW.RETURN.MPKI |The rate of function returns mis-predicted per kilo instructions |CTRL_FLOW.RETURN.MISPRED.RET / RETIRED.INST * 1000
+|CTRL_FLOW.RETURN.PKI |The rate of function returns retired per kilo instructions |CTRL_FLOW.RETURN.RET / INST.RET * 1000
+|CTRL_FLOW.RETURN.MPKI |The rate of function returns mis-predicted per kilo instructions |CTRL_FLOW.RETURN.MISPRED.RET / INST.RET * 1000
 |CTRL_FLOW.RETURN.MISPRED.RATE |The rate of function returns mis-predicted to the overall function returns |CTRL_FLOW.RETURN.MISPRED.RET / CTRL_FLOW.RETURN.RET
-|CTRL_FLOW.IND_JUMP_LINKAGE.PKI |The rate of indirect jumps (with linkage) retired per kilo instructions |CTRL_FLOW.IND_JUMP_LINKAGE.RET / RETIRED.INST * 1000
-|CTRL_FLOW.IND_JUMP_LINKAGE.MPKI |The rate of indirect jumps (with linkage) mis-predicted per kilo instructions |CTRL_FLOW.IND_JUMP_LINKAGE.MISPRED.RET / RETIRED.INST * 1000
+|CTRL_FLOW.IND_JUMP_LINKAGE.PKI |The rate of indirect jumps (with linkage) retired per kilo instructions |CTRL_FLOW.IND_JUMP_LINKAGE.RET / INST.RET * 1000
+|CTRL_FLOW.IND_JUMP_LINKAGE.MPKI |The rate of indirect jumps (with linkage) mis-predicted per kilo instructions |CTRL_FLOW.IND_JUMP_LINKAGE.MISPRED.RET / INST.RET * 1000
 |CTRL_FLOW.IND_JUMP_LINKAGE.MISPRED.RATE |The rate of indirect jumps (with linkage) mis-predicted to the overall indirect jumps (with linkage) |CTRL_FLOW.IND_JUMP_LINKAGE.MISPRED.RET / CTRL_FLOW.IND_JUMP_LINKAGE.RET
-|CTRL_FLOW.DIR_JUMP_LINKAGE.PKI |The rate of direct jumps (with linkage) retired per kilo instructions |CTRL_FLOW.DIR_JUMP_LINKAGE.RET / RETIRED.INST * 1000
-|CTRL_FLOW.DIR_JUMP_LINKAGE.MPKI |The rate of direct jumps (with linkage) mis-predicted per kilo instructions |CTRL_FLOW.DIR_JUMP_LINKAGE.MISPRED.RET / RETIRED.INST * 1000
+|CTRL_FLOW.DIR_JUMP_LINKAGE.PKI |The rate of direct jumps (with linkage) retired per kilo instructions |CTRL_FLOW.DIR_JUMP_LINKAGE.RET / INST.RET * 1000
+|CTRL_FLOW.DIR_JUMP_LINKAGE.MPKI |The rate of direct jumps (with linkage) mis-predicted per kilo instructions |CTRL_FLOW.DIR_JUMP_LINKAGE.MISPRED.RET / INST.RET * 1000
 |CTRL_FLOW.DIR_JUMP_LINKAGE.MISPRED.RATE |The rate of direct jumps (with linkage) mis-predicted to the overall direct jumps (with linkage) |CTRL_FLOW.DIR_JUMP_LINKAGE.MISPRED.RET / CTRL_FLOW.DIR_JUMP_LINKAGE.RET
 |===
 

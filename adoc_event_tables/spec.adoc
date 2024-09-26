@@ -2,11 +2,11 @@
 [width="100%",cols="30%,70%",options="header",]
 |===
 |Name |Description
-|SPEC.INST_ISSUED |Number of instructions issued
-|SPEC.MEM_LOAD_ISSUED |Number of memory load instructions issued
-|SPEC.MEM_STORE_ISSUED |Number of memory store instructions issued
-|SPEC.INT_ISSUED |Number of integer instructions issued
-|SPEC.FPU_ISSUED |Number of FPU instructions issued
-|SPEC.UOP_ISSUED |Number of micro-operations issued
+|INST.ISSUED |Number of instructions issued
+|INST.LOAD.ISSUED |Number of memory load instructions issued
+|INST.STORE.ISSUED |Number of memory store instructions issued
+|INST.INT.ISSUED |Number of integer instructions issued
+|INST.FPU.ISSUED |Number of FPU instructions issued
+|UOP.ISSUED |Number of micro-operations issued
 |===
 

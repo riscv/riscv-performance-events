@@ -78,7 +78,7 @@
         "PublicDescription": "Co-routine swaps retired. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'"
     },
     {
-        "EventName": "CTRL_FLOW.CORE_SWAP.MISPRED.RET",
+        "EventName": "CTRL_FLOW.COR_SWAP.MISPRED.RET",
         "EventCode": "0x0",
         "BriefDescription": "Co-routine swaps mis-predicted",
         "PublicDescription": "Co-routine swaps mis-predicted. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'"

@@ -1,18 +1,18 @@
 [
     {
-        "EventName": "RVV.ALL.SPEC",
+        "EventName": "INST.RVV.SPEC",
         "EventCode": "0x0",
         "BriefDescription": "Number of RVV instructions executed",
         "PublicDescription": "Number of RVV instructions executed"
     },
     {
-        "EventName": "RVV.INT.SPEC",
+        "EventName": "INST.RVV.INT.SPEC",
         "EventCode": "0x0",
         "BriefDescription": "Number of integer RVV instructions executed",
         "PublicDescription": "Number of integer RVV instructions executed"
     },
     {
-        "EventName": "RVV.FP.SPEC",
+        "EventName": "INST.RVV.FP.SPEC",
         "EventCode": "0x0",
         "BriefDescription": "Number of floating point RVV instructions executed",
         "PublicDescription": "Number of floating point RVV instructions executed"

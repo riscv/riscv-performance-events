@@ -7,8 +7,8 @@
     },
     {
         "MetricName": "TOPDOWN.BAD_SPECULATION.SLOTS",
-        "BriefDescription": "For implementations which do not provide TOPDOWN.BAD_SPECULATION.SLOTS as explicit event it is possible to calculate it as metric. It consiste of two part - the number of cancelled operations (SPEC.UOP_ISSUED - RETIRED.UOP) and the number of slots wasted on recovery from pipeline flush (pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES)",
-        "MetricExpr": "SPEC.UOP_ISSUED - RETIRED.UOP + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES"
+        "BriefDescription": "For implementations which do not provide TOPDOWN.BAD_SPECULATION.SLOTS as explicit event it is possible to calculate it as metric. It consiste of two part - the number of cancelled operations (UOP.ISSUED - UOP.RET) and the number of slots wasted on recovery from pipeline flush (pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES)",
+        "MetricExpr": "UOP.ISSUED - UOP.RET + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES"
     },
     {
         "MetricName": "TOPDOWN.BACKEND_BOUND.CORE.SLOTS",
@@ -58,7 +58,7 @@
     {
         "MetricName": "TOPDOWN.RETIRING.RATE",
         "BriefDescription": "Fraction of slots utilized by useful work i.e. issued uops that eventually get retired",
-        "MetricExpr": "RETIRED.UOP / TOPDOWN.SLOTS",
+        "MetricExpr": "UOP.RET / TOPDOWN.SLOTS",
         "MetricThreshold": "TOPDOWN.RETIRING.RATE > 0.75",
         "PublicDescription": "Fraction of slots utilized by useful work i.e. issued uops that eventually get retired. Ideally all pipeline slots would be attributed to the Retiring category. Retiring of 100% would indicate the maximum Pipeline_Width throughput was achieved. Maximizing Retiring typically increases the Instructions-per-cycle (IPC).",
         "ScaleUnit": "100%"

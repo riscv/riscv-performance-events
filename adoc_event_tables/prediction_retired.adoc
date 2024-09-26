@@ -15,7 +15,7 @@
 |CTRL_FLOW.DIR_JUMP.RET |Direct jumps (without linkage) retired. Direct jumps (without linkage) are defined using following encodings: 'JAL x0'; 'C.J'
 |CTRL_FLOW.DIR_JUMP.MISPRED.RET |Direct jumps (without linkage) mis-predicted. Direct jumps (without linkage) are defined using following encodings: 'JAL x0'; 'C.J'
 |CTRL_FLOW.COR_SWAP.RET |Co-routine swaps retired. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'
-|CTRL_FLOW.CORE_SWAP.MISPRED.RET |Co-routine swaps mis-predicted. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'
+|CTRL_FLOW.COR_SWAP.MISPRED.RET |Co-routine swaps mis-predicted. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'
 |CTRL_FLOW.RETURN.RET |Function returns retired. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'
 |CTRL_FLOW.RETURN.MISPRED.RET |Function returns mis-predicted. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'
 |CTRL_FLOW.IND_JUMP_LINKAGE.RET |Other indirect jumps (with linkage) retired. Other indirect jump (with linkage) are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'

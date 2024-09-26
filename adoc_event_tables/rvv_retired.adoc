@@ -2,9 +2,9 @@
 [width="100%",cols="30%,70%",options="header",]
 |===
 |Name |Description
-|RVV.ALL.RET |Number of RVV instructions retired
-|RVV.INT.RET |Number of integer RVV instructions retired
-|RVV.FP.RET |Number of floating point RVV instructions retired
+|INST.RVV.RET |Number of RVV instructions retired
+|INST.RVV.INT.RET |Number of integer RVV instructions retired
+|INST.RVV.FP.RET |Number of floating point RVV instructions retired
 |RVV.ELEMENT.UNMASKED.INT8.RET |Number of 8-bit integer element operation retired. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV.ELEMENT.UNMASKED.INT8 counter by 16. Masked-out elements should not increment the counter - so in the previous example if half of the lanes are masked the RVV.ELEMENT.UNMASKED.INT8 will be incremented by 8. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
 |RVV.ELEMENT.INT8.RET |Number of 8-bit integer element operation retired not taking into account masking. For example, if we have SEW=8, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV.ELEMENT.INT8 counter by 16. Mask should not be taken into account - so in the previous example if half of the lanes are masked the RVV.ELEMENT.INT8 will still be incremented by 16. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
 |RVV.ELEMENT.UNMASKED.INT16.RET |Number of 16-bit integer element operation retired. For example, if we have SEW=16, LMUL=1, VLEN=128 and doing vector integer arith instruction - it should increment the RVV.ELEMENT.UNMASKED.INT16 counter by 8. Masked-out elements should not increment the counter - so in the previous example half of the lanes are masked the RVV.ELEMENT.UNMASKED.INT16 counter will be incremented by 4. For multiply-add instructions each element operation should increment counter by 2 to account for both multiplication and addition.
