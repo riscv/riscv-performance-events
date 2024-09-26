@@ -7,8 +7,8 @@
     },
     {
         "MetricName": "TOPDOWN.BAD_SPECULATION.SLOTS",
-        "BriefDescription": "For implementations which do not provide TOPDOWN.BAD_SPECULATION.SLOTS as explicit event it is possible to calculate it as metric. It consiste of two part - the number of cancelled operations (UOP.ISSUED - UOP.RET) and the number of slots wasted on recovery from pipeline flush (pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES)",
-        "MetricExpr": "UOP.ISSUED - UOP.RET + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES"
+        "BriefDescription": "For implementations which do not provide TOPDOWN.BAD_SPECULATION.SLOTS as explicit event it is possible to calculate it as metric. It consiste of two part - the number of cancelled operations (UOP.SPEC - UOP.RET) and the number of slots wasted on recovery from pipeline flush (pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES)",
+        "MetricExpr": "UOP.SPEC - UOP.RET + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES"
     },
     {
         "MetricName": "TOPDOWN.BACKEND_BOUND.CORE.SLOTS",

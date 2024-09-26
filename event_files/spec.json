@@ -1,36 +1,36 @@
 [
     {
-        "EventName": "INST.ISSUED",
+        "EventName": "INST.SPEC",
         "EventCode": "0x0",
         "BriefDescription": "Number of instructions issued",
         "PublicDescription": "Number of instructions issued"
     },
     {
-        "EventName": "INST.LOAD.ISSUED",
+        "EventName": "INST.LOAD.SPEC",
         "EventCode": "0x0",
         "BriefDescription": "Number of memory load instructions issued",
         "PublicDescription": "Number of memory load instructions issued"
     },
     {
-        "EventName": "INST.STORE.ISSUED",
+        "EventName": "INST.STORE.SPEC",
         "EventCode": "0x0",
         "BriefDescription": "Number of memory store instructions issued",
         "PublicDescription": "Number of memory store instructions issued"
     },
     {
-        "EventName": "INST.INT.ISSUED",
+        "EventName": "INST.INT.SPEC",
         "EventCode": "0x0",
         "BriefDescription": "Number of integer instructions issued",
         "PublicDescription": "Number of integer instructions issued"
     },
     {
-        "EventName": "INST.FPU.ISSUED",
+        "EventName": "INST.FPU.SPEC",
         "EventCode": "0x0",
         "BriefDescription": "Number of FPU instructions issued",
         "PublicDescription": "Number of FPU instructions issued"
     },
     {
-        "EventName": "UOP.ISSUED",
+        "EventName": "UOP.SPEC",
         "EventCode": "0x0",
         "BriefDescription": "Number of micro-operations issued",
         "PublicDescription": "Number of micro-operations issued"
