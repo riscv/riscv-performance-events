@@ -1,0 +1,122 @@
+[
+    {
+        "EventName": "CACHE.L1D.LOAD.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which accessed L1D cache",
+        "PublicDescription": "Retired load instruction which accessed L1D cache"
+    },
+    {
+        "EventName": "CACHE.L1D.LOAD.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which missed L1D cache",
+        "PublicDescription": "Retired load instruction which missed L1D cache"
+    },
+    {
+        "EventName": "CACHE.L1D.LOAD.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which hit L1D cache",
+        "PublicDescription": "Retired load instruction which hit L1D cache"
+    },
+    {
+        "EventName": "CACHE.L1D.LOAD.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss",
+        "PublicDescription": "Retired load instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss"
+    },
+    {
+        "EventName": "CACHE.L1D.STORE.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired store instruction which accessed L1D cache",
+        "PublicDescription": "Retired store instruction which accessed L1D cache"
+    },
+    {
+        "EventName": "CACHE.L1D.STORE.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired store instruction which missed L1D cache",
+        "PublicDescription": "Retired store instruction which missed L1D cache"
+    },
+    {
+        "EventName": "CACHE.L1D.STORE.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired store instruction which hit L1D cache",
+        "PublicDescription": "Retired store instruction which hit L1D cache"
+    },
+    {
+        "EventName": "CACHE.L1D.STORE.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired store instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss",
+        "PublicDescription": "Retired store instruction which hit L1D cache with data not yet in cache but was already requested by preceding miss"
+    },
+    {
+        "EventName": "CACHE.L1I.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired instruction with L1 Instruction cache miss on fetching",
+        "PublicDescription": "Retired instruction with L1 Instruction cache miss on fetching"
+    },
+    {
+        "EventName": "CACHE.L2.LOAD.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which got data from L2 or from some next level in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc.",
+        "PublicDescription": "Retired load instruction which got data from L2 or from some next level in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc."
+    },
+    {
+        "EventName": "CACHE.L2.LOAD.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which got data from some next level (relative to L2) in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc.",
+        "PublicDescription": "Retired load instruction which got data from some next level (relative to L2) in memory hierarchy - L3 cache, local mmemory, remote cache, remote memory, etc."
+    },
+    {
+        "EventName": "CACHE.L2.LOAD.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which got data from L2 cache",
+        "PublicDescription": "Retired load instruction which got data from L2 cache"
+    },
+    {
+        "EventName": "CACHE.L2.LOAD.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which hit L2 cache with data not yet in cache but was already requested by preceding miss",
+        "PublicDescription": "Retired load instruction which hit L2 cache with data not yet in cache but was already requested by preceding miss"
+    },
+    {
+        "EventName": "CACHE.L3.LOAD.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which got data from L3 cache or from some next level in memory hierarchy - local mmemory, remote cache, remote memory, etc.",
+        "PublicDescription": "Retired load instruction which got data from L3 cache or from some next level in memory hierarchy - local mmemory, remote cache, remote memory, etc."
+    },
+    {
+        "EventName": "CACHE.L3.LOAD.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which got data from some next level (relative to L3) in memory hierarchy - local mmemory, remote cache, remote memory, etc.",
+        "PublicDescription": "Retired load instruction which got data from some next level (relative to L3) in memory hierarchy - local mmemory, remote cache, remote memory, etc."
+    },
+    {
+        "EventName": "CACHE.L3.LOAD.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which got data from L3 cache",
+        "PublicDescription": "Retired load instruction which got data from L3 cache"
+    },
+    {
+        "EventName": "CACHE.L3.LOAD.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which hit L3 cache with data not yet in cache but was already requested by preceding miss",
+        "PublicDescription": "Retired load instruction which hit L3 cache with data not yet in cache but was already requested by preceding miss"
+    },
+    {
+        "EventName": "CACHE.LOAD.LOCAL_MEMORY.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which got data from local memory.",
+        "PublicDescription": "Retired load instruction which got data from local memory."
+    },
+    {
+        "EventName": "CACHE.LOAD.REMOTE_MEMORY.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which got data from remote memory (memory attached to remote socket).",
+        "PublicDescription": "Retired load instruction which got data from remote memory (memory attached to remote socket)."
+    },
+    {
+        "EventName": "CACHE.LOAD.REMOTE_CACHE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired load instruction which got data from remote cache (cache on remote socket).",
+        "PublicDescription": "Retired load instruction which got data from remote cache (cache on remote socket)."
+    }
+]

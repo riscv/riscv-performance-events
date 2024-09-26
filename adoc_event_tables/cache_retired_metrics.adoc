@@ -1,0 +1,16 @@
+.CACHE group metrics
+[width="100%",cols="25%,40%,35%",options="header",]
+|===
+|Name |Description |Formula
+|CACHE.L1D.LOAD.RET.MPKI |The rate of retired L1 data load cache misses per kilo instructions retired |CACHE.L1D.LOAD.MISS.RET / INST.RET * 1000
+|CACHE.L1D.LOAD.MISS.RET.RATE |The ratio of retired L1D cache load misses to the total number of retired L1D load accesses |CACHE.L1D.LOAD.MISS.RET / CACHE.L1D.LOAD.ACCESS.RET
+|CACHE.L1D.LOAD.MERGE.RET.PKI |The rate of retired L1 data load cache misses which merged with previous cache miss per kilo instructions retired |CACHE.L1D.LOAD.MERGE.RET / INST.RET * 1000
+|CACHE.L1I.RET.MPKI |The rate of retired instructions with L1 instruction cache misses per kilo instructions retired |CACHE.L1I.MISS.RET / INST.RET * 1000
+|CACHE.L1D.STORE.RET.MPKI |The rate of retired L1 data store cache misses per kilo instructions retired |CACHE.L1D.STORE.MISS.RET  / INST.RET * 1000
+|CACHE.L1D.STORE.MISS.RET.RATE |The ratio of retired L1D cache store misses to the total number of retired L1D store accesses |CACHE.L1D.STORE.MISS.RET / CACHE.L1D.STORE.ACCESS.RET
+|CACHE.L2.LOAD.RET.MPKI |The rate of retired L2 data load cache misses per kilo instructions retired |CACHE.L2.LOAD.MISS.RET / INST.RET * 1000
+|CACHE.L2.LOAD.MISS.RET.RATE |The ratio of retired L2 cache load misses to the total number of retired L2 load accesses |CACHE.L2.LOAD.MISS.RET / CACHE.L2.LOAD.ACCESS.RET
+|CACHE.L3.LOAD.RET.MPKI |The rate of retired L3 data load cache misses per kilo instructions retired |CACHE.L3.LOAD.MISS.RET / INST.RET * 1000
+|CACHE.L3.LOAD.MISS.RET.RATE |The ratio of retired L3 cache load misses to the total number of retired L3 load accesses |CACHE.L3.LOAD.MISS.RET / CACHE.L3.LOAD.ACCESS.RET
+|===
+

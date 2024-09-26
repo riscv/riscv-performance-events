@@ -1,0 +1,99 @@
+[
+    {
+        "EventName": "TOPDOWN.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots available for an unhalted hart. In case of SMT the counts are distributed cycles between all active harts in the same physical core.",
+        "PublicDescription": "TMA slots available for an unhalted hart. In case of SMT the counts are distributed cycles between all active harts in the same physical core."
+    },
+    {
+        "EventName": "TOPDOWN.FRONTEND_BOUND.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the frontend did not supply enough operations",
+        "PublicDescription": "TMA slots unused due to the frontend did not supply enough operations"
+    },
+    {
+        "EventName": "TOPDOWN.BAD_SPECULATION.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots wasted due to incorrect speculations.",
+        "PublicDescription": "TMA slots wasted due to incorrect speculations. This include slots used to issue uops that do not eventually get retired and slots for which the issue-pipeline was blocked due to recovery from earlier incorrect speculation. For example; wasted slots due to miss-predicted branches should be accounted by this event. Incorrect data speculation followed by Memory Ordering Nukes is another example."
+    },
+    {
+        "EventName": "TOPDOWN.BAD_SPECULATION.CONTROL_FLOW.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots wasted due to incorrect control flow speculations.",
+        "PublicDescription": "TMA slots wasted due to incorrect control flow speculations."
+    },
+    {
+        "EventName": "TOPDOWN.BAD_SPECULATION.MEM_ORDERING.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots wasted due to memory ordering violations.",
+        "PublicDescription": "TMA slots wasted due to memory ordering violations."
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the lack of backend resources",
+        "PublicDescription": "TMA slots unused due to the lack of backend resources"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the stalls caused by load and store instructions",
+        "PublicDescription": "TMA slots unused due to the stalls caused by load and store instructions"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.CORE.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the non-memory stalls",
+        "PublicDescription": "TMA slots unused due to the non-memory stalls"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.CORE.SERIALIZING.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of slots wasted due to serializing operations like fence or csr accesses",
+        "PublicDescription": "Number of slots wasted due to serializing operations like fence or csr accesses"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots wasted while waiting for address generation and translation",
+        "PublicDescription": "TMA slots wasted while waiting for address generation and translation"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L1_MISS.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots wasted while waiting for address translation which missed L1 TLB",
+        "PublicDescription": "TMA slots wasted while waiting for address translation which missed L1 TLB"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L2_MISS.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots wasted while waiting for address translation which missed L2 TLB",
+        "PublicDescription": "TMA slots wasted while waiting for address translation which missed L2 TLB"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots wasted while waiting for data",
+        "PublicDescription": "TMA slots wasted while waiting for data"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L1_MISS.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L1 data cache",
+        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L1 data cache"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L2_MISS.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L2 cache",
+        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L2 cache"
+    },
+    {
+        "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L3_MISS.SLOTS",
+        "EventCode": "0x0",
+        "BriefDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L3 cache",
+        "PublicDescription": "TMA slots unused due to the stalls caused by memory instructions which missed L3 cache"
+    }
+    
+]

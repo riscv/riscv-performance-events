@@ -1,0 +1,22 @@
+.TOPDOWN group events
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|TOPDOWN.SLOTS |TMA slots available for an unhalted hart. In case of SMT the counts are distributed cycles between all active harts in the same physical core.
+|TOPDOWN.FRONTEND_BOUND.SLOTS |TMA slots unused due to the frontend did not supply enough operations
+|TOPDOWN.BAD_SPECULATION.SLOTS |TMA slots wasted due to incorrect speculations. This include slots used to issue uops that do not eventually get retired and slots for which the issue-pipeline was blocked due to recovery from earlier incorrect speculation. For example; wasted slots due to miss-predicted branches should be accounted by this event. Incorrect data speculation followed by Memory Ordering Nukes is another example.
+|TOPDOWN.BAD_SPECULATION.CONTROL_FLOW.SLOTS |TMA slots wasted due to incorrect control flow speculations.
+|TOPDOWN.BAD_SPECULATION.MEM_ORDERING.SLOTS |TMA slots wasted due to memory ordering violations.
+|TOPDOWN.BACKEND_BOUND.SLOTS |TMA slots unused due to the lack of backend resources
+|TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS |TMA slots unused due to the stalls caused by load and store instructions
+|TOPDOWN.BACKEND_BOUND.CORE.SLOTS |TMA slots unused due to the non-memory stalls
+|TOPDOWN.BACKEND_BOUND.CORE.SERIALIZING.SLOTS |Number of slots wasted due to serializing operations like fence or csr accesses
+|TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.SLOTS |TMA slots wasted while waiting for address generation and translation
+|TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L1_MISS.SLOTS |TMA slots wasted while waiting for address translation which missed L1 TLB
+|TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.L2_MISS.SLOTS |TMA slots wasted while waiting for address translation which missed L2 TLB
+|TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS |TMA slots wasted while waiting for data
+|TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L1_MISS.SLOTS |TMA slots unused due to the stalls caused by memory instructions which missed L1 data cache
+|TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L2_MISS.SLOTS |TMA slots unused due to the stalls caused by memory instructions which missed L2 cache
+|TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L3_MISS.SLOTS |TMA slots unused due to the stalls caused by memory instructions which missed L3 cache
+|===
+

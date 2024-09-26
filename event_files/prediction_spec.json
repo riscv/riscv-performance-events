@@ -1,0 +1,14 @@
+[
+    {
+        "EventName": "FLUSH.SPEC",
+        "EventCode": "0x0",
+        "BriefDescription": "Counts pipeline flushes due to all reasons",
+        "PublicDescription": "Counts pipeline flushes due to all reasons - such as branch misprediction, memory disambiguation, serializing instructions"
+    },
+    {
+        "EventName": "FLUSH.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles to recover from pipeline flushes",
+        "PublicDescription": "Cycles to recover from pipeline flushes due to any reason. Examples: branch misprediction, memory disambiguation, serializing instruction"
+    }
+]

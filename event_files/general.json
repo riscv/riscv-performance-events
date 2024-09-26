@@ -1,0 +1,8 @@
+[
+    {
+        "EventName": "CYCLES.HART",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles when the hart is not in halt state",
+        "PublicDescription": "Cycles when the hart is not in halt state. The cycles are counted with real (potentially variable) frequency the hart is working at"
+    }
+]

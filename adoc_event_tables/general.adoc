@@ -1,0 +1,7 @@
+.GEN group events
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|CYCLES.HART |Cycles when the hart is not in halt state. The cycles are counted with real (potentially variable) frequency the hart is working at
+|===
+

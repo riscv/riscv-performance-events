@@ -1,0 +1,12 @@
+.SPEC group events
+[width="100%",cols="30%,70%",options="header",]
+|===
+|Name |Description
+|INST.SPEC |Number of instructions issued
+|INST.LOAD.SPEC |Number of memory load instructions issued
+|INST.STORE.SPEC |Number of memory store instructions issued
+|INST.INT.SPEC |Number of integer instructions issued
+|INST.FPU.SPEC |Number of FPU instructions issued
+|UOP.SPEC |Number of micro-operations issued
+|===
+
