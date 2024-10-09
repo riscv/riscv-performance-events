@@ -79,10 +79,11 @@ This group contains events and metrics related for Topdown Microarchitecture Ana
 
 TMA allows even developers with minimal microarchitecture knowledge to understand, for a given workload, where bottlenecks reside.  It does so by accounting for the utilization of each pipeline "slot" in the microarchitecture.  When the hardware is utilized with optimal efficiency, each slot is occupied by an instruction or micro-operation (a.k.a., uop) that will go on to execute and retire.  When bottlenecks occur, due perhaps to a cache miss, branch misprediction, or any number of other microarchitectural conditions, some slots may be either unused or thrown away, which results in inefficiency and ultimately reduced performance.  TMA is able to identify these wasted slots, and the stalls, clears, misses, or other events which caused them.  This enables developers to make informed decisions when tuning their code.
 
-TMA accomplishes this by defining a set of hierarchical states into which each slot falls, based on the boundary between the frontend (instruction fetch and decode) and the backend (instruction execution and retire) of the processor.  Each cycle, the frontend can issue some implementation-defined number _N_ instructions/uops to the backend, hence there are _N_ issue slots to be categorized per cycle.  At the top level, issue slots fall into one of states depicted in the figure below.
+TMA accomplishes this by defining a set of hierarchical states into which each slot falls, based on the boundary between the frontend (instruction fetch and decode) and the backend (instruction execution and retire) of the processor.  Each cycle, the frontend can issue some implementation-defined number (_N_) of instructions/uops to the backend, hence there are _N_ issue slots to be categorized per cycle.  At the top level of the TMA hierarchy, issue slots fall into one of states depicted in the figure below.
 
+[align="center"]
 .Topdown Level 1
-image::images/tma-l1.png[TMA Level 1]
+image::images/tma-l1.svg[TMA Level 1]
 
 * Frontend Bound - The frontend did not issue a uop to the backend for execution.  Example causes include stalls that result from cache or TLB misses during instruction fetch.
 * Backend Bound - The backend could not consume an uop from the frontend.  Example causes include backpressure that results from cache or TLB misses on data (load/store) accesses, or from oversubscribed execution units.
@@ -91,8 +92,9 @@ image::images/tma-l1.png[TMA Level 1]
 
 Many of the top-level states listed above include further breakdown at the 2nd and 3rd levels of the TMA hierarchy.  See details in the figure below.
 
+[align="center"]
 .Topdown Hierarchy
-image::images/tma-full.png[TMA Hierarchy]
+image::images/tma-full.svg[TMA Hierarchy]
 
 [NOTE]
 ====
