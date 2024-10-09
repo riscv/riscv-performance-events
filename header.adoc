@@ -1,5 +1,5 @@
 = RISC-V Hart Performance Events
-Authors: Author 1, Author 2
+Authors: RISC-V Performance Events TG
 :docgroup: RISC-V Performance Events TG
 :description: RISC-V Hart Performance Events
 :company: RISC-V.org
@@ -12,8 +12,8 @@ Authors: Author 1, Author 2
 :preface-title: Preamble
 :colophon:
 :appendix-caption: Appendix
-:imagesdir: docs-resources/images
-:title-logo-image: image:risc-v_logo.png[pdfwidth=3.25in,align=center]
+:imagesdir: 
+:title-logo-image: image:docs-resources/images/risc-v_logo.png[pdfwidth=3.25in,align=center]
 // Settings:
 :experimental:
 :reproducible:
