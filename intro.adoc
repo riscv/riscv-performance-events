@@ -9,4 +9,6 @@ The Performance Events non-ISA extension provides a set of standard performance 
 [%unbreakable]
 ====
 This extension does not standardize event selector values - these are left up to implementations.
+
+An implementation may opt to support any of the standard events described below as an event formula rather than a hardware event.  As an example, for a typical implementation, the TOPDOWN.SLOTS event count could be derived from CYCLES.HART * ConstantIssueWidth.  It is strongly advised that any such formulas require counting no more events than the number of programmable counters implemented can support simultaneously.  Requiring the workload to be run multiple times to satisfy a single formula risks run-to-run noise reducing the fidelity of the profile results.  Also, implementing an event as a formula means that the user cannot use Sscofpmf to sample on that event.  Thus care should be taken when choosing which (if any) events to support in this manner.
 ====
