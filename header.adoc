@@ -1,7 +1,7 @@
 = RISC-V Performance Events
 Authors: Author 1, Author 2
-:docgroup: RISC-V Task Group
-:description: RISC-V Performance Events
+:docgroup: RISC-V Performance Events TG
+:description: RISC-V Hart Performance Events
 :company: RISC-V.org
 :revdate: 09/2024
 :revnumber: 1.0
