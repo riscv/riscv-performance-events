@@ -1,4 +1,4 @@
-= RISC-V Performance Events
+= RISC-V Hart Performance Events
 Authors: Author 1, Author 2
 :docgroup: RISC-V Performance Events TG
 :description: RISC-V Hart Performance Events
