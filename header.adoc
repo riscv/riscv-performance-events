@@ -1,7 +1,7 @@
-= RISC-V Performance Events
-Authors: Author 1, Author 2
-:docgroup: RISC-V Task Group
-:description: RISC-V Performance Events
+= RISC-V Hart Performance Events
+Authors: RISC-V Performance Events TG
+:docgroup: RISC-V Performance Events TG
+:description: RISC-V Hart Performance Events
 :company: RISC-V.org
 :revdate: 09/2024
 :revnumber: 1.0
@@ -12,8 +12,8 @@ Authors: Author 1, Author 2
 :preface-title: Preamble
 :colophon:
 :appendix-caption: Appendix
-:imagesdir: docs-resources/images
-:title-logo-image: image:risc-v_logo.png[pdfwidth=3.25in,align=center]
+:imagesdir: 
+:title-logo-image: image:docs-resources/images/risc-v_logo.png[pdfwidth=3.25in,align=center]
 // Settings:
 :experimental:
 :reproducible:
