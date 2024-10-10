@@ -77,20 +77,20 @@ include::adoc_event_tables/tlb_spec_metrics.adoc[]
 
 This group contains events and metrics related for Topdown Microarchitecture Analysis (TMA) methodology.
 
-TMA allows even developers with minimal microarchitecture knowledge to understand, for a given workload, where bottlenecks reside.  It does so by accounting for the utilization of each pipeline "slot" in the microarchitecture.  When the hardware is utilized with optimal efficiency, each slot is occupied by an instruction or micro-operation (a.k.a., uop) that will go on to execute and retire.  When bottlenecks occur, due perhaps to a cache miss, branch misprediction, or any number of other microarchitectural conditions, some slots may be either unused or thrown away, which results in inefficiency and ultimately reduced performance.  TMA is able to identify these wasted slots, and the stalls, clears, misses, or other events which caused them.  This enables developers to make informed decisions when tuning their code.
+TMA allows even developers with minimal microarchitecture knowledge to understand, for a given workload, where bottlenecks reside.  It does so by accounting for the utilization of each pipeline "slot" in the microarchitecture.  When the hardware is utilized with optimal efficiency, each slot is occupied by an instruction or micro-operation (uop) that will go on to execute and retire.  When bottlenecks occur, due perhaps to a cache miss, branch misprediction, or any number of other microarchitectural conditions, some slots may be either unused or thrown away, which results in inefficiency and reduced performance.  TMA is able to identify these wasted slots, and the stalls, clears, misses, or other events that cause them.  This enables developers to make informed decisions when tuning their code.
 
-TMA accomplishes this by defining a set of hierarchical states into which each slot falls, based on the boundary between the frontend (instruction fetch and decode) and the backend (instruction execution and retire) of the processor.  Each cycle, the frontend can issue some implementation-defined number (_N_) of instructions/uops to the backend, hence there are _N_ issue slots to be categorized per cycle.  At the top level of the TMA hierarchy, issue slots fall into one of states depicted in the figure below.
+TMA accomplishes this by defining a set of hierarchical states into which each slot is categorized.  Each cycle, the frontend of the processor (responsible for instruction fetch and decode) can issue some implementation-defined number (_N_) of instructions/uops to the backend (instruction execution and retire).  Hence there are _N_ issue slots to be categorized per cycle.  At the top level of the TMA hierarchy, issue slots are categorized as described below.
 
 [align="center"]
 .Topdown Level 1
 image::images/tma-l1.svg[TMA Level 1]
 
 * Frontend Bound - The frontend did not issue a uop to the backend for execution.  Example causes include stalls that result from cache or TLB misses during instruction fetch.
-* Backend Bound - The backend could not consume an uop from the frontend.  Example causes include backpressure that results from cache or TLB misses on data (load/store) accesses, or from oversubscribed execution units.
+* Backend Bound - The backend could not consume a uop from the frontend.  Example causes include backpressure that results from cache or TLB misses on data (load/store) accesses, or from oversubscribed execution units.
 * Bad Speculation - The uop was dropped, as a result of a pipeline clear.  Example clears include branch/jump mispredictions, or memory ordering clears.  This category also includes pipeline clear recovery cycles, during which issue slots go unfilled.
 * Retiring - The uop retired.  Ideally the majority of slots fall into this state.
 
-Many of the top-level states listed above include further breakdown at the 2nd and 3rd levels of the TMA hierarchy.  See details in the figure below.
+Many of the top-level states listed above include further breakdown at the 2nd and 3rd levels of the TMA hierarchy, as illustrated below.
 
 [align="center"]
 .Topdown Hierarchy
@@ -98,10 +98,12 @@ image::images/tma-full.svg[TMA Hierarchy]
 
 [NOTE]
 ====
-_Some imprecision within the event hierarchy is allowed and even expected.  The standard L2 and L3 events are unlikely to sum precisely to the parent L1 or L2 events, respectively, as it is expected that there are additional sources of bottlenecks beyond those represented by the standard events.  The exception is the Backend Bound L2 events (Core Bound and Memory Bound), which ideally should sum to the Backend Bound event total._
+_Some imprecision within the event hierarchy is allowed and even expected.  The standard L2 and L3 events may not sum precisely to the parent L1 or L2 events, respectively, as it is expected that there will be some additional sources of bottlenecks beyond those represented by the standard events.  The exception is the Backend Bound L2 events (Core Bound and Memory Bound), which ideally should sum to the Backend Bound event total._
 
 _Implementations may opt to add custom L2 or L3 events, to identify additional bottlenecks specific to the microarchitecture._
 ====
+
+The events which follow count slots for each of the states listed above, while the metrics express the slots per state value as a percentage of total slots.
 
 include::adoc_event_tables/topdown.adoc[]
 
