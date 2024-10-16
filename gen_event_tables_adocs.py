@@ -4,7 +4,7 @@ import json
 event_files = ['cache_retired.json', 'cache_spec.json', 'prediction_retired.json',
                'prediction_spec.json', 'rvv_retired.json', 'rvv_spec.json',
                'tlb_retired.json', 'tlb_spec.json', 'topdown.json',
-               'general.json', 'retired.json', 'spec.json']
+               'general.json']
 
 metric_files = ['cache_retired_metrics.json', 'cache_spec_metrics.json',
                 'prediction_metrics.json', 'rvv_retired_metrics.json', 'rvv_spec_metrics.json',
@@ -19,9 +19,7 @@ file_to_group = {'cache_retired.json': 'CACHE',
                  'tlb_retired.json': 'TLB',
                  'tlb_spec.json': 'TLB',
                  'topdown.json': 'TOPDOWN',
-                 'general.json': 'GEN',
-                 'retired.json': 'RETIRED',
-                 'spec.json': 'SPEC',
+                 'general.json': 'GENERAL',
                  'cache_retired_metrics.json': 'CACHE',
                  'cache_spec_metrics.json': 'CACHE',
                  'prediction_metrics.json': 'CTRL_FLOW',

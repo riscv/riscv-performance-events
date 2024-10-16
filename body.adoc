@@ -9,23 +9,11 @@ In addition most of the groups are further split into 2 variants:
 
 In general RETIRED events look more useful for performance analysis. In addition in the future it may be possible to provide more context for them - e.g. precise sample IP. But on the other hand they it may be significantly more expensive to implement. It is up to implementations to decide if they want to provide RETIRED, SPEC or both variants of a group.
 
-=== GEN
+=== GENERAL
 
 This group contains general events not specific to a particular part of CPU pipeline. 
 
 include::adoc_event_tables/general.adoc[]
-
-=== RETIRED
-
-This group contains events measured at retirement which didn't fall into any specific group below.
-
-include::adoc_event_tables/retired.adoc[]
-
-=== SPEC
-
-This group contains speculative events which didn't fall into any specific group below.
-
-include::adoc_event_tables/spec.adoc[]
 
 === CTRL_FLOW (retirement)
 
