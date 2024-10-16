@@ -16,5 +16,7 @@
 |INST.FPU.SPEC |Number of FPU instructions issued
 |UOP.RET |Number of micro-operations retired
 |UOP.SPEC |Number of micro-operations issued
+|FLUSH.SPEC |Counts pipeline flushes due to all reasons - such as branch misprediction, memory disambiguation, serializing instructions
+|FLUSH.CYCLES |Cycles to recover from pipeline flushes due to any reason. Examples: branch misprediction, memory disambiguation, serializing instruction
 |===
 

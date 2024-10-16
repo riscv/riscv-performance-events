@@ -2,9 +2,8 @@ from pathlib import Path
 import json
 
 event_files = ['cache_retired.json', 'cache_spec.json', 'prediction_retired.json',
-               'prediction_spec.json', 'rvv_retired.json', 'rvv_spec.json',
-               'tlb_retired.json', 'tlb_spec.json', 'topdown.json',
-               'general.json']
+               'rvv_retired.json', 'rvv_spec.json', 'tlb_retired.json', 'tlb_spec.json',
+               'topdown.json', 'general.json']
 
 metric_files = ['cache_retired_metrics.json', 'cache_spec_metrics.json',
                 'prediction_metrics.json', 'rvv_retired_metrics.json', 'rvv_spec_metrics.json',

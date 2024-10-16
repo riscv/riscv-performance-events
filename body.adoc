@@ -23,12 +23,6 @@ include::adoc_event_tables/prediction_retired.adoc[]
 
 include::adoc_event_tables/prediction_metrics.adoc[]
 
-=== CTRL_FLOW (speculative)
-
-Speculation prediction group. Unlike most of the groups below prediction events mostly naturally counted only at retirement time. So this group contains only a few events which make sense to count speculatively.
-
-include::adoc_event_tables/prediction_spec.adoc[]
-
 === CACHE (retirement)
 
 This group contains events and metrics for data and instruction caches (all levels) counted at retirement.
