@@ -36,8 +36,10 @@
 |CACHE.L2.PREF.MERGE |L2 cache hits caused by prefetcher where data is not yet in cache but was already requested by preceding miss.
 |CACHE.L2.PREF.UNUSED |Number of cachelines brought into L2 by prefetcher and evicted without being accessed even once.
 |CACHE.L2.WB |Writebacks to next level cache or memory.
-|CACHE.SNOOP.LOCAL_REQ_REMOTE_HITM.SPEC |Private cache misses where data was found in another core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.
-|CACHE.SNOOP.REMOTE_REQ_LOCAL_HITM |Snoop requests which found cacheline in the core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.
+|CACHE.SNOOP.LOCAL_REQ_REMOTE_HITM.SPEC |Private cache misses where data was found in another core cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines.
+|CACHE.L1.SNOOP.REMOTE_REQ_LOCAL_HITM |Snoop requests which found cacheline in the L1 data cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines.
+|CACHE.L2.SNOOP.REMOTE_REQ_LOCAL_HITM |Snoop requests which found cacheline in the L2 cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines.
+|CACHE.L3.SNOOP.REMOTE_REQ_LOCAL_HITM |Snoop requests which found cacheline in the L3 cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines.
 |CACHE.L3.LOAD.ACCESS.SPEC |L3 cache accesses for load instructions. Speculatively executed instructions are also taken into account.
 |CACHE.L3.LOAD.MISS.SPEC |L3 cache misses for load instructions. Speculatively executed instructions are also taken into account.
 |CACHE.L3.LOAD.HIT.SPEC |L3 cache hits for load instructions. Speculatively executed instructions are also taken into account.
