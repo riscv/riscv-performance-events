@@ -146,7 +146,7 @@
     {
         "MetricName": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.DATA_BOUND.L2_BOUND.RATE",
         "BriefDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from L2 cache",
-        "MetricExpr": "(TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L1_MISS.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.DATA.L2_MISS.SLOTS) / TOPDOWN.SLOTS",
+        "MetricExpr": "(TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L1_MISS.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.DATA.L2_MISS.SLOTS) / TOPDOWN.SLOTS",
         "MetricThreshold": "TOPDOWN.BACKEND_BOUND.MEMORY_BOUND.L2_BOUND.RATE > 0.1",
         "PublicDescription": "Fraction of slots unused due to the stalls caused by load instructions which got data from L2 cache",
         "ScaleUnit": "100%"
