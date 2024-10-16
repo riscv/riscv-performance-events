@@ -2,9 +2,6 @@
 [width="100%",cols="25%,40%,35%",options="header",]
 |===
 |Name |Description |Formula
-|TOPDOWN.SLOTS |For implementations which do not provide TOPDOWN.SLOTS as explicit event it is possible to calculate it as metric using CYCLES.HART event. |pipeline_width * CYCLES.HART
-|TOPDOWN.BAD_SPECULATION.SLOTS |For implementations which do not provide TOPDOWN.BAD_SPECULATION.SLOTS as explicit event it is possible to calculate it as metric. It consiste of two part - the number of cancelled operations (UOP.SPEC - UOP.RET) and the number of slots wasted on recovery from pipeline flush (pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES) |UOP.SPEC - UOP.RET + pipeline_width * PRD.PIPELINE_FLUSH.RECOVERY_CYCLES
-|TOPDOWN.BACKEND_BOUND.CORE.SLOTS |For implementations which do not provide TOPDOWN.BACKEND_BOUND.CORE.SLOTS as explicit event it is possible to calculate it as metric by subtracting memory bound slots from all backend bound slots |TOPDOWN.BACKEND_BOUND.SLOTS - TOPDOWN.BACKEND_BOUND.MEMORY.SLOTS
 |TOPDOWN.BAD_SPECULATION |Fraction of slots wasted due to incorrect speculations. This include slots used to issue uops that do not eventually get retired and slots for which the issue-pipeline was blocked due to recovery from earlier incorrect speculation. |TOPDOWN.BAD_SPECULATION.SLOTS / TOPDOWN.SLOTS
 |TOPDOWN.BAD_SPECULATION.MISPRED.RATE |Fraction of slots wasted due to incorrect control flow speculations |TOPDOWN.BAD_SPECULATION.MISPRED.SLOTS / TOPDOWN.SLOTS
 |TOPDOWN.BAD_SPECULATION.MEM_ORDERING.RATE |Fraction of slots wasted due to memory ordering violations |TOPDOWN.BAD_SPECULATION.MEM_ORDERING.SLOTS / TOPDOWN.SLOTS
