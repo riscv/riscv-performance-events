@@ -4,10 +4,10 @@
 All the events and metrics are split between several groups which are described in details sub-sections below.
 In addition most of the groups are further split into 2 variants:
 
-* RETIRED - for events counted at retirement. For example, CACHE_RETIRED.L2.LOAD.MISS event will count L2 misses caused by retired load instructions
-* SPEC - for speculative events. For example, CACHE_SPEC.L2.LOAD.MISS event will count L2 misses caused by load instructions regardless of whether they were retired or not.
+* RET - for non-speculative events counted at retirement. For example, INST.RET counts retired instructions.
+* SPEC - for speculative events. For example, INST.SPEC counts instructions that are issued to the backend pipeline, regardless of whether they retire.
 
-In general RETIRED events look more useful for performance analysis. In addition in the future it may be possible to provide more context for them - e.g. precise sample IP. But on the other hand they it may be significantly more expensive to implement. It is up to implementations to decide if they want to provide RETIRED, SPEC or both variants of a group.
+NOTE: _In general, RET events are more useful for performance analysis, since they are consistent with software's view of the instruction flow. But they can be significantly more expensive to implement, as they require event data to be staged along with the associated instruction to retirement. It is up to implementations to decide whether to support the RET, SPEC, or both variants of an event._
 
 === GEN
 
@@ -29,7 +29,7 @@ include::adoc_event_tables/spec.adoc[]
 
 === CTRL_FLOW (retirement)
 
-Retirement control flow group which contains events and metrics for measuring things branch mispredictions, data mis-speculations etc.
+Retirement control flow group which contains events and metrics for counting all control transfer instructions, or just those that were mispredicted, including breakdowns by transfer type.
 
 include::adoc_event_tables/prediction_retired.adoc[]
 
@@ -73,16 +73,41 @@ include::adoc_event_tables/tlb_spec.adoc[]
 
 include::adoc_event_tables/tlb_spec_metrics.adoc[]
 
-=== TOPDOWN
+=== TOP-DOWN
 
-This group contains events and metrics related for Topdown Microarchitecture Analysis (TMA) methodology.
+This group contains events and metrics related for Top-down Microarchitecture Analysis (TMA) methodology.
 
-The TMA methodology categorizes CPU execution time at a high level first. This step flags (reports high fraction value) some domain(s) for possible investigation. Next, the user can drill down into those flagged domains, and can safely ignore all non-flagged domains. The process is repeated in a hierarchical manner until a specific performance issue is determined or at least a small subset of candidate issues is identified for potential investigation.
+TMA is an industry-standard methodology https://ieeexplore.ieee.org/document/6844459[introduced by Intel] in characterizing the performance of SPEC CPU2006 on Intel CPUs, and since used to characterize https://www.mdpi.com/2078-2489/14/10/554[HPC workloads], https://ieeexplore.ieee.org/abstract/document/9820717[GPU workloads], https://dl.acm.org/doi/10.1145/3369383[microarchitecture changes], https://ieeexplore.ieee.org/abstract/document/9579960[pre-silicon performance validation failures], and more.
 
-Given the highly sophisticated microarchitecture, the first interesting question is how and where to do the first level breakdown? TMA chooses the issue point as it is the natural border that splits the frontend and backend portions of machine.
+TMA allows even developers with minimal microarchitecture knowledge to understand, for a given workload, where bottlenecks reside.  It does so by accounting for the utilization of each pipeline "slot" in the microarchitecture.  As an example, for a 4-wide implementation, there are 4 slots to account for each cycle.  When the hardware is utilized with optimal efficiency, each slot is occupied by an instruction or micro-operation (uop) that will go on to execute and retire.  When bottlenecks occur, due perhaps to a cache miss, branch misprediction, or any number of other microarchitectural conditions, some slots may be either unused or thrown away, which results in inefficiency and reduced performance.  TMA is able to identify these wasted slots, and the stalls, clears, misses, or other events that cause them.  This enables developers to make informed decisions when tuning their code.
 
-At issue point it classifies each pipeline-slot into one of four base categories: Frontend Bound, Backend Bound, Bad Speculation and Retiring.
-If a uop is issued in a given cycle, it would eventually either get retired or cancelled. Thus it can be attributed to either Retiring or Bad Speculation respectively. Otherwise it can be split into whether there was a backend-stall or not. A backend-stall is a backpressure mechanism the Backend asserts upon resource unavailability (e.g. lack of load buffer entries). In such a case TMA attributes the stall to the Backend, since even if the Frontend was ready with more uops it would not be able to pass them down the pipeline. If there was no backend-stall, it means the Frontend should have delivered some uops while the Backend was ready to accept them; hence it is tagged with Frontend Bound.
+TMA accomplishes this by defining a set of hierarchical states into which each slot is categorized.  Each cycle, the frontend of the processor (responsible for instruction fetch and decode) can issue some implementation-defined number (_N_) of instructions/uops to the backend (instruction execution and retire).  Hence there are _N_ issue slots to be categorized per cycle.  At the top level of the TMA hierarchy, issue slots are categorized as described below.
+
+[align="center"]
+.Topdown Level 1
+image::images/tma-l1.svg[TMA Level 1]
+
+* Frontend Bound - The frontend did not issue a uop to the backend for execution.  Example causes include stalls that result from cache or TLB misses during instruction fetch.
+* Backend Bound - The backend could not consume a uop from the frontend.  Example causes include backpressure that results from cache or TLB misses on data (load/store) accesses, or from oversubscribed execution units.
+* Bad Speculation - The uop was dropped, as a result of a pipeline clear.  Example clears include branch/jump mispredictions, or memory ordering clears.  This category also includes any pipeline clear recovery cycles during which issue slots go unfilled.
+* Retiring - The uop retired.  Ideally the majority of slots fall into this state.
+
+Many of the top-level states listed above include further breakdown at the 2nd and 3rd levels of the TMA hierarchy, as illustrated below.  
+
+[align="center"]
+.Topdown Hierarchy
+image::images/tma-full.svg[TMA Hierarchy]
+
+[NOTE]
+====
+_Some imprecision within the event hierarchy is allowed and even expected.  The standard L2 and L3 events may not sum precisely to the parent L1 or L2 events, respectively, as it is expected that there will be some additional sources of bottlenecks beyond those represented by the standard events.  The exception is the Backend Bound L2 events (Core Bound and Memory Bound), which ideally should sum to the Backend Bound event total._
+
+_Because of this possible imprecision, it is recommended that lower level TMA events are examined only when the parent event count or rate is higher than expected.  This avoids spending time on misleading L2 or L3 events that may be implemented by imprecise event formulas rather than precise hardware events._
+
+_Implementations may opt to add custom L2 or L3 events, to identify additional bottlenecks specific to the microarchitecture._
+====
+
+The events which follow count slots for each of the states listed above, while the metrics express the slots per state value as a percentage of total slots.
 
 include::adoc_event_tables/topdown.adoc[]
 
