@@ -208,14 +208,26 @@
     {
         "EventName": "CACHE.SNOOP.LOCAL_REQ_REMOTE_HITM.SPEC",
         "EventCode": "0x0",
-        "BriefDescription": "Private cache misses where data was found in another core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.",
-        "PublicDescription": "Private cache misses where data was found in another core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines."
+        "BriefDescription": "Private cache misses where data was found in another core cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines.",
+        "PublicDescription": "Private cache misses where data was found in another core cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines."
     },
     {
-        "EventName": "CACHE.SNOOP.REMOTE_REQ_LOCAL_HITM",
+        "EventName": "CACHE.L1.SNOOP.REMOTE_REQ_LOCAL_HITM",
         "EventCode": "0x0",
-        "BriefDescription": "Snoop requests which found cacheline in the core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines.",
-        "PublicDescription": "Snoop requests which found cacheline in the core cache in modified state. This event can be used to accout for contested accesses cases where several cores read/write the same cachelines."
+        "BriefDescription": "Snoop requests which found cacheline in the L1 data cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines.",
+        "PublicDescription": "Snoop requests which found cacheline in the L1 data cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines."
+    },
+    {
+        "EventName": "CACHE.L2.SNOOP.REMOTE_REQ_LOCAL_HITM",
+        "EventCode": "0x0",
+        "BriefDescription": "Snoop requests which found cacheline in the L2 cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines.",
+        "PublicDescription": "Snoop requests which found cacheline in the L2 cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines."
+    },
+    {
+        "EventName": "CACHE.L3.SNOOP.REMOTE_REQ_LOCAL_HITM",
+        "EventCode": "0x0",
+        "BriefDescription": "Snoop requests which found cacheline in the L3 cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines.",
+        "PublicDescription": "Snoop requests which found cacheline in the L3 cache in modified state. This event can be used to account for contested accesses cases where several cores read/write the same cachelines."
     },
     {
         "EventName": "CACHE.L3.LOAD.ACCESS.SPEC",
