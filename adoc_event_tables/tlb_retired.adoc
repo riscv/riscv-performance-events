@@ -8,5 +8,7 @@
 |TLB.L1.STORE.MISS.RET |Address translation requests for retired store instructions which missed L1 TLB
 |TLB.L2.LOAD.MISS.RET |Address translation requests for retired load instructions which missed L2 TLB
 |TLB.L2.STORE.MISS.RET |Address translation requests for retired store instructions which missed L2 TLB
+|TLB.L1.CODE.MISS.RET |Retired instructions which experienced L1 TLB miss on fetching.
+|TLB.L2.CODE.MISS.RET |Retired instructions which experienced L2 TLB miss on fetching.
 |===
 

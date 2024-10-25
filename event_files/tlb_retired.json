@@ -34,5 +34,17 @@
         "EventCode": "0x0",
         "BriefDescription": "Address translation requests for retired store instructions which missed L2 TLB",
         "PublicDescription": "Address translation requests for retired store instructions which missed L2 TLB"
+    },
+    {
+        "EventName": "TLB.L1.CODE.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired instructions which experienced L1 TLB miss on fetching.",
+        "PublicDescription": "Retired instructions which experienced L1 TLB miss on fetching."
+    },
+    {
+        "EventName": "TLB.L2.CODE.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired instructions which experienced L2 TLB miss on fetching.",
+        "PublicDescription": "Retired instructions which experienced L2 TLB miss on fetching."
     }
 ]
