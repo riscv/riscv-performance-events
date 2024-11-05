@@ -23,21 +23,85 @@ include::adoc_event_tables/prediction_retired.adoc[]
 
 include::adoc_event_tables/prediction_metrics.adoc[]
 
-=== CACHE (retirement)
+=== CACHE
 
-This group contains events and metrics for data and instruction caches (all levels) counted at retirement.
+This group contains events and metrics for instruction, data, and unified caches.  Events in this group count accesses from the cache's perspective; if an instruction performs two cache accesses, they will be counted separately.  Further, all events in this group count speculative accesses.
 
-include::adoc_event_tables/cache_retired.adoc[]
+The top level of the CACHE event hierarchy idenfies the cache associated with the event.  The standard caches are enumerated in the table below.  An implementation is expected to support only the events associated with caches implemented in the design.
 
-include::adoc_event_tables/cache_retired_metrics.adoc[]
+.CACHE Event Caches
+[cols="20%,80%"]
+|===
+| L1D | Level 1 data cache
+| L1I | Level 1 instruction cache
+| L2 | Level 2 cache
+| L3 | Level 3 cache
+| LL | Last level cache
+|===
 
-=== CACHE (speculative)
+NOTE: The events for the last level cache may be aliased to the events for one of the cache levels listed above it.
 
-This group contains events and metrics for data and instruction caches (all levels) counted speculatively.
+NOTE: Some of the caches listed above may reside outside the processor core.  In such cases, associated events may not be able to be counted by the core PMU.
 
-include::adoc_event_tables/cache_spec.adoc[]
+The second level of the CACHE event hierarchy identifies the access or operation type, as shown in the table below.
 
-include::adoc_event_tables/cache_spec_metrics.adoc[]
+.CACHE Event Access or Operation Type
+[cols="20%,80%"]
+|===
+| LOAD | Data reads.  This includes explicit accesses (e.g., LW instructions) and implicit accesses (e.g., page table walks).  If PREF_I and CODE access types below are implemented, it is recommended that LOAD not include prefetch or code fetch accesses.
+| STORE | Data writes.  This includes explicit accesses (e.g., SW instructions) and implicit accesses (e.g., page accessed/dirty bit updates).
+| RFO | Data reads-for-ownership.  These are a subset of the LOAD type, counting only those reads that require data returned in exclusive state, as part of a read-modify-write operation.
+| PREF_I | Incoming prefetch reads.
+| CODE | Code fetch reads.
+| PREF_O | Outbound prefetches, for the purpose of pulling lines into the associated cache.
+| SNOOP | Cache coherency snoops.
+| REFILL | Incidences where a cache miss results in data from memory or an outer cache filling a line in the cache.
+| WB | Modified lines written out from the cache to memory or to an outer cache.
+|===
+
+Some events in the CACHE event hierarchy include additional levels.  For cache lookup access types (LOAD, STORE, RFO, PREF_I, and CODE), a third level counts per lookup result.
+
+.CACHE Event Lookup Results
+[cols="20%,80%"]
+|===
+| ACCESS | Cache lookups
+| HIT    | Cache hits
+| MISS   | Cache misses
+| MERGE  | Lookups that merged with an outstanding lookup
+|===
+
+For the LOAD type, there is additionally a MISS.CYCLES event that counts core cycles (at the rate of the Zicntr cycle counter) while a load miss is outstanding.
+
+The SNOOP type events have two additional levels of hierarchy.
+
+.CACHE Event Snoop Types
+[cols="20%,80%"]
+|===
+| LOCAL  | Snoops from accesses local to the hart
+| REMOTE | Snoops from remote harts
+|===
+
+.CACHE Event Snoop Results
+[cols="20%,80%"]
+|===
+| ACCESS | Snoop lookups
+| HIT    | Snoops that hit unmodified data
+| HITM   | Snoops that hit modified data
+| MISS   | Snoops that miss
+|===
+
+The PREF_O type events have an additional level of hierarchy.
+[cols="20%,80%"]
+|===
+| ISSUED | Prefetch issued
+| UNUSED | Line was prefetched into the cache, but was invalidated or replaced before it was accessed
+|===
+
+The full set of CACHE events and metrics is shown below.
+
+include::adoc_event_tables/cache.adoc[]
+
+include::adoc_event_tables/cache_metrics.adoc[]
 
 === TLB (retirement)
 
