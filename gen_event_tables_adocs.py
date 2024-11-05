@@ -1,16 +1,15 @@
 from pathlib import Path
 import json
 
-event_files = ['cache_retired.json', 'cache_spec.json', 'prediction_retired.json',
+event_files = ['cache.json', 'prediction_retired.json',
                'rvv_retired.json', 'rvv_spec.json', 'tlb_retired.json', 'tlb_spec.json',
                'topdown.json', 'general.json']
 
-metric_files = ['cache_retired_metrics.json', 'cache_spec_metrics.json',
+metric_files = ['cache_metrics.json', 
                 'prediction_metrics.json', 'rvv_retired_metrics.json', 'rvv_spec_metrics.json',
                 'tlb_retired_metrics.json', 'tlb_spec_metrics.json', 'topdown_metrics.json']
 
-file_to_group = {'cache_retired.json': 'CACHE',
-                 'cache_spec.json': 'CACHE',
+file_to_group = {'cache.json': 'CACHE',
                  'prediction_retired.json': 'CTRL_FLOW',
                  'prediction_spec.json': 'CTRL_FLOW',
                  'rvv_retired.json': 'RVV',
@@ -19,8 +18,7 @@ file_to_group = {'cache_retired.json': 'CACHE',
                  'tlb_spec.json': 'TLB',
                  'topdown.json': 'TOPDOWN',
                  'general.json': 'GENERAL',
-                 'cache_retired_metrics.json': 'CACHE',
-                 'cache_spec_metrics.json': 'CACHE',
+                 'cache_metrics.json': 'CACHE',
                  'prediction_metrics.json': 'CTRL_FLOW',
                  'rvv_retired_metrics.json': 'RVV',
                  'rvv_spec_metrics.json': 'RVV',
@@ -33,7 +31,7 @@ file_to_group = {'cache_retired.json': 'CACHE',
 def generate_event_adoc(data, out_file, group_name):
     out_file.write('.' + group_name + ' group events\n')
     # out_file.write('[%unbreakable]\n')
-    out_file.write('[width="100%",cols="30%,70%",options="header",]\n')
+    out_file.write('[width="100%",cols="35%,65%",options="header",]\n')
     out_file.write('|===\n')
     out_file.write('|Name |Description\n')
     for event in data:
