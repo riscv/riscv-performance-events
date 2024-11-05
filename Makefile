@@ -51,15 +51,19 @@ build:
 
 build-container:
 	@echo "Starting build inside Docker container..."
+	mkdir -p adoc_event_tables
+	python3 ./gen_event_tables_adocs.py
 	$(DOCKER_RUN) /bin/sh -c "$(ASCIIDOCTOR_PDF) $(OPTIONS) $(REQUIRES) --out-file=$(PDF_RESULT) $(HEADER_SOURCE)"
 	@echo "Build completed successfully inside Docker container."
 
 build-no-container:
 	@echo "Starting build..."
+	mkdir -p adoc_event_tables
+	python3 ./gen_event_tables_adocs.py
 	$(ASCIIDOCTOR_PDF) $(OPTIONS) $(REQUIRES) --out-file=$(PDF_RESULT) $(HEADER_SOURCE)
 	@echo "Build completed successfully."
 
 clean:
 	@echo "Cleaning up generated files..."
-	rm -f $(PDF_RESULT)
+	rm -rf $(PDF_RESULT) adoc_event_tables
 	@echo "Cleanup completed."
