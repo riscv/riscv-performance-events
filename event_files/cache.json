@@ -1,81 +1,81 @@
 [
     {
-        "EventName": "CACHE.L1D.LOAD.ACCESS",
+        "EventName": "CACHE.L1D.RD.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses to the L1D cache.",
         "PublicDescription": "Read accesses to the L1D cache."
     },
     {
-        "EventName": "CACHE.L1D.LOAD.MISS",
+        "EventName": "CACHE.L1D.RD.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that miss the L1D cache.",
         "PublicDescription": "Read accesses that miss the L1D cache."
     },
     {
-        "EventName": "CACHE.L1D.LOAD.HIT",
+        "EventName": "CACHE.L1D.RD.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that hit the L1D cache.",
         "PublicDescription": "Read accesses that hit the L1D cache."
     },
     {
-        "EventName": "CACHE.L1D.LOAD.MERGE",
+        "EventName": "CACHE.L1D.RD.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that merge into an outstanding L1D cache miss request.",
         "PublicDescription": "Read accesses that merge into an outstanding L1D cache miss request."
     },
     {
-        "EventName": "CACHE.L1D.LOAD.MISS.CYCLES",
+        "EventName": "CACHE.L1D.RD.DATA.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses to the L1D cache.",
+        "PublicDescription": "Demand data read accesses to the L1D cache."
+    },
+    {
+        "EventName": "CACHE.L1D.RD.DATA.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that miss the L1D cache.",
+        "PublicDescription": "Demand data read accesses that miss the L1D cache."
+    },
+    {
+        "EventName": "CACHE.L1D.RD.DATA.HIT",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that hit the L1D cache.",
+        "PublicDescription": "Demand data read accesses that hit the L1D cache."
+    },
+    {
+        "EventName": "CACHE.L1D.RD.DATA.MERGE",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that merge into an outstanding L1D cache miss request.",
+        "PublicDescription": "Demand data read accesses that merge into an outstanding L1D cache miss request."
+    },
+    {
+        "EventName": "CACHE.L1D.RD.DATA.MISS.CYCLES",
         "EventCode": "0x0",
         "BriefDescription": "Cycles while at least one L1D read miss is outstanding.",
         "PublicDescription": "Cycles while at least one L1D read miss is outstanding."
     },
     {
-        "EventName": "CACHE.L1D.STORE.ACCESS",
+        "EventName": "CACHE.L1D.WR.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses to the L1D cache.",
         "PublicDescription": "Write accesses to the L1D cache."
     },
     {
-        "EventName": "CACHE.L1D.STORE.MISS",
+        "EventName": "CACHE.L1D.WR.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that miss the L1D cache.",
         "PublicDescription": "Write accesses that miss the L1D cache."
     },
     {
-        "EventName": "CACHE.L1D.STORE.HIT",
+        "EventName": "CACHE.L1D.WR.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that hit the L1D cache.",
         "PublicDescription": "Write accesses that hit the L1D cache."
     },
     {
-        "EventName": "CACHE.L1D.STORE.MERGE",
+        "EventName": "CACHE.L1D.WR.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that write-combine into an outstanding L1D cache write.",
         "PublicDescription": "Write accesses that write-combine into an outstanding L1D cache write."
-    },
-    {
-        "EventName": "CACHE.L1D.RFO.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses to the L1D cache.",
-        "PublicDescription": "Read for ownership accesses to the L1D cache."
-    },
-    {
-        "EventName": "CACHE.L1D.RFO.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that miss the L1D cache.",
-        "PublicDescription": "Read for ownership accesses that miss the L1D cache."
-    },
-    {
-        "EventName": "CACHE.L1D.RFO.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that hit the L1D cache.",
-        "PublicDescription": "Read for ownership accesses that hit the L1D cache."
-    },
-    {
-        "EventName": "CACHE.L1D.RFO.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that merge into an outstanding L1D cache miss request.",
-        "PublicDescription": "Read for ownership accesses that merge into an outstanding L1D cache miss request."
     },
     {
         "EventName": "CACHE.L1D.ACCESS",
@@ -102,16 +102,10 @@
         "PublicDescription": "Any accesses that merge into an outstanding L1D cache miss request."
     },
     {
-        "EventName": "CACHE.L1D.PREF_O.ISSUED",
+        "EventName": "CACHE.L1D.OPREF",
         "EventCode": "0x0",
-        "BriefDescription": "Prefetch issued by the L1D prefetcher",
-        "PublicDescription": "Prefetch issued by the L1D prefetcher"
-    },
-    {
-        "EventName": "CACHE.L1D.PREF_O.UNUSED",
-        "EventCode": "0x0",
-        "BriefDescription": "Cachelines prefetched into the L1D cache that were not accessed before being replaced.",
-        "PublicDescription": "Cachelines prefetched into the L1D cache that were not accessed before being replaced."
+        "BriefDescription": "Prefetch issued by the L1D prefetcher.",
+        "PublicDescription": "Prefetch issued by the L1D prefetcher."
     },
     {
         "EventName": "CACHE.L1D.SNOOP.LOCAL.ACCESS",
@@ -198,31 +192,55 @@
         "PublicDescription": "Cacheline writebacks from the L1D cache."
     },
     {
-        "EventName": "CACHE.L1I.CODE.ACCESS",
+        "EventName": "CACHE.L1I.RD.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "Read accesses to the L1I cache.",
+        "PublicDescription": "Read accesses to the L1I cache."
+    },
+    {
+        "EventName": "CACHE.L1I.RD.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Read accesses that miss the L1I cache.",
+        "PublicDescription": "Read accesses that miss the L1I cache."
+    },
+    {
+        "EventName": "CACHE.L1I.RD.HIT",
+        "EventCode": "0x0",
+        "BriefDescription": "Read accesses that hit the L1I cache.",
+        "PublicDescription": "Read accesses that hit the L1I cache."
+    },
+    {
+        "EventName": "CACHE.L1I.RD.MERGE",
+        "EventCode": "0x0",
+        "BriefDescription": "Read accesses that merge into an outstanding L1I cache miss request.",
+        "PublicDescription": "Read accesses that merge into an outstanding L1I cache miss request."
+    },
+    {
+        "EventName": "CACHE.L1I.RD.CODE.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches to the L1I cache.",
         "PublicDescription": "Code fetches to the L1I cache."
     },
     {
-        "EventName": "CACHE.L1I.CODE.MISS",
+        "EventName": "CACHE.L1I.RD.CODE.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that miss the L1I cache.",
         "PublicDescription": "Code fetches that miss the L1I cache."
     },
     {
-        "EventName": "CACHE.L1I.CODE.HIT",
+        "EventName": "CACHE.L1I.RD.CODE.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that hit the L1I cache.",
         "PublicDescription": "Code fetches that hit the L1I cache."
     },
     {
-        "EventName": "CACHE.L1I.CODE.MERGE",
+        "EventName": "CACHE.L1I.RD.CODE.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that merge into an outstanding L1I cache miss request.",
         "PublicDescription": "Code fetches that merge into an outstanding L1I cache miss request."
     },
     {
-        "EventName": "CACHE.L1I.CODE.MISS.CYCLES",
+        "EventName": "CACHE.L1I.RD.CODE.MISS.CYCLES",
         "EventCode": "0x0",
         "BriefDescription": "Cycles while at least one L1I read miss is outstanding.",
         "PublicDescription": "Cycles while at least one L1I read miss is outstanding."
@@ -288,127 +306,127 @@
         "PublicDescription": "Cacheline refills to the L1I cache."
     },
     {
-        "EventName": "CACHE.L2.LOAD.ACCESS",
+        "EventName": "CACHE.L2.RD.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses to the L2 cache.",
         "PublicDescription": "Read accesses to the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.LOAD.MISS",
+        "EventName": "CACHE.L2.RD.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that miss the L2 cache.",
         "PublicDescription": "Read accesses that miss the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.LOAD.HIT",
+        "EventName": "CACHE.L2.RD.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that hit the L2 cache.",
         "PublicDescription": "Read accesses that hit the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.LOAD.MERGE",
+        "EventName": "CACHE.L2.RD.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that merge into an outstanding L2 cache miss request.",
         "PublicDescription": "Read accesses that merge into an outstanding L2 cache miss request."
     },
     {
-        "EventName": "CACHE.L2.LOAD.MISS.CYCLES",
+        "EventName": "CACHE.L2.RD.DATA.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses to the L2 cache.",
+        "PublicDescription": "Demand data read accesses to the L2 cache."
+    },
+    {
+        "EventName": "CACHE.L2.RD.DATA.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that miss the L2 cache.",
+        "PublicDescription": "Demand data read accesses that miss the L2 cache."
+    },
+    {
+        "EventName": "CACHE.L2.RD.DATA.HIT",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that hit the L2 cache.",
+        "PublicDescription": "Demand data read accesses that hit the L2 cache."
+    },
+    {
+        "EventName": "CACHE.L2.RD.DATA.MERGE",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that merge into an outstanding L2 cache miss request.",
+        "PublicDescription": "Demand data read accesses that merge into an outstanding L2 cache miss request."
+    },
+    {
+        "EventName": "CACHE.L2.RD.DATA.MISS.CYCLES",
         "EventCode": "0x0",
         "BriefDescription": "Cycles while at least one L2 read miss is outstanding.",
         "PublicDescription": "Cycles while at least one L2 read miss is outstanding."
     },
     {
-        "EventName": "CACHE.L2.STORE.ACCESS",
+        "EventName": "CACHE.L2.WR.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses to the L2 cache.",
         "PublicDescription": "Write accesses to the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.STORE.MISS",
+        "EventName": "CACHE.L2.WR.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that miss the L2 cache.",
         "PublicDescription": "Write accesses that miss the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.STORE.HIT",
+        "EventName": "CACHE.L2.WR.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that hit the L2 cache.",
         "PublicDescription": "Write accesses that hit the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.STORE.MERGE",
+        "EventName": "CACHE.L2.WR.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that write-combine into an outstanding L2 cache write.",
         "PublicDescription": "Write accesses that write-combine into an outstanding L2 cache write."
     },
     {
-        "EventName": "CACHE.L2.RFO.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses to the L2 cache.",
-        "PublicDescription": "Read for ownership accesses to the L2 cache."
-    },
-    {
-        "EventName": "CACHE.L2.RFO.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that miss the L2 cache.",
-        "PublicDescription": "Read for ownership accesses that miss the L2 cache."
-    },
-    {
-        "EventName": "CACHE.L2.RFO.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that hit the L2 cache.",
-        "PublicDescription": "Read for ownership accesses that hit the L2 cache."
-    },
-    {
-        "EventName": "CACHE.L2.RFO.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that merge into an outstanding L2 cache miss request.",
-        "PublicDescription": "Read for ownership accesses that merge into an outstanding L2 cache miss request."
-    },
-    {
-        "EventName": "CACHE.L2.PREF_I.ACCESS",
+        "EventName": "CACHE.L2.RD.PREF.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches to the L2 cache.",
         "PublicDescription": "Prefetches to the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.PREF_I.MISS",
+        "EventName": "CACHE.L2.RD.PREF.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches that miss the L2 cache.",
         "PublicDescription": "Prefetches that miss the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.PREF_I.HIT",
+        "EventName": "CACHE.L2.RD.PREF.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches that hit the L2 cache.",
         "PublicDescription": "Prefetches that hit the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.PREF_I.MERGE",
+        "EventName": "CACHE.L2.RD.PREF.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches that merge into an outstanding L2 cache miss request.",
         "PublicDescription": "Prefetches that merge into an outstanding L2 cache miss request."
     },
     {
-        "EventName": "CACHE.L2.CODE.ACCESS",
+        "EventName": "CACHE.L2.RD.CODE.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches to the L2 cache.",
         "PublicDescription": "Code fetches to the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.CODE.MISS",
+        "EventName": "CACHE.L2.RD.CODE.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that miss the L2 cache.",
         "PublicDescription": "Code fetches that miss the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.CODE.HIT",
+        "EventName": "CACHE.L2.RD.CODE.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that hit the L2 cache.",
         "PublicDescription": "Code fetches that hit the L2 cache."
     },
     {
-        "EventName": "CACHE.L2.CODE.MERGE",
+        "EventName": "CACHE.L2.RD.CODE.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that merge into an outstanding L2 cache miss request.",
         "PublicDescription": "Code fetches that merge into an outstanding L2 cache miss request."
@@ -438,16 +456,10 @@
         "PublicDescription": "Any accesses that merge into an outstanding L2 cache miss request."
     },
     {
-        "EventName": "CACHE.L2.PREF_O.ISSUED",
+        "EventName": "CACHE.L2.OPREF",
         "EventCode": "0x0",
-        "BriefDescription": "Prefetch issued by the L2 prefetcher",
-        "PublicDescription": "Prefetch issued by the L2 prefetcher"
-    },
-    {
-        "EventName": "CACHE.L2.PREF_O.UNUSED",
-        "EventCode": "0x0",
-        "BriefDescription": "Cachelines prefetched into the L2 cache that were not accessed before being replaced.",
-        "PublicDescription": "Cachelines prefetched into the L2 cache that were not accessed before being replaced."
+        "BriefDescription": "Prefetch issued by the L2 prefetcher.",
+        "PublicDescription": "Prefetch issued by the L2 prefetcher."
     },
     {
         "EventName": "CACHE.L2.SNOOP.LOCAL.ACCESS",
@@ -534,127 +546,127 @@
         "PublicDescription": "Cacheline writebacks from the L2 cache."
     },
     {
-        "EventName": "CACHE.L3.LOAD.ACCESS",
+        "EventName": "CACHE.L3.RD.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses to the L3 cache.",
         "PublicDescription": "Read accesses to the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.LOAD.MISS",
+        "EventName": "CACHE.L3.RD.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that miss the L3 cache.",
         "PublicDescription": "Read accesses that miss the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.LOAD.HIT",
+        "EventName": "CACHE.L3.RD.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that hit the L3 cache.",
         "PublicDescription": "Read accesses that hit the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.LOAD.MERGE",
+        "EventName": "CACHE.L3.RD.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that merge into an outstanding L3 cache miss request.",
         "PublicDescription": "Read accesses that merge into an outstanding L3 cache miss request."
     },
     {
-        "EventName": "CACHE.L3.LOAD.MISS.CYCLES",
+        "EventName": "CACHE.L3.RD.DATA.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses to the L3 cache.",
+        "PublicDescription": "Demand data read accesses to the L3 cache."
+    },
+    {
+        "EventName": "CACHE.L3.RD.DATA.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that miss the L3 cache.",
+        "PublicDescription": "Demand data read accesses that miss the L3 cache."
+    },
+    {
+        "EventName": "CACHE.L3.RD.DATA.HIT",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that hit the L3 cache.",
+        "PublicDescription": "Demand data read accesses that hit the L3 cache."
+    },
+    {
+        "EventName": "CACHE.L3.RD.DATA.MERGE",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that merge into an outstanding L3 cache miss request.",
+        "PublicDescription": "Demand data read accesses that merge into an outstanding L3 cache miss request."
+    },
+    {
+        "EventName": "CACHE.L3.RD.DATA.MISS.CYCLES",
         "EventCode": "0x0",
         "BriefDescription": "Cycles while at least one L3 read miss is outstanding.",
         "PublicDescription": "Cycles while at least one L3 read miss is outstanding."
     },
     {
-        "EventName": "CACHE.L3.STORE.ACCESS",
+        "EventName": "CACHE.L3.WR.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses to the L3 cache.",
         "PublicDescription": "Write accesses to the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.STORE.MISS",
+        "EventName": "CACHE.L3.WR.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that miss the L3 cache.",
         "PublicDescription": "Write accesses that miss the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.STORE.HIT",
+        "EventName": "CACHE.L3.WR.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that hit the L3 cache.",
         "PublicDescription": "Write accesses that hit the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.STORE.MERGE",
+        "EventName": "CACHE.L3.WR.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that write-combine into an outstanding L3 cache write.",
         "PublicDescription": "Write accesses that write-combine into an outstanding L3 cache write."
     },
     {
-        "EventName": "CACHE.L3.RFO.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses to the L3 cache.",
-        "PublicDescription": "Read for ownership accesses to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RFO.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that miss the L3 cache.",
-        "PublicDescription": "Read for ownership accesses that miss the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RFO.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that hit the L3 cache.",
-        "PublicDescription": "Read for ownership accesses that hit the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RFO.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that merge into an outstanding L3 cache miss request.",
-        "PublicDescription": "Read for ownership accesses that merge into an outstanding L3 cache miss request."
-    },
-    {
-        "EventName": "CACHE.L3.PREF_I.ACCESS",
+        "EventName": "CACHE.L3.RD.PREF.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches to the L3 cache.",
         "PublicDescription": "Prefetches to the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.PREF_I.MISS",
+        "EventName": "CACHE.L3.RD.PREF.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches that miss the L3 cache.",
         "PublicDescription": "Prefetches that miss the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.PREF_I.HIT",
+        "EventName": "CACHE.L3.RD.PREF.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches that hit the L3 cache.",
         "PublicDescription": "Prefetches that hit the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.PREF_I.MERGE",
+        "EventName": "CACHE.L3.RD.PREF.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches that merge into an outstanding L3 cache miss request.",
         "PublicDescription": "Prefetches that merge into an outstanding L3 cache miss request."
     },
     {
-        "EventName": "CACHE.L3.CODE.ACCESS",
+        "EventName": "CACHE.L3.RD.CODE.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches to the L3 cache.",
         "PublicDescription": "Code fetches to the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.CODE.MISS",
+        "EventName": "CACHE.L3.RD.CODE.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that miss the L3 cache.",
         "PublicDescription": "Code fetches that miss the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.CODE.HIT",
+        "EventName": "CACHE.L3.RD.CODE.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that hit the L3 cache.",
         "PublicDescription": "Code fetches that hit the L3 cache."
     },
     {
-        "EventName": "CACHE.L3.CODE.MERGE",
+        "EventName": "CACHE.L3.RD.CODE.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that merge into an outstanding L3 cache miss request.",
         "PublicDescription": "Code fetches that merge into an outstanding L3 cache miss request."
@@ -684,16 +696,10 @@
         "PublicDescription": "Any accesses that merge into an outstanding L3 cache miss request."
     },
     {
-        "EventName": "CACHE.L3.PREF_O.ISSUED",
+        "EventName": "CACHE.L3.OPREF",
         "EventCode": "0x0",
-        "BriefDescription": "Prefetch issued by the L3 prefetcher",
-        "PublicDescription": "Prefetch issued by the L3 prefetcher"
-    },
-    {
-        "EventName": "CACHE.L3.PREF_O.UNUSED",
-        "EventCode": "0x0",
-        "BriefDescription": "Cachelines prefetched into the L3 cache that were not accessed before being replaced.",
-        "PublicDescription": "Cachelines prefetched into the L3 cache that were not accessed before being replaced."
+        "BriefDescription": "Prefetch issued by the L3 prefetcher.",
+        "PublicDescription": "Prefetch issued by the L3 prefetcher."
     },
     {
         "EventName": "CACHE.L3.SNOOP.LOCAL.ACCESS",
@@ -780,127 +786,127 @@
         "PublicDescription": "Cacheline writebacks from the L3 cache."
     },
     {
-        "EventName": "CACHE.LL.LOAD.ACCESS",
+        "EventName": "CACHE.LL.RD.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses to the last level cache.",
         "PublicDescription": "Read accesses to the last level cache."
     },
     {
-        "EventName": "CACHE.LL.LOAD.MISS",
+        "EventName": "CACHE.LL.RD.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that miss the last level cache.",
         "PublicDescription": "Read accesses that miss the last level cache."
     },
     {
-        "EventName": "CACHE.LL.LOAD.HIT",
+        "EventName": "CACHE.LL.RD.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that hit the last level cache.",
         "PublicDescription": "Read accesses that hit the last level cache."
     },
     {
-        "EventName": "CACHE.LL.LOAD.MERGE",
+        "EventName": "CACHE.LL.RD.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Read accesses that merge into an outstanding last level cache miss request.",
         "PublicDescription": "Read accesses that merge into an outstanding last level cache miss request."
     },
     {
-        "EventName": "CACHE.LL.LOAD.MISS.CYCLES",
+        "EventName": "CACHE.LL.RD.DATA.ACCESS",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses to the last level cache.",
+        "PublicDescription": "Demand data read accesses to the last level cache."
+    },
+    {
+        "EventName": "CACHE.LL.RD.DATA.MISS",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that miss the last level cache.",
+        "PublicDescription": "Demand data read accesses that miss the last level cache."
+    },
+    {
+        "EventName": "CACHE.LL.RD.DATA.HIT",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that hit the last level cache.",
+        "PublicDescription": "Demand data read accesses that hit the last level cache."
+    },
+    {
+        "EventName": "CACHE.LL.RD.DATA.MERGE",
+        "EventCode": "0x0",
+        "BriefDescription": "Demand data read accesses that merge into an outstanding last level cache miss request.",
+        "PublicDescription": "Demand data read accesses that merge into an outstanding last level cache miss request."
+    },
+    {
+        "EventName": "CACHE.LL.RD.DATA.MISS.CYCLES",
         "EventCode": "0x0",
         "BriefDescription": "Cycles while at least one last level cache read miss is outstanding.",
         "PublicDescription": "Cycles while at least one last level cache read miss is outstanding."
     },
     {
-        "EventName": "CACHE.LL.STORE.ACCESS",
+        "EventName": "CACHE.LL.WR.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses to the last level cache.",
         "PublicDescription": "Write accesses to the last level cache."
     },
     {
-        "EventName": "CACHE.LL.STORE.MISS",
+        "EventName": "CACHE.LL.WR.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that miss the last level cache.",
         "PublicDescription": "Write accesses that miss the last level cache."
     },
     {
-        "EventName": "CACHE.LL.STORE.HIT",
+        "EventName": "CACHE.LL.WR.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that hit the last level cache.",
         "PublicDescription": "Write accesses that hit the last level cache."
     },
     {
-        "EventName": "CACHE.LL.STORE.MERGE",
+        "EventName": "CACHE.LL.WR.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Write accesses that write-combine into an outstanding last level cache write.",
         "PublicDescription": "Write accesses that write-combine into an outstanding last level cache write."
     },
     {
-        "EventName": "CACHE.LL.RFO.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses to the last level cache.",
-        "PublicDescription": "Read for ownership accesses to the last level cache."
-    },
-    {
-        "EventName": "CACHE.LL.RFO.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that miss the last level cache.",
-        "PublicDescription": "Read for ownership accesses that miss the last level cache."
-    },
-    {
-        "EventName": "CACHE.LL.RFO.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that hit the last level cache.",
-        "PublicDescription": "Read for ownership accesses that hit the last level cache."
-    },
-    {
-        "EventName": "CACHE.LL.RFO.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Read for ownership accesses that merge into an outstanding last level cache miss request.",
-        "PublicDescription": "Read for ownership accesses that merge into an outstanding last level cache miss request."
-    },
-    {
-        "EventName": "CACHE.LL.PREF_I.ACCESS",
+        "EventName": "CACHE.LL.RD.PREF.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches to the last level cache.",
         "PublicDescription": "Prefetches to the last level cache."
     },
     {
-        "EventName": "CACHE.LL.PREF_I.MISS",
+        "EventName": "CACHE.LL.RD.PREF.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches that miss the last level cache.",
         "PublicDescription": "Prefetches that miss the last level cache."
     },
     {
-        "EventName": "CACHE.LL.PREF_I.HIT",
+        "EventName": "CACHE.LL.RD.PREF.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches that hit the last level cache.",
         "PublicDescription": "Prefetches that hit the last level cache."
     },
     {
-        "EventName": "CACHE.LL.PREF_I.MERGE",
+        "EventName": "CACHE.LL.RD.PREF.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Prefetches that merge into an outstanding last level cache miss request.",
         "PublicDescription": "Prefetches that merge into an outstanding last level cache miss request."
     },
     {
-        "EventName": "CACHE.LL.CODE.ACCESS",
+        "EventName": "CACHE.LL.RD.CODE.ACCESS",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches to the last level cache.",
         "PublicDescription": "Code fetches to the last level cache."
     },
     {
-        "EventName": "CACHE.LL.CODE.MISS",
+        "EventName": "CACHE.LL.RD.CODE.MISS",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that miss the last level cache.",
         "PublicDescription": "Code fetches that miss the last level cache."
     },
     {
-        "EventName": "CACHE.LL.CODE.HIT",
+        "EventName": "CACHE.LL.RD.CODE.HIT",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that hit the last level cache.",
         "PublicDescription": "Code fetches that hit the last level cache."
     },
     {
-        "EventName": "CACHE.LL.CODE.MERGE",
+        "EventName": "CACHE.LL.RD.CODE.MERGE",
         "EventCode": "0x0",
         "BriefDescription": "Code fetches that merge into an outstanding last level cache miss request.",
         "PublicDescription": "Code fetches that merge into an outstanding last level cache miss request."
@@ -930,16 +936,10 @@
         "PublicDescription": "Any accesses that merge into an outstanding last level cache miss request."
     },
     {
-        "EventName": "CACHE.LL.PREF_O.ISSUED",
+        "EventName": "CACHE.LL.OPREF",
         "EventCode": "0x0",
-        "BriefDescription": "Prefetch issued by the last level cache prefetcher",
-        "PublicDescription": "Prefetch issued by the last level cache prefetcher"
-    },
-    {
-        "EventName": "CACHE.LL.PREF_O.UNUSED",
-        "EventCode": "0x0",
-        "BriefDescription": "Cachelines prefetched into the last level cache that were not accessed before being replaced.",
-        "PublicDescription": "Cachelines prefetched into the last level cache that were not accessed before being replaced."
+        "BriefDescription": "Prefetch issued by the last level cache prefetcher.",
+        "PublicDescription": "Prefetch issued by the last level cache prefetcher."
     },
     {
         "EventName": "CACHE.LL.SNOOP.LOCAL.ACCESS",
