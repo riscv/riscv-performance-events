@@ -24,12 +24,20 @@ include::adoc_event_tables/prediction_retired.adoc[]
 include::adoc_event_tables/prediction_metrics.adoc[]
 
 === CACHE
+:xrefstyle: short
 
 This group contains events and metrics for instruction, data, and unified caches.  Events in this group count accesses from the cache's perspective; if an instruction performs two cache accesses, they will be counted separately.  Further, all events in this group count speculative accesses.
 
-The top level of the CACHE event hierarchy idenfies the cache associated with the event.  The standard caches are enumerated in the table below.  An implementation is expected to support only the events associated with caches implemented in the design.
+The top level of the CACHE event hierarchy idenfies the cache associated with the event.  The standard cache naming scheme is detailed below.
 
-.CACHE Event Caches
+* The first character is L, for level.
+* The second character indicates the cache level.  The nearest cache is level 1, followed by level 2, and so on.  Level L implies the outermost cache.
+* The optional third character indicates whether the cache is limited to instruction opcodes (I) or load/store data (D).
+
+A typical example implementation might include the following caches within the CACHE event hierarchy.
+
+.CACHE Event Caches Example
+[[caches-ex]]
 [cols="20%,80%"]
 |===
 | L1D | Level 1 data cache
@@ -41,25 +49,30 @@ The top level of the CACHE event hierarchy idenfies the cache associated with th
 
 NOTE: The events for the last level cache may be aliased to the events for one of the cache levels listed above it.
 
-NOTE: Some of the caches listed above may reside outside the processor core.  In such cases, associated events may not be able to be counted by the core PMU.
+An implementation may additionally include other, custom caches within the CACHE event hierarchy.
 
-The second level of the CACHE event hierarchy identifies the access or operation type, as shown in the table below.
+Like all events in this spec, these CACHE events are per-hart.  For caches that may be shared by multiple harts, the CACHE events should increment only for occurrences directly associated with the local hart.
+
+The second level of the CACHE event hierarchy identifies the access or operation type, as shown in the table below.  Some caches may support only a subset of the defined types.
 
 .CACHE Event Access or Operation Type
 [cols="20%,80%"]
 |===
-| LOAD | Data reads.  This includes explicit accesses (e.g., LW instructions) and implicit accesses (e.g., page table walks).  If PREF_I and CODE access types below are implemented, it is recommended that LOAD not include prefetch or code fetch accesses.
-| STORE | Data writes.  This includes explicit accesses (e.g., SW instructions) and implicit accesses (e.g., page accessed/dirty bit updates).
-| RFO | Data reads-for-ownership.  These are a subset of the LOAD type, counting only those reads that require data returned in exclusive state, as part of a read-modify-write operation.
-| PREF_I | Incoming prefetch reads.
-| CODE | Code fetch reads.
-| PREF_O | Outbound prefetches, for the purpose of pulling lines into the associated cache.
-| SNOOP | Cache coherency snoops.
-| REFILL | Incidences where a cache miss results in data from memory or an outer cache filling a line in the cache.
+| RD | Data reads that lookup the cache.  This includes explicit reads (e.g., the LW instruction) and implicit reads (e.g., page table walks).  
+| RD.DATA | The subset of RDs that are data load operations.
+| RD.PREF | The subset of RDs that are incoming prefetch reads.
+| RD.CODE | The subset of RDs that are code fetch reads.
+| WR | Data writes to the cache.  This includes explicit reads (e.g., the SW instruction) and implicit reads (e.g., page accessed/dirty attribute updates).  
+| RW | Data reads and writes, the union of the RD and WR types above.
+| FILL  | Cache misses or prefetches that result in a line in the cache being filled with data from memory or an outer cache.
 | WB | Modified lines written out from the cache to memory or to an outer cache.
+| SNOOP | Cache coherency snoops.
+| OPREF | Outbound prefetches, for the purpose of pulling lines into the associated cache.
 |===
 
-Some events in the CACHE event hierarchy include additional levels.  For cache lookup access types (LOAD, STORE, RFO, PREF_I, and CODE), a third level counts per lookup result.
+For caches that may be shared by multiple harts, the request events (RD, WR, RW) and SNOOP events should increment only for requests from the local hart.  FILL and WB events should increment only for fills and writebacks resulting from requests from the local hart.  OPREF events should not increment.
+
+Some events in the CACHE event hierarchy include additional levels.  For cache lookup access types (RD*, WR, or RW), a third level counts per lookup result.
 
 .CACHE Event Lookup Results
 [cols="20%,80%"]
@@ -70,7 +83,7 @@ Some events in the CACHE event hierarchy include additional levels.  For cache l
 | MERGE  | Lookups that merged with an outstanding lookup
 |===
 
-For the LOAD type, there is additionally a MISS.CYCLES event that counts core cycles (at the rate of the Zicntr cycle counter) while a load miss is outstanding.
+For the RD.DATA type, there is additionally a MISS.CYCLES event that counts core cycles (at the rate of the Zicntr `cycle` counter) while a load miss is outstanding.
 
 The SNOOP type events have two additional levels of hierarchy.
 
@@ -81,6 +94,8 @@ The SNOOP type events have two additional levels of hierarchy.
 | REMOTE | Snoops from remote harts
 |===
 
+If neither the LOCAL or REMOTE modifier is included in the event name, then all snoops are counted.
+
 .CACHE Event Snoop Results
 [cols="20%,80%"]
 |===
@@ -90,14 +105,7 @@ The SNOOP type events have two additional levels of hierarchy.
 | MISS   | Snoops that miss
 |===
 
-The PREF_O type events have an additional level of hierarchy.
-[cols="20%,80%"]
-|===
-| ISSUED | Prefetch issued
-| UNUSED | Line was prefetched into the cache, but was invalidated or replaced before it was accessed
-|===
-
-The full set of CACHE events and metrics is shown below.
+An reference example of the full set of CACHE events and metrics, assuming the example set of caches shown above in <<caches-ex>>, is illustrated in the tables below.
 
 include::adoc_event_tables/cache.adoc[]
 
