@@ -1,0 +1,728 @@
+[
+    {
+        "EventName": "INST.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Instructions retired.",
+        "PublicDescription": "Instructions retired."
+    },
+    {
+        "EventName": "INST.BRJMP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Branches and jumps retired.",
+        "PublicDescription": "Branches and jumps retired."
+    },
+    {
+        "EventName": "INST.BRJMP.BRANCH.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Conditional branches retired.",
+        "PublicDescription": "Conditional branches retired."
+    },
+    {
+        "EventName": "INST.BRJMP.BRANCH.TK.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Taken conditional branches retired.",
+        "PublicDescription": "Taken conditional branches retired."
+    },
+    {
+        "EventName": "INST.BRJMP.BRANCH.NT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Not-taken conditional branches retired.",
+        "PublicDescription": "Not-taken conditional branches retired."
+    },
+    {
+        "EventName": "INST.BRJMP.IND.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Indirect jumps, with and without linkage, and calls retired. Does not include function returns.",
+        "PublicDescription": "Indirect jumps, with and without linkage, and calls retired. Does not include function returns. Indirect jumps and calls are defined using following encodings: FIXME"
+    },
+    {
+        "EventName": "INST.BRJMP.IND.CALL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Indirect calls retired.",
+        "PublicDescription": "Indirect calls retired. Indirect calls are defined using following encodings: 'JALR x1, rs where rs != x5'; 'JALR x5, rs where rs != x1'; 'C.JALR rs1 where rs1 != x5'"
+    },
+    {
+        "EventName": "INST.BRJMP.IND.JUMP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Indirect jumps without linkage retired.",
+        "PublicDescription": "Indirect jumps without linkage retired. Indirect jumps without linkage are defined using following encodings: 'JALR x0, rs where rs != (x1 or x5)'; 'C.JR rs1 where rs1 != (x1 or x5)'"
+    },
+    {
+        "EventName": "INST.BRJMP.IND.LJUMP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Other indirect jumps with linkage retired.",
+        "PublicDescription": "Other indirect jumps with linkage retired. Other indirect jump with linkage are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'"
+    },
+    {
+        "EventName": "INST.BRJMP.DIR.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Direct jumps, with and without linkage, and calls retired.",
+        "PublicDescription": "Direct jumps, with and without linkage, and calls retired. Direct calls and jumps are defined using following encodings: FIXME"
+    },
+    {
+        "EventName": "INST.BRJMP.DIR.CALL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Direct calls retired.",
+        "PublicDescription": "Direct calls retired. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'"
+    },
+    {
+        "EventName": "INST.BRJMP.DIR.JUMP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Direct jumps without linkage retired.",
+        "PublicDescription": "Direct jumps without linkage retired. Direct jumps without linkage are defined using following encodings: 'JAL x0'; 'C.J'"
+    },
+    {
+        "EventName": "INST.BRJMP.DIR.LJUMP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Other direct jumps with linkage retired.",
+        "PublicDescription": "Other direct jumps with linkage retired. Other direct jump with linkage are defined using following encodings: 'JAL rd where rd != (x0, x1, or x5)'"
+    },
+    {
+        "EventName": "INST.BRJMP.CORSWAP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Co-routine swaps retired.",
+        "PublicDescription": "Co-routine swaps retired. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'"
+    },
+    {
+        "EventName": "INST.BRJMP.RETURN.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Function returns retired.",
+        "PublicDescription": "Function returns retired. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'"
+    },
+    {
+        "EventName": "INST.BRJMP.TK.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired instructions that changed control flow. Includes taken branches and all jumps.",
+        "PublicDescription": "Retired instructions that changed control flow. Includes taken branches and all jumps. Includes the following encodings: FIXME"
+    },
+    {
+        "EventName": "INST.BRJMP.PRED.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Branches and predicted (indirect) jumps retired. Includes calls and returns.",
+        "PublicDescription": "Branches and predicted (indirect) jumps retired. Includes calls and returns. Includes the following encodings: FIXME"
+    },
+    {
+        "EventName": "INST.MISPRED.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Mispredicted control flow instructions retired.",
+        "PublicDescription": "Mispredicted control flow instructions retired."
+    },
+    {
+        "EventName": "INST.MISPRED.BRANCH.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Mispredicted conditional branches retired.",
+        "PublicDescription": "Mispredicted conditional branches retired."
+    },
+    {
+        "EventName": "INST.MISPRED.BRANCH.TK.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Taken conditional branches retired.",
+        "PublicDescription": "Taken conditional branches retired."
+    },
+    {
+        "EventName": "INST.MISPRED.BRANCH.NT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Not-taken conditional branches retired.",
+        "PublicDescription": "Not-taken conditional branches retired."
+    },
+    {
+        "EventName": "INST.MISPRED.IND.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Mispredicted indirect jumps, with and without linkage, and calls retired. Does not include function returns.",
+        "PublicDescription": "Mispredicted indirect jumps, with and without linkage, and calls retired. Does not include function returns. Indirect jumps and calls are defined using following encodings: FIXME"
+    },
+    {
+        "EventName": "INST.MISPRED.IND.CALL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Mispredicted indirect calls retired.",
+        "PublicDescription": "Mispredicted indirect calls retired. Indirect calls are defined using following encodings: 'JALR x1, rs where rs != x5'; 'JALR x5, rs where rs != x1'; 'C.JALR rs1 where rs1 != x5'"
+    },
+    {
+        "EventName": "INST.MISPRED.IND.JUMP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Mispredicted indirect jumps without linkage retired.",
+        "PublicDescription": "Mispredicted indirect jumps without linkage retired. Indirect jumps without linkage are defined using following encodings: 'JALR x0, rs where rs != (x1 or x5)'; 'C.JR rs1 where rs1 != (x1 or x5)'"
+    },
+    {
+        "EventName": "INST.MISPRED.IND.LJUMP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Mispredicted other indirect jumps with linkage retired.",
+        "PublicDescription": "Mispredicted other indirect jumps with linkage retired. Other indirect jumps with linkage are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'"
+    },
+    {
+        "EventName": "INST.MISPRED.CORSWAP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Mispredicted co-routine swaps retired.",
+        "PublicDescription": "Mispredicted co-routine swaps retired. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'"
+    },
+    {
+        "EventName": "INST.MISPRED.RETURN.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Mispredicted function returns retired.",
+        "PublicDescription": "Mispredicted function returns retired. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'"
+    },
+    {
+        "EventName": "INST.MISPRED.IND.LJUMP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Mispredicted other indirect jumps with linkage retired.",
+        "PublicDescription": "Mispredicted other indirect jumps with linkage retired. Other indirect jumps with linkage are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'"
+    },
+    {
+        "EventName": "INST.MISPRED.TK.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Retired instructions that changed control flow and were mispredicted. Includes taken branches and all jumps.",
+        "PublicDescription": "Retired instructions that changed control flow and were mispredicted. Includes taken branches and all jumps. Includes the following encodings: FIXME"
+    },
+    {
+        "EventName": "INST.LOAD.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired.",
+        "PublicDescription": "Memory load instructions retired."
+    },
+    {
+        "EventName": "INST.LOAD.UC.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that accessed uncacheable memory.",
+        "PublicDescription": "Memory load instructions retired that accessed uncacheable memory."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.L1D.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that accessed the L1D cache.",
+        "PublicDescription": "Memory load instructions retired that accessed the L1D cache."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.L1D.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that hit in the L1D cache.",
+        "PublicDescription": "Memory load instructions retired that hit in the L1D cache."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.L1D.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that missed in the L1D cache.",
+        "PublicDescription": "Memory load instructions retired that missed in the L1D cache."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.L1D.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that merged into an outstanding L1D cache miss request.",
+        "PublicDescription": "Memory load instructions retired that merged into an outstanding L1D cache miss request."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.LL.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that accessed the last level cache.",
+        "PublicDescription": "Memory load instructions retired that accessed the last level cache."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.LL.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that hit in the last level cache.",
+        "PublicDescription": "Memory load instructions retired that hit in the last level cache."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that missed in the last level cache.",
+        "PublicDescription": "Memory load instructions retired that missed in the last level cache."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that merged into an outstanding last level cache miss request.",
+        "PublicDescription": "Memory load instructions retired that merged into an outstanding last level cache miss request."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.STLF.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that had data forwarded from an older store.",
+        "PublicDescription": "Memory load instructions retired that had data forwarded from an older store."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.LOCAL.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that hit in local memory.",
+        "PublicDescription": "Memory load instructions retired that hit in local memory."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.REMOTE.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that hit in remote memory.",
+        "PublicDescription": "Memory load instructions retired that hit in remote memory."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.REMOTE.CACHE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that hit in a remote cache.",
+        "PublicDescription": "Memory load instructions retired that hit in a remote cache."
+    },
+    {
+        "EventName": "INST.LOAD.DSRC.REMOTE.HITM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that hit a modified line in a remote cache.",
+        "PublicDescription": "Memory load instructions retired that hit a modified line in a remote cache."
+    },
+    {
+        "EventName": "INST.LOAD.ASRC.L1.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that accessed the L1 TLB.",
+        "PublicDescription": "Memory load instructions retired that accessed the L1 TLB."
+    },
+    {
+        "EventName": "INST.LOAD.ASRC.L1.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that hit in the L1 TLB.",
+        "PublicDescription": "Memory load instructions retired that hit in the L1 TLB."
+    },
+    {
+        "EventName": "INST.LOAD.ASRC.L1.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that missed in the L1 TLB.",
+        "PublicDescription": "Memory load instructions retired that missed in the L1 TLB."
+    },
+    {
+        "EventName": "INST.LOAD.ASRC.L1.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that merged into an outstanding L1 TLB miss request.",
+        "PublicDescription": "Memory load instructions retired that merged into an outstanding L1 TLB miss request."
+    },
+    {
+        "EventName": "INST.LOAD.ASRC.LL.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that accessed the last level TLB.",
+        "PublicDescription": "Memory load instructions retired that accessed the last level TLB."
+    },
+    {
+        "EventName": "INST.LOAD.ASRC.LL.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that hit in the last level TLB.",
+        "PublicDescription": "Memory load instructions retired that hit in the last level TLB."
+    },
+    {
+        "EventName": "INST.LOAD.ASRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that missed in the last level TLB.",
+        "PublicDescription": "Memory load instructions retired that missed in the last level TLB."
+    },
+    {
+        "EventName": "INST.LOAD.ASRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load instructions retired that merged into an outstanding last level TLB miss request.",
+        "PublicDescription": "Memory load instructions retired that merged into an outstanding last level TLB miss request."
+    },
+    {
+        "EventName": "INST.STORE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store instructions retired.",
+        "PublicDescription": "Memory store instructions retired."
+    },
+    {
+        "EventName": "INST.STORE.UC.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store instructions retired that accessed uncacheable memory.",
+        "PublicDescription": "Memory store instructions retired that accessed uncacheable memory."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.L1D.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership accessed the L1D cache.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership accessed the L1D cache."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.L1D.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership hit in the L1D cache.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership hit in the L1D cache."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.L1D.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership missed in the L1D cache.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership missed in the L1D cache."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.L1D.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership merged into an outstanding L1D cache miss request.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership merged into an outstanding L1D cache miss request."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.LL.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership accessed the last level cache.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership accessed the last level cache."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.LL.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership hit in the last level cache.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership hit in the last level cache."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership missed in the last level cache.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership missed in the last level cache."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership merged into an outstanding last level cache miss request.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership merged into an outstanding last level cache miss request."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.LOCAL.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership hit in local memory.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership hit in local memory."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.REMOTE.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership hit in remote memory.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership hit in remote memory."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.REMOTE.CACHE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership hit in a remote cache.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership hit in a remote cache."
+    },
+    {
+        "EventName": "INST.STORE.DSRC.REMOTE.HITM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership hit a modified line in a remote cache.",
+        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership hit a modified line in a remote cache."
+    },
+    {
+        "EventName": "INST.STORE.ASRC.L1.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store instructions retired that accessed the L1 TLB.",
+        "PublicDescription": "Memory store instructions retired that accessed the L1 TLB."
+    },
+    {
+        "EventName": "INST.STORE.ASRC.L1.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store instructions retired that hit in the L1 TLB.",
+        "PublicDescription": "Memory store instructions retired that hit in the L1 TLB."
+    },
+    {
+        "EventName": "INST.STORE.ASRC.L1.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store instructions retired that missed in the L1 TLB.",
+        "PublicDescription": "Memory store instructions retired that missed in the L1 TLB."
+    },
+    {
+        "EventName": "INST.STORE.ASRC.L1.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store instructions retired that merged into an outstanding L1 TLB miss request.",
+        "PublicDescription": "Memory store instructions retired that merged into an outstanding L1 TLB miss request."
+    },
+    {
+        "EventName": "INST.STORE.ASRC.LL.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store instructions retired that accessed the last level TLB.",
+        "PublicDescription": "Memory store instructions retired that accessed the last level TLB."
+    },
+    {
+        "EventName": "INST.STORE.ASRC.LL.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store instructions retired that hit in the last level TLB.",
+        "PublicDescription": "Memory store instructions retired that hit in the last level TLB."
+    },
+    {
+        "EventName": "INST.STORE.ASRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store instructions retired that missed in the last level TLB.",
+        "PublicDescription": "Memory store instructions retired that missed in the last level TLB."
+    },
+    {
+        "EventName": "INST.STORE.ASRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store instructions retired that merged into an outstanding last level TLB miss request.",
+        "PublicDescription": "Memory store instructions retired that merged into an outstanding last level TLB miss request."
+    },
+    {
+        "EventName": "INST.LDST.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired.",
+        "PublicDescription": "Memory load and/or store instructions retired."
+    },
+    {
+        "EventName": "INST.LDST.UC.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that accessed uncacheable memory.",
+        "PublicDescription": "Memory load and/or store instructions retired that accessed uncacheable memory."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.L1D.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that accessed the L1D cache.",
+        "PublicDescription": "Memory load and/or store instructions retired that accessed the L1D cache."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.L1D.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that hit in the L1D cache.",
+        "PublicDescription": "Memory load and/or store instructions retired that hit in the L1D cache."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.L1D.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that missed in the L1D cache.",
+        "PublicDescription": "Memory load and/or store instructions retired that missed in the L1D cache."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.L1D.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that merged into an outstanding L1D cache miss request.",
+        "PublicDescription": "Memory load and/or store instructions retired that merged into an outstanding L1D cache miss request."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.LL.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that accessed the last level cache.",
+        "PublicDescription": "Memory load and/or store instructions retired that accessed the last level cache."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.LL.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that hit in the last level cache.",
+        "PublicDescription": "Memory load and/or store instructions retired that hit in the last level cache."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that missed in the last level cache.",
+        "PublicDescription": "Memory load and/or store instructions retired that missed in the last level cache."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that merged into an outstanding last level cache miss request.",
+        "PublicDescription": "Memory load and/or store instructions retired that merged into an outstanding last level cache miss request."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.STLF.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that had data forwarded from an older store.",
+        "PublicDescription": "Memory load and/or store instructions retired that had data forwarded from an older store."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.LOCAL.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that hit in local memory.",
+        "PublicDescription": "Memory load and/or store instructions retired that hit in local memory."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.REMOTE.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that hit in remote memory.",
+        "PublicDescription": "Memory load and/or store instructions retired that hit in remote memory."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.REMOTE.CACHE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that hit in a remote cache.",
+        "PublicDescription": "Memory load and/or store instructions retired that hit in a remote cache."
+    },
+    {
+        "EventName": "INST.LDST.DSRC.REMOTE.HITM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that hit a modified line in a remote cache.",
+        "PublicDescription": "Memory load and/or store instructions retired that hit a modified line in a remote cache."
+    },
+    {
+        "EventName": "INST.LDST.ASRC.L1.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that accessed the L1 TLB.",
+        "PublicDescription": "Memory load and/or store instructions retired that accessed the L1 TLB."
+    },
+    {
+        "EventName": "INST.LDST.ASRC.L1.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that hit in the L1 TLB.",
+        "PublicDescription": "Memory load and/or store instructions retired that hit in the L1 TLB."
+    },
+    {
+        "EventName": "INST.LDST.ASRC.L1.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that missed in the L1 TLB.",
+        "PublicDescription": "Memory load and/or store instructions retired that missed in the L1 TLB."
+    },
+    {
+        "EventName": "INST.LDST.ASRC.L1.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that merged into an outstanding L1 TLB miss request.",
+        "PublicDescription": "Memory load and/or store instructions retired that merged into an outstanding L1 TLB miss request."
+    },
+    {
+        "EventName": "INST.LDST.ASRC.LL.ACCESS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that accessed the last level TLB.",
+        "PublicDescription": "Memory load and/or store instructions retired that accessed the last level TLB."
+    },
+    {
+        "EventName": "INST.LDST.ASRC.LL.HIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that hit in the last level TLB.",
+        "PublicDescription": "Memory load and/or store instructions retired that hit in the last level TLB."
+    },
+    {
+        "EventName": "INST.LDST.ASRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that missed in the last level TLB.",
+        "PublicDescription": "Memory load and/or store instructions retired that missed in the last level TLB."
+    },
+    {
+        "EventName": "INST.LDST.ASRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store instructions retired that merged into an outstanding last level TLB miss request.",
+        "PublicDescription": "Memory load and/or store instructions retired that merged into an outstanding last level TLB miss request."
+    },
+    {
+        "EventName": "INST.MO.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory ordering instructions retired.",
+        "PublicDescription": "Memory ordering instructions retired."
+    },
+    {
+        "EventName": "INST.INT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Integer computational instructions retired.",
+        "PublicDescription": "Integer computational instructions retired."
+    },
+    {
+        "EventName": "INST.FP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Floating point instructions retired.",
+        "PublicDescription": "Floating point instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector instructions retired.",
+        "PublicDescription": "Vector instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.LOAD.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector load instructions retired.",
+        "PublicDescription": "Vector load instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.LOAD.UNIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector unit-stride load instructions retired.",
+        "PublicDescription": "Vector unit-stride load instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.LOAD.IDXU.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector indexed-unordered load instructions retired.",
+        "PublicDescription": "Vector indexed-unordered load instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.LOAD.STRD.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector strided load instructions retired.",
+        "PublicDescription": "Vector strided load instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.LOAD.IDXO.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector indexed-ordered load instructions retired.",
+        "PublicDescription": "Vector indexed-ordered load instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.STORE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector store instructions retired.",
+        "PublicDescription": "Vector store instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.STORE.UNIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector unit-stride store instructions retired.",
+        "PublicDescription": "Vector unit-stride store instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.STORE.IDXU.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector indexed-unordered store instructions retired.",
+        "PublicDescription": "Vector indexed-unordered store instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.STORE.STRD.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector strided store instructions retired.",
+        "PublicDescription": "Vector strided store instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.STORE.IDXO.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector indexed-ordered store instructions retired.",
+        "PublicDescription": "Vector indexed-ordered store instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.LDST.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector load and store instructions retired.",
+        "PublicDescription": "Vector unit-stride load and store instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.LDST.UNIT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector unit-stride load and store instructions retired.",
+        "PublicDescription": "Vector unit-stride load and store instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.LDST.IDXU.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector indexed-unordered load and store instructions retired.",
+        "PublicDescription": "Vector indexed-unordered load and store instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.LDST.STRD.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector strided load and store instructions retired.",
+        "PublicDescription": "Vector strided load and store instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.LDST.IDXO.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector indexed-ordered load and store instructions retired.",
+        "PublicDescription": "Vector indexed-ordered load and store instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.ARITH.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector arithmetic instructions retired.",
+        "PublicDescription": "Vector arithmetic instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.ARITH.INT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector arithmetic vector-integer instructions retired.",
+        "PublicDescription": "Vector arithmetic vector-integer instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.ARITH.FP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector arithmetic vector-FP instructions retired.",
+        "PublicDescription": "Vector arithmetic vector-FP instructions retired."
+    },
+    {
+        "EventName": "INST.RVV.CFG.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Vector configuration (VSET{I}VL{I}) instructions retired.",
+        "PublicDescription": "Vector configuration (VSET{I}VL{I}) instructions retired."
+    },
+    {
+        "EventName": "INST.RVC.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Compressed instructions retired.",
+        "PublicDescription": "Compressed instructions retired."
+    }
+]
