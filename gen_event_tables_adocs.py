@@ -1,8 +1,8 @@
 from pathlib import Path
 import json
 
-event_files = ['cache.json', 'prediction_retired.json',
-               'rvv_retired.json', 'rvv_spec.json', 'tlb_retired.json', 'tlb_spec.json',
+event_files = ['cache.json', 'inst.json',
+               'tlb_retired.json', 'tlb_spec.json',
                'topdown.json', 'general.json']
 
 metric_files = ['cache_metrics.json', 
@@ -10,10 +10,7 @@ metric_files = ['cache_metrics.json',
                 'tlb_retired_metrics.json', 'tlb_spec_metrics.json', 'topdown_metrics.json']
 
 file_to_group = {'cache.json': 'CACHE',
-                 'prediction_retired.json': 'CTRL_FLOW',
-                 'prediction_spec.json': 'CTRL_FLOW',
-                 'rvv_retired.json': 'RVV',
-                 'rvv_spec.json': 'RVV',
+                 'inst.json': 'INST',
                  'tlb_retired.json': 'TLB',
                  'tlb_spec.json': 'TLB',
                  'topdown.json': 'TOPDOWN',
