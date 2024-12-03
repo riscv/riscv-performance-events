@@ -186,13 +186,7 @@
         "PublicDescription": "Memory load instructions retired that accessed uncacheable memory."
     },
     {
-        "EventName": "INST.LOAD.DSRC.L1D.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Memory load instructions retired that accessed the L1D cache.",
-        "PublicDescription": "Memory load instructions retired that accessed the L1D cache."
-    },
-    {
-        "EventName": "INST.LOAD.DSRC.L1D.HIT.RET",
+        "EventName": "INST.LOAD.DSRC.L1D.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory load instructions retired that hit in the L1D cache.",
         "PublicDescription": "Memory load instructions retired that hit in the L1D cache."
@@ -210,13 +204,7 @@
         "PublicDescription": "Memory load instructions retired that merged into an outstanding L1D cache miss request."
     },
     {
-        "EventName": "INST.LOAD.DSRC.LL.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Memory load instructions retired that accessed the last level cache.",
-        "PublicDescription": "Memory load instructions retired that accessed the last level cache."
-    },
-    {
-        "EventName": "INST.LOAD.DSRC.LL.HIT.RET",
+        "EventName": "INST.LOAD.DSRC.LL.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory load instructions retired that hit in the last level cache.",
         "PublicDescription": "Memory load instructions retired that hit in the last level cache."
@@ -264,13 +252,7 @@
         "PublicDescription": "Memory load instructions retired that hit a modified line in a remote cache."
     },
     {
-        "EventName": "INST.LOAD.ASRC.L1.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Memory load instructions retired that accessed the L1 TLB.",
-        "PublicDescription": "Memory load instructions retired that accessed the L1 TLB."
-    },
-    {
-        "EventName": "INST.LOAD.ASRC.L1.HIT.RET",
+        "EventName": "INST.LOAD.ASRC.L1.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory load instructions retired that hit in the L1 TLB.",
         "PublicDescription": "Memory load instructions retired that hit in the L1 TLB."
@@ -288,13 +270,7 @@
         "PublicDescription": "Memory load instructions retired that merged into an outstanding L1 TLB miss request."
     },
     {
-        "EventName": "INST.LOAD.ASRC.LL.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Memory load instructions retired that accessed the last level TLB.",
-        "PublicDescription": "Memory load instructions retired that accessed the last level TLB."
-    },
-    {
-        "EventName": "INST.LOAD.ASRC.LL.HIT.RET",
+        "EventName": "INST.LOAD.ASRC.LL.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory load instructions retired that hit in the last level TLB.",
         "PublicDescription": "Memory load instructions retired that hit in the last level TLB."
@@ -324,13 +300,7 @@
         "PublicDescription": "Memory store instructions retired that accessed uncacheable memory."
     },
     {
-        "EventName": "INST.STORE.DSRC.L1D.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership accessed the L1D cache.",
-        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership accessed the L1D cache."
-    },
-    {
-        "EventName": "INST.STORE.DSRC.L1D.HIT.RET",
+        "EventName": "INST.STORE.DSRC.L1D.RET",
         "EventCode": "0x0",
         "BriefDescription": "Cacheable memory store instructions retired whose read for ownership hit in the L1D cache.",
         "PublicDescription": "Cacheable memory store instructions retired whose read for ownership hit in the L1D cache."
@@ -348,13 +318,7 @@
         "PublicDescription": "Cacheable memory store instructions retired whose read for ownership merged into an outstanding L1D cache miss request."
     },
     {
-        "EventName": "INST.STORE.DSRC.LL.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Cacheable memory store instructions retired whose read for ownership accessed the last level cache.",
-        "PublicDescription": "Cacheable memory store instructions retired whose read for ownership accessed the last level cache."
-    },
-    {
-        "EventName": "INST.STORE.DSRC.LL.HIT.RET",
+        "EventName": "INST.STORE.DSRC.LL.RET",
         "EventCode": "0x0",
         "BriefDescription": "Cacheable memory store instructions retired whose read for ownership hit in the last level cache.",
         "PublicDescription": "Cacheable memory store instructions retired whose read for ownership hit in the last level cache."
@@ -396,13 +360,7 @@
         "PublicDescription": "Cacheable memory store instructions retired whose read for ownership hit a modified line in a remote cache."
     },
     {
-        "EventName": "INST.STORE.ASRC.L1.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Memory store instructions retired that accessed the L1 TLB.",
-        "PublicDescription": "Memory store instructions retired that accessed the L1 TLB."
-    },
-    {
-        "EventName": "INST.STORE.ASRC.L1.HIT.RET",
+        "EventName": "INST.STORE.ASRC.L1.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory store instructions retired that hit in the L1 TLB.",
         "PublicDescription": "Memory store instructions retired that hit in the L1 TLB."
@@ -420,13 +378,7 @@
         "PublicDescription": "Memory store instructions retired that merged into an outstanding L1 TLB miss request."
     },
     {
-        "EventName": "INST.STORE.ASRC.LL.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Memory store instructions retired that accessed the last level TLB.",
-        "PublicDescription": "Memory store instructions retired that accessed the last level TLB."
-    },
-    {
-        "EventName": "INST.STORE.ASRC.LL.HIT.RET",
+        "EventName": "INST.STORE.ASRC.LL.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory store instructions retired that hit in the last level TLB.",
         "PublicDescription": "Memory store instructions retired that hit in the last level TLB."
@@ -456,13 +408,7 @@
         "PublicDescription": "Memory load and/or store instructions retired that accessed uncacheable memory."
     },
     {
-        "EventName": "INST.LDST.DSRC.L1D.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Memory load and/or store instructions retired that accessed the L1D cache.",
-        "PublicDescription": "Memory load and/or store instructions retired that accessed the L1D cache."
-    },
-    {
-        "EventName": "INST.LDST.DSRC.L1D.HIT.RET",
+        "EventName": "INST.LDST.DSRC.L1D.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory load and/or store instructions retired that hit in the L1D cache.",
         "PublicDescription": "Memory load and/or store instructions retired that hit in the L1D cache."
@@ -480,13 +426,7 @@
         "PublicDescription": "Memory load and/or store instructions retired that merged into an outstanding L1D cache miss request."
     },
     {
-        "EventName": "INST.LDST.DSRC.LL.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Memory load and/or store instructions retired that accessed the last level cache.",
-        "PublicDescription": "Memory load and/or store instructions retired that accessed the last level cache."
-    },
-    {
-        "EventName": "INST.LDST.DSRC.LL.HIT.RET",
+        "EventName": "INST.LDST.DSRC.LL.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory load and/or store instructions retired that hit in the last level cache.",
         "PublicDescription": "Memory load and/or store instructions retired that hit in the last level cache."
@@ -534,13 +474,7 @@
         "PublicDescription": "Memory load and/or store instructions retired that hit a modified line in a remote cache."
     },
     {
-        "EventName": "INST.LDST.ASRC.L1.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Memory load and/or store instructions retired that accessed the L1 TLB.",
-        "PublicDescription": "Memory load and/or store instructions retired that accessed the L1 TLB."
-    },
-    {
-        "EventName": "INST.LDST.ASRC.L1.HIT.RET",
+        "EventName": "INST.LDST.ASRC.L1.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory load and/or store instructions retired that hit in the L1 TLB.",
         "PublicDescription": "Memory load and/or store instructions retired that hit in the L1 TLB."
@@ -558,13 +492,7 @@
         "PublicDescription": "Memory load and/or store instructions retired that merged into an outstanding L1 TLB miss request."
     },
     {
-        "EventName": "INST.LDST.ASRC.LL.ACCESS.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Memory load and/or store instructions retired that accessed the last level TLB.",
-        "PublicDescription": "Memory load and/or store instructions retired that accessed the last level TLB."
-    },
-    {
-        "EventName": "INST.LDST.ASRC.LL.HIT.RET",
+        "EventName": "INST.LDST.ASRC.LL.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory load and/or store instructions retired that hit in the last level TLB.",
         "PublicDescription": "Memory load and/or store instructions retired that hit in the last level TLB."
