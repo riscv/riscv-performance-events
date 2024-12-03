@@ -108,9 +108,9 @@ The memory access instruction categories, LOAD, STORE, and LDST, include additio
 [cols="20%,80%"]
 |===
 | STLF | Load instructions to which data was forwarded by an older store.
-| <cache> | Instructions for which the data access hit in the selected cache.  See cache naming standards in <<CACHE>>.
-| <cache>.MISS | Instructions for which the data access missed in the selected cache.  See cache naming standards in <<CACHE>>.
-| <cache>.MERGE | Instructions for which the data access merged with an outstanding miss in the selected cache.  See cache naming standards in <<CACHE>>.
+| <cache> | Instructions for which the data access hit in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| <cache>.MISS | Instructions for which the data access missed in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| <cache>.MERGE | Instructions for which the data access merged with an outstanding miss in the selected cache.  See cache naming standards in <<CACHE Events>>.
 | LOCAL.MEM | Instructions for which the data access hit in local memory.
 | REMOTE.MEM | Instructions for which the data access hit in remote memory.
 | REMOTE.CACHE | Instructions for which the data access hit in a remote cache.
@@ -164,7 +164,7 @@ The LOAD, STORE, and LDST types include an additional level of hierarchy that al
 
 include::adoc_event_tables/inst.adoc[]
 
-include::adoc_event_tables/inst_metrics.adoc[]
+FIXME: add inst_metrics table
 
 
 === CACHE Events
@@ -310,19 +310,3 @@ The events which follow count slots for each of the states listed above, while t
 include::adoc_event_tables/topdown.adoc[]
 
 include::adoc_event_tables/topdown_metrics.adoc[]
-
-=== RVV (retirement)
-
-This group contains events and metrics related to vectorized operations counted at retirement.
-
-include::adoc_event_tables/rvv_retired.adoc[]
-
-include::adoc_event_tables/rvv_retired_metrics.adoc[]
-
-=== RVV (speculative)
-
-This group contains events and metrics related to vectorized operations counted speculatively.
-
-include::adoc_event_tables/rvv_spec.adoc[]
-
-include::adoc_event_tables/rvv_spec_metrics.adoc[]
