@@ -1,11 +1,12 @@
 [[body]]
 == Groups
 
-All the events and metrics are split between several groups which are described in details sub-sections below.
-In addition most of the groups are further split into 2 variants:
+A standard set of performance events and metrics are specified below.  The events and metric definition are organized into groups, many of which include a hierarchy of sub-events that constrain what is counted.
 
-* RET - for non-speculative events counted at retirement. For example, INST.RET counts retired instructions.
-* SPEC - for speculative events. For example, INST.SPEC counts instructions that are issued to the backend pipeline, regardless of whether they retire.
+Some of the event groups include both speculative and non-speculative events.  In such groups, the event names are appended with one of the following.
+
+* .RET - for non-speculative events counted at retirement.
+* .SPEC - for speculative events, which may include events incurred by instructions that do not retire.
 
 NOTE: _In general, RET events are more useful for performance analysis, since they are consistent with software's view of the instruction flow. But they can be significantly more expensive to implement, as they require event data to be staged along with the associated instruction to retirement. It is up to implementations to decide whether to support the RET, SPEC, or both variants of an event._
 
@@ -18,7 +19,7 @@ include::adoc_event_tables/general.adoc[]
 === INST (Instruction) Events
 :xrefstyle: short
 
-This group contains events that count RISC-V instructions.  Non-speculative events, counted at instruction retirement, are appended with .RET.  Speculative events, which may include events incurred by instructions that do not retire, are appended with .SPEC.  Each event described below has both a RET and a SPEC version.
+This group contains events that count RISC-V instructions.  Each event in this group has both speculative (.SPEC) and non-speculative (.RET) versions, though only the non-speculative events are listed in the tables below.
 
 INST events are broken down by instruction categories at the top level of the event hierarchy.  When no category is included in the event name (e.g., INST.RET), all instructions are counted.
 
@@ -26,7 +27,7 @@ INST events are broken down by instruction categories at the top level of the ev
 [cols="20%,80%"]
 |===
 | BRJMP | Branch and jump instructions.  Includes all BRANCH, JAL, and JALR opcodes, including compressed varieties.
-| MISPRED | Branch and jump instructions that were mispredicted.  Includes all BRANCH, JAL, and JALR opcodes, including compressed varieties.
+| MISPRED | Branch and jump instructions that were mispredicted.
 | LOAD | Memory load instructions.  Includes all instructions that perform memory read operations.
 | STORE | Memory store instructions.  Includes all instructions that perform memory write operations.
 | LDST | Memory load and store instructions.  Represents the union of the LOAD and STORE categories.
