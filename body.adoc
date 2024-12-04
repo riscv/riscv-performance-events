@@ -310,3 +310,5 @@ The events which follow count slots for each of the states listed above, while t
 include::adoc_event_tables/topdown.adoc[]
 
 include::adoc_event_tables/topdown_metrics.adoc[]
+
+FIXME: add vector element events/metrics
