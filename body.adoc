@@ -1,7 +1,7 @@
 [[body]]
 == Groups
 
-A standard set of performance events and metrics are specified below.  The events and metric definition are organized into groups, many of which include a hierarchy of sub-events that constrain what is counted.
+A standard set of performance events and metrics are specified below.  The events and metric definitions are organized into groups, many of which include a hierarchy of sub-events that constrain what is counted.
 
 Some of the event groups include both speculative and non-speculative events.  In such groups, the event names are appended with one of the following.
 
@@ -12,7 +12,7 @@ NOTE: _In general, RET events are more useful for performance analysis, since th
 
 === GENERAL Events
 
-This group contains general events not specific to a particular part of CPU pipeline. 
+This group contains general events that don't fall into other groups. 
 
 include::adoc_event_tables/general.adoc[]
 
@@ -127,11 +127,9 @@ NOTE: _Implementations may execute some memory accesses post-retirement.  In suc
 [[asrcs]]
 [cols="20%,80%"]
 |===
-| L__i__ | Instructions for which the data address translation hit in TLB level _i_.
-| L__i__.MISS | Instructions for which the data address translation missed in TLB level _i_.
+| <tlb> | Instructions for which the data address translation hit in the selected TLB.  See TLB naming standars in <<TLB Events>>.
+| <tlb>.MISS | Instructions for which the data address translation missed in the selected TLB. See TLB naming standars in <<TLB Events>>. 
 |===
-
-As with CACHE events, the L1 TLB is the nearest TLB, while the LL (last level) TLB is the outermost TLB.
 
 ==== Vector Instruction Events
 
@@ -162,10 +160,22 @@ The LOAD, STORE, and LDST types include an additional level of hierarchy that al
 
 ==== INST Event and Metric Tables
 
+.INST Events
 include::adoc_event_tables/inst.adoc[]
 
-FIXME: add inst_metrics table
+.INST Metrics
+include::adoc_event_tables/inst_metrics.adoc[]
 
+=== LOAD, STORE, and LDST Events
+
+This group contains events for explicit load and store operations performed by instructions.  It does not count prefetch accesses or implicit accesses, such as page table lookups.
+
+Each event in this group has both speculative (.SPEC) and non-speculative (.RET) versions, though only the non-speculative events are listed in the tables below.
+
+The breakdown of these events is identical to that described in <<Memory Access Instruction Events>>, with the caveat that these events count each memory access.  The INST.{LOAD,STORE,LDST} events count only instructions, some of which may perform multiple accesses.
+
+.LOAD, STORE, and LDST Events
+include::adoc_event_tables/ldst.adoc[]
 
 === CACHE Events
 :xrefstyle: short
@@ -251,27 +261,100 @@ If neither the LOCAL or REMOTE modifier is included in the event name, then all 
 
 An reference example of the full set of CACHE events and metrics, assuming the example set of caches shown above in <<caches-ex>>, is illustrated in the tables below.
 
+.CACHE Events
 include::adoc_event_tables/cache.adoc[]
 
+.CACHE Metrics
 include::adoc_event_tables/cache_metrics.adoc[]
 
-=== TLB (retirement)
+=== TLB Events
+:xrefstyle: short
 
-This group contains events and metrics for data and instruction TLB caches (all levels) counted at retirement.
+This group contains events and metrics for translation lookaside buffers (TLBs).  Events in this group count accesses from the TLB's perspective; if an instruction performs two address translations, they will be counted separately.  Further, all events in this group count speculative accesses.
 
-include::adoc_event_tables/tlb_retired.adoc[]
+The top level of the TLB event hierarchy idenfies the level of the TLB associated with the event.  The naming scheme matches that for caches, see <<CACHE Events>>.
 
-include::adoc_event_tables/tlb_retired_metrics.adoc[]
+A typical example implementation might include the following TLBs within the TLB event hierarchy.
 
-=== TLB (speculative)
+.TLB Event Caches Example
+[[tlbs-ex]]
+[cols="20%,80%"]
+|===
+| L1D | Level 1 data TLB (DTLB)
+| L1I | Level 1 instruction TLB (ITLB)
+| LL | Level 2 shared TLB (STLB)
+|===
 
-This group contains events and metrics for data and instruction TLB caches (all levels) counted speculatively.
+NOTE: _An implementation may additionally include other, custom TLBs within the TLB event hierarchy, such that the cache name does not conform to the standard convention above._
 
-include::adoc_event_tables/tlb_spec.adoc[]
+The second level of the CACHE event hierarchy identifies the access or operation type, as shown in the table below.  Some caches may support only a subset of the defined types.
 
-include::adoc_event_tables/tlb_spec_metrics.adoc[]
+.TLB Event Access or Operation Type
+[cols="20%,80%"]
+|===
+| LD | Load address translation requests.
+| ST | Store address translation requests.
+| LDST | Load or store address translation requests.
+| CODE | Instruction fetch address translation requests.
+|===
 
-=== TOP-DOWN
+A third level counts requests per lookup result.
+
+.TLB Event Lookup Results
+[cols="20%,80%"]
+|===
+| ACCESS | TLB lookups
+| HIT    | TLB hits
+| MISS   | TLB misses
+| MERGE  | Lookups that merged with an outstanding lookup
+|===
+
+For the LDST and CODE types, there is additionally a MISS.CYCLES event that counts core cycles (at the rate of the Zicntr `cycle` counter) while a load/store or instruction fetch TLB miss, respectively, is outstanding.
+
+A reference example of the full set of TLB events and metrics, assuming the example set of TLBs shown above in <<tlbs-ex>>, is illustrated in the tables below.
+
+.TLB Events
+include::adoc_event_tables/tlb.adoc[]
+
+.TLB Metrics
+include::adoc_event_tables/tlb_metrics.adoc[]
+
+=== FETCH Events
+
+This group contains events that count instruction fetch requests, broken down by the address translation source or the instruction data source.  All events count speculative fetch requests.
+
+.FETCH Event Categories
+[cols="20%,80%"]
+|===
+| DSRC.* | Instruction fetches that accessed data from the specified source (see <<fetch-dsrcs>>).
+| ASRC.* | Instruction fetches whose address translation came from the specified source (see <<fetch-asrcs>>).
+|===
+
+.DSRC Event Instruction Fetch Data Sources
+[[fetch-dsrcs]]
+[cols="20%,80%"]
+|===
+| <cache> | Instruction fetches for which the instruction data access hit in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| <cache>.MISS | Instruction fetches for which the instruction data access missed in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| <cache>.MERGE | Instruction fetches for which the instruction data access merged with an outstanding miss in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| LOCAL.MEM | Instruction fetches for which the instruction data access hit in local memory.
+| REMOTE.MEM | Instruction fetches for which the instruction data access hit in remote memory.
+| REMOTE.CACHE | Instruction fetches for which the instruction data access hit in a remote cache.
+| REMOTE.HITM | Instruction fetches for which the instruction data access hit modified data in a remote cache.
+|===
+
+.ASRC Event Instruction Fetch Address Translation Sources
+[[fetch-asrcs]]
+[cols="20%,80%"]
+|===
+| <tlb> | Instruction fetches for which the address translation hit in the selcted TLB.  See TLB naming standars in <<TLB Events>>.
+| <tlb>.MISS | Instruction fetches for which the address translation missed in the selected.  See TLB naming standars in <<TLB Events>>.
+|===
+
+.FETCH Events
+include::adoc_event_tables/fetch.adoc[]
+
+=== TOPDOWN Microarchitecture Analysis Events
 
 This group contains events and metrics related for Top-down Microarchitecture Analysis (TMA) methodology.
 
@@ -285,10 +368,10 @@ TMA accomplishes this by defining a set of hierarchical states into which each s
 .Topdown Level 1
 image::images/tma-l1.svg[TMA Level 1]
 
-* Frontend Bound - The frontend did not issue a uop to the backend for execution.  Example causes include stalls that result from cache or TLB misses during instruction fetch.
-* Backend Bound - The backend could not consume a uop from the frontend.  Example causes include backpressure that results from cache or TLB misses on data (load/store) accesses, or from oversubscribed execution units.
-* Bad Speculation - The uop was dropped, as a result of a pipeline clear.  Example clears include branch/jump mispredictions, or memory ordering clears.  This category also includes any pipeline clear recovery cycles during which issue slots go unfilled.
-* Retiring - The uop retired.  Ideally the majority of slots fall into this state.
+* *Frontend Bound* - The frontend did not issue a uop to the backend for execution.  Example causes include stalls that result from cache or TLB misses during instruction fetch.
+* *Backend Bound* - The backend could not consume a uop from the frontend.  Example causes include backpressure that results from cache or TLB misses on data (load/store) accesses, or from oversubscribed execution units.
+* *Bad Speculation* - The uop was dropped, as a result of a pipeline clear.  Example clears include branch/jump mispredictions, or memory ordering clears.  This category also includes any pipeline clear recovery cycles during which issue slots go unfilled.
+* *Retiring* - The uop retired.  Ideally the majority of slots fall into this state.
 
 Many of the top-level states listed above include further breakdown at the 2nd and 3rd levels of the TMA hierarchy, as illustrated below.  
 
