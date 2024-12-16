@@ -1,5 +1,5 @@
 [[body]]
-== Groups
+== Event Groups
 
 A standard set of performance events and metrics are specified below.  The events and metric definitions are organized into groups, many of which include a hierarchy of sub-events that constrain what is counted.
 
