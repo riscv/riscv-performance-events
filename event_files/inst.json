@@ -174,6 +174,12 @@
         "PublicDescription": "Retired instructions that changed control flow and were mispredicted. Includes taken branches and all jumps. Includes the following encodings: FIXME"
     },
     {
+        "EventName": "INST.TRETURN.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Trap return instructions retired.",
+        "PublicDescription": "Trap return instructions retired."
+    },
+    {
         "EventName": "INST.LOAD.RET",
         "EventCode": "0x0",
         "BriefDescription": "Memory load instructions retired.",
