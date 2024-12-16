@@ -1,0 +1,338 @@
+[
+    {
+        "EventName": "LOAD.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired.",
+        "PublicDescription": "Memory load operations retired."
+    },
+    {
+        "EventName": "LOAD.UC.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that accessed uncacheable memory.",
+        "PublicDescription": "Memory load operations retired that accessed uncacheable memory."
+    },
+    {
+        "EventName": "LOAD.DSRC.L1D.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that hit in the L1D cache.",
+        "PublicDescription": "Memory load operations retired that hit in the L1D cache."
+    },
+    {
+        "EventName": "LOAD.DSRC.L1D.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that missed in the L1D cache.",
+        "PublicDescription": "Memory load operations retired that missed in the L1D cache."
+    },
+    {
+        "EventName": "LOAD.DSRC.L1D.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that merged into an outstanding L1D cache miss request.",
+        "PublicDescription": "Memory load operations retired that merged into an outstanding L1D cache miss request."
+    },
+    {
+        "EventName": "LOAD.DSRC.LL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that hit in the last level cache.",
+        "PublicDescription": "Memory load operations retired that hit in the last level cache."
+    },
+    {
+        "EventName": "LOAD.DSRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that missed in the last level cache.",
+        "PublicDescription": "Memory load operations retired that missed in the last level cache."
+    },
+    {
+        "EventName": "LOAD.DSRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that merged into an outstanding last level cache miss request.",
+        "PublicDescription": "Memory load operations retired that merged into an outstanding last level cache miss request."
+    },
+    {
+        "EventName": "LOAD.DSRC.STLF.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that had data forwarded from an older store.",
+        "PublicDescription": "Memory load operations retired that had data forwarded from an older store."
+    },
+    {
+        "EventName": "LOAD.DSRC.LOCAL.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that hit in local memory.",
+        "PublicDescription": "Memory load operations retired that hit in local memory."
+    },
+    {
+        "EventName": "LOAD.DSRC.REMOTE.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that hit in remote memory.",
+        "PublicDescription": "Memory load operations retired that hit in remote memory."
+    },
+    {
+        "EventName": "LOAD.DSRC.REMOTE.CACHE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that hit in a remote cache.",
+        "PublicDescription": "Memory load operations retired that hit in a remote cache."
+    },
+    {
+        "EventName": "LOAD.DSRC.REMOTE.HITM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that hit a modified line in a remote cache.",
+        "PublicDescription": "Memory load operations retired that hit a modified line in a remote cache."
+    },
+    {
+        "EventName": "LOAD.ASRC.L1.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that hit in the L1 TLB.",
+        "PublicDescription": "Memory load operations retired that hit in the L1 TLB."
+    },
+    {
+        "EventName": "LOAD.ASRC.L1.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that missed in the L1 TLB.",
+        "PublicDescription": "Memory load operations retired that missed in the L1 TLB."
+    },
+    {
+        "EventName": "LOAD.ASRC.L1.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that merged into an outstanding L1 TLB miss request.",
+        "PublicDescription": "Memory load operations retired that merged into an outstanding L1 TLB miss request."
+    },
+    {
+        "EventName": "LOAD.ASRC.LL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that hit in the last level TLB.",
+        "PublicDescription": "Memory load operations retired that hit in the last level TLB."
+    },
+    {
+        "EventName": "LOAD.ASRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that missed in the last level TLB.",
+        "PublicDescription": "Memory load operations retired that missed in the last level TLB."
+    },
+    {
+        "EventName": "LOAD.ASRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load operations retired that merged into an outstanding last level TLB miss request.",
+        "PublicDescription": "Memory load operations retired that merged into an outstanding last level TLB miss request."
+    },
+    {
+        "EventName": "STORE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store operations retired.",
+        "PublicDescription": "Memory store operations retired."
+    },
+    {
+        "EventName": "STORE.UC.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store operations retired that accessed uncacheable memory.",
+        "PublicDescription": "Memory store operations retired that accessed uncacheable memory."
+    },
+    {
+        "EventName": "STORE.DSRC.L1D.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store operations retired whose read for ownership hit in the L1D cache.",
+        "PublicDescription": "Cacheable memory store operations retired whose read for ownership hit in the L1D cache."
+    },
+    {
+        "EventName": "STORE.DSRC.L1D.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store operations retired whose read for ownership missed in the L1D cache.",
+        "PublicDescription": "Cacheable memory store operations retired whose read for ownership missed in the L1D cache."
+    },
+    {
+        "EventName": "STORE.DSRC.L1D.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store operations retired whose read for ownership merged into an outstanding L1D cache miss request.",
+        "PublicDescription": "Cacheable memory store operations retired whose read for ownership merged into an outstanding L1D cache miss request."
+    },
+    {
+        "EventName": "STORE.DSRC.LL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store operations retired whose read for ownership hit in the last level cache.",
+        "PublicDescription": "Cacheable memory store operations retired whose read for ownership hit in the last level cache."
+    },
+    {
+        "EventName": "STORE.DSRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store operations retired whose read for ownership missed in the last level cache.",
+        "PublicDescription": "Cacheable memory store operations retired whose read for ownership missed in the last level cache."
+    },
+    {
+        "EventName": "STORE.DSRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store operations retired whose read for ownership merged into an outstanding last level cache miss request.",
+        "PublicDescription": "Cacheable memory store operations retired whose read for ownership merged into an outstanding last level cache miss request."
+    },
+    {
+        "EventName": "STORE.DSRC.LOCAL.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store operations retired whose read for ownership hit in local memory.",
+        "PublicDescription": "Cacheable memory store operations retired whose read for ownership hit in local memory."
+    },
+    {
+        "EventName": "STORE.DSRC.REMOTE.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store operations retired whose read for ownership hit in remote memory.",
+        "PublicDescription": "Cacheable memory store operations retired whose read for ownership hit in remote memory."
+    },
+    {
+        "EventName": "STORE.DSRC.REMOTE.CACHE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store operations retired whose read for ownership hit in a remote cache.",
+        "PublicDescription": "Cacheable memory store operations retired whose read for ownership hit in a remote cache."
+    },
+    {
+        "EventName": "STORE.DSRC.REMOTE.HITM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cacheable memory store operations retired whose read for ownership hit a modified line in a remote cache.",
+        "PublicDescription": "Cacheable memory store operations retired whose read for ownership hit a modified line in a remote cache."
+    },
+    {
+        "EventName": "STORE.ASRC.L1.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store operations retired that hit in the L1 TLB.",
+        "PublicDescription": "Memory store operations retired that hit in the L1 TLB."
+    },
+    {
+        "EventName": "STORE.ASRC.L1.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store operations retired that missed in the L1 TLB.",
+        "PublicDescription": "Memory store operations retired that missed in the L1 TLB."
+    },
+    {
+        "EventName": "STORE.ASRC.L1.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store operations retired that merged into an outstanding L1 TLB miss request.",
+        "PublicDescription": "Memory store operations retired that merged into an outstanding L1 TLB miss request."
+    },
+    {
+        "EventName": "STORE.ASRC.LL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store operations retired that hit in the last level TLB.",
+        "PublicDescription": "Memory store operations retired that hit in the last level TLB."
+    },
+    {
+        "EventName": "STORE.ASRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store operations retired that missed in the last level TLB.",
+        "PublicDescription": "Memory store operations retired that missed in the last level TLB."
+    },
+    {
+        "EventName": "STORE.ASRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory store operations retired that merged into an outstanding last level TLB miss request.",
+        "PublicDescription": "Memory store operations retired that merged into an outstanding last level TLB miss request."
+    },
+    {
+        "EventName": "LDST.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired.",
+        "PublicDescription": "Memory load and/or store operations retired."
+    },
+    {
+        "EventName": "LDST.UC.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that accessed uncacheable memory.",
+        "PublicDescription": "Memory load and/or store operations retired that accessed uncacheable memory."
+    },
+    {
+        "EventName": "LDST.DSRC.L1D.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that hit in the L1D cache.",
+        "PublicDescription": "Memory load and/or store operations retired that hit in the L1D cache."
+    },
+    {
+        "EventName": "LDST.DSRC.L1D.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that missed in the L1D cache.",
+        "PublicDescription": "Memory load and/or store operations retired that missed in the L1D cache."
+    },
+    {
+        "EventName": "LDST.DSRC.L1D.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that merged into an outstanding L1D cache miss request.",
+        "PublicDescription": "Memory load and/or store operations retired that merged into an outstanding L1D cache miss request."
+    },
+    {
+        "EventName": "LDST.DSRC.LL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that hit in the last level cache.",
+        "PublicDescription": "Memory load and/or store operations retired that hit in the last level cache."
+    },
+    {
+        "EventName": "LDST.DSRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that missed in the last level cache.",
+        "PublicDescription": "Memory load and/or store operations retired that missed in the last level cache."
+    },
+    {
+        "EventName": "LDST.DSRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that merged into an outstanding last level cache miss request.",
+        "PublicDescription": "Memory load and/or store operations retired that merged into an outstanding last level cache miss request."
+    },
+    {
+        "EventName": "LDST.DSRC.STLF.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that had data forwarded from an older store.",
+        "PublicDescription": "Memory load and/or store operations retired that had data forwarded from an older store."
+    },
+    {
+        "EventName": "LDST.DSRC.LOCAL.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that hit in local memory.",
+        "PublicDescription": "Memory load and/or store operations retired that hit in local memory."
+    },
+    {
+        "EventName": "LDST.DSRC.REMOTE.MEM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that hit in remote memory.",
+        "PublicDescription": "Memory load and/or store operations retired that hit in remote memory."
+    },
+    {
+        "EventName": "LDST.DSRC.REMOTE.CACHE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that hit in a remote cache.",
+        "PublicDescription": "Memory load and/or store operations retired that hit in a remote cache."
+    },
+    {
+        "EventName": "LDST.DSRC.REMOTE.HITM.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that hit a modified line in a remote cache.",
+        "PublicDescription": "Memory load and/or store operations retired that hit a modified line in a remote cache."
+    },
+    {
+        "EventName": "LDST.ASRC.L1.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that hit in the L1 TLB.",
+        "PublicDescription": "Memory load and/or store operations retired that hit in the L1 TLB."
+    },
+    {
+        "EventName": "LDST.ASRC.L1.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that missed in the L1 TLB.",
+        "PublicDescription": "Memory load and/or store operations retired that missed in the L1 TLB."
+    },
+    {
+        "EventName": "LDST.ASRC.L1.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that merged into an outstanding L1 TLB miss request.",
+        "PublicDescription": "Memory load and/or store operations retired that merged into an outstanding L1 TLB miss request."
+    },
+    {
+        "EventName": "LDST.ASRC.LL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that hit in the last level TLB.",
+        "PublicDescription": "Memory load and/or store operations retired that hit in the last level TLB."
+    },
+    {
+        "EventName": "LDST.ASRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that missed in the last level TLB.",
+        "PublicDescription": "Memory load and/or store operations retired that missed in the last level TLB."
+    },
+    {
+        "EventName": "LDST.ASRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Memory load and/or store operations retired that merged into an outstanding last level TLB miss request.",
+        "PublicDescription": "Memory load and/or store operations retired that merged into an outstanding last level TLB miss request."
+    }
+]
