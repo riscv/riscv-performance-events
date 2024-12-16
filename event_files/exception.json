@@ -1,38 +1,38 @@
 [
     {
-        "EventName": "EXCEPTION.DATA.PAGE_FAULTS",
+        "EventName": "EXCEPTION.PGFLT.DATA",
         "EventCode": "0x0",
         "BriefDescription": "Data load/store page faults",
         "PublicDescription": "Data load/store page faults"
     },
     {
-        "EventName": "EXCEPTION.CODE.PAGE_FAULTS",
+        "EventName": "EXCEPTION.PGFLT.CODE",
         "EventCode": "0x0",
         "BriefDescription": "Instructions fetch page faults",
         "PublicDescription": "Instructions fetch page faults"
     },
     {
-        "EventName": "EXCEPTION.LOAD.MISALIGNED",
+        "EventName": "EXCEPTION.MISALIGNED.LOAD",
         "EventCode": "0x0",
-        "BriefDescription": "Load address misaligned",
-        "PublicDescription": "Load address misaligned"
+        "BriefDescription": "Load address misaligned exceptions",
+        "PublicDescription": "Load address misaligned exceptions"
     },
     {
-        "EventName": "EXCEPTION.STORE.MISALIGNED",
+        "EventName": "EXCEPTION.MISALIGNED.STORE",
         "EventCode": "0x0",
-        "BriefDescription": "Store address misaligned",
-        "PublicDescription": "Store address misaligned"
+        "BriefDescription": "Store address misaligned exceptions",
+        "PublicDescription": "Store address misaligned exceptions"
     },
     {
-        "EventName": "EXCEPTION.ILLEGAL.ACCESS",
+        "EventName": "EXCEPTION.ILLEGALACC",
         "EventCode": "0x0",
         "BriefDescription": "Instruction access faults",
         "PublicDescription": "Instruction access faults"
     },
     {
-        "EventName": "EXCEPTION.ILLEGAL.INST",
+        "EventName": "EXCEPTION.ILLEGALINST",
         "EventCode": "0x0",
-        "BriefDescription": "Illegal instructions",
-        "PublicDescription": "Illegal instructions"
+        "BriefDescription": "Illegal instruction exceptions",
+        "PublicDescription": "Illegal instruction exceptions"
     }
 ]

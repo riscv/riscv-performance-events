@@ -1,18 +1,18 @@
 [
     {
-        "MetricName": "RVV.FLOPC_SINGLE.RET",
+        "MetricName": "RVV.FLOPC.SINGLE.RET",
         "BriefDescription": "Vector single-precision floating point operations retired per cycle",
-        "MetricExpr": "RVV.ELEMENT.UNMASKED.FP_SINGLE.RET / CYCLES.HART"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.FP32.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV.FLOPC_DOUBLE.RET",
+        "MetricName": "RVV.FLOPC.DOUBLE.RET",
         "BriefDescription": "Vector double-precision floating point operations retired per cycle",
-        "MetricExpr": "RVV.ELEMENT.UNMASKED.FP_DOUBLE.RET / CYCLES.HART"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.FP64.RET / CYCLES.HART"
     },
     {
         "MetricName": "RVV.FLOP.RET",
         "BriefDescription": "Vector floating point operations retired",
-        "MetricExpr": "RVV.ELEMENT.UNMASKED.FP_SINGLE.RET + RVV.ELEMENT.UNMASKED.FP_DOUBLE.RET"
+        "MetricExpr": "RVV.ELEMENT.UNMASKED.FP.RET"
     },
     {
         "MetricName": "RVV.FLOPC.RET",
@@ -30,22 +30,22 @@
         "MetricExpr": "RVV.FLOP.RET / 1000000000000.0"
     },
     {
-        "MetricName": "RVV.IOPC_8.RET",
+        "MetricName": "RVV.IOPC.INT8.RET",
         "BriefDescription": "Vector 8-bits integer operations retired per cycle",
         "MetricExpr": "RVV.ELEMENT.UNMASKED.INT8.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV.IOPC_16.RET",
+        "MetricName": "RVV.IOPC.INT16.RET",
         "BriefDescription": "Vector 16-bits integer operations retired per cycle",
         "MetricExpr": "RVV.ELEMENT.UNMASKED.INT16.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV.IOPC_32.RET",
+        "MetricName": "RVV.IOPC.INT32.RET",
         "BriefDescription": "Vector 32-bits integer operations retired per cycle",
         "MetricExpr": "RVV.ELEMENT.UNMASKED.INT32.RET / CYCLES.HART"
     },
     {
-        "MetricName": "RVV.IOPC_64.RET",
+        "MetricName": "RVV.IOPC.INT64.RET",
         "BriefDescription": "Vector 64-bits integer operations retired per cycle",
         "MetricExpr": "RVV.ELEMENT.UNMASKED.INT64.RET / CYCLES.HART"
     },
