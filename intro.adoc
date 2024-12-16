@@ -1,9 +1,9 @@
 [[intro]]
 == Introduction
 
-The RISC-V hardware performance monitoring counters (Zihpm) provide support for counting programmable performance events. Such events can provide insights into software execution behavior, insights that are critical when tuning a profiled workload. However, no performance events are standardized, which means profiling tools must comprehend a custom set of events specific to each hardware implementation. This prevents profiling tools from offering general-purpose, event-based analysis capabilities that can be employed regardless of the underlying hardware implementation.
+The RISC-V hardware performance monitoring counters (Zihpm) provide support for counting programmable performance events. Such events can provide insights into software execution behavior, insights that are critical when tuning a profiled workload. 
 
-The Performance Events non-ISA extension provides a set of standard performance events and metrics (or formulas of events). For each standard event, the name and the precise hardware behavior associated with it is specified. For each standard metric, the name, precise description, and event formula, including the names of the constituent events, is defined.
+In order to allow profiling tools to offer general-purpose, event-based analysis capabilities that can be employed regardless of the underlying hardware implementation, the Hart Performance Events extension defines a set of standard performance events and metrics (or formulas of events) for use with Zihpm counters. For each standard event, the name and the precise hardware behavior associated with it is specified. For each standard metric, the name, precise description, and event formula, including the names of the constituent events, is defined.  
 
 [NOTE]
 [%unbreakable]
