@@ -10,16 +10,10 @@ Some of the event groups include both speculative and non-speculative events.  I
 
 NOTE: _In general, RET events are more useful for performance analysis, since they are consistent with software's view of the instruction flow. But they can be significantly more expensive to implement, as they require event data to be staged along with the associated instruction to retirement. It is up to implementations to decide whether to support the RET, SPEC, or both variants of an event._
 
-=== GENERAL Events
-
-This group contains general events that don't fall into other groups. 
-
-include::adoc_event_tables/general.adoc[]
-
 === INST (Instruction) Events
 :xrefstyle: short
 
-This group contains events that count RISC-V instructions.  Each event in this group has both speculative (.SPEC) and non-speculative (.RET) versions, though only the non-speculative events are listed in the tables below.
+This group contains events that count RISC-V (and custom) instructions.  Each event in this group has both speculative (.SPEC) and non-speculative (.RET) versions, though only the non-speculative events are listed in the tables below.
 
 INST events are broken down by instruction categories at the top level of the event hierarchy.  When no category is included in the event name (e.g., INST.RET), all instructions are counted.
 
@@ -354,6 +348,12 @@ This group contains events that count instruction fetch requests, broken down by
 .FETCH Events
 include::adoc_event_tables/fetch.adoc[]
 
+=== GENERAL Events
+
+This group contains general events that don't fall into other groups. 
+
+include::adoc_event_tables/general.adoc[]
+
 === TOPDOWN Microarchitecture Analysis Events
 
 This group contains events and metrics related for Top-down Microarchitecture Analysis (TMA) methodology.
@@ -393,5 +393,3 @@ The events which follow count slots for each of the states listed above, while t
 include::adoc_event_tables/topdown.adoc[]
 
 include::adoc_event_tables/topdown_metrics.adoc[]
-
-FIXME: add vector element events/metrics
