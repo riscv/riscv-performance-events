@@ -1,29 +1,29 @@
 [
     {
-        "MetricName": "TLB.L1D.LD.MPKI",
+        "MetricName": "TLB.L1D.LOAD.MPKI",
         "BriefDescription": "The rate of L1 TLB misses caused by data loads per kilo instructions retired",
-        "MetricExpr": "TLB.L1D.LD.MISS / INST.RET * 1000",
+        "MetricExpr": "TLB.L1D.LOAD.MISS / INST.RET * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "TLB.L1D.LD.MISS.RATE",
+        "MetricName": "TLB.L1D.LOAD.MISS.RATE",
         "BriefDescription": "The ratio of L1 TLB load misses to the total number of L1 TLB load accesses",
-        "MetricExpr": "TLB.L1D.LD.MISS / TLB.L1D.LD.ACCESS",
+        "MetricExpr": "TLB.L1D.LOAD.MISS / TLB.L1D.LOAD.ACCESS",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB.L1D.ST.MPKI",
+        "MetricName": "TLB.L1D.STORE.MPKI",
         "BriefDescription": "The rate of L1 TLB misses caused by data stores per kilo instructions retired",
-        "MetricExpr": "TLB.L1D.ST.MISS / INST.RET * 1000",
+        "MetricExpr": "TLB.L1D.STORE.MISS / INST.RET * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "TLB.L1D.ST.MISS.RATE",
+        "MetricName": "TLB.L1D.STORE.MISS.RATE",
         "BriefDescription": "The ratio of L1 TLB store misses to the total number of L1 TLB store accesses",
-        "MetricExpr": "TLB.L1D.ST.MISS / TLB.L1D.ST.ACCESS",
+        "MetricExpr": "TLB.L1D.STORE.MISS / TLB.L1D.STORE.ACCESS",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
@@ -42,30 +42,30 @@
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB.LL.LD.MPKI",
+        "MetricName": "TLB.LL.LOAD.MPKI",
         "BriefDescription": "The rate of last level TLB misses caused by data loads per kilo instructions retired",
-        "MetricExpr": "TLB.LL.LD.MISS / INST.RET * 1000",
+        "MetricExpr": "TLB.LL.LOAD.MISS / INST.RET * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "TLB.LL.LD.MISS.RATE",
+        "MetricName": "TLB.LL.LOAD.MISS.RATE",
         "BriefDescription": "The ratio of last level TLB load misses to the total number of last level TLB load accesses",
-        "MetricExpr": "TLB.LL.LD.MISS / TLB.LL.LD.ACCESS",
+        "MetricExpr": "TLB.LL.LOAD.MISS / TLB.LL.LOAD.ACCESS",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },
     {
-        "MetricName": "TLB.LL.ST.MPKI",
+        "MetricName": "TLB.LL.STORE.MPKI",
         "BriefDescription": "The rate of last level TLB misses caused by data stores per kilo instructions retired",
-        "MetricExpr": "TLB.LL.ST.MISS / INST.RET * 1000",
+        "MetricExpr": "TLB.LL.STORE.MISS / INST.RET * 1000",
         "MetricGroup": "Cache",
         "ScaleUnit": "1PKI"
     },
     {
-        "MetricName": "TLB.LL.ST.MISS.RATE",
+        "MetricName": "TLB.LL.STORE.MISS.RATE",
         "BriefDescription": "The ratio of last level TLB store misses to the total number of last level TLB store accesses",
-        "MetricExpr": "TLB.LL.ST.MISS / TLB.LL.ST.ACCESS",
+        "MetricExpr": "TLB.LL.STORE.MISS / TLB.LL.STORE.ACCESS",
         "MetricGroup": "Cache",
         "ScaleUnit": "100%"
     },

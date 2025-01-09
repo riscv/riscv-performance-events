@@ -286,8 +286,8 @@ The second level of the TLB event hierarchy identifies the access or operation t
 .TLB Event Access or Operation Type
 [cols="20%,80%"]
 |===
-| LD | Load address translation requests.
-| ST | Store address translation requests.
+| LOAD | Load address translation requests.
+| STORE | Store address translation requests.
 | LDST | Load or store address translation requests.
 | CODE | Instruction fetch address translation requests.
 |===
