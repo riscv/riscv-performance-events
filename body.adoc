@@ -180,7 +180,7 @@ The top level of the CACHE event hierarchy idenfies the cache associated with th
 
 * The first character is L, for level.
 * The second character indicates the cache level.  The nearest cache is level 1, followed by level 2, and so on.  Level L implies the outermost cache.
-* The optional third character indicates whether the cache is limited to instruction opcodes (I) or load/store data (D).
+* The optional third character indicates whether the cache is accessed only by instruction fetches (I) or only by data accesses (D).
 
 A typical example implementation might include the following caches within the CACHE event hierarchy.
 
