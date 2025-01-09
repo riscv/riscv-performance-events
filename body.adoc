@@ -281,7 +281,7 @@ A typical example implementation might include the following TLBs within the TLB
 
 NOTE: _An implementation may additionally include other, custom TLBs within the TLB event hierarchy, such that the cache name does not conform to the standard convention above._
 
-The second level of the CACHE event hierarchy identifies the access or operation type, as shown in the table below.  Some caches may support only a subset of the defined types.
+The second level of the TLB event hierarchy identifies the access or operation type, as shown in the table below.  Some caches may support only a subset of the defined types.
 
 .TLB Event Access or Operation Type
 [cols="20%,80%"]
