@@ -28,5 +28,17 @@
         "EventCode": "0x0",
         "BriefDescription": "Cycles to recover from pipeline flushes",
         "PublicDescription": "Cycles to recover from pipeline flushes due to any reason. Examples: branch misprediction, memory disambiguation, serializing instruction"
+    },
+    {
+        "EventName": "CTR.UPDATE",
+        "EventCode": "0x0",
+        "BriefDescription": "Instructions and/or traps that are recorded by Control Transfer Records (CTR)",
+        "PublicDescription": "Instructions and/or traps that are recorded by Control Transfer Records (CTR)"
+    },
+    {
+        "EventName": "TRACE.STALL.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles retirement is stalled due to trace backpressure",
+        "PublicDescription": "Cycles retirement is stalled due to trace backpressure"
     }
 ]
