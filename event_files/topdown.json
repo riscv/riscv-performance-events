@@ -118,5 +118,5 @@
         "EventCode": "0x0",
         "BriefDescription": "TMA slots backend stalled awaiting completion of loads or stores that missed the last-level cache.",
         "PublicDescription": "TMA slots backend stalled awaiting completion of loads or stores that missed the last-level cache."
-    },    
+    }    
 ]
