@@ -356,37 +356,57 @@ include::adoc_event_tables/general.adoc[]
 
 === TOPDOWN Microarchitecture Analysis Events
 
-This group contains events and metrics related for Top-down Microarchitecture Analysis (TMA) methodology.
+This group contains events and metrics for use with Top-down Microarchitecture Analysis (TMA) methodology.
 
 TMA is an industry-standard methodology https://ieeexplore.ieee.org/document/6844459[introduced by Intel] in characterizing the performance of SPEC CPU2006 on Intel CPUs, and since used to characterize https://www.mdpi.com/2078-2489/14/10/554[HPC workloads], https://ieeexplore.ieee.org/abstract/document/9820717[GPU workloads], https://dl.acm.org/doi/10.1145/3369383[microarchitecture changes], https://ieeexplore.ieee.org/abstract/document/9579960[pre-silicon performance validation failures], and more.
 
-TMA allows even developers with minimal microarchitecture knowledge to understand, for a given workload, where bottlenecks reside.  It does so by accounting for the utilization of each pipeline "slot" in the microarchitecture.  As an example, for a 4-wide implementation, there are 4 slots to account for each cycle.  When the hardware is utilized with optimal efficiency, each slot is occupied by an instruction or micro-operation (uop) that will go on to execute and retire.  When bottlenecks occur, due perhaps to a cache miss, branch misprediction, or any number of other microarchitectural conditions, some slots may be either unused or thrown away, which results in inefficiency and reduced performance.  TMA is able to identify these wasted slots, and the stalls, clears, misses, or other events that cause them.  This enables developers to make informed decisions when tuning their code.
+TMA allows even developers with minimal microarchitecture knowledge to understand, for a given workload, where bottlenecks reside.  It does so by accounting for the utilization of each pipeline "slot" in the microarchitecture.  As an example, for a 4-wide implementation, there are 4 slots to account for each cycle.  When the hardware is utilized with optimal efficiency, each slot is occupied by an instruction or micro-operation (uop) that will go on to execute and retire.  When bottlenecks occur, due perhaps to a cache miss, branch misprediction, or any number of other microarchitectural conditions, some slots may be either unused or discarded, which results in inefficiency and reduced performance.  TMA is able to identify these wasted slots, and the stalls, clears, misses, or other events that cause them.  This enables developers to make informed decisions when tuning their code.
 
-TMA accomplishes this by defining a set of hierarchical states into which each slot is categorized.  Each cycle, the frontend of the processor (responsible for instruction fetch and decode) can issue some implementation-defined number (_N_) of instructions/uops to the backend (instruction execution and retire).  Hence there are _N_ issue slots to be categorized per cycle.  At the top level of the TMA hierarchy, issue slots are categorized as described below.
+TMA accomplishes this by defining a set of hierarchical states into which each uop slot is categorized.  Each cycle, the frontend of the processor (responsible for instruction fetch and decode) can issue some implementation-defined number (_N_) of instructions/uops to the backend (instruction execution and retire).  Hence there are _N_ issue slots to be categorized per cycle.  At the top level of the TMA hierarchy, issue slots are categorized as described below.
 
 [align="center"]
 .Topdown Level 1
 image::images/tma-l1.svg[TMA Level 1]
 
-* *Frontend Bound* - The frontend did not issue a uop to the backend for execution.  Example causes include stalls that result from cache or TLB misses during instruction fetch.
-* *Backend Bound* - The backend could not consume a uop from the frontend.  Example causes include backpressure that results from cache or TLB misses on data (load/store) accesses, or from oversubscribed execution units.
-* *Bad Speculation* - The uop was dropped, as a result of a pipeline clear.  Example clears include branch/jump mispredictions, or memory ordering clears.  This category also includes any pipeline clear recovery cycles during which issue slots go unfilled.
-* *Retiring* - The uop retired.  Ideally the majority of slots fall into this state.
+.Topdown Level 1 State Descriptions
+[cols="20%,80%"]
+|===
+| *Frontend Bound* | Slots where the frontend did not issue a uop to the backend, despite the backend being able to accept uops.  Example causes include stalls that result from cache or TLB misses during instruction fetch.
+| *Backend Bound* | Slots where the backend could not consume a uop from the frontend.  Example causes include backpressure that results from cache or TLB misses on data (load/store) accesses,  or from oversubscribed execution units.
+| *Bad Speculation* | Uops that are dropped, as a result of a pipeline flush.  Example flushes include branch/jump mispredictions, memory ordering clears, exceptions, and interrupts.  This state also includes slots that are unfilled by the frontend as the pipeline recovers from the flush, slots that otherwise would have been classified as Frontend Bound.
+| *Retiring* | Uops retired.  Ideally the majority of slots fall into this state.
+|===
 
-Many of the top-level states listed above include further breakdown at the 2nd and 3rd levels of the TMA hierarchy, as illustrated below.  
+The full standard hierarchy of TMA states is illustrated below.
 
 [align="center"]
-.Topdown Hierarchy
-image::images/tma-full.svg[TMA Hierarchy]
+.Topdown Full Hierarchy
+image::images/tma-full2.svg[TMA Hierarchy]
 
 [NOTE]
 ====
-_Some imprecision within the event hierarchy is allowed and even expected.  The standard L2 and L3 events may not sum precisely to the parent L1 or L2 events, respectively, as it is expected that there will be some additional sources of bottlenecks beyond those represented by the standard events.  The exception is the Backend Bound L2 events (Core Bound and Memory Bound), which ideally should sum to the Backend Bound event total._
+_Some imprecision within the event hierarchy is allowed and even expected.  The standard L2 and L3 events may not sum precisely to the parent L1 or L2 events, respectively, as it is expected that there will be some additional sources of bottlenecks beyond those represented by the standard L2 and deeper (L2+) events._
 
-_Because of this possible imprecision, it is recommended that lower level TMA events are examined only when the parent event count or rate is higher than expected.  This avoids spending time on misleading L2 or L3 events that may be implemented by imprecise event formulas rather than precise hardware events._
+_Because of this possible imprecision, it is recommended that lower level TMA events are examined only when the parent event count or rate is higher than expected.  This avoids spending time on misleading L2+ events that may be implemented by imprecise event formulas rather than precise hardware events._
 
-_Implementations may opt to add custom L2 or L3 events, to identify additional bottlenecks specific to the microarchitecture._
+_Implementations may opt to add custom L2+ events, to identify additional bottlenecks specific to the microarchitecture._
 ====
+
+The Frontend Bound state is broken down into Frontend Latency and Frontend Bandwidth L2 states.  Slots that fall into Frontend Latency are cases where the decoders are awaiting fetch data, and hence have no uops to deliver to the backend.  Frontend Latency is broken down into three standard L3 states: Address, Data, and Redirect.  Frontend Address Latency represents slots unfilled due to awaiting the address translation for a fetch line; e.g., due to an ITLB miss.  Frontend Data Latency represents slots unfilled due to awaiting data return for a fetch line; e.g., due to an L1I cache miss.  Frontend Redirect Latency counts frontend pipeline slots discarded due to fetch redirects that can result from control transfers; e.g., due to jumps or taken branches.
+
+Frontend Bandwidth represents slots where the frontend does not deliver a uop to the backend due to decoder restrictions.  This occurs in cycles where the decoders have opcode bytes, and typically are able to deliver some uops to the backend, but are unable to fill all available slots.  As an example, this can occur in cases where there is decoder asymmetry, which can result in reduced decoder bandwidth due to some instructions needing to wait until a capable decoder is available.
+
+The Backend Bound state is broken down into the Core Bound and Memory Bound L2 states.  Memory Bound represents slots where the backend is stalled (cannot accept uops from the frontend) due to stalls resulting from memory operations (loads and stores).  Memory Bound is broken down into the Address and Data standard L3 states.  Memory Address Bound represents slots where the backend is stalled due to waiting for a data address translation; e.g., due to a DTLB miss.  Memory Data Bound represents slots where the backend is stalled due to waiting for a load or store access to complete; e.g., due to an L1D cache miss.  These L3 events may not capture all causes for Memory Bound slots, which could include load/store queue full, pipeline conflicts, or other microarchitectural issues.
+
+Memory Address Bound is broken down into L4 states per implemented TLB (see <<tlbs-ex>>), plus the Page Walk state.  So the Memory Address LL TLB State represents slots where the backend is stalled due to awaiting address translations from the last-level TLB, while the Page Walk state represents slots where the backend is stalled due to awaiting address translations that miss all TLBs and require a page walk.  
+
+Similarly, Memory Data Bound is broken down into L4 states per implemented cache (see <<caches-ex>>), plus the External Memory state.  The External Memory State represents slots where the backend is stalled due to awaiting data for requests that missed the last-level cache. 
+
+Counting Memory Bound slots per address or data source can be challenging, since, for example, the source of load data is typically only known once the stall ends and data is returned.  To simplify this counting, the events defined below count slots stalled due to a miss at each TLB or cache level.  This allows analysis tools to compute, for example, the slots attributed to accesses that hit cache L__x__ by counting the slots lost due to misses in cache L__x-1__ minus those lost due to misses in cache L__x__.
+
+Core Bound represents slots where the backend is stalled for reasons other than memory-induced stalls.  Core Bound has only a single standard L3 event, Serialization, which represents slots blocked due to serialization stalls that result from operations such as fences or CSR accesses.  Other causes of Core Bound slots include backpressure resulting from long latency arithmetic operations, or execution unit oversubscription.
+
+WARNING: _The line between Memory Bound and Core Bound can be blurry.  If the backend is stalled due to register file full, it could be due register resources being held by outstanding memory accesses (Memory Bound), or by a string of long-latency arithmetic operations (Core Bound).  Ultimately it will be up to implementers to determine how to handle any unclear cases that may exist in their implementations, which could include making a "best guess" between Memory Bound and Core Bound, or creating additional Backend Bound L2 events.  Including this comment to consider if the spec should include any additional guidance on this, or if it is implicit._
 
 The events which follow count slots for each of the states listed above, while the metrics express the slots per state value as a percentage of total slots.
 
