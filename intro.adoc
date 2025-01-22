@@ -15,5 +15,5 @@ _An implementation may opt to support any of the standard events described below
 
 All of the standard events defined below are optional, an implementation that supports HPE may opt to implement any combination of them.  What HPE guarantees is that, if software discovers support for any of the named standard events, the behavior of the event will match the definition given below.
 
-WARN: _The TG may opt to make some standard events required, TBD._
+WARNING: _The TG may opt to make some standard events required, TBD._
 
