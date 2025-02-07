@@ -52,6 +52,7 @@ The control transfer instruction categories, BRJMP and MISPRED, include addition
 | DIR.LJUMP | Other direct (inferrable) jump instructions with linkage.  Applies only for BRJMP, not MISPRED.
 | CORSWAP| Co-routine swap instructions.
 | RETURN | Function return instructions.
+| TRAPRET | Trap return instructions.
 |===
 
 All types listed above utilize the control transfer type definitions provided by the trace and Smctr/Ssctr specs.  For completeness, the definitions are replicated below.
@@ -81,20 +82,24 @@ All types listed above utilize the control transfer type definitions provided by
 | CM.POPRET(Z)
 | Other indirect jump (with linkage) | JALR _rd_, _rs_ where _rs_ != (_x1_ or _x5_) and _rd_ != (_x0_, _x1_, or _x5_)
 | Other direct jump (with linkage) | JAL _rd_ where _rd_ != (_x0_, _x1_, or _x5_)
+.2+| Trap returns | MRET
+|SRET
 |===
+
+NOTE: _Trap returns are only counted if the originating privilege mode is enabled for counting.  Thus a counter configured to only count in U-mode will never increment for a trap return._
 
 In addition, there are events defined for combinations of the types above.
 
 .Control Transfer Combination Event Types
 [cols="20%,80%"]
 |===
-| TK | All JAL, JALR, and taken branch instructions.
+| TK | All JAL, JALR, MRET, SRET, and taken branch instructions.
 | PRED | Predicted branch and jump instructions.  Represents the union of BRANCH, IND, CORSWAP, and RETURN types above.  This is implicit for MISPRED, so applies only for BRJMP.
 | JUMP | Indirect and direct jump instructions.  Includes jump instructions with linkage, but not calls or returns.
 | CALL | Indirect and direct call instructions.
 | RETURN_CORSWAP | The union of RETURN and CORSWAP instructions.
 | CALL_CORSWAP | The union of CALL and CORSWAP instructions.
-| UNCOND | All JAL and JALR instructions.
+| UNCOND | All JAL, JALR, MRET, and SRET instructions.
 |===
 
 
