@@ -1,0 +1,134 @@
+[
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of element arithmetic operations retired",
+        "PublicDescription": "Number of element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.INT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked integer element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked integer element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.INT.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of integer element arithmetic operations retired",
+        "PublicDescription": "Number of integer element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.INT8.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked 8-bit integer element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked 8-bit integer element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.INT8.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of 8-bit integer element arithmetic operations retired, regardless of masking",
+        "PublicDescription": "Number of 8-bit integer element arithmetic operations retired, regardless of masking."
+    },
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.INT16.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked 16-bit integer element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked 16-bit integer element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.INT16.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of 16-bit integer element arithmetic operations retired, regardless of masking",
+        "PublicDescription": "Number of 16-bit integer element arithmetic operations retired, regardless of masking."
+    },
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.INT32.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked 32-bit integer element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked 32-bit integer element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.INT32.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of 32-bit integer element arithmetic operations retired, regardless of masking",
+        "PublicDescription": "Number of 32-bit integer element arithmetic operations retired, regardless of masking."
+    },
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.INT64.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked 64-bit integer element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked 64-bit integer element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.INT64.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of 64-bit integer element arithmetic operations retired, regardless of masking",
+        "PublicDescription": "Number of 64-bit integer element arithmetic operations retired, regardless of masking."
+    },
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.FP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked floating point element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked floating point element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.FP.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of floating point element arithmetic operations retired",
+        "PublicDescription": "Number of floating point element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.FP8.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked 8-bit (quarter precision) floating point element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked 8-bit (quarter precision) floating point element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.FP8.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of 8-bit (quarter precision) floating point element arithmetic operations retired, regardless of masking",
+        "PublicDescription": "Number of 8-bit (quarter precision) floating point element arithmetic operations retired, regardless of masking."
+    },
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.FP16.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked 16-bit (half precision) floating point element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked 16-bit (half precision) floating point element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.FP16.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of 16-bit (half precision) floating point element arithmetic operations retired, regardless of masking",
+        "PublicDescription": "Number of 16-bit (half precision) floating point element arithmetic operations retired, regardless of masking."
+    },
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.FP32.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked 32-bit (single precision) floating point element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked 32-bit (single precision) floating point element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.FP32.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of 32-bit (single precision) floating point element arithmetic operations retired, regardless of masking",
+        "PublicDescription": "Number of 32-bit (single precision) floating point element arithmetic operations retired, regardless of masking."
+    },
+    {
+        "EventName": "RVV.ELEMENT.UNMASKED.FP64.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of unmasked 64-bit (double precision) floating point element arithmetic operations retired",
+        "PublicDescription": "Number of unmasked 64-bit (double precision) floating point element arithmetic operations retired."
+    },
+    {
+        "EventName": "RVV.ELEMENT.FP64.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Number of 64-bit (double precision) floating point element arithmetic operations retired, regardless of masking",
+        "PublicDescription": "Number of 64-bit (double precision) floating point element arithmetic operations retired, regardless of masking."
+    }
+]

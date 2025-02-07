@@ -1,9 +1,9 @@
 [[intro]]
 == Introduction
 
-The RISC-V hardware performance monitoring counters (Zihpm) provide support for counting programmable performance events. Such events can provide insights into software execution behavior, insights that are critical when tuning a profiled workload. However, no performance events are standardized, which means profiling tools must comprehend a custom set of events specific to each hardware implementation. This prevents profiling tools from offering general-purpose, event-based analysis capabilities that can be employed regardless of the underlying hardware implementation.
+The RISC-V hardware performance monitoring counters (Zihpm) provide support for counting programmable performance events. Such events can provide insights into software execution behavior, insights that are critical when tuning a profiled workload. 
 
-The Performance Events non-ISA extension provides a set of standard performance events and metrics (or formulas of events). For each standard event, the name and the precise hardware behavior associated with it is specified. For each standard metric, the name, precise description, and event formula, including the names of the constituent events, is defined.
+In order to allow profiling tools to offer general-purpose, event-based analysis capabilities that can be employed regardless of the underlying hardware implementation, the Hart Performance Events (HPE) extension defines a set of standard performance events and metrics (or formulas of events) for use with Zihpm counters. For each standard event, the name and the precise hardware behavior associated with it is specified. For each standard metric, the name, precise description, and event formula, including the names of the constituent events, is defined.  
 
 [NOTE]
 [%unbreakable]
@@ -12,3 +12,8 @@ _This extension does not standardize event selector values - these are left up t
 
 _An implementation may opt to support any of the standard events described below as an event formula rather than a hardware event.  As an example, for a typical implementation, the TOPDOWN.SLOTS event count could be derived from CYCLES.HART * ConstantIssueWidth.  It is strongly advised that any such formulas require counting no more events than the number of programmable counters implemented can support simultaneously.  Requiring the workload to be run multiple times to satisfy a single formula risks run-to-run noise reducing the fidelity of the profile results.  Also, implementing an event as a formula means that the user cannot use Sscofpmf to sample on that event.  Thus care should be taken when choosing which (if any) events to support in this manner._
 ====
+
+All of the standard events defined below are optional, an implementation that supports HPE may opt to implement any combination of them.  What HPE guarantees is that, if software discovers support for any of the named standard events, the behavior of the event will match the definition given below.
+
+WARNING: _The TG may opt to make some standard events required, TBD._
+

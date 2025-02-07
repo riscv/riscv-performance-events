@@ -6,72 +6,6 @@
         "PublicDescription": "Cycles when the hart is not in halt state. The cycles are counted with real (potentially variable) frequency the hart is working at"
     },
     {
-        "EventName": "INST.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of instructions retired",
-        "PublicDescription": "Number of instructions retired"
-    },
-    {
-        "EventName": "INST.SPEC",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of instructions issued",
-        "PublicDescription": "Number of instructions issued"
-    },
-    {
-        "EventName": "INST.LOAD.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of memory load instructions retired",
-        "PublicDescription": "Number of memory load instructions retired"
-    },
-    {
-        "EventName": "INST.LOAD.SPEC",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of memory load instructions issued",
-        "PublicDescription": "Number of memory load instructions issued"
-    },
-    {
-        "EventName": "INST.LOAD.UC.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of memory load instructions retired which accessed uncacheble memory",
-        "PublicDescription": "Number of memory load instructions retired which accessed uncacheble memory"
-    },
-    {
-        "EventName": "INST.STORE.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of memory store instructions retired",
-        "PublicDescription": "Number of memory store instructions retired"
-    },
-    {
-        "EventName": "INST.STORE.SPEC",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of memory store instructions issued",
-        "PublicDescription": "Number of memory store instructions issued"
-    },
-    {
-        "EventName": "INST.INT.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of integer instructions retired",
-        "PublicDescription": "Number of integer instructions retired"
-    },
-    {
-        "EventName": "INST.INT.SPEC",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of integer instructions issued",
-        "PublicDescription": "Number of integer instructions issued"
-    },
-    {
-        "EventName": "INST.FPU.RET",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of FPU instructions retired",
-        "PublicDescription": "Number of FPU instructions retired"
-    },
-    {
-        "EventName": "INST.FPU.SPEC",
-        "EventCode": "0x0",
-        "BriefDescription": "Number of FPU instructions issued",
-        "PublicDescription": "Number of FPU instructions issued"
-    },
-    {
         "EventName": "UOP.RET",
         "EventCode": "0x0",
         "BriefDescription": "Number of micro-operations retired",
@@ -94,5 +28,17 @@
         "EventCode": "0x0",
         "BriefDescription": "Cycles to recover from pipeline flushes",
         "PublicDescription": "Cycles to recover from pipeline flushes due to any reason. Examples: branch misprediction, memory disambiguation, serializing instruction"
+    },
+    {
+        "EventName": "CTR.UPDATE",
+        "EventCode": "0x0",
+        "BriefDescription": "Instructions and/or traps that are recorded by Control Transfer Records (CTR)",
+        "PublicDescription": "Instructions and/or traps that are recorded by Control Transfer Records (CTR)"
+    },
+    {
+        "EventName": "TRACE.STALL.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles retirement is stalled due to trace backpressure",
+        "PublicDescription": "Cycles retirement is stalled due to trace backpressure"
     }
 ]
