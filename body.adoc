@@ -128,14 +128,14 @@ NOTE: _Some instructions perform multiple memory accesses.  Because these events
 
 NOTE: _What constitutes local vs remote above is left up to implementations.  It is expected that remote accesses incur significantly more latency than local accesses.  A straightforward approach may be for local to imply the same NUMA node, while remote implies a different NUMA node._
 
-NOTE: _Implementations may execute some memory accesses post-retirement.  In such cases, even non-speculative (.RET) DRSC events may not be reflected in the counter immediately after the associated instruction retires._
+NOTE: _Implementations may execute some memory accesses post-retirement.  In such cases, even non-speculative (.RET) DSRC events may not be reflected in the counter immediately after the associated instruction retires._
 
 .ASRC Event Translation Sources
 [[asrcs]]
 [cols="20%,80%"]
 |===
-| <tlb> | Instructions for which the data address translation hit in the selected TLB.  See TLB naming standars in <<TLB Events>>.
-| <tlb>.MISS | Instructions for which the data address translation missed in the selected TLB. See TLB naming standars in <<TLB Events>>. 
+| <tlb> | Instructions for which the data address translation hit in the selected TLB.  See TLB naming standards in <<TLB Events>>.
+| <tlb>.MISS | Instructions for which the data address translation missed in the selected TLB. See TLB naming standards in <<TLB Events>>. 
 |===
 
 ==== Vector Instruction Events
@@ -189,7 +189,7 @@ include::adoc_event_tables/ldst.adoc[]
 
 This group contains events and metrics for instruction, data, and unified caches.  Events in this group count accesses from the cache's perspective; if an instruction performs two cache accesses, they will be counted separately.  Further, all events in this group count speculative accesses.
 
-The top level of the CACHE event hierarchy idenfies the cache associated with the event.  The standard cache naming scheme is detailed below.
+The top level of the CACHE event hierarchy identifies the cache associated with the event.  The standard cache naming scheme is detailed below.
 
 * The first character is L, for level.
 * The second character indicates the cache level.  The nearest cache is level 1, followed by level 2, and so on.  Level L implies the outermost cache.
@@ -279,7 +279,7 @@ include::adoc_event_tables/cache_metrics.adoc[]
 
 This group contains events and metrics for translation lookaside buffers (TLBs).  Events in this group count accesses from the TLB's perspective; if an instruction performs two address translations, they will be counted separately.  Further, all events in this group count speculative accesses.
 
-The top level of the TLB event hierarchy idenfies the level of the TLB associated with the event.  The naming scheme matches that for caches, see <<CACHE Events>>.
+The top level of the TLB event hierarchy identifies the level of the TLB associated with the event.  The naming scheme matches that for caches, see <<CACHE Events>>.
 
 A typical example implementation might include the following TLBs within the TLB event hierarchy.
 
@@ -354,8 +354,8 @@ This group contains events that count instruction fetch requests, broken down by
 [[fetch-asrcs]]
 [cols="20%,80%"]
 |===
-| <tlb> | Instruction fetches for which the address translation hit in the selcted TLB.  See TLB naming standars in <<TLB Events>>.
-| <tlb>.MISS | Instruction fetches for which the address translation missed in the selected.  See TLB naming standars in <<TLB Events>>.
+| <tlb> | Instruction fetches for which the address translation hit in the selected TLB.  See TLB naming standards in <<TLB Events>>.
+| <tlb>.MISS | Instruction fetches for which the address translation missed in the selected.  See TLB naming standards in <<TLB Events>>.
 |===
 
 .FETCH Events

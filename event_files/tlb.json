@@ -20,8 +20,8 @@
     {
         "EventName": "TLB.L1D.LOAD.MERGE",
         "EventCode": "0x0",
-        "BriefDescription": "Load address translation requests that merge into an oustanding L1 TLB miss.",
-        "PublicDescription": "Load address translation requests that merge into an oustanding L1 TLB miss."
+        "BriefDescription": "Load address translation requests that merge into an outstanding L1 TLB miss.",
+        "PublicDescription": "Load address translation requests that merge into an outstanding L1 TLB miss."
     },
     {
         "EventName": "TLB.L1D.STORE.ACCESS",
@@ -44,8 +44,8 @@
     {
         "EventName": "TLB.L1D.STORE.MERGE",
         "EventCode": "0x0",
-        "BriefDescription": "Store address translation requests that merge into an oustanding L1 TLB miss.",
-        "PublicDescription": "Store address translation requests that merge into an oustanding L1 TLB miss."
+        "BriefDescription": "Store address translation requests that merge into an outstanding L1 TLB miss.",
+        "PublicDescription": "Store address translation requests that merge into an outstanding L1 TLB miss."
     },
     {
         "EventName": "TLB.L1D.LDSTORE.ACCESS",
@@ -68,8 +68,8 @@
     {
         "EventName": "TLB.L1D.LDSTORE.MERGE",
         "EventCode": "0x0",
-        "BriefDescription": "Load or store address translation requests that merge into an oustanding L1 TLB miss.",
-        "PublicDescription": "Load or store address translation requests that merge into an oustanding L1 TLB miss."
+        "BriefDescription": "Load or store address translation requests that merge into an outstanding L1 TLB miss.",
+        "PublicDescription": "Load or store address translation requests that merge into an outstanding L1 TLB miss."
     },
     {
         "EventName": "TLB.L1D.LDSTORE.MISS.CYCLES",
@@ -98,8 +98,8 @@
     {
         "EventName": "TLB.L1I.CODE.MERGE",
         "EventCode": "0x0",
-        "BriefDescription": "Instruction fetch address translation requests that merge into an oustanding L1 TLB miss.",
-        "PublicDescription": "Instruction fetch address translation requests that merge into an oustanding L1 TLB miss."
+        "BriefDescription": "Instruction fetch address translation requests that merge into an outstanding L1 TLB miss.",
+        "PublicDescription": "Instruction fetch address translation requests that merge into an outstanding L1 TLB miss."
     },
     {
         "EventName": "TLB.L1I.CODE.MISS.CYCLES",
@@ -128,8 +128,8 @@
     {
         "EventName": "TLB.LL.LOAD.MERGE",
         "EventCode": "0x0",
-        "BriefDescription": "Load address translation requests that merge into an oustanding last level TLB miss.",
-        "PublicDescription": "Load address translation requests that merge into an oustanding last level TLB miss."
+        "BriefDescription": "Load address translation requests that merge into an outstanding last level TLB miss.",
+        "PublicDescription": "Load address translation requests that merge into an outstanding last level TLB miss."
     },
     {
         "EventName": "TLB.LL.STORE.ACCESS",
@@ -152,8 +152,8 @@
     {
         "EventName": "TLB.LL.STORE.MERGE",
         "EventCode": "0x0",
-        "BriefDescription": "Store address translation requests that merge into an oustanding last level TLB miss.",
-        "PublicDescription": "Store address translation requests that merge into an oustanding last level TLB miss."
+        "BriefDescription": "Store address translation requests that merge into an outstanding last level TLB miss.",
+        "PublicDescription": "Store address translation requests that merge into an outstanding last level TLB miss."
     },
     {
         "EventName": "TLB.LL.LDSTORE.ACCESS",
@@ -176,8 +176,8 @@
     {
         "EventName": "TLB.LL.LDSTORE.MERGE",
         "EventCode": "0x0",
-        "BriefDescription": "Load or store address translation requests that merge into an oustanding last level TLB miss.",
-        "PublicDescription": "Load or store address translation requests that merge into an oustanding last level TLB miss."
+        "BriefDescription": "Load or store address translation requests that merge into an outstanding last level TLB miss.",
+        "PublicDescription": "Load or store address translation requests that merge into an outstanding last level TLB miss."
     },
     {
         "EventName": "TLB.LL.LDSTORE.MISS.CYCLES",
@@ -206,8 +206,8 @@
     {
         "EventName": "TLB.LL.CODE.MERGE",
         "EventCode": "0x0",
-        "BriefDescription": "Instruction fetch address translation requests that merge into an oustanding last level TLB miss.",
-        "PublicDescription": "Instruction fetch address translation requests that merge into an oustanding last level TLB miss."
+        "BriefDescription": "Instruction fetch address translation requests that merge into an outstanding last level TLB miss.",
+        "PublicDescription": "Instruction fetch address translation requests that merge into an outstanding last level TLB miss."
     },
     {
         "EventName": "TLB.LL.CODE.MISS.CYCLES",
