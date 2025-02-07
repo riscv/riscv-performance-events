@@ -93,13 +93,13 @@ In addition, there are events defined for combinations of the types above.
 .Control Transfer Combination Event Types
 [cols="20%,80%"]
 |===
-| TK | All JAL, JALR, MRET, SRET, and taken branch instructions.
+| TK | JAL, JALR, MRET, SRET, and taken branch instructions.
 | PRED | Predicted branch and jump instructions.  Represents the union of BRANCH, IND, CORSWAP, and RETURN types above.  This is implicit for MISPRED, so applies only for BRJMP.
 | JUMP | Indirect and direct jump instructions.  Includes jump instructions with linkage, but not calls or returns.
 | CALL | Indirect and direct call instructions.
-| RETURN_CORSWAP | The union of RETURN and CORSWAP instructions.
-| CALL_CORSWAP | The union of CALL and CORSWAP instructions.
-| UNCOND | All JAL, JALR, MRET, and SRET instructions.
+| RETALL | All function return instructions, the union of RETURN and CORSWAP.
+| CALLALL | All function call instructions, the union of CALL and CORSWAP.
+| UNCOND | JAL, JALR, MRET, and SRET instructions.
 |===
 
 
