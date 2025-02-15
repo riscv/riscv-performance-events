@@ -2,8 +2,20 @@
     {
         "EventName": "CYCLES.HART",
         "EventCode": "0x0",
-        "BriefDescription": "Cycles when the hart is not in halt state",
-        "PublicDescription": "Cycles when the hart is not in halt state. The cycles are counted with real (potentially variable) frequency the hart is working at"
+        "BriefDescription": "Clock cycles executed by the processor core on which the hart is running.  This event counts the same clock cycles as the `cycle` counter, and is subject to the same variations in rate and frequency.",
+        "PublicDescription": "Clock cycles executed by the processor core on which the hart is running.  This event counts the same clock cycles as the `cycle` counter, and is subject to the same variations in rate and frequency."
+    },
+    {
+        "EventName": "CYCLES.BUS",
+        "EventCode": "0x0",
+        "BriefDescription": "Clock cycles corresponding to the frequency of the hart's interface between its private caches and the rest of the system.  The rate and frequency of this clock may vary.",
+        "PublicDescription": "Clock cycles corresponding to the frequency of the hart's interface between its private caches and the rest of the system.  The rate and frequency of this clock may vary."
+    },
+    {
+        "EventName": "CYCLES.REF",
+        "EventCode": "0x0",
+        "BriefDescription": "Reference clock cycles.  This event counts at a fixed frequency.",
+        "PublicDescription": "Reference clock cycles.  This event counts at a fixed frequency."
     },
     {
         "EventName": "UOP.RET",
