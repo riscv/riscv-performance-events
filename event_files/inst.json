@@ -33,73 +33,73 @@
         "EventName": "INST.BRJMP.IND.RET",
         "EventCode": "0x0",
         "BriefDescription": "Indirect jumps, with and without linkage, and calls retired. Does not include function returns.",
-        "PublicDescription": "Indirect jumps, with and without linkage, and calls retired. Does not include function returns. Indirect jumps and calls are defined using following encodings: FIXME"
+        "PublicDescription": "Indirect jumps, with and without linkage, and calls retired."
     },
     {
         "EventName": "INST.BRJMP.IND.CALL.RET",
         "EventCode": "0x0",
         "BriefDescription": "Indirect calls retired.",
-        "PublicDescription": "Indirect calls retired. Indirect calls are defined using following encodings: 'JALR x1, rs where rs != x5'; 'JALR x5, rs where rs != x1'; 'C.JALR rs1 where rs1 != x5'"
+        "PublicDescription": "Indirect calls retired."
     },
     {
         "EventName": "INST.BRJMP.IND.JUMP.RET",
         "EventCode": "0x0",
         "BriefDescription": "Indirect jumps without linkage retired.",
-        "PublicDescription": "Indirect jumps without linkage retired. Indirect jumps without linkage are defined using following encodings: 'JALR x0, rs where rs != (x1 or x5)'; 'C.JR rs1 where rs1 != (x1 or x5)'"
+        "PublicDescription": "Indirect jumps without linkage retired."
     },
     {
         "EventName": "INST.BRJMP.IND.LJUMP.RET",
         "EventCode": "0x0",
         "BriefDescription": "Other indirect jumps with linkage retired.",
-        "PublicDescription": "Other indirect jumps with linkage retired. Other indirect jump with linkage are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'"
+        "PublicDescription": "Other indirect jumps with linkage retired."
     },
     {
         "EventName": "INST.BRJMP.DIR.RET",
         "EventCode": "0x0",
         "BriefDescription": "Direct jumps, with and without linkage, and calls retired.",
-        "PublicDescription": "Direct jumps, with and without linkage, and calls retired. Direct calls and jumps are defined using following encodings: FIXME"
+        "PublicDescription": "Direct jumps, with and without linkage, and calls retired."
     },
     {
         "EventName": "INST.BRJMP.DIR.CALL.RET",
         "EventCode": "0x0",
         "BriefDescription": "Direct calls retired.",
-        "PublicDescription": "Direct calls retired. Direct calls are defined using following encodings: 'JAL x1'; 'JAL x5'; 'C.JAL'"
+        "PublicDescription": "Direct calls retired."
     },
     {
         "EventName": "INST.BRJMP.DIR.JUMP.RET",
         "EventCode": "0x0",
         "BriefDescription": "Direct jumps without linkage retired.",
-        "PublicDescription": "Direct jumps without linkage retired. Direct jumps without linkage are defined using following encodings: 'JAL x0'; 'C.J'"
+        "PublicDescription": "Direct jumps without linkage retired."
     },
     {
         "EventName": "INST.BRJMP.DIR.LJUMP.RET",
         "EventCode": "0x0",
         "BriefDescription": "Other direct jumps with linkage retired.",
-        "PublicDescription": "Other direct jumps with linkage retired. Other direct jump with linkage are defined using following encodings: 'JAL rd where rd != (x0, x1, or x5)'"
+        "PublicDescription": "Other direct jumps with linkage retired."
     },
     {
         "EventName": "INST.BRJMP.CORSWAP.RET",
         "EventCode": "0x0",
         "BriefDescription": "Co-routine swaps retired.",
-        "PublicDescription": "Co-routine swaps retired. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'"
+        "PublicDescription": "Co-routine swaps retired."
     },
     {
         "EventName": "INST.BRJMP.RETURN.RET",
         "EventCode": "0x0",
         "BriefDescription": "Function returns retired.",
-        "PublicDescription": "Function returns retired. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'"
+        "PublicDescription": "Function returns retired."
     },
     {
         "EventName": "INST.BRJMP.TK.RET",
         "EventCode": "0x0",
         "BriefDescription": "Retired instructions that changed control flow. Includes taken branches and all jumps.",
-        "PublicDescription": "Retired instructions that changed control flow. Includes taken branches and all jumps. Includes the following encodings: FIXME"
+        "PublicDescription": "Retired instructions that changed control flow. Includes taken branches and all jumps."
     },
     {
         "EventName": "INST.BRJMP.PRED.RET",
         "EventCode": "0x0",
         "BriefDescription": "Branches and predicted (indirect) jumps retired. Includes calls and returns.",
-        "PublicDescription": "Branches and predicted (indirect) jumps retired. Includes calls and returns. Includes the following encodings: FIXME"
+        "PublicDescription": "Branches and predicted (indirect) jumps retired. Includes calls and returns."
     },
     {
         "EventName": "INST.MISPRED.RET",
@@ -129,43 +129,43 @@
         "EventName": "INST.MISPRED.IND.RET",
         "EventCode": "0x0",
         "BriefDescription": "Mispredicted indirect jumps, with and without linkage, and calls retired. Does not include function returns.",
-        "PublicDescription": "Mispredicted indirect jumps, with and without linkage, and calls retired. Does not include function returns. Indirect jumps and calls are defined using following encodings: FIXME"
+        "PublicDescription": "Mispredicted indirect jumps, with and without linkage, and calls retired. Does not include function returns."
     },
     {
         "EventName": "INST.MISPRED.IND.CALL.RET",
         "EventCode": "0x0",
         "BriefDescription": "Mispredicted indirect calls retired.",
-        "PublicDescription": "Mispredicted indirect calls retired. Indirect calls are defined using following encodings: 'JALR x1, rs where rs != x5'; 'JALR x5, rs where rs != x1'; 'C.JALR rs1 where rs1 != x5'"
+        "PublicDescription": "Mispredicted indirect calls retired."
     },
     {
         "EventName": "INST.MISPRED.IND.JUMP.RET",
         "EventCode": "0x0",
         "BriefDescription": "Mispredicted indirect jumps without linkage retired.",
-        "PublicDescription": "Mispredicted indirect jumps without linkage retired. Indirect jumps without linkage are defined using following encodings: 'JALR x0, rs where rs != (x1 or x5)'; 'C.JR rs1 where rs1 != (x1 or x5)'"
+        "PublicDescription": "Mispredicted indirect jumps without linkage retired."
     },
     {
         "EventName": "INST.MISPRED.IND.LJUMP.RET",
         "EventCode": "0x0",
         "BriefDescription": "Mispredicted other indirect jumps with linkage retired.",
-        "PublicDescription": "Mispredicted other indirect jumps with linkage retired. Other indirect jumps with linkage are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'"
+        "PublicDescription": "Mispredicted other indirect jumps with linkage retired."
     },
     {
         "EventName": "INST.MISPRED.CORSWAP.RET",
         "EventCode": "0x0",
         "BriefDescription": "Mispredicted co-routine swaps retired.",
-        "PublicDescription": "Mispredicted co-routine swaps retired. Co-routine swaps are defined using following encodings: 'JALR x1, x5'; 'JALR x5, x1'; 'C.JALR x5'"
+        "PublicDescription": "Mispredicted co-routine swaps retired."
     },
     {
         "EventName": "INST.MISPRED.RETURN.RET",
         "EventCode": "0x0",
         "BriefDescription": "Mispredicted function returns retired.",
-        "PublicDescription": "Mispredicted function returns retired. Function returns are defined using following encodings: 'JALR rd, rs where rs == (x1 or x5) and rd != (x1 or x5)'; 'C.JR rs1 where rs1 == (x1 or x5)'"
+        "PublicDescription": "Mispredicted function returns retired."
     },
     {
         "EventName": "INST.MISPRED.IND.LJUMP.RET",
         "EventCode": "0x0",
         "BriefDescription": "Mispredicted other indirect jumps with linkage retired.",
-        "PublicDescription": "Mispredicted other indirect jumps with linkage retired. Other indirect jumps with linkage are defined using following encodings: 'JALR rd, rs where rs != (x1 or x5) and rd != (x0, x1, or x5)'"
+        "PublicDescription": "Mispredicted other indirect jumps with linkage retired."
     },
     {
         "EventName": "INST.MISPRED.TK.RET",
