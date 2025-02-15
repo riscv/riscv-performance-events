@@ -223,17 +223,17 @@ The second level of the CACHE event hierarchy identifies the access or operation
 |===
 | RD | Data reads that lookup the cache.  This includes explicit reads (e.g., the LW instruction) and implicit reads (e.g., page table walks).  
 | RD.DATA | The subset of reads that are data load operations.
-| RD.PREF | The subset of reads that are incoming prefetch reads.
 | RD.CODE | The subset of reads that are code fetch reads.
 | WR | Data writes to the cache.  This includes explicit reads (e.g., the SW instruction) and implicit reads (e.g., page accessed/dirty attribute updates).  
 | RW | Data reads and writes, the union of the RD and WR types above.
+| PREF | Prefetch requests that lookup the cache.
 | FILL  | Cache misses or prefetches that result in a line in the cache being filled with data from memory or a higher-level cache.
 | WB | Modified lines written out from the cache to memory or to a higher-level cache.
-| SNOOP | Cache coherency snoops.
+| SNOOP | Cache coherency snoops that lookup the cache.
 | OPREF | Outbound prefetches, for the purpose of pulling lines into the associated cache.
 |===
 
-For caches that may be shared by multiple harts, the lookup events (RD*, WR, RW) and SNOOP events should increment only for requests from the local hart.  FILL and WB events should increment only for fills and writebacks resulting from requests from the local hart.  OPREF events should not increment.
+For caches that may be shared by multiple harts, the lookup events (RD*, WR, RW, PREF, SNOOP) should increment only for requests from the local hart.  FILL and WB events should increment only for fills and writebacks resulting from requests from the local hart.  OPREF events should not increment.
 
 Some events in the CACHE event hierarchy include additional levels.  For cache lookup access types (RD*, WR, or RW), a third level counts per lookup result.
 
