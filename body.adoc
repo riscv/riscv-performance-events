@@ -511,7 +511,6 @@ _The standard encodings above are intended for use with, among other things, Lin
 |===
 ====
 
-
 [appendix]
 == Metrics
 
