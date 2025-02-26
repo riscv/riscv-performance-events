@@ -366,12 +366,6 @@ This group contains events that count instruction fetch requests, broken down by
 .FETCH Events
 include::adoc_event_tables/fetch.adoc[]
 
-=== GENERAL Events
-
-This group contains general events that don't fall into other groups. 
-
-include::adoc_event_tables/general.adoc[]
-
 === TOPDOWN Microarchitecture Analysis Events
 
 This group contains events and metrics for use with Top-down Microarchitecture Analysis (TMA) methodology.
@@ -431,3 +425,10 @@ The events which follow count slots for each of the states listed above, while t
 include::adoc_event_tables/topdown.adoc[]
 
 include::adoc_event_tables/topdown_metrics.adoc[]
+
+=== Other Events
+
+This group contains general events that don't fall into other groups. 
+
+include::adoc_event_tables/general.adoc[]
+
