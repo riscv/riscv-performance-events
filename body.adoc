@@ -415,9 +415,6 @@ The events which follow count slots for each of the states listed above.
 
 include::adoc_event_tables/topdown.adoc[]
 
-<<<<<<< HEAD
-include::adoc_event_tables/topdown_metrics.adoc[]
-
 === Other Events
 
 This group contains general events that don't fall into other groups. 
@@ -426,7 +423,6 @@ include::adoc_event_tables/general.adoc[]
 
 NOTE: _CYCLES.HART is expected to count the same cycles counted by the `cycle` counter.  The CYCLES.HART definition above calls out a scenario where the `cycle` counter may increment while CYCLES.HART does not, and that is when the hart is paused despite the core clock continuing to run, perhaps because another hart in the (SMT) core remains active._
 
-=======
 == Appendix A. Metrics
 
 Performance metrics are formulas of events, frequently used to express events in terms of rates; i.e., events per second, events per instruction, events per cycle.  It is expected that the events defined above will be used to compute metrics, and this appendix offers guidance on how best to do that.
@@ -483,4 +479,3 @@ NOTE: _The metric above does not account for prefetches or other traffic that mi
 The following are common metrics expressed as formulas of standard events.
 
 include::adoc_event_tables/metrics.adoc[]
->>>>>>> move metrics guidance and list to Appendix A
