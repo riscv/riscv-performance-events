@@ -38,14 +38,14 @@
     {
         "EventName": "FLUSH.CYCLES",
         "EventCode": "0x0",
-        "BriefDescription": "Cycles to recover from pipeline flushes",
-        "PublicDescription": "Cycles to recover from pipeline flushes due to any reason. Examples: branch misprediction, memory disambiguation, serializing instruction"
+        "BriefDescription": "Cycles to recover from pipeline flushes.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a pipeline clear.",
+        "PublicDescription": "Cycles to recover from pipeline flushes.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a pipeline clear."
     },
     {
-        "EventName": "CTR.UPDATE",
+        "EventName": "CTR.UPDATE.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Instructions and/or traps that are recorded by Control Transfer Records (CTR)",
-        "PublicDescription": "Instructions and/or traps that are recorded by Control Transfer Records (CTR)"
+        "BriefDescription": "Instructions retired and/or traps delivered that are recorded by Control Transfer Records (CTR)",
+        "PublicDescription": "Instructions retired and/or traps delivered that are recorded by Control Transfer Records (CTR)"
     },
     {
         "EventName": "TRACE.STALL.CYCLES",
