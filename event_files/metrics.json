@@ -1,0 +1,236 @@
+[
+    {
+        "MetricName": "CACHE.L1D.RD.DATA.MPKI",
+        "BriefDescription": "The rate of demand load L1D cache misses per 1000 instructions retired",
+        "MetricExpr": "CACHE.L1D.RD.DATA.MISS * 1000 / INST.RET",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE.L1D.RD.DATA.MISS.RATE",
+        "BriefDescription": "The ratio of demand load L1D cache misses to the total number of demand load L1D accesses",
+        "MetricExpr": "CACHE.L1D.RD.DATA.MISS / CACHE.L1D.RD.DATA.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE.L1I.RD.CODE.MPKI",
+        "BriefDescription": "The rate of demand fetch L1I cache misses per 1000 instructions retired",
+        "MetricExpr": "CACHE.L1I.RD.CODE.MISS * 1000 / INST.RET",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE.L1I.RD.CODE.MISS.RATE",
+        "BriefDescription": "The ratio of demand fetch L1I cache misses to the total number of demand fetch L1I accesses",
+        "MetricExpr": "CACHE.L1I.RD.CODE.MISS / CACHE.L1I.RD.CODE.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE.L2.RD.DATA.MPKI",
+        "BriefDescription": "The rate of demand load L2 cache misses per 1000 instructions retired",
+        "MetricExpr": "CACHE.L2.RD.DATA.MISS * 1000 / INST.RET",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE.L2.RD.DATA.MISS.RATE",
+        "BriefDescription": "The ratio of demand load L2 cache misses to the total number of demand load L2 accesses",
+        "MetricExpr": "CACHE.L2.RD.DATA.MISS / CACHE.L2.RD.DATA.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "CACHE.LL.RD.DATA.MPKI",
+        "BriefDescription": "The rate of demand load last-level cache misses per 1000 instructions retired",
+        "MetricExpr": "CACHE.LL.RD.DATA.MISS * 1000 / INST.RET",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "CACHE.LL.RD.DATA.MISS.RATE",
+        "BriefDescription": "The ratio of demand load last-level cache misses to the total number of demand load last-level cache accesses",
+        "MetricExpr": "CACHE.LL.RD.DATA.MISS / CACHE.LL.RD.DATA.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "IPC",
+        "BriefDescription": "Instructions retired per cycle",
+        "MetricExpr": "INST.RET / CYCLES.HART",
+        "MetricGroup": "Instruction"
+    },
+    {
+        "MetricName": "INST.BRJMP.PKI",
+        "BriefDescription": "The rate of control flow instructions retired per 1000 instructions",
+        "MetricExpr": "INST.BRJMP.RET * 1000 / INST.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "INST.MISPRED.PKI",
+        "BriefDescription": "The rate of control flow instructions mispredicted per 1000 instructions",
+        "MetricExpr": "INST.MISPRED.RET * 1000 / INST.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "INST.MISPRED.RATE",
+        "BriefDescription": "The rate of mispredictions among predicted control flow instructions",
+        "MetricExpr": "INST.MISPRED.RET / INST.BRJMP.PRED.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "INST.BRJMP.BRANCH.PKI",
+        "BriefDescription": "The rate of conditional branches retired per 1000 instructions",
+        "MetricExpr": "INST.BRJMP.BRANCH.RET * 1000 / INST.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "INST.MISPRED.BRANCH.PKI",
+        "BriefDescription": "The rate of conditional branches mispredicted per 1000 instructions",
+        "MetricExpr": "INST.MISPRED.BRANCH.RET * 1000 / INST.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "INST.MISPRED.BRANCH.RATE",
+        "BriefDescription": "The rate of mispredictions among conditional branches",
+        "MetricExpr": "INST.MISPRED.BRANCH.RET / INST.BRJMP.BRANCH.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "INST.BRJMP.IND.PKI",
+        "BriefDescription": "The rate of indirect jumps of any kind retired per 1000 instructions",
+        "MetricExpr": "INST.BRJMP.IND.RET * 1000 / INST.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "INST.MISPRED.IND.PKI",
+        "BriefDescription": "The rate of indirect jumps of any kind mispredicted per 1000 instructions",
+        "MetricExpr": "INST.MISPRED.IND.RET * 1000 / INST.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "INST.MISPRED.IND.RATE",
+        "BriefDescription": "The rate of mispredictions among indirect jumps of any kind",
+        "MetricExpr": "INST.MISPRED.IND.RET / INST.BRJMP.IND.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "INST.BRJMP.RETURN.PKI",
+        "BriefDescription": "The rate of function returns retired per 1000 instructions",
+        "MetricExpr": "INST.BRJMP.RETURN.RET * 1000 / INST.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "INST.MISPRED.RETURN.PKI",
+        "BriefDescription": "The rate of function returns mispredicted per 1000 instructions",
+        "MetricExpr": "INST.MISPRED.RETURN.RET * 1000 / INST.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "1MPKI"
+    },
+    {
+        "MetricName": "INST.MISPRED.RETURN.RATE",
+        "BriefDescription": "The rate of function returns mispredicted to the overall function returns",
+        "MetricExpr": "INST.MISPRED.RETURN.RET / INST.BRJMP.RETURN.RET",
+        "MetricGroup": "Instruction",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TLB.L1D.LDST.MPKI",
+        "BriefDescription": "The rate of L1 TLB misses caused by data loads or stores per 1000 instructions retired",
+        "MetricExpr": "TLB.L1D.LDST.MISS * 1000 / INST.RET",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "TLB.L1D.LDST.MISS.RATE",
+        "BriefDescription": "The ratio of L1 TLB load or store misses to the total number of L1 TLB load or store accesses",
+        "MetricExpr": "TLB.L1D.LDST.MISS / TLB.L1D.LDST.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TLB.L1I.CODE.MPKI",
+        "BriefDescription": "The rate of ITLB misses caused by instruction fetches per 1000 instructions retired",
+        "MetricExpr": "TLB.L1I.CODE.MISS * 1000 / INST.RET",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "TLB.L1I.CODE.MISS.RATE",
+        "BriefDescription": "The ratio of ITLB instruction fetch misses to the total number of L1 TLB instruction fetch accesses",
+        "MetricExpr": "TLB.L1I.CODE.MISS / TLB.L1I.CODE.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TLB.LL.LDST.MPKI",
+        "BriefDescription": "The rate of last level TLB misses caused by data or stores loads per 1000 instructions retired",
+        "MetricExpr": "TLB.LL.LDST.MISS * 1000 / INST.RET",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "TLB.LL.LDST.MISS.RATE",
+        "BriefDescription": "The ratio of last level TLB load or store misses to the total number of last level TLB load or store accesses",
+        "MetricExpr": "TLB.LL.LDST.MISS / TLB.LL.LDST.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TLB.LL.CODE.MPKI",
+        "BriefDescription": "The rate of last level TLB misses caused by instruction fetches per 1000 instructions retired",
+        "MetricExpr": "TLB.LL.CODE.MISS * 1000 / INST.RET",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "1PKI"
+    },
+    {
+        "MetricName": "TLB.LL.CODE.MISS.RATE",
+        "BriefDescription": "The ratio of last level TLB instruction fetch misses to the total number of last level TLB instruction fetch accesses",
+        "MetricExpr": "TLB.LL.CODE.MISS / TLB.LL.CODE.ACCESS",
+        "MetricGroup": "Cache",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TOPDOWN.BAD_SPECULATION.RATE",
+        "BriefDescription": "Fraction of slots wasted due to incorrect speculations",
+        "MetricExpr": "TOPDOWN.BAD_SPECULATION.SLOTS / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.BAD_SPECULATION > 0.15",
+        "PublicDescription": "Fraction of slots wasted due to incorrect speculations",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TOPDOWN.FRONTEND_BOUND.RATE",
+        "BriefDescription": "Fraction of slots unused due to the frontend's inability to supply enough uops",
+        "MetricExpr": "TOPDOWN.FRONTEND_BOUND.SLOTS / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.FRONTEND_BOUND.RATE > 0.15",
+        "PublicDescription": "Fraction of slots unused due to the frontend's inability to supply enough uops",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TOPDOWN.RETIRING.RATE",
+        "BriefDescription": "Fraction of slots that retired",
+        "MetricExpr": "UOP.RET / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.RETIRING.RATE > 0.75",
+        "PublicDescription": "Fraction of slots that retired.",
+        "ScaleUnit": "100%"
+    },
+    {
+        "MetricName": "TOPDOWN.BACKEND_BOUND.RATE",
+        "BriefDescription": "Fraction of slots unused due to the due to a lack of backend resources",
+        "MetricExpr": "TOPDOWN.BACKEND_BOUND.SLOTS / TOPDOWN.SLOTS",
+        "MetricThreshold": "TOPDOWN.BACKEND_BOUND.RATE > 0.15",
+        "PublicDescription": "Fraction of slots unused due to the due to a lack of backend resources",
+        "ScaleUnit": "100%"
+    }
+]

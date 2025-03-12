@@ -6,7 +6,7 @@ event_files = []
 metric_files = []
 
 for file in os.listdir("event_files"):
-    if file.endswith("_metrics.json"):
+    if file.endswith("metrics.json"):
         metric_files.append(file)
     elif file.endswith(".json"):
         event_files.append(file)
