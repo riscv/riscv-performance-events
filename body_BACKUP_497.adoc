@@ -1,0 +1,484 @@
+[[body]]
+== Event Groups
+
+A standard set of performance events are specified below.  The event definitions are organized into groups, many of which include a hierarchy of sub-events that constrain what is counted.
+
+Some of the event groups include both speculative and non-speculative events.  In such groups, the event names are appended with one of the following.
+
+* .RET - for non-speculative events counted at retirement.
+* .SPEC - for speculative events, which may include events incurred by instructions that do not retire.
+
+NOTE: _In general, RET events are more useful for performance analysis, since they are consistent with software's view of the instruction flow. But they can be significantly more expensive to implement, as they require event data to be staged along with the associated instruction to retirement. It is up to implementations to decide whether to support the RET, SPEC, or both variants of an event._
+
+=== INST (Instruction) Events
+:xrefstyle: short
+
+This group contains events that count RISC-V (and custom) instructions.  Each event in this group has both speculative (.SPEC) and non-speculative (.RET) versions, though only the non-speculative events are listed in the tables below.
+
+INST events are broken down by instruction categories at the top level of the event hierarchy.  When no category is included in the event name (e.g., INST.RET), all instructions are counted.
+
+.INST Event Categories
+[cols="20%,80%"]
+|===
+| BRJMP | Branch and jump instructions.  Includes all BRANCH, JAL, and JALR opcodes, including compressed varieties.
+| MISPRED | Branch and jump instructions that were mispredicted.
+| LOAD | Memory load instructions.  Includes all instructions that perform memory read operations.
+| STORE | Memory store instructions.  Includes all instructions that perform memory write operations.
+| LDST | Memory load and store instructions.  Represents the union of the LOAD and STORE categories.
+| MO | Memory ordering instructions.  Includes FENCE and FENCE.TSO instructions.
+| INT | Integer computational instructions.  Includes all integer computational instructions from RVxI, including compressed varieties.  Also includes all computational instructions from the M extension and the A extension (AMO*).  Whether NOP instructions are counted is implementation-dependent.
+| FP | Floating point instructions.  Includes all instructions from the F, D, Q, and Zfa extensions.
+| RVV | Vector instructions.  Includes all instructions from the V extension.
+| RVC | Compressed instructions.  Includes all instructions from the C extension.
+|===
+
+==== Control Transfer Instruction Events
+
+The control transfer instruction categories, BRJMP and MISPRED, include additional levels of hierarchy that allow counting per transfer instruction type.  When no type is included in the event name (e.g., INST.BRJMP.RET), all types are counted.
+
+.Control Transfer Event Types
+[cols="20%,80%"]
+|===
+| BRANCH | Branch instructions.
+| BRANCH.TK | Taken branch instructions.
+| BRANCH.NT | Not-taken branch instructions.
+| IND | Indirect (uninferrable) jump and call instructions.
+| IND.CALL | Indirect (uninferrable) call instructions.
+| IND.JUMP | Indirect (uninferrable) jump instructions without linkage.
+| IND.LJUMP | Other indirect (uninferrable) jump instructions with linkage.
+| DIR | Direct (inferrable) jump and call instructions.  Applies only for BRJMP, not MISPRED.
+| DIR.CALL | Direct (inferrable) call instructions.  Applies only for BRJMP, not MISPRED.
+| DIR.JUMP | Direct (inferrable) jump instructions without linkage.  Applies only for BRJMP, not MISPRED.
+| DIR.LJUMP | Other direct (inferrable) jump instructions with linkage.  Applies only for BRJMP, not MISPRED.
+| CORSWAP| Co-routine swap instructions.
+| RETURN | Function return instructions.
+| TRAPRET | Trap return instructions.
+|===
+
+All types listed above utilize the control transfer type definitions provided by the trace and Smctr/Ssctr specs.  For completeness, the definitions are replicated below.
+
+.Control Transfer Type Definitions
+[%unbreakable]
+[cols="37%,63%", options="header",]
+|===
+| Transfer Type Name | Associated Opcodes
+.3+| Indirect call | JALR _x1_, _rs_ where _rs_ != _x5_
+| JALR _x5_, _rs_ where _rs_ != _x1_
+| C.JALR _rs1_ where _rs1_ != _x5_
+.4+| Direct call | JAL _x1_
+| JAL _x5_
+| C.JAL
+| CM.JALT _index_
+.2+| Indirect jump (without linkage) | JALR _x0_, _rs_ where _rs_ != (_x1_ or _x5_)
+| C.JR _rs1_ where _rs1_ != (_x1_ or _x5_)
+.3+| Direct jump (without linkage) | JAL _x0_
+| C.J
+| CM.JT _index_
+.3+| Co-routine swap | JALR _x1_, _x5_
+| JALR _x5_, _x1_
+| C.JALR _x5_
+.3+| Function return | JALR _rd_, _rs_ where _rs_ == (_x1_ or _x5_) and _rd_ != (_x1_ or _x5_)
+| C.JR _rs1_ where _rs1_ == (_x1_ or _x5_)
+| CM.POPRET(Z)
+| Other indirect jump (with linkage) | JALR _rd_, _rs_ where _rs_ != (_x1_ or _x5_) and _rd_ != (_x0_, _x1_, or _x5_)
+| Other direct jump (with linkage) | JAL _rd_ where _rd_ != (_x0_, _x1_, or _x5_)
+.2+| Trap returns | MRET
+|SRET
+|===
+
+NOTE: _Trap returns are only counted if the originating privilege mode is enabled for counting.  Thus a counter configured to only count in U-mode will never increment for a trap return._
+
+In addition, there are events defined for combinations of the types above.
+
+.Control Transfer Combination Event Types
+[cols="20%,80%"]
+|===
+| TK | JAL, JALR, MRET, SRET, and taken branch instructions.
+| PRED | Predicted branch and jump instructions.  Represents the union of BRANCH, IND, CORSWAP, and RETURN types above.  This is implicit for MISPRED, so applies only for BRJMP.
+| JUMP | Indirect and direct jump instructions.  Includes jump instructions with linkage, but not calls or returns.
+| CALL | Indirect and direct call instructions.
+| RETALL | All function return instructions, the union of RETURN and CORSWAP.
+| CALLALL | All function call instructions, the union of CALL and CORSWAP.
+| UNCOND | JAL, JALR, MRET, and SRET instructions.
+|===
+
+
+==== Memory Access Instruction Events
+
+The memory access instruction categories, LOAD, STORE, and LDST, include additional levels of hierarchy that allow counting per data source, address source, or cacheability.  When no additional qualifier is included in the event name (e.g., INST.LOAD.RET), all types are counted.
+
+.Memory Event Categories
+[cols="20%,80%"]
+|===
+| UC | Instructions that perform a data access to an uncacheable region of memory.
+| DSRC.* | Instructions that accessed data from the specified source (see <<dsrcs>>).
+| ASRC.* | Instructions whose data address translation came from the specified source (see <<asrcs>>).
+|===
+
+.DSRC Event Data Sources
+[[dsrcs]]
+[cols="20%,80%"]
+|===
+| STLF | Load instructions to which data was forwarded by an older store.
+| <cache> | Instructions for which the data access hit in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| <cache>.MISS | Instructions for which the data access missed in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| <cache>.MERGE | Instructions for which the data access merged with an outstanding miss in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| LOCAL.MEM | Instructions for which the data access hit in local memory.
+| REMOTE.MEM | Instructions for which the data access hit in remote memory.
+| REMOTE.CACHE | Instructions for which the data access hit in a remote cache.
+| REMOTE.HITM | Instructions for which the data access hit modified data in a remote cache.
+|===
+
+NOTE: _Some instructions perform multiple memory accesses.  Because these events count instructions, the event should be incremented if any access performed by the associated instruction meets the event criteria._
+
+NOTE: _What constitutes local vs remote above is left up to implementations.  It is expected that remote accesses incur significantly more latency than local accesses.  A straightforward approach may be for local to imply the same NUMA node, while remote implies a different NUMA node._
+
+NOTE: _Implementations may execute some memory accesses post-retirement.  In such cases, even non-speculative (.RET) DSRC events may not be reflected in the counter immediately after the associated instruction retires._
+
+.ASRC Event Translation Sources
+[[asrcs]]
+[cols="20%,80%"]
+|===
+| <tlb> | Instructions for which the data address translation hit in the selected TLB.  See TLB naming standards in <<TLB Events>>.
+| <tlb>.MISS | Instructions for which the data address translation missed in the selected TLB. See TLB naming standards in <<TLB Events>>. 
+|===
+
+==== Vector Instruction Events
+
+The RVV events include additional levels of hierarchy that allow counting per vector instruction type.  When no type is included in the event name (e.g., INST.RVV.RET), all types are counted.
+
+.RVV Event Instruction Types
+[cols="20%,80%"]
+|===
+| LOAD | Vector load instructions.
+| STORE | Vector store instructions.
+| LDST | Vector memory instructions, the union of the LOAD and STORE types.
+| CFG | Vector configuration (VSET{I}VL{I}) instructions.
+| ARITH | Vector arithmetic instructions.
+| ARITH.INT | Vector arithmetic vector-integer instructions.
+| ARITH.FP | Vector arithmetic vector-FP instructions.
+|===
+
+The LOAD, STORE, and LDST types include an additional level of hierarchy that allows counting per addressing mode.  When no addressing mode is included in the event name (e.g., INST.RVV.LOAD.RET), all modes are counted.
+
+.RVV Memory Instruction Addressing Modes
+[cols="20%,80%"]
+|===
+| UNIT | Vector unit-stride access instructions.
+| IDXU | Vector indexed-unordered access instructions.
+| STRD | Vector strided access instructions.
+| IDXO | Vector indexed-ordered access instructions.
+|===
+
+==== INST Event and Metric Tables
+
+.INST Events
+include::adoc_event_tables/inst.adoc[]
+
+=== LOAD, STORE, and LDST Events
+
+This group contains events for explicit load and store operations performed by instructions.  It does not count prefetch accesses or implicit accesses, such as page table lookups.
+
+Each event in this group has both speculative (.SPEC) and non-speculative (.RET) versions, though only the non-speculative events are listed in the tables below.
+
+The breakdown of these events is identical to that described in <<Memory Access Instruction Events>>, with the caveat that these events count each memory access.  The INST.{LOAD,STORE,LDST} events count only instructions, some of which may perform multiple accesses.
+
+.LOAD, STORE, and LDST Events
+include::adoc_event_tables/ldst.adoc[]
+
+=== CACHE Events
+:xrefstyle: short
+
+This group contains events for instruction, data, and unified caches.  Events in this group count accesses from the cache's perspective; if an instruction performs two cache accesses, they will be counted separately.  Further, all events in this group count speculative accesses.
+
+The top level of the CACHE event hierarchy identifies the cache associated with the event.  The standard cache naming scheme is detailed below.
+
+* The first character is L, for level.
+* The second character indicates the cache level.  The nearest cache is level 1, followed by level 2, and so on.  Level L implies the last level cache.
+* The optional third character indicates whether the cache is accessed only by instruction fetches (I) or only by data accesses (D).
+
+A typical example implementation might include the following caches within the CACHE event hierarchy.
+
+.CACHE Event Caches Example
+[[caches-ex]]
+[cols="20%,80%"]
+|===
+| L1D | Level 1 data cache
+| L1I | Level 1 instruction cache
+| L2 | Level 2 cache
+| L3 | Level 3 cache
+| LL | Last level cache
+|===
+
+NOTE: _The events for the last level cache may be aliased to the events for one of the cache levels listed above it._
+
+NOTE: _An implementation may additionally include other, custom caches within the CACHE event hierarchy, such that the cache name does not conform to the standard convention above._
+
+Like all events in this spec, these CACHE events are per-hart.  For caches that may be shared by multiple harts, the CACHE events should increment only for occurrences directly associated with the local hart.
+
+The second level of the CACHE event hierarchy identifies the access or operation type, as shown in the table below.  Some caches may support only a subset of the defined types.
+
+.CACHE Event Access or Operation Type
+[cols="20%,80%"]
+|===
+| RD | Data reads that lookup the cache.  This includes explicit reads (e.g., the LW instruction) and implicit reads (e.g., page table walks).  
+| RD.DATA | The subset of reads that are data load operations.
+| RD.CODE | The subset of reads that are code fetch reads.
+| WR | Data writes to the cache.  This includes explicit reads (e.g., the SW instruction) and implicit reads (e.g., page accessed/dirty attribute updates).  
+| RW | Data reads and writes, the union of the RD and WR types above.
+| PREF | Prefetch requests that lookup the cache.
+| FILL  | Cache misses or prefetches that result in a line in the cache being filled with data from memory or a higher-level cache.
+| WB | Modified lines written out from the cache to memory or to a higher-level cache.
+| SNOOP | Cache coherency snoops that lookup the cache.
+| OPREF | Outbound prefetches, for the purpose of pulling lines into the associated cache.
+|===
+
+For caches that may be shared by multiple harts, the lookup events (RD*, WR, RW, PREF, SNOOP) should increment only for requests from the local hart.  FILL and WB events should increment only for fills and writebacks resulting from requests from the local hart.  OPREF events should not increment.
+
+Some events in the CACHE event hierarchy include additional levels.  For cache lookup access types (RD*, WR, or RW), a third level counts per lookup result.
+
+.CACHE Event Lookup Results
+[cols="20%,80%"]
+|===
+| ACCESS | Cache lookups
+| HIT    | Cache hits
+| MISS   | Cache misses
+| MERGE  | Lookups that merged with an outstanding lookup
+|===
+
+For the RD.DATA and RD.CODE types, there is additionally a MISS.CYCLES event that counts core cycles (at the rate of the Zicntr `cycle` counter) while a load or instruction fetch cache miss, respectively, is outstanding.
+
+The SNOOP type events have two additional levels of hierarchy.
+
+.CACHE Event Snoop Types
+[cols="20%,80%"]
+|===
+| LOCAL  | Snoops from accesses local to the hart
+| REMOTE | Snoops from remote harts
+|===
+
+If neither the LOCAL or REMOTE modifier is included in the event name, then all snoops are counted.
+
+.CACHE Event Snoop Results
+[cols="20%,80%"]
+|===
+| ACCESS | Snoop lookups
+| HIT    | Snoops that hit unmodified data
+| HITM   | Snoops that hit modified data
+| MISS   | Snoops that miss
+|===
+
+An reference example of the full set of CACHE events, assuming the example set of caches shown above in <<caches-ex>>, is illustrated in the tables below.
+
+.CACHE Events
+include::adoc_event_tables/cache.adoc[]
+
+=== TLB Events
+:xrefstyle: short
+
+This group contains events for translation lookaside buffers (TLBs).  Events in this group count accesses from the TLB's perspective; if an instruction performs two address translations, they will be counted separately.  Further, all events in this group count speculative accesses.
+
+The top level of the TLB event hierarchy identifies the level of the TLB associated with the event.  The naming scheme matches that for caches, see <<CACHE Events>>.
+
+A typical example implementation might include the following TLBs within the TLB event hierarchy.
+
+.TLB Event Caches Example
+[[tlbs-ex]]
+[cols="20%,80%"]
+|===
+| L1D | Level 1 data TLB (DTLB)
+| L1I | Level 1 instruction TLB (ITLB)
+| LL | Level 2 shared TLB (STLB)
+|===
+
+NOTE: _An implementation may additionally include other, custom TLBs within the TLB event hierarchy, such that the cache name does not conform to the standard convention above._
+
+The second level of the TLB event hierarchy identifies the access or operation type, as shown in the table below.  Some caches may support only a subset of the defined types.
+
+.TLB Event Access or Operation Type
+[cols="20%,80%"]
+|===
+| LOAD | Load address translation requests.
+| STORE | Store address translation requests.
+| LDST | Load or store address translation requests.
+| CODE | Instruction fetch address translation requests.
+|===
+
+A third level counts requests per lookup result.
+
+.TLB Event Lookup Results
+[cols="20%,80%"]
+|===
+| ACCESS | TLB lookups
+| HIT    | TLB hits
+| MISS   | TLB misses
+| MERGE  | Lookups that merged with an outstanding lookup
+|===
+
+For the LDST and CODE types, there is additionally a MISS.CYCLES event that counts core cycles (at the rate of the Zicntr `cycle` counter) while a load/store or instruction fetch TLB miss, respectively, is outstanding.
+
+A reference example of the full set of TLB events, assuming the example set of TLBs shown above in <<tlbs-ex>>, is illustrated in the tables below.
+
+.TLB Events
+include::adoc_event_tables/tlb.adoc[]
+
+=== FETCH Events
+
+This group contains events that count instruction fetch requests, broken down by the address translation source or the instruction data source.  All events count speculative fetch requests.
+
+.FETCH Event Categories
+[cols="20%,80%"]
+|===
+| DSRC.* | Instruction fetches that accessed data from the specified source (see <<fetch-dsrcs>>).
+| ASRC.* | Instruction fetches whose address translation came from the specified source (see <<fetch-asrcs>>).
+|===
+
+.DSRC Event Instruction Fetch Data Sources
+[[fetch-dsrcs]]
+[cols="20%,80%"]
+|===
+| <cache> | Instruction fetches for which the instruction data access hit in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| <cache>.MISS | Instruction fetches for which the instruction data access missed in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| <cache>.MERGE | Instruction fetches for which the instruction data access merged with an outstanding miss in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| LOCAL.MEM | Instruction fetches for which the instruction data access hit in local memory.
+| REMOTE.MEM | Instruction fetches for which the instruction data access hit in remote memory.
+| REMOTE.CACHE | Instruction fetches for which the instruction data access hit in a remote cache.
+| REMOTE.HITM | Instruction fetches for which the instruction data access hit modified data in a remote cache.
+|===
+
+.ASRC Event Instruction Fetch Address Translation Sources
+[[fetch-asrcs]]
+[cols="20%,80%"]
+|===
+| <tlb> | Instruction fetches for which the address translation hit in the selected TLB.  See TLB naming standards in <<TLB Events>>.
+| <tlb>.MISS | Instruction fetches for which the address translation missed in the selected.  See TLB naming standards in <<TLB Events>>.
+|===
+
+.FETCH Events
+include::adoc_event_tables/fetch.adoc[]
+
+=== TOPDOWN Microarchitecture Analysis Events
+
+This group contains events for use with Top-down Microarchitecture Analysis (TMA) methodology.
+
+TMA is an industry-standard methodology https://ieeexplore.ieee.org/document/6844459[introduced by Intel] in characterizing the performance of SPEC CPU2006 on Intel CPUs, and since used to characterize https://www.mdpi.com/2078-2489/14/10/554[HPC workloads], https://ieeexplore.ieee.org/abstract/document/9820717[GPU workloads], https://dl.acm.org/doi/10.1145/3369383[microarchitecture changes], https://ieeexplore.ieee.org/abstract/document/9579960[pre-silicon performance validation failures], and more.
+
+TMA allows even developers with minimal microarchitecture knowledge to understand, for a given workload, where bottlenecks reside.  It does so by accounting for the utilization of each pipeline "slot" in the microarchitecture.  As an example, for a 4-wide implementation, there are 4 slots to account for each cycle.  When the hardware is utilized with optimal efficiency, each slot is occupied by an instruction or micro-operation (uop) that will go on to execute and retire.  When bottlenecks occur, due perhaps to a cache miss, branch misprediction, or any number of other microarchitectural conditions, some slots may be either unused or discarded, which results in inefficiency and reduced performance.  TMA is able to identify these wasted slots, and the stalls, clears, misses, or other events that cause them.  This enables developers to make informed decisions when tuning their code.
+
+TMA accomplishes this by defining a set of hierarchical states into which each uop slot is categorized.  Each cycle, the frontend of the processor (responsible for instruction fetch and decode) can issue some implementation-defined number (_N_) of instructions/uops to the backend (instruction execution and retire).  Hence there are _N_ issue slots to be categorized per cycle.  At the top level of the TMA hierarchy, issue slots are categorized as described below.
+
+[align="center"]
+.Topdown Level 1
+image::images/tma-l1.svg[TMA Level 1]
+
+.Topdown Level 1 State Descriptions
+[cols="20%,80%"]
+|===
+| *Frontend Bound* | Slots where the frontend did not issue a uop to the backend, despite the backend being able to accept uops.  Example causes include stalls that result from cache or TLB misses during instruction fetch.
+| *Backend Bound* | Slots where the backend could not consume a uop from the frontend.  Example causes include backpressure that results from cache or TLB misses on data (load/store) accesses,  or from oversubscribed execution units.
+| *Bad Speculation* | Uops that are dropped, as a result of a pipeline flush.  Example flushes include branch/jump mispredictions, memory ordering clears, exceptions, and interrupts.  This state also includes slots that are unfilled by the frontend as the pipeline recovers from the flush, slots that otherwise would have been classified as Frontend Bound.
+| *Retiring* | Uops retired.  Ideally the majority of slots fall into this state.
+|===
+
+The full standard hierarchy of TMA states is illustrated below.
+
+[align="center"]
+.Topdown Full Hierarchy
+image::images/tma-full2.svg[TMA Hierarchy]
+
+[NOTE]
+====
+_Some imprecision within the event hierarchy is allowed and even expected.  The standard L2 and L3 events may not sum precisely to the parent L1 or L2 events, respectively, as it is expected that there will be some additional sources of bottlenecks beyond those represented by the standard L2 and deeper (L2+) events._
+
+_Because of this possible imprecision, it is recommended that lower level TMA events are examined only when the parent event count or rate is higher than expected.  This avoids spending time on misleading L2+ events that may be implemented by imprecise event formulas rather than precise hardware events._
+
+_Implementations may opt to add custom L2+ events, to identify additional bottlenecks specific to the microarchitecture._
+====
+
+The Frontend Bound state is broken down into Frontend Latency and Frontend Bandwidth L2 states.  Slots that fall into Frontend Latency are cases where the decoders are awaiting fetch data, and hence have no uops to deliver to the backend.  Frontend Latency is broken down into three standard L3 states: Address, Data, and Redirect.  Frontend Address Latency represents slots unfilled due to awaiting the address translation for a fetch line; e.g., due to an ITLB miss.  Frontend Data Latency represents slots unfilled due to awaiting data return for a fetch line; e.g., due to an L1I cache miss.  Frontend Redirect Latency counts frontend pipeline slots discarded due to fetch redirects that can result from control transfers; e.g., due to jumps or taken branches.
+
+Frontend Bandwidth represents slots where the frontend does not deliver a uop to the backend due to decoder restrictions.  This occurs in cycles where the decoders have opcode bytes, and typically are able to deliver some uops to the backend, but are unable to fill all available slots.  As an example, this can occur in cases where there is decoder asymmetry, which can result in reduced decoder bandwidth due to some instructions needing to wait until a capable decoder is available.
+
+The Backend Bound state is broken down into the Core Bound and Memory Bound L2 states.  Memory Bound represents slots where the backend is stalled (cannot accept uops from the frontend) due to stalls resulting from memory operations (loads and stores).  Memory Bound is broken down into the Address and Data standard L3 states.  Memory Address Bound represents slots where the backend is stalled due to waiting for a data address translation; e.g., due to a DTLB miss.  Memory Data Bound represents slots where the backend is stalled due to waiting for a load or store access to complete; e.g., due to an L1D cache miss.  These L3 events may not capture all causes for Memory Bound slots, which could include load/store queue full, pipeline conflicts, or other microarchitectural issues.
+
+Memory Address Bound is broken down into L4 states per implemented TLB (see <<tlbs-ex>>), plus the Page Walk state.  So the Memory Address LL TLB State represents slots where the backend is stalled due to awaiting address translations from the last-level TLB, while the Page Walk state represents slots where the backend is stalled due to awaiting address translations that miss all TLBs and require a page walk.  
+
+Similarly, Memory Data Bound is broken down into L4 states per implemented cache (see <<caches-ex>>), plus the External Memory state.  The External Memory State represents slots where the backend is stalled due to awaiting data for requests that missed the last-level cache. 
+
+Counting Memory Bound slots per address or data source can be challenging, since, for example, the source of load data is typically only known once the stall ends and data is returned.  To simplify this counting, the events defined below count slots stalled due to a miss at each TLB or cache level.  This allows analysis tools to compute, for example, the slots attributed to accesses that hit cache L__x__ by counting the slots lost due to misses in cache L__x-1__ minus those lost due to misses in cache L__x__.
+
+Core Bound represents slots where the backend is stalled for reasons other than memory-induced stalls.  Core Bound has only a single standard L3 event, Serialization, which represents slots blocked due to serialization stalls that result from operations such as fences or CSR accesses.  Other causes of Core Bound slots include backpressure resulting from long latency arithmetic operations, or execution unit oversubscription.
+
+WARNING: _The line between Memory Bound and Core Bound can be blurry.  If the backend is stalled due to register file full, it could be due register resources being held by outstanding memory accesses (Memory Bound), or by a string of long-latency arithmetic operations (Core Bound).  Ultimately it will be up to implementers to determine how to handle any unclear cases that may exist in their implementations, which could include making a "best guess" between Memory Bound and Core Bound, or creating additional Backend Bound L2 events.  Including this comment to consider if the spec should include any additional guidance on this, or if it is implicit._
+
+The events which follow count slots for each of the states listed above.
+
+include::adoc_event_tables/topdown.adoc[]
+
+<<<<<<< HEAD
+include::adoc_event_tables/topdown_metrics.adoc[]
+
+=== Other Events
+
+This group contains general events that don't fall into other groups. 
+
+include::adoc_event_tables/general.adoc[]
+
+=======
+== Appendix A. Metrics
+
+Performance metrics are formulas of events, frequently used to express events in terms of rates; i.e., events per second, events per instruction, events per cycle.  It is expected that the events defined above will be used to compute metrics, and this appendix offers guidance on how best to do that.
+
+=== Per-instruction Metrics
+
+Counting events per instruction can be instructive in understanding how frequently events that are directly caused by instruction execution occur.  Often these events are expressed per 1000 instructions, such as misses per 1000 instruction (MPKI).
+
+NOTE: _Confusingly, the "misses" in MPKI can refer to cache misses per 1000 instructions in some contexts, and branch/jump mispredicts per 1000 instructions in others._
+
+It is recommended that non-speculative (.RET) INST events are used as the denominator for such metrics; for instance, last-level cache misses per 1000 instructions could be expressed as follows.
+
+[source]
+CACHE.LL.RW.MISS * 1000 / INST.RET
+
+Note that this metric counts all last-level cache misses from the hart, which includes speculative accesses and implicit accesses.  If the user prefers to count only non-speculative, explicit last-level cache misses, the metric could be expressed as follows.
+
+[source]
+INST.LDST.LL.MISS.RET * 1000 / INST.RET
+
+Some per-instruction metrics use a denominator that is a subset of all instructions.  For instance, the accuracy of a conditional branch predictor may be expressed as the number of mispredicts per predicted branch.
+
+[source]
+INST.MISPRED.RET / INST.BRJMP.PRED.RET
+
+Some implementations may not implement non-speculative versions of INST events, aside from INST.RET.  In such cases, speculative events can be used.  
+
+[source]
+INST.MISPRED.SPEC / INST.BRJMP.PRED.SPEC
+
+=== Per-cycle Metrics
+
+Measuring events per core cycle allows a user to determine how efficiently the microarchitecture is operating.  The most common such metric is instructions retired per cycle, or IPC.  Metrics like IPC use the CYCLES.HART event, which counts core cycles.
+
+[source]
+INST.RET / CYCLES.HART
+
+=== Per-second Metrics
+
+Some metrics are rates of events relative to wall-clock time.  For such metrics, CYCLES.HART is not appropriate, since the frequency at which CYCLES.HART counts can vary.  Instead CYCLES.REF, which counts at a constant frequency, is recommended.  For example, for an implementation with a 1 GHz reference clock and 64-byte cache lines, bandwidth beyond the last-level cache could be expressed (in MB/s) as follows.
+
+[source]
+(CACHE.LL.MISS * 64 / 1048576) / (CYCLES.REF / 1000000000)
+
+Or, more consisely:
+
+[source]
+CACHE.LL.MISS * 60992 / CYCLES.REF
+
+NOTE: _The metric above does not account for prefetches or other traffic that might originate from the last-level cache, nor for any accesses that might bypass the last-level cache._
+
+=== Common Metrics
+
+The following are common metrics expressed as formulas of standard events.
+
+include::adoc_event_tables/metrics.adoc[]
+>>>>>>> move metrics guidance and list to Appendix A
