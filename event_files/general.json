@@ -2,8 +2,8 @@
     {
         "EventName": "CYCLES.HART",
         "EventCode": "0x0",
-        "BriefDescription": "Clock cycles executed by the processor core on which the hart is running.  This event counts the same clock cycles as the `cycle` counter, and is subject to the same variations in rate and frequency.",
-        "PublicDescription": "Clock cycles executed by the processor core on which the hart is running.  This event counts the same clock cycles as the `cycle` counter, and is subject to the same variations in rate and frequency."
+        "BriefDescription": "Clock cycles executed by the processor core on which the hart is running.  Ceases to increment when the hart is paused, such as during WFI, even if another hart running on the same core remains active.  This clock is subject to clock-gating and frequency variations.",
+        "PublicDescription": "Clock cycles executed by the processor core on which the hart is running.  Ceases to increment when the hart is paused, such as during WFI, even if another hart running on the same core remains active.  This clock is subject to clock-gating and frequency variations."
     },
     {
         "EventName": "CYCLES.REF",
