@@ -32,8 +32,8 @@
     {
         "EventName": "FLUSH.CYCLES",
         "EventCode": "0x0",
-        "BriefDescription": "Cycles to recover from pipeline flushes.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a pipeline clear.",
-        "PublicDescription": "Cycles to recover from pipeline flushes.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a pipeline clear."
+        "BriefDescription": "Core cycles spent in recovery from pipeline flushes.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a pipeline clear.",
+        "PublicDescription": "Core cycles spent in recovery from pipeline flushes.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a pipeline clear."
     },
     {
         "EventName": "CTR.UPDATE.RET",
@@ -44,7 +44,7 @@
     {
         "EventName": "TRACE.STALL.CYCLES",
         "EventCode": "0x0",
-        "BriefDescription": "Cycles retirement is stalled due to trace backpressure",
-        "PublicDescription": "Cycles retirement is stalled due to trace backpressure"
+        "BriefDescription": "Core cycles where retirement is stalled due to trace backpressure",
+        "PublicDescription": "Core cycles where retirement is stalled due to trace backpressure"
     }
 ]
