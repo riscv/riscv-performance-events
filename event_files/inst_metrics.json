@@ -8,14 +8,14 @@
     {
         "MetricName": "INST.BRJMP.PKI",
         "BriefDescription": "The rate of control flow instructions retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.MISPRED.PKI",
         "BriefDescription": "The rate of control flow instructions mis-predicted per kilo instructions",
-        "MetricExpr": "INST.MISPRED.RET / INST.RET * 1000",
+        "MetricExpr": "INST.MISPRED.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1MPKI"
     },
@@ -29,14 +29,14 @@
     {
         "MetricName": "INST.BRJMP.BRANCH.PKI",
         "BriefDescription": "The rate of conditional branches retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.BRANCH.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.BRANCH.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.MISPRED.BRANCH.PKI",
         "BriefDescription": "The rate of conditional branches mis-predicted per kilo instructions",
-        "MetricExpr": "INST.MISPRED.BRANCH.RET / INST.RET * 1000",
+        "MetricExpr": "INST.MISPRED.BRANCH.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1MPKI"
     },
@@ -50,14 +50,14 @@
     {
         "MetricName": "INST.BRJMP.BRANCH.NT.PKI",
         "BriefDescription": "The rate of not-taken conditional branches retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.BRANCH.NT.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.BRANCH.NT.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.MISPRED.BRANCH.NT.PKI",
         "BriefDescription": "The rate of not-taken conditional branches mis-predicted per kilo instructions",
-        "MetricExpr": "INST.MISPRED.BRANCH.NT.RET / INST.RET * 1000",
+        "MetricExpr": "INST.MISPRED.BRANCH.NT.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1MPKI"
     },
@@ -71,14 +71,14 @@
     {
         "MetricName": "INST.BRJMP.BRANCH.TK.PKI",
         "BriefDescription": "The rate of taken conditional branches retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.BRANCH.TK.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.BRANCH.TK.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.MISPRED.BRANCH.TK.PKI",
         "BriefDescription": "The rate of taken conditional branches mis-predicted per kilo instructions",
-        "MetricExpr": "INST.MISPRED.BRANCH.TK.RET / INST.RET * 1000",
+        "MetricExpr": "INST.MISPRED.BRANCH.TK.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1MPKI"
     },
@@ -92,14 +92,14 @@
     {
         "MetricName": "INST.BRJMP.IND.PKI",
         "BriefDescription": "The rate of indirect jumps of any kind retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.IND.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.IND.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.MISPRED.IND.PKI",
         "BriefDescription": "The rate of indirect jumps of any kind mis-predicted per kilo instructions",
-        "MetricExpr": "INST.MISPRED.IND.RET / INST.RET * 1000",
+        "MetricExpr": "INST.MISPRED.IND.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1MPKI"
     },
@@ -113,21 +113,21 @@
     {
         "MetricName": "INST.BRJMP.DIR.PKI",
         "BriefDescription": "The rate of direct jumps of any kind retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.DIR.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.DIR.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.BRJMP.IND.CALL.PKI",
         "BriefDescription": "The rate of indirect calls retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.IND.CALL.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.IND.CALL.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.MISPRED.IND.CALL.PKI",
         "BriefDescription": "The rate of indirect calls mis-predicted per kilo instructions",
-        "MetricExpr": "INST.MISPRED.IND.CALL.RET / INST.RET * 1000",
+        "MetricExpr": "INST.MISPRED.IND.CALL.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1MPKI"
     },
@@ -141,21 +141,21 @@
     {
         "MetricName": "INST.BRJMP.DIR.CALL.PKI",
         "BriefDescription": "The rate of direct calls retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.DIR.CALL.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.DIR.CALL.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.BRJMP.IND.JUMP.PKI",
         "BriefDescription": "The rate of indirect jumps retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.IND.JUMP.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.IND.JUMP.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.MISPRED.IND.JUMP.PKI",
         "BriefDescription": "The rate of indirect jumps mis-predicted per kilo instructions",
-        "MetricExpr": "INST.MISPRED.IND.JUMP.RET / INST.RET * 1000",
+        "MetricExpr": "INST.MISPRED.IND.JUMP.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1MPKI"
     },
@@ -169,21 +169,21 @@
     {
         "MetricName": "INST.BRJMP.DIR.JUMP.PKI",
         "BriefDescription": "The rate of direct jumps retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.DIR.JUMP.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.DIR.JUMP.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.BRJMP.CORSWAP.PKI",
         "BriefDescription": "The rate of co-routine swaps retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.CORSWAP.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.CORSWAP.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.MISPRED.CORSWAP.PKI",
         "BriefDescription": "The rate of co-routine swaps mis-predicted per kilo instructions",
-        "MetricExpr": "INST.MISPRED.CORSWAP.RET / INST.RET * 1000",
+        "MetricExpr": "INST.MISPRED.CORSWAP.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1MPKI"
     },
@@ -197,14 +197,14 @@
     {
         "MetricName": "INST.BRJMP.RETURN.PKI",
         "BriefDescription": "The rate of function returns retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.RETURN.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.RETURN.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.MISPRED.RETURN.PKI",
         "BriefDescription": "The rate of function returns mis-predicted per kilo instructions",
-        "MetricExpr": "INST.MISPRED.RETURN.RET / INST.RET * 1000",
+        "MetricExpr": "INST.MISPRED.RETURN.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1MPKI"
     },
@@ -218,14 +218,14 @@
     {
         "MetricName": "INST.BRJMP.IND.LJUMP.PKI",
         "BriefDescription": "The rate of indirect jumps (with linkage) retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.IND.LJUMP.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.IND.LJUMP.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     },
     {
         "MetricName": "INST.MISPRED.IND.LJUMP.PKI",
         "BriefDescription": "The rate of indirect jumps (with linkage) mis-predicted per kilo instructions",
-        "MetricExpr": "INST.MISPRED.IND.LJUMP.RET / INST.RET * 1000",
+        "MetricExpr": "INST.MISPRED.IND.LJUMP.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1MPKI"
     },
@@ -239,7 +239,7 @@
     {
         "MetricName": "INST.BRJMP.DIR.LJUMP.PKI",
         "BriefDescription": "The rate of direct jumps (with linkage) retired per kilo instructions",
-        "MetricExpr": "INST.BRJMP.DIR.LJUMP.RET / INST.RET * 1000",
+        "MetricExpr": "INST.BRJMP.DIR.LJUMP.RET * 1000 / INST.RET",
         "MetricGroup": "Instruction",
         "ScaleUnit": "1PKI"
     }

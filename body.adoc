@@ -1,7 +1,7 @@
 [[body]]
 == Event Groups
 
-A standard set of performance events and metrics are specified below.  The events and metric definitions are organized into groups, many of which include a hierarchy of sub-events that constrain what is counted.
+A standard set of performance events are specified below.  The event definitions are organized into groups, many of which include a hierarchy of sub-events that constrain what is counted.
 
 Some of the event groups include both speculative and non-speculative events.  In such groups, the event names are appended with one of the following.
 
@@ -175,9 +175,6 @@ The LOAD, STORE, and LDST types include an additional level of hierarchy that al
 .INST Events
 include::adoc_event_tables/inst.adoc[]
 
-.INST Metrics
-include::adoc_event_tables/inst_metrics.adoc[]
-
 === LOAD, STORE, and LDST Events
 
 This group contains events for explicit load and store operations performed by instructions.  It does not count prefetch accesses or implicit accesses, such as page table lookups.
@@ -192,7 +189,7 @@ include::adoc_event_tables/ldst.adoc[]
 === CACHE Events
 :xrefstyle: short
 
-This group contains events and metrics for instruction, data, and unified caches.  Events in this group count accesses from the cache's perspective; if an instruction performs two cache accesses, they will be counted separately.  Further, all events in this group count speculative accesses.
+This group contains events for instruction, data, and unified caches.  Events in this group count accesses from the cache's perspective; if an instruction performs two cache accesses, they will be counted separately.  Further, all events in this group count speculative accesses.
 
 The top level of the CACHE event hierarchy identifies the cache associated with the event.  The standard cache naming scheme is detailed below.
 
@@ -271,18 +268,15 @@ If neither the LOCAL or REMOTE modifier is included in the event name, then all 
 | MISS   | Snoops that miss
 |===
 
-An reference example of the full set of CACHE events and metrics, assuming the example set of caches shown above in <<caches-ex>>, is illustrated in the tables below.
+An reference example of the full set of CACHE events, assuming the example set of caches shown above in <<caches-ex>>, is illustrated in the tables below.
 
 .CACHE Events
 include::adoc_event_tables/cache.adoc[]
 
-.CACHE Metrics
-include::adoc_event_tables/cache_metrics.adoc[]
-
 === TLB Events
 :xrefstyle: short
 
-This group contains events and metrics for translation lookaside buffers (TLBs).  Events in this group count accesses from the TLB's perspective; if an instruction performs two address translations, they will be counted separately.  Further, all events in this group count speculative accesses.
+This group contains events for translation lookaside buffers (TLBs).  Events in this group count accesses from the TLB's perspective; if an instruction performs two address translations, they will be counted separately.  Further, all events in this group count speculative accesses.
 
 The top level of the TLB event hierarchy identifies the level of the TLB associated with the event.  The naming scheme matches that for caches, see <<CACHE Events>>.
 
@@ -323,13 +317,10 @@ A third level counts requests per lookup result.
 
 For the LDST and CODE types, there is additionally a MISS.CYCLES event that counts core cycles (at the rate of the Zicntr `cycle` counter) while a load/store or instruction fetch TLB miss, respectively, is outstanding.
 
-A reference example of the full set of TLB events and metrics, assuming the example set of TLBs shown above in <<tlbs-ex>>, is illustrated in the tables below.
+A reference example of the full set of TLB events, assuming the example set of TLBs shown above in <<tlbs-ex>>, is illustrated in the tables below.
 
 .TLB Events
 include::adoc_event_tables/tlb.adoc[]
-
-.TLB Metrics
-include::adoc_event_tables/tlb_metrics.adoc[]
 
 === FETCH Events
 
@@ -368,7 +359,7 @@ include::adoc_event_tables/fetch.adoc[]
 
 === TOPDOWN Microarchitecture Analysis Events
 
-This group contains events and metrics for use with Top-down Microarchitecture Analysis (TMA) methodology.
+This group contains events for use with Top-down Microarchitecture Analysis (TMA) methodology.
 
 TMA is an industry-standard methodology https://ieeexplore.ieee.org/document/6844459[introduced by Intel] in characterizing the performance of SPEC CPU2006 on Intel CPUs, and since used to characterize https://www.mdpi.com/2078-2489/14/10/554[HPC workloads], https://ieeexplore.ieee.org/abstract/document/9820717[GPU workloads], https://dl.acm.org/doi/10.1145/3369383[microarchitecture changes], https://ieeexplore.ieee.org/abstract/document/9579960[pre-silicon performance validation failures], and more.
 
@@ -420,11 +411,9 @@ Core Bound represents slots where the backend is stalled for reasons other than 
 
 WARNING: _The line between Memory Bound and Core Bound can be blurry.  If the backend is stalled due to register file full, it could be due register resources being held by outstanding memory accesses (Memory Bound), or by a string of long-latency arithmetic operations (Core Bound).  Ultimately it will be up to implementers to determine how to handle any unclear cases that may exist in their implementations, which could include making a "best guess" between Memory Bound and Core Bound, or creating additional Backend Bound L2 events.  Including this comment to consider if the spec should include any additional guidance on this, or if it is implicit._
 
-The events which follow count slots for each of the states listed above, while the metrics express the slots per state value as a percentage of total slots.
+The events which follow count slots for each of the states listed above.
 
 include::adoc_event_tables/topdown.adoc[]
-
-include::adoc_event_tables/topdown_metrics.adoc[]
 
 === Other Events
 
@@ -432,3 +421,60 @@ This group contains general events that don't fall into other groups.
 
 include::adoc_event_tables/general.adoc[]
 
+[appendix]
+== Metrics
+
+Performance metrics are formulas of events, frequently used to express events in terms of rates; i.e., events per second, events per instruction, events per cycle.  It is expected that the events defined above will be used to compute metrics, and this appendix offers guidance on how best to do that.
+
+=== Per-instruction Metrics
+
+Counting events per instruction can be instructive in understanding how frequently events that are directly caused by instruction execution occur.  Often these events are expressed per 1000 instructions, such as misses per 1000 instruction (MPKI).
+
+NOTE: _Confusingly, the "misses" in MPKI can refer to cache misses in some contexts, and branch/jump mispredicts in others._
+
+It is recommended that non-speculative (.RET) INST events are used as the denominator for such metrics; for instance, last-level cache misses per 1000 instructions could be expressed as follows.
+
+[source]
+CACHE.LL.RW.MISS * 1000 / INST.RET
+
+Note that this metric counts all last-level cache misses from the hart, which includes speculative accesses and implicit accesses.  If the user prefers to count only non-speculative, explicit last-level cache misses, the metric could be expressed as follows.
+
+[source]
+INST.LDST.LL.MISS.RET * 1000 / INST.RET
+
+Some per-instruction metrics use a denominator that is a subset of all instructions.  For instance, the accuracy of a conditional branch predictor may be expressed as the number of mispredicts per predicted branch.
+
+[source]
+INST.MISPRED.RET / INST.BRJMP.PRED.RET
+
+Some implementations may not implement non-speculative versions of INST events, aside from INST.RET.  In such cases, speculative events can be used.  
+
+[source]
+INST.MISPRED.SPEC / INST.BRJMP.PRED.SPEC
+
+=== Per-cycle Metrics
+
+Measuring events per core cycle allows a user to determine how efficiently the microarchitecture is operating.  The most common such metric is instructions retired per cycle, or IPC.  Metrics like IPC use the CYCLES.HART event, which counts core cycles.
+
+[source]
+INST.RET / CYCLES.HART
+
+=== Per-second Metrics
+
+Some metrics are rates of events relative to wall-clock time.  For such metrics, CYCLES.HART is not appropriate, since the frequency at which CYCLES.HART counts can vary.  Instead CYCLES.REF, which counts at a constant frequency, is recommended.  For example, for an implementation with a 1 GHz reference clock and 64-byte cache lines, bandwidth beyond the last-level cache could be expressed (in MB/s) as follows.
+
+[source]
+(CACHE.LL.MISS * 64 / 1048576) / (CYCLES.REF / 1000000000)
+
+Or, more consisely:
+
+[source]
+CACHE.LL.MISS * 60992 / CYCLES.REF
+
+NOTE: _The metric above does not account for prefetches or other traffic that might originate from the last-level cache, nor for any accesses that might bypass the last-level cache._
+
+=== Common Metrics
+
+The following are common metrics expressed as formulas of standard events.
+
+include::adoc_event_tables/metrics.adoc[]
