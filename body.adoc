@@ -421,7 +421,8 @@ This group contains general events that don't fall into other groups.
 
 include::adoc_event_tables/general.adoc[]
 
-== Appendix A. Metrics
+[appendix]
+== Metrics
 
 Performance metrics are formulas of events, frequently used to express events in terms of rates; i.e., events per second, events per instruction, events per cycle.  It is expected that the events defined above will be used to compute metrics, and this appendix offers guidance on how best to do that.
 
