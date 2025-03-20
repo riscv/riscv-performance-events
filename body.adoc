@@ -432,7 +432,7 @@ Performance metrics are formulas of events, frequently used to express events in
 
 Counting events per instruction can be instructive in understanding how frequently events that are directly caused by instruction execution occur.  Often these events are expressed per 1000 instructions, such as misses per 1000 instruction (MPKI).
 
-NOTE: _Confusingly, the "misses" in MPKI can refer to cache misses per 1000 instructions in some contexts, and branch/jump mispredicts per 1000 instructions in others._
+NOTE: _Confusingly, the "misses" in MPKI can refer to cache misses in some contexts, and branch/jump mispredicts in others._
 
 It is recommended that non-speculative (.RET) INST events are used as the denominator for such metrics; for instance, last-level cache misses per 1000 instructions could be expressed as follows.
 
