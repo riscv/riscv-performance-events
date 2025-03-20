@@ -423,7 +423,8 @@ include::adoc_event_tables/general.adoc[]
 
 NOTE: _CYCLES.HART is expected to count the same cycles counted by the `cycle` counter.  The CYCLES.HART definition above calls out a scenario where the `cycle` counter may increment while CYCLES.HART does not, and that is when the hart is paused despite the core clock continuing to run, perhaps because another hart in the (SMT) core remains active._
 
-== Appendix A. Metrics
+[appendix]
+== Metrics
 
 Performance metrics are formulas of events, frequently used to express events in terms of rates; i.e., events per second, events per instruction, events per cycle.  It is expected that the events defined above will be used to compute metrics, and this appendix offers guidance on how best to do that.
 
