@@ -421,6 +421,78 @@ This group contains general events that don't fall into other groups.
 
 include::adoc_event_tables/general.adoc[]
 
+== Standard Event Selector Encodings
+
+The table below provides the list of standard event selector encodings and the associated events.  For all other standard events, the event selector encoding is implementation-defined.
+
+.Standard Event Selector Encodings
+[cols="15%,85%",width=50%,options="header"]
+|===
+| Enc | Event
+| 0 | No event
+| 1 | CYCLES.HART
+| 2 | INST.RET
+| 3 | CACHE.L1.RD.DATA.ACCESS
+| 4 | CACHE.L1.RD.DATA.MISS
+| 5 | INST.BRJMP.SPEC
+| 6 | INST.MISPRED.SPEC
+| 7 | Reserved, no event
+| 8 | Reserved, no event
+| 9 | Reserved, no event
+| 10 | CYCLES.REF
+| 11 | CACHE.L1I.RD.CODE.ACCESS
+| 12 | CACHE.L1I.RD.CODE.MISS
+| 13 | CACHE.LL.RD.DATA.ACCESS
+| 14 | CACHE.LL.RD.DATA.MISS
+| 15 | TLB.L1.LDST.ACCESS
+| 16 | TLB.L1.LDST.MISS
+| 17 | TLB.L1I.CODE.ACCESS
+| 18 | TLB.L1I.CODE.MISS
+| 19 | INST.BRJMP.TK.RET
+| 20 | TOPDOWN.SLOTS
+| 21 | TOPDOWN.RETIRING.SLOTS
+| 22 | TOPDOWN.FRONTEND_BOUND.SLOTS
+| 23 | TOPDOWN.BACKEND_BOUND.SLOTS
+| 24 | TOPDOWN.BAD_SPECULATION.SLOTS
+|===
+
+[NOTE]
+====
+_The standard encodings above are intended for use with Linux perf legacy events.  The recommended mappings follow.  Not all perf legacy events have mappings listed, for those 0 (no event) should be used._
+
+.Linux Perf Hardware Events
+[options="header",width=50%,cols="80%,20%"]
+|===
+| Perf HW Event | Enc 
+| CPU_CYCLES | 1
+| INSTRUCTIONS | 2
+| CACHE_REFERENCES | 3
+| CACHE_MISSES | 4
+| BRANCH_INSTRUCTIONS | 5
+| BRANCH_MISSES | 6
+| REF_CPU_CYCLES | 10
+|===
+
+.Linux Perf Cache Events
+[options="header",width=50%,cols="80%,20%"]
+|===
+| Perf Cache Event | Enc 
+| CACHE_L1D_READ_ACCESS | 3
+| CACHE_L1D_READ_MISS | 3
+| CACHE_L1I_READ_ACCESS | 11
+| CACHE_L1I_READ_MISS | 12
+| CACHE_LL_READ_ACCESS | 13
+| CACHE_LL_READ_MISS | 14
+| CACHE_DTLB_READ_ACCESS | 15
+| CACHE_DTLB_READ_MISS | 16
+| CACHE_ITLB_READ_ACCESS | 17
+| CACHE_ITLB_READ_MISS | 18
+| CACHE_BPU_READ_ACCESS | 5
+| CACHE_BPU_READ_MISS | 6
+|===
+====
+
+
 [appendix]
 == Metrics
 
