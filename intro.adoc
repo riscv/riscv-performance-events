@@ -3,17 +3,23 @@
 
 The RISC-V hardware performance monitoring counters (Zihpm) provide support for counting programmable performance events. Such events can provide insights into software execution behavior, insights that are critical when tuning a profiled workload. 
 
-In order to allow profiling tools to offer general-purpose, event-based analysis capabilities that can be employed regardless of the underlying hardware implementation, the Hart Performance Events (HPE) extension defines a set of standard performance events for use with Zihpm counters. For each standard event, the name and the precise hardware behavior associated with it is specified. 
+In order to allow profiling tools to offer general-purpose, event-based analysis capabilities that can be employed regardless of the underlying hardware implementation, the Hart Performance Events (HPE) extension defines a set of standard performance events for use with Zihpm counters. For each standard event, the name and the precise hardware behavior associated with it is specified.  For a select few standard events a standard event selector encoding has been assigned, while for others the encoding is implementation-defined.
 
 [NOTE]
 [%unbreakable]
 ====
-_This extension does not standardize event selector values - these are left up to implementations._
+_Event selector encodings are not standardized for most events, to allow implementations to select the encoding structure that best suits the microarchitecture.  It is expected that software will discover these custom encodings via implementation-specific JSON event files provided by the hardware vendor._
 
-_An implementation may opt to support any of the standard events described below as an event formula rather than a hardware event.  As an example, for a typical implementation, the TOPDOWN.SLOTS event count could be derived from CYCLES.HART * ConstantIssueWidth.  It is strongly advised that any such formulas require counting no more events than the number of programmable counters implemented can support simultaneously.  Requiring the workload to be run multiple times to satisfy a single formula risks run-to-run noise reducing the fidelity of the profile results.  Also, implementing an event as a formula means that the user cannot use Sscofpmf to sample on that event.  Thus care should be taken when choosing which (if any) events to support in this manner._
+_The events for which standard encodings apply were selected either because they will be used for Linux perf legacy events, thereby avoiding the need for the kernel to hardcode per-implementation encodings, or because they are deemed fundamental to the ability to do even basic performance analysis when the event JSON file may be unavailable.  This list of events with standard encodings was kept deliberately short, to avoid requiring hardware to implement a large lookup table that remaps the standard encodings to internal encodings._
 ====
 
 All of the standard events defined below are optional, an implementation that supports HPE may opt to implement any combination of them.  What HPE guarantees is that, if software discovers support for any of the named standard events, the behavior of the event will match the definition given below.
+
+[NOTE]
+[%unbreakable]
+====
+_An implementation may opt to support any of the standard events described below as an event formula rather than a hardware event.  As an example, for a typical implementation, the TOPDOWN.SLOTS event count could be derived from CYCLES.HART * ConstantIssueWidth.  It is strongly advised that any such formulas require counting no more events than the number of programmable counters implemented can support simultaneously.  Requiring the workload to be run multiple times to satisfy a single formula risks run-to-run noise reducing the fidelity of the profile results.  Also, implementing an event as a formula means that the user cannot use Sscofpmf to sample on that event.  Thus care should be taken when choosing which (if any) events to support in this manner._
+====
 
 WARNING: _The TG may opt to make some standard events required, TBD._
 
