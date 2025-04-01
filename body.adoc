@@ -1,5 +1,5 @@
 [[body]]
-== Event Groups
+== Events
 
 A standard set of performance events are specified below.  The event definitions are organized into groups, many of which include a hierarchy of sub-events that constrain what is counted.
 
@@ -421,9 +421,15 @@ This group contains general events that don't fall into other groups.
 
 include::adoc_event_tables/general.adoc[]
 
+== Event Selector CSRs
+
+Bits 4:0 in `mhpmevent__X__` comprise the SEL field, which selects the performance event to be counted by the associated counter.
+
+NOTE: _The standard `mhpmevent__X__`.SEL field is only wide enough to hold the standard encodings, defined below.  An implementation that implements additional events may use additional WARL bits in `mhpmevent__X__` to select events, effectively widening the SEL field.  It is recommended that such implementations use bits adjacent to SEL for this purpose.  For example, for a 12-bit SEL field, use `mhpmevent__X__`[11:0].  In such implementations, the standard encodings should apply when all added SEL bits (bits 11:5 in the example) are 0._
+
 == Standard Event Selector Encodings
 
-The table below provides the list of standard event selector encodings and the associated events.  For all other standard events, the event selector encoding is implementation-defined.
+The table below provides the list of standard event selector encodings and associated events.  Writing the encoding listed below to `mhpmevent__X__`.SEL selects the listed event for counter __X__.  For all other standard events, the event selector encoding is implementation-defined.
 
 .Standard Event Selector Encodings
 [cols="15%,85%",width=50%,options="header"]
@@ -454,41 +460,48 @@ The table below provides the list of standard event selector encodings and the a
 | 22 | TOPDOWN.FRONTEND_BOUND.SLOTS
 | 23 | TOPDOWN.BACKEND_BOUND.SLOTS
 | 24 | TOPDOWN.BAD_SPECULATION.SLOTS
+| 25 | Reserved, no event
+| 26 | Reserved, no event
+| 27 | Reserved, no event
+| 28 | Reserved, no event
+| 29 | Reserved, no event
+| 30 | Reserved, no event
+| 31 | Reserved, no event
 |===
 
 [NOTE]
 ====
-_The standard encodings above are intended for use with Linux perf legacy events.  The recommended mappings follow.  Not all perf legacy events have mappings listed, for those 0 (no event) should be used._
+_The standard encodings above are intended for use with Linux perf legacy events.  The recommended mappings follow.  Not all perf legacy events have mappings listed, for those without mappings 0 (no event) should be used._
 
 .Linux Perf Hardware Events
-[options="header",width=50%,cols="80%,20%"]
+[options="header",width=80%]
 |===
 | Perf HW Event | Enc 
-| CPU_CYCLES | 1
-| INSTRUCTIONS | 2
-| CACHE_REFERENCES | 3
-| CACHE_MISSES | 4
-| BRANCH_INSTRUCTIONS | 5
-| BRANCH_MISSES | 6
-| REF_CPU_CYCLES | 10
+| CPU_CYCLES | 1 (CYCLES.HART)
+| INSTRUCTIONS | 2 (INST.RET)
+| CACHE_REFERENCES | 3 (CACHE.L1.RD.DATA.ACCESS)
+| CACHE_MISSES | 4 (CACHE.L1.RD.DATA.MISS)
+| BRANCH_INSTRUCTIONS | 5 (INST.BRJMP.SPEC)
+| BRANCH_MISSES | 6 (INST.MISPRED.SPEC)
+| REF_CPU_CYCLES | 10 (CYCLES.REF)
 |===
 
 .Linux Perf Cache Events
-[options="header",width=50%,cols="80%,20%"]
+[options="header",width=80%]
 |===
 | Perf Cache Event | Enc 
-| CACHE_L1D_READ_ACCESS | 3
-| CACHE_L1D_READ_MISS | 3
-| CACHE_L1I_READ_ACCESS | 11
-| CACHE_L1I_READ_MISS | 12
-| CACHE_LL_READ_ACCESS | 13
-| CACHE_LL_READ_MISS | 14
-| CACHE_DTLB_READ_ACCESS | 15
-| CACHE_DTLB_READ_MISS | 16
-| CACHE_ITLB_READ_ACCESS | 17
-| CACHE_ITLB_READ_MISS | 18
-| CACHE_BPU_READ_ACCESS | 5
-| CACHE_BPU_READ_MISS | 6
+| CACHE_L1D_READ_ACCESS | 3 (CACHE.L1.RD.DATA.ACCESS)
+| CACHE_L1D_READ_MISS | 4 (CACHE.L1.RD.DATA.MISS)
+| CACHE_L1I_READ_ACCESS | 11 (CACHE.L1I.RD.CODE.ACCESS)
+| CACHE_L1I_READ_MISS | 12 (CACHE.L1I.RD.CODE.MISS)
+| CACHE_LL_READ_ACCESS | 13 (CACHE.LL.RD.DATA.ACCESS)
+| CACHE_LL_READ_MISS | 14 (CACHE.LL.RD.DATA.MISS)
+| CACHE_DTLB_READ_ACCESS | 15 (TLB.L1.LDST.ACCESS)
+| CACHE_DTLB_READ_MISS | 16 (TLB.L1.LDST.MISS)
+| CACHE_ITLB_READ_ACCESS | 17 (TLB.L1I.CODE.ACCESS)
+| CACHE_ITLB_READ_MISS | 18 (TLB.L1I.CODE.ACCESS)
+| CACHE_BPU_READ_ACCESS | 5 (INST.BRJMP.SPEC)
+| CACHE_BPU_READ_MISS | 6 (INST.MISPRED.SPEC)
 |===
 ====
 
