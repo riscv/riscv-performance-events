@@ -469,6 +469,8 @@ The table below provides the list of standard event selector encodings and assoc
 | 31 | Reserved, no event
 |===
 
+WARNING: _We need to rethink the cache naming, if we're standardizing some of them across implementations.  Maybe get rid of the option for trailing I and D?_
+
 [NOTE]
 ====
 _The standard encodings above are intended for use with Linux perf legacy events.  The recommended mappings follow.  Not all perf legacy events have mappings listed, for those without mappings 0 (no event) should be used._
