@@ -427,7 +427,7 @@ Bits 4:0 in `mhpmevent__X__` comprise the SEL field, which selects the performan
 
 NOTE: _The standard `mhpmevent__X__`.SEL field is only wide enough to hold the standard encodings, defined below.  An implementation that implements additional events may use additional WARL bits in `mhpmevent__X__` to select events, effectively widening the SEL field.  It is recommended that such implementations use bits adjacent to SEL for this purpose.  For example, for a 12-bit SEL field, use `mhpmevent__X__`[11:0].  In such implementations, the standard encodings should apply when all added SEL bits (bits 11:5 in the example) are 0._
 
-== Standard Event Selector Encodings
+=== Standard Event Selector Encodings
 
 The table below provides the list of standard event selector encodings and associated events.  Writing the encoding listed below to `mhpmevent__X__`.SEL selects the listed event for counter __X__.  For all other standard events, the event selector encoding is implementation-defined.
 
