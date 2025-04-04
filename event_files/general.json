@@ -26,14 +26,26 @@
     {
         "EventName": "FLUSH.SPEC",
         "EventCode": "0x0",
-        "BriefDescription": "Counts pipeline flushes due to all reasons",
-        "PublicDescription": "Counts pipeline flushes due to all reasons - such as branch misprediction, memory disambiguation, serializing instructions"
+        "BriefDescription": "Occurences of backend pipeline flushes, such as mispredictions or memory ordering violations.",
+        "PublicDescription": "Occurences of backend pipeline flushes, such as mispredictions or memory ordering violations."
     },
     {
         "EventName": "FLUSH.CYCLES",
         "EventCode": "0x0",
-        "BriefDescription": "Core cycles spent in recovery from pipeline flushes.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a pipeline clear.",
-        "PublicDescription": "Core cycles spent in recovery from pipeline flushes.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a pipeline clear."
+        "BriefDescription": "Cycles to recover from backend pipeline flushes, such as mispredictions or memory ordering violations.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a backend pipeline flush.",
+        "PublicDescription": "Cycles to recover from backend pipeline flushes, such as mispredictions or memory ordering violations.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a backend pipeline flush."
+    },
+    {
+        "EventName": "RESTEER.SPEC",
+        "EventCode": "0x0",
+        "BriefDescription": "Occurences of frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.",
+        "PublicDescription": "Occurences of frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.",
+    },
+    {
+        "EventName": "RESTEER.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles to recover from frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.  Counts the bubble cycles lost as a result of the resteer.",
+        "PublicDescription": "Cycles to recover from frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.  Counts the bubble cycles lost as a result of the resteer."
     },
     {
         "EventName": "CTR.UPDATE.RET",
