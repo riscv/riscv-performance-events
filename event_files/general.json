@@ -14,14 +14,14 @@
     {
         "EventName": "UOP.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Number of micro-operations retired",
-        "PublicDescription": "Number of micro-operations retired"
+        "BriefDescription": "Number of micro-operations retired.",
+        "PublicDescription": "Number of micro-operations retired."
     },
     {
         "EventName": "UOP.SPEC",
         "EventCode": "0x0",
-        "BriefDescription": "Number of micro-operations issued",
-        "PublicDescription": "Number of micro-operations issued"
+        "BriefDescription": "Number of micro-operations issued.",
+        "PublicDescription": "Number of micro-operations issued."
     },
     {
         "EventName": "FLUSH.SPEC",
@@ -39,7 +39,7 @@
         "EventName": "RESTEER.SPEC",
         "EventCode": "0x0",
         "BriefDescription": "Occurences of frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.",
-        "PublicDescription": "Occurences of frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.",
+        "PublicDescription": "Occurences of frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address."
     },
     {
         "EventName": "RESTEER.CYCLES",
@@ -50,13 +50,13 @@
     {
         "EventName": "CTR.UPDATE.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Instructions retired and/or traps delivered that are recorded by Control Transfer Records (CTR)",
-        "PublicDescription": "Instructions retired and/or traps delivered that are recorded by Control Transfer Records (CTR)"
+        "BriefDescription": "Instructions retired and/or traps delivered that are recorded by Control Transfer Records (CTR).",
+        "PublicDescription": "Instructions retired and/or traps delivered that are recorded by Control Transfer Records (CTR)."
     },
     {
         "EventName": "TRACE.STALL.CYCLES",
         "EventCode": "0x0",
-        "BriefDescription": "Core cycles where retirement is stalled due to trace backpressure",
-        "PublicDescription": "Core cycles where retirement is stalled due to trace backpressure"
+        "BriefDescription": "Core cycles where retirement is stalled due to trace backpressure.",
+        "PublicDescription": "Core cycles where retirement is stalled due to trace backpressure."
     }
 ]
