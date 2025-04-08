@@ -421,6 +421,7 @@ This group contains general events that don't fall into other groups.
 
 include::adoc_event_tables/general.adoc[]
 
+[%unbreakable]
 NOTE: _CYCLES.HART is expected to count the same cycles counted by the `cycle` counter.  The CYCLES.HART definition above calls out a scenario where the `cycle` counter may increment while CYCLES.HART does not, and that is when the hart is paused despite the core clock continuing to run, perhaps because another hart in the (SMT) core remains active._
 
 == Event Selector CSRs
