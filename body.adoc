@@ -425,7 +425,7 @@ include::adoc_event_tables/general.adoc[]
 
 Bits 4:0 in `mhpmevent__X__` comprise the SEL field, which selects the performance event to be counted by the associated counter.
 
-NOTE: _The standard `mhpmevent__X__`.SEL field is only wide enough to hold the standard encodings, defined below.  An implementation that implements additional events may use additional WARL bits in `mhpmevent__X__` to select events, effectively widening the SEL field.  It is recommended that such implementations use bits adjacent to SEL for this purpose.  For example, for a 12-bit SEL field, use `mhpmevent__X__`[11:0].  In such implementations, the standard encodings should apply when all added SEL bits (bits 11:5 in the example) are 0._
+NOTE: _The standard `mhpmevent__X__`.SEL field is only wide enough to hold the standard encodings, defined below.  With the exception of the uppermost bits defined by Sscofpmf, the remainder of the event selector register is WARL.  An implementation is free to use the WARL bits in ways that impact what is counted.  When standard software is provided with a custom event encoding, perhaps from an implementation-specific JSON event file or a raw event encoding passed directly by the user, that standard software should assume that the least significant bit of the encoding is written to event selector bit 0, and it should zero-extend the encoding value as needed to cover all WARL bits in the event selector._
 
 === Standard Event Selector Encodings
 
