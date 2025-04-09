@@ -471,9 +471,11 @@ The table below provides the list of standard event selector encodings and assoc
 
 WARNING: _We need to rethink the cache naming, if we're standardizing some of them across implementations.  Maybe get rid of the option for trailing I and D?_
 
+NOTE: _The RISC-V SBI Specification defines encodings for Hardware general events, and the table above uses the same encodings in cases where the events match.  In order to cluster standard encodings together, the CACHE and TLB events use encodings that are undefined in the same SBI Hardware general events type (type 0), rather than non-adjacent encodings from the SBI's Hardware cache events (type 1).  Encodings 19..24 above are associated with events that do not have encodings assigned by the SBI._
+
 [NOTE]
 ====
-_The standard encodings above are intended for use with Linux perf legacy events.  The recommended mappings follow.  Not all perf legacy events have mappings listed, for those without mappings 0 (no event) should be used._
+_The standard encodings above are intended for use with, among other things, Linux perf legacy events.  The recommended mappings follow.  Not all perf legacy events have mappings listed, for those without mappings 0 (no event) should be used._
 
 .Linux Perf Hardware Events
 [options="header",width=80%]
