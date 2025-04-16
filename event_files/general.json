@@ -2,14 +2,8 @@
     {
         "EventName": "CYCLES.HART",
         "EventCode": "0x0",
-        "BriefDescription": "Clock cycles executed by the processor core on which the hart is running.  This event counts the same clock cycles as the `cycle` counter, and is subject to the same variations in rate and frequency.",
-        "PublicDescription": "Clock cycles executed by the processor core on which the hart is running.  This event counts the same clock cycles as the `cycle` counter, and is subject to the same variations in rate and frequency."
-    },
-    {
-        "EventName": "CYCLES.BUS",
-        "EventCode": "0x0",
-        "BriefDescription": "Clock cycles corresponding to the frequency of the hart's interface between its private caches and the rest of the system.  The rate and frequency of this clock may vary.",
-        "PublicDescription": "Clock cycles corresponding to the frequency of the hart's interface between its private caches and the rest of the system.  The rate and frequency of this clock may vary."
+        "BriefDescription": "Clock cycles executed by the processor core on which the hart is running.  Ceases to increment when the hart is paused, such as during WFI, even if another hart running on the same core remains active.  This clock is subject to clock-gating and frequency variations.",
+        "PublicDescription": "Clock cycles executed by the processor core on which the hart is running.  Ceases to increment when the hart is paused, such as during WFI, even if another hart running on the same core remains active.  This clock is subject to clock-gating and frequency variations."
     },
     {
         "EventName": "CYCLES.REF",
@@ -20,37 +14,49 @@
     {
         "EventName": "UOP.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Number of micro-operations retired",
-        "PublicDescription": "Number of micro-operations retired"
+        "BriefDescription": "Number of micro-operations retired.",
+        "PublicDescription": "Number of micro-operations retired."
     },
     {
         "EventName": "UOP.SPEC",
         "EventCode": "0x0",
-        "BriefDescription": "Number of micro-operations issued",
-        "PublicDescription": "Number of micro-operations issued"
+        "BriefDescription": "Number of micro-operations issued.",
+        "PublicDescription": "Number of micro-operations issued."
     },
     {
         "EventName": "FLUSH.SPEC",
         "EventCode": "0x0",
-        "BriefDescription": "Counts pipeline flushes due to all reasons",
-        "PublicDescription": "Counts pipeline flushes due to all reasons - such as branch misprediction, memory disambiguation, serializing instructions"
+        "BriefDescription": "Occurences of backend pipeline flushes, such as mispredictions or memory ordering violations.",
+        "PublicDescription": "Occurences of backend pipeline flushes, such as mispredictions or memory ordering violations."
     },
     {
         "EventName": "FLUSH.CYCLES",
         "EventCode": "0x0",
-        "BriefDescription": "Cycles to recover from pipeline flushes.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a pipeline clear.",
-        "PublicDescription": "Cycles to recover from pipeline flushes.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a pipeline clear."
+        "BriefDescription": "Cycles to recover from backend pipeline flushes, such as mispredictions or memory ordering violations.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a backend pipeline flush.",
+        "PublicDescription": "Cycles to recover from backend pipeline flushes, such as mispredictions or memory ordering violations.  Counts cycles the frontend is unable to deliver uops to the backend in the shadow of a backend pipeline flush."
+    },
+    {
+        "EventName": "RESTEER.SPEC",
+        "EventCode": "0x0",
+        "BriefDescription": "Occurences of frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.",
+        "PublicDescription": "Occurences of frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address."
+    },
+    {
+        "EventName": "RESTEER.CYCLES",
+        "EventCode": "0x0",
+        "BriefDescription": "Cycles to recover from frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.  Counts the bubble cycles lost as a result of the resteer.",
+        "PublicDescription": "Cycles to recover from frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.  Counts the bubble cycles lost as a result of the resteer."
     },
     {
         "EventName": "CTR.UPDATE.RET",
         "EventCode": "0x0",
-        "BriefDescription": "Instructions retired and/or traps delivered that are recorded by Control Transfer Records (CTR)",
-        "PublicDescription": "Instructions retired and/or traps delivered that are recorded by Control Transfer Records (CTR)"
+        "BriefDescription": "Instructions retired and/or traps delivered that are recorded by Control Transfer Records (CTR).",
+        "PublicDescription": "Instructions retired and/or traps delivered that are recorded by Control Transfer Records (CTR)."
     },
     {
         "EventName": "TRACE.STALL.CYCLES",
         "EventCode": "0x0",
-        "BriefDescription": "Cycles retirement is stalled due to trace backpressure",
-        "PublicDescription": "Cycles retirement is stalled due to trace backpressure"
+        "BriefDescription": "Core cycles where retirement is stalled due to trace backpressure.",
+        "PublicDescription": "Core cycles where retirement is stalled due to trace backpressure."
     }
 ]

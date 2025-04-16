@@ -421,6 +421,9 @@ This group contains general events that don't fall into other groups.
 
 include::adoc_event_tables/general.adoc[]
 
+[%unbreakable]
+NOTE: _CYCLES.HART is expected to count the same cycles counted by the `cycle` counter.  The CYCLES.HART definition above calls out a scenario where the `cycle` counter may increment while CYCLES.HART does not, and that is when the hart is paused despite the core clock continuing to run, perhaps because another hart in the (SMT) core remains active._
+
 == Event Selector CSRs
 
 Bits 4:0 in `mhpmevent__X__` comprise the SEL field, which selects the performance event to be counted by the associated counter.
@@ -519,7 +522,7 @@ Performance metrics are formulas of events, frequently used to express events in
 
 Counting events per instruction can be instructive in understanding how frequently events that are directly caused by instruction execution occur.  Often these events are expressed per 1000 instructions, such as misses per 1000 instruction (MPKI).
 
-NOTE: _Confusingly, the "misses" in MPKI can refer to cache misses in some contexts, and branch/jump mispredicts in others._
+NOTE: _Confusingly, the "misses" in MPKI can refer to cache misses per 1000 instructions in some contexts, and branch/jump mispredicts per 1000 instructions in others._
 
 It is recommended that non-speculative (.RET) INST events are used as the denominator for such metrics; for instance, last-level cache misses per 1000 instructions could be expressed as follows.
 
