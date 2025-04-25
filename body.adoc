@@ -26,7 +26,7 @@ INST events are broken down by instruction categories at the top level of the ev
 | STORE | Memory store instructions.  Includes all instructions that perform memory write operations.
 | LDST | Memory load and store instructions.  Represents the union of the LOAD and STORE categories.
 | MO | Memory ordering instructions.  Includes FENCE and FENCE.TSO instructions.
-| INT | Integer computational instructions.  Includes all integer computational instructions from RVxI, including compressed varieties.  Also includes all computational instructions from the M extension and the A extension (AMO*).  Whether NOP instructions are counted is implementation-dependent.
+| INT | Integer computational instructions.  Includes all integer computational instructions from RVxI, including compressed varieties.  Also includes all computational instructions from the M extension and the A extension (AMO*).  Whether NOP instructions are counted is implementation-defined.
 | FP | Floating point instructions.  Includes all instructions from the F, D, Q, and Zfa extensions.
 | RVV | Vector instructions.  Includes all instructions from the V extension.
 | RVC | Compressed instructions.  Includes all instructions from the C extension.
@@ -243,7 +243,7 @@ Some events in the CACHE event hierarchy include additional levels.  For cache l
 | ACCESS | Cache lookups
 | HIT    | Cache hits
 | MISS   | Cache misses
-| MERGE  | Lookups that merged with an outstanding lookup
+| MERGE  | Lookups that merged with an outstanding miss
 |===
 
 For the RD.DATA and RD.CODE types, there is additionally a MISS.CYCLES event that counts core cycles (at the rate of the Zicntr `cycle` counter) while a load or instruction fetch cache miss, respectively, is outstanding.
@@ -268,7 +268,7 @@ If neither the LOCAL or REMOTE modifier is included in the event name, then all 
 | MISS   | Snoops that miss
 |===
 
-An reference example of the full set of CACHE events, assuming the example set of caches shown above in <<caches-ex>>, is illustrated in the tables below.
+A reference example of the full set of CACHE events, assuming the example set of caches shown above in <<caches-ex>>, is illustrated in the tables below.
 
 .CACHE Events
 include::adoc_event_tables/cache.adoc[]
@@ -312,7 +312,7 @@ A third level counts requests per lookup result.
 | ACCESS | TLB lookups
 | HIT    | TLB hits
 | MISS   | TLB misses
-| MERGE  | Lookups that merged with an outstanding lookup
+| MERGE  | Lookups that merged with an outstanding miss
 |===
 
 For the LDST and CODE types, there is additionally a MISS.CYCLES event that counts core cycles (at the rate of the Zicntr `cycle` counter) while a load/store or instruction fetch TLB miss, respectively, is outstanding.

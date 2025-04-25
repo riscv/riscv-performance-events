@@ -38,14 +38,14 @@
     {
         "EventName": "RESTEER.SPEC",
         "EventCode": "0x0",
-        "BriefDescription": "Occurences of frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.",
-        "PublicDescription": "Occurences of frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address."
+        "BriefDescription": "Occurences of frontend resteers, such as taken branch predictions, that introduce pipeline bubbles when resteering fetch to the target pc address.",
+        "PublicDescription": "Occurences of frontend resteers, such as taken branch predictions, that introduce pipeline bubbles when resteering fetch to the target pc address."
     },
     {
         "EventName": "RESTEER.CYCLES",
         "EventCode": "0x0",
-        "BriefDescription": "Cycles to recover from frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.  Counts the bubble cycles lost as a result of the resteer.",
-        "PublicDescription": "Cycles to recover from frontend resteers, such as taken branch predictions that introduce pipeline bubbles when resteering fetch to the target pc address.  Counts the bubble cycles lost as a result of the resteer."
+        "BriefDescription": "Cycles to recover from frontend resteers, such as taken branch predictions, that introduce pipeline bubbles when resteering fetch to the target pc address.  Counts the bubble cycles lost as a result of the resteers.",
+        "PublicDescription": "Cycles to recover from frontend resteers, such as taken branch predictions, that introduce pipeline bubbles when resteering fetch to the target pc address.  Counts the bubble cycles lost as a result of the resteers."
     },
     {
         "EventName": "CTR.UPDATE.RET",
