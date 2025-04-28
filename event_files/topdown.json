@@ -1,13 +1,13 @@
 [
     {
         "EventName": "TOPDOWN.SLOTS",
-        "EventCode": "0x0",
+        "EventCode": "0x14",
         "BriefDescription": "TMA slots available for an active hart.",
         "PublicDescription": "TMA slots available for an unhalted hart."
     },
     {
         "EventName": "TOPDOWN.FRONTEND_BOUND.SLOTS",
-        "EventCode": "0x0",
+        "EventCode": "0x16",
         "BriefDescription": "TMA slots stalled in the frontend, which implies slots where the frontend was unable to deliver a uop to the backend despite the backend being able to accept uops.",
         "PublicDescription": "TMA slots stalled in the frontend, which implies slots where the frontend was unable to deliver a uop to the backend despite the backend being able to accept uops."
     },
@@ -43,7 +43,7 @@
     },
     {
         "EventName": "TOPDOWN.BAD_SPECULATION.SLOTS",
-        "EventCode": "0x0",
+        "EventCode": "0x18",
         "BriefDescription": "TMA slots wasted due to incorrect speculations.  This includes slots used to issue uops that do not eventually retire, and slots for which the frontend did not deliver uops due to recovery from earlier incorrect speculation.",
         "PublicDescription": "TMA slots wasted due to incorrect speculations. This includes slots used to issue uops that do not eventually retire, and slots for which the frontend did not deliver uops due to recovery from earlier incorrect speculation."
     },
@@ -61,7 +61,7 @@
     },
     {
         "EventName": "TOPDOWN.BACKEND_BOUND.SLOTS",
-        "EventCode": "0x0",
+        "EventCode": "0x17",
         "BriefDescription": "TMA slots backend stalled, which implies slots where the backend cannot accept uops due to a lack of backend resources.",
         "PublicDescription": "TMA slots backend stalled, which implies slots where the backend cannot accept uops due to a lack of backend resources."
     },
@@ -98,8 +98,8 @@
     {
         "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.ADDR.TLB.LL_MISS.SLOTS",
         "EventCode": "0x0",
-        "BriefDescription": "TMA slots backend stalled waiting for address translations that missed the last-level TLB.",
-        "PublicDescription": "TMA slots backend stalled waiting for address translations that missed the last-level TLB."
+        "BriefDescription": "TMA slots backend stalled waiting for address translations that missed the last level TLB.",
+        "PublicDescription": "TMA slots backend stalled waiting for address translations that missed the last level TLB."
     },
     {
         "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.SLOTS",
@@ -116,7 +116,13 @@
     {
         "EventName": "TOPDOWN.BACKEND_BOUND.MEMORY.DATA.LL_MISS.SLOTS",
         "EventCode": "0x0",
-        "BriefDescription": "TMA slots backend stalled awaiting completion of loads or stores that missed the last-level cache.",
-        "PublicDescription": "TMA slots backend stalled awaiting completion of loads or stores that missed the last-level cache."
+        "BriefDescription": "TMA slots backend stalled awaiting completion of loads or stores that missed the last level cache.",
+        "PublicDescription": "TMA slots backend stalled awaiting completion of loads or stores that missed the last level cache."
+    },
+    {
+        "EventName": "TOPDOWN.RETIRING.SLOTS",
+        "EventCode": "0x15",
+        "BriefDescription": "TMA slots that retired.",
+        "PublicDescription": "TMA slots that retired."
     }    
 ]

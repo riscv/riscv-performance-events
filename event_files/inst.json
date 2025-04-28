@@ -1,13 +1,13 @@
 [
     {
         "EventName": "INST.RET",
-        "EventCode": "0x0",
+        "EventCode": "0x2",
         "BriefDescription": "Instructions retired.",
         "PublicDescription": "Instructions retired."
     },
     {
         "EventName": "INST.BRJMP.RET",
-        "EventCode": "0x0",
+        "EventCode": "0x5",
         "BriefDescription": "Branches and jumps retired.",
         "PublicDescription": "Branches and jumps retired."
     },
@@ -91,7 +91,7 @@
     },
     {
         "EventName": "INST.BRJMP.TK.RET",
-        "EventCode": "0x0",
+        "EventCode": "0x13",
         "BriefDescription": "Retired instructions that changed control flow. Includes taken branches and all jumps.",
         "PublicDescription": "Retired instructions that changed control flow. Includes taken branches and all jumps."
     },
@@ -103,7 +103,7 @@
     },
     {
         "EventName": "INST.MISPRED.RET",
-        "EventCode": "0x0",
+        "EventCode": "0x6",
         "BriefDescription": "Mispredicted control flow instructions retired.",
         "PublicDescription": "Mispredicted control flow instructions retired."
     },

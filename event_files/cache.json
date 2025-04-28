@@ -25,13 +25,13 @@
     },
     {
         "EventName": "CACHE.L1D.RD.DATA.ACCESS",
-        "EventCode": "0x0",
+        "EventCode": "0x3",
         "BriefDescription": "Demand data read accesses to the L1D cache.",
         "PublicDescription": "Demand data read accesses to the L1D cache."
     },
     {
         "EventName": "CACHE.L1D.RD.DATA.MISS",
-        "EventCode": "0x0",
+        "EventCode": "0x4",
         "BriefDescription": "Demand data read accesses that miss the L1D cache.",
         "PublicDescription": "Demand data read accesses that miss the L1D cache."
     },
@@ -217,13 +217,13 @@
     },
     {
         "EventName": "CACHE.L1I.RD.CODE.ACCESS",
-        "EventCode": "0x0",
+        "EventCode": "0xB",
         "BriefDescription": "Code fetches to the L1I cache.",
         "PublicDescription": "Code fetches to the L1I cache."
     },
     {
         "EventName": "CACHE.L1I.RD.CODE.MISS",
-        "EventCode": "0x0",
+        "EventCode": "0xC",
         "BriefDescription": "Code fetches that miss the L1I cache.",
         "PublicDescription": "Code fetches that miss the L1I cache."
     },
@@ -546,254 +546,14 @@
         "PublicDescription": "Cacheline writebacks from the L2 cache."
     },
     {
-        "EventName": "CACHE.L3.RD.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Read accesses to the L3 cache.",
-        "PublicDescription": "Read accesses to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Read accesses that miss the L3 cache.",
-        "PublicDescription": "Read accesses that miss the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Read accesses that hit the L3 cache.",
-        "PublicDescription": "Read accesses that hit the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Read accesses that merge into an outstanding L3 cache miss request.",
-        "PublicDescription": "Read accesses that merge into an outstanding L3 cache miss request."
-    },
-    {
-        "EventName": "CACHE.L3.RD.DATA.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Demand data read accesses to the L3 cache.",
-        "PublicDescription": "Demand data read accesses to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.DATA.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Demand data read accesses that miss the L3 cache.",
-        "PublicDescription": "Demand data read accesses that miss the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.DATA.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Demand data read accesses that hit the L3 cache.",
-        "PublicDescription": "Demand data read accesses that hit the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.DATA.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Demand data read accesses that merge into an outstanding L3 cache miss request.",
-        "PublicDescription": "Demand data read accesses that merge into an outstanding L3 cache miss request."
-    },
-    {
-        "EventName": "CACHE.L3.RD.DATA.MISS.CYCLES",
-        "EventCode": "0x0",
-        "BriefDescription": "Cycles while at least one L3 read miss is outstanding.",
-        "PublicDescription": "Cycles while at least one L3 read miss is outstanding."
-    },
-    {
-        "EventName": "CACHE.L3.WR.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Write accesses to the L3 cache.",
-        "PublicDescription": "Write accesses to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.WR.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Write accesses that miss the L3 cache.",
-        "PublicDescription": "Write accesses that miss the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.WR.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Write accesses that hit the L3 cache.",
-        "PublicDescription": "Write accesses that hit the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.WR.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Write accesses that write-combine into an outstanding L3 cache write.",
-        "PublicDescription": "Write accesses that write-combine into an outstanding L3 cache write."
-    },
-    {
-        "EventName": "CACHE.L3.RD.PREF.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Prefetches to the L3 cache.",
-        "PublicDescription": "Prefetches to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.PREF.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Prefetches that miss the L3 cache.",
-        "PublicDescription": "Prefetches that miss the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.PREF.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Prefetches that hit the L3 cache.",
-        "PublicDescription": "Prefetches that hit the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.PREF.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Prefetches that merge into an outstanding L3 cache miss request.",
-        "PublicDescription": "Prefetches that merge into an outstanding L3 cache miss request."
-    },
-    {
-        "EventName": "CACHE.L3.RD.CODE.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Code fetches to the L3 cache.",
-        "PublicDescription": "Code fetches to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.CODE.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Code fetches that miss the L3 cache.",
-        "PublicDescription": "Code fetches that miss the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.CODE.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Code fetches that hit the L3 cache.",
-        "PublicDescription": "Code fetches that hit the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.RD.CODE.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Code fetches that merge into an outstanding L3 cache miss request.",
-        "PublicDescription": "Code fetches that merge into an outstanding L3 cache miss request."
-    },
-    {
-        "EventName": "CACHE.L3.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Any accesses to the L3 cache.",
-        "PublicDescription": "Any accesses to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Any accesses that miss the L3 cache.",
-        "PublicDescription": "Any accesses that miss the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Any accesses that hit the L3 cache.",
-        "PublicDescription": "Any accesses that hit the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Any accesses that merge into an outstanding L3 cache miss request.",
-        "PublicDescription": "Any accesses that merge into an outstanding L3 cache miss request."
-    },
-    {
-        "EventName": "CACHE.L3.OPREF",
-        "EventCode": "0x0",
-        "BriefDescription": "Prefetch issued by the L3 prefetcher.",
-        "PublicDescription": "Prefetch issued by the L3 prefetcher."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.LOCAL.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Local snoops to the L3 cache.",
-        "PublicDescription": "Local snoops to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.LOCAL.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Local snoops that miss the L3 cache.",
-        "PublicDescription": "Local snoops that miss the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.LOCAL.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Local snoops that hit the L3 cache.",
-        "PublicDescription": "Local snoops that hit the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.LOCAL.HITM",
-        "EventCode": "0x0",
-        "BriefDescription": "Local snoops that hit a modified line in the L3 cache.",
-        "PublicDescription": "Local snoops that hit a modified line in the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.REMOTE.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Remote snoops to the L3 cache.",
-        "PublicDescription": "Remote snoops to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.REMOTE.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Remote snoops that miss the L3 cache.",
-        "PublicDescription": "Remote snoops that miss the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.REMOTE.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Remote snoops that hit the L3 cache.",
-        "PublicDescription": "Remote snoops that hit the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.REMOTE.HITM",
-        "EventCode": "0x0",
-        "BriefDescription": "Remote snoops that hit a modified line in the L3 cache.",
-        "PublicDescription": "Remote snoops that hit a modified line in the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.ACCESS",
-        "EventCode": "0x0",
-        "BriefDescription": "Snoops to the L3 cache.",
-        "PublicDescription": "Snoops to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Snoops that miss the L3 cache.",
-        "PublicDescription": "Snoops that miss the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.HIT",
-        "EventCode": "0x0",
-        "BriefDescription": "Snoops that hit the L3 cache.",
-        "PublicDescription": "Snoops that hit the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.SNOOP.HITM",
-        "EventCode": "0x0",
-        "BriefDescription": "Snoops that hit a modified line in the L3 cache.",
-        "PublicDescription": "Snoops that hit a modified line in the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.REFILL",
-        "EventCode": "0x0",
-        "BriefDescription": "Cacheline refills to the L3 cache.",
-        "PublicDescription": "Cacheline refills to the L3 cache."
-    },
-    {
-        "EventName": "CACHE.L3.WB",
-        "EventCode": "0x0",
-        "BriefDescription": "Cacheline writebacks from the L3 cache.",
-        "PublicDescription": "Cacheline writebacks from the L3 cache."
-    },
-    {
         "EventName": "CACHE.LL.RD.ACCESS",
-        "EventCode": "0x0",
+        "EventCode": "0xD",
         "BriefDescription": "Read accesses to the last level cache.",
         "PublicDescription": "Read accesses to the last level cache."
     },
     {
         "EventName": "CACHE.LL.RD.MISS",
-        "EventCode": "0x0",
+        "EventCode": "0xE",
         "BriefDescription": "Read accesses that miss the last level cache.",
         "PublicDescription": "Read accesses that miss the last level cache."
     },

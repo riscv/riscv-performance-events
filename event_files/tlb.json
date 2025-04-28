@@ -49,13 +49,13 @@
     },
     {
         "EventName": "TLB.L1D.LDST.ACCESS",
-        "EventCode": "0x0",
+        "EventCode": "0xF",
         "BriefDescription": "Load or store address translation requests to the L1 TLB.",
         "PublicDescription": "Load or store address translation requests to the L1 TLB."
     },
     {
         "EventName": "TLB.L1D.LDST.MISS",
-        "EventCode": "0x0",
+        "EventCode": "0x10",
         "BriefDescription": "Load or store address translation requests that miss the L1 TLB.",
         "PublicDescription": "Load or store address translation requests that miss the L1 TLB."
     },
@@ -79,13 +79,13 @@
     },
     {
         "EventName": "TLB.L1I.CODE.ACCESS",
-        "EventCode": "0x0",
+        "EventCode": "0x11",
         "BriefDescription": "Instruction fetch address translation requests to the L1 TLB.",
         "PublicDescription": "Instruction fetch address translation requests to the L1 TLB."
     },
     {
         "EventName": "TLB.L1I.CODE.MISS",
-        "EventCode": "0x0",
+        "EventCode": "0x12",
         "BriefDescription": "Instruction fetch address translation requests that miss the L1 TLB.",
         "PublicDescription": "Instruction fetch address translation requests that miss the L1 TLB."
     },
