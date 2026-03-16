@@ -1,13 +1,13 @@
 [
     {
         "EventName": "CYCLES.HART",
-        "EventCode": "0x0",
+        "EventCode": "0x1",
         "BriefDescription": "Clock cycles executed by the processor core on which the hart is running.  Ceases to increment when the hart is paused, such as during WFI, even if another hart running on the same core remains active.  This clock is subject to clock-gating and frequency variations.",
         "PublicDescription": "Clock cycles executed by the processor core on which the hart is running.  Ceases to increment when the hart is paused, such as during WFI, even if another hart running on the same core remains active.  This clock is subject to clock-gating and frequency variations."
     },
     {
         "EventName": "CYCLES.REF",
-        "EventCode": "0x0",
+        "EventCode": "0xA",
         "BriefDescription": "Reference clock cycles.  This event counts at a fixed frequency.",
         "PublicDescription": "Reference clock cycles.  This event counts at a fixed frequency."
     },

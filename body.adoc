@@ -105,42 +105,14 @@ In addition, there are events defined for combinations of the types above.
 
 ==== Memory Access Instruction Events
 
-The memory access instruction categories, LOAD, STORE, and LDST, include additional levels of hierarchy that allow counting per data source, address source, or cacheability.  When no additional qualifier is included in the event name (e.g., INST.LOAD.RET), all types are counted.
+The memory access instruction categories are listed below.
 
-.Memory Event Categories
+.Memory Instruction Categories
 [cols="20%,80%"]
 |===
-| UC | Instructions that perform a data access to an uncacheable region of memory.
-| DSRC.* | Instructions that accessed data from the specified source (see <<dsrcs>>).
-| ASRC.* | Instructions whose data address translation came from the specified source (see <<asrcs>>).
-|===
-
-.DSRC Event Data Sources
-[[dsrcs]]
-[cols="20%,80%"]
-|===
-| STLF | Load instructions to which data was forwarded by an older store.
-| <cache> | Instructions for which the data access hit in the selected cache.  See cache naming standards in <<CACHE Events>>.
-| <cache>.MISS | Instructions for which the data access missed in the selected cache.  See cache naming standards in <<CACHE Events>>.
-| <cache>.MERGE | Instructions for which the data access merged with an outstanding miss in the selected cache.  See cache naming standards in <<CACHE Events>>.
-| LOCAL.MEM | Instructions for which the data access hit in local memory.
-| REMOTE.MEM | Instructions for which the data access hit in remote memory.
-| REMOTE.CACHE | Instructions for which the data access hit in a remote cache.
-| REMOTE.HITM | Instructions for which the data access hit modified data in a remote cache.
-|===
-
-NOTE: _Some instructions perform multiple memory accesses.  Because these events count instructions, the event should be incremented if any access performed by the associated instruction meets the event criteria._
-
-NOTE: _What constitutes local vs remote above is left up to implementations.  It is expected that remote accesses incur significantly more latency than local accesses.  A straightforward approach may be for local to imply the same NUMA node, while remote implies a different NUMA node._
-
-NOTE: _Implementations may execute some memory accesses post-retirement.  In such cases, even non-speculative (.RET) DSRC events may not be reflected in the counter immediately after the associated instruction retires._
-
-.ASRC Event Translation Sources
-[[asrcs]]
-[cols="20%,80%"]
-|===
-| <tlb> | Instructions for which the data address translation hit in the selected TLB.  See TLB naming standards in <<TLB Events>>.
-| <tlb>.MISS | Instructions for which the data address translation missed in the selected TLB. See TLB naming standards in <<TLB Events>>. 
+| LOAD | Instructions that perform one or more load operations.
+| STORE | Instructions that perform one or more store operations.
+| LDST | Instructions that perform one or more load or store operations.
 |===
 
 ==== Vector Instruction Events
@@ -181,7 +153,58 @@ This group contains events for explicit load and store operations performed by i
 
 Each event in this group has both speculative (.SPEC) and non-speculative (.RET) versions, though only the non-speculative events are listed in the tables below.
 
-The breakdown of these events is identical to that described in <<Memory Access Instruction Events>>, with the caveat that these events count each memory access.  The INST.{LOAD,STORE,LDST} events count only instructions, some of which may perform multiple accesses.
+These events include additional levels of hierarchy that allow counting per data source, address source, or cacheability.  When no additional qualifier is included in the event name (e.g., LOAD.RET), all operations of that type are counted.
+
+.Memory Event Categories
+[cols="20%,80%"]
+|===
+| UC | Uncacheable memory accesses.
+| DSRC | Load and store operations that accessed data from the specified source (see <<dsrcs>>).
+| ASRC | Load and store operations whose data address translation came from the specified source (see <<asrcs>>).
+| DMISS | Load and store operations whose data access missed the specified source.
+| AMISS | Load and store operations whose data address translation missed the specified source.
+|===
+
+The standard data sources associated with DSRC events are listed in the table below.
+
+.DSRC Event Data Sources
+[[dsrcs]]
+[cols="20%,80%"]
+|===
+| STLF | Loads to which data was forwarded by an older store.
+| <cache> | Load and store operations that hit in the selected cache.  See cache naming standards in <<caches-table>>.
+| SLC | Load and store operations that hit in the system-level cache.
+| LOCAL.MEM | Load and store operations that hit in local memory.
+| REMOTE.MEM | Load and store operations that hit in remote memory.
+| REMOTE.CACHE | Load and store operations that hit in a remote cache.
+| REMOTE.HITM | Load and store operations that hit modified data in a remote cache.
+|===
+
+The system-level cache (SLC) is the last level of cache within the system.  In some implementations this may be the same as the LL, L2, or even L1D/L1I (see <<caches-table>>).  In such implementations, the SLC events simply alias to the corresponding LL, L2, or L1D/L1I events.
+
+NOTE: _What constitutes local vs remote above is left up to implementations.  It is expected that remote accesses incur significantly more latency than local accesses.  A straightforward approach may be for local to imply the same NUMA node, while remote implies a different NUMA node._
+
+NOTE: _Implementations may execute some memory accesses post-retirement.  In such cases, even non-speculative (.RET) DSRC events may not be reflected in the counter immediately after the associated instruction retires._
+
+NOTE: _Implementations with data sources not included among the standard sources listed above may opt to include additional, custom sources within the DSRC hierarchy._
+
+The standard address sources associated with ASRC events are listed in the table below.
+
+.ASRC Event Translation Sources
+[[asrcs]]
+[cols="20%,80%"]
+|===
+| <tlb> | Loads and stores for which the data address translation hit in the selected TLB.  See TLB naming standards in <<TLB Events>>.
+| WALK | Loads and stores for which the data address translation required a page walk.
+|===
+
+The standard data sources associated with DMISS events are the <cache> and SLC sources listed in <<dsrcs>>.  
+
+The standard address source associated with AMISS events is the L1 TLB source listed in <<asrcs>>.  
+
+NOTE: _DMISS/AMISS may be implemented as pseudo-events, or combinations of DSRC/ASRC events.  For example, LOAD.DMISS.SLC.RET may be implemented as the union of the LOAD.DSRC.LOCAL.MEM.RET, LOAD.DSRC.REMOTE.MEM.RET, LOAD.DSRC.REMOTE.CACHE.RET, and LOAD.DSRC.REMOTE.HITM.RET events._
+
+NOTE: _There are no AMISS.LL events defined because they would simply be aliases of the ASRC.WALK events._
 
 .LOAD, STORE, and LDST Events
 include::adoc_event_tables/ldst.adoc[]
@@ -189,32 +212,23 @@ include::adoc_event_tables/ldst.adoc[]
 === CACHE Events
 :xrefstyle: short
 
-This group contains events for instruction, data, and unified caches.  Events in this group count accesses from the cache's perspective; if an instruction performs two cache accesses, they will be counted separately.  Further, all events in this group count speculative accesses.
+This group contains events for instruction, data, and unified caches.  Events in this group count accesses from the cache's perspective; if an instruction performs two cache accesses, they will be counted separately.  All events in this group count speculative accesses.
 
-The top level of the CACHE event hierarchy identifies the cache associated with the event.  The standard cache naming scheme is detailed below.
+The top level of the CACHE event hierarchy identifies the cache associated with the event.  The caches with standard events associated are listed below.
 
-* The first character is L, for level.
-* The second character indicates the cache level.  The nearest cache is level 1, followed by level 2, and so on.  Level L implies the last level cache.
-* The optional third character indicates whether the cache is accessed only by instruction fetches (I) or only by data accesses (D).
-
-A typical example implementation might include the following caches within the CACHE event hierarchy.
-
-.CACHE Event Caches Example
-[[caches-ex]]
+.CACHE Event Caches
+[[caches-table]]
 [cols="20%,80%"]
 |===
 | L1D | Level 1 data cache
 | L1I | Level 1 instruction cache
-| L2 | Level 2 cache
-| L3 | Level 3 cache
-| LL | Last level cache
+| L2 | Level 2 unified cache
+| LL | Last level of the cache hierarchy for which events can be counted by the hart
 |===
 
-NOTE: _The events for the last level cache may be aliased to the events for one of the cache levels listed above it._
+In some implementations, the last level that can be counted within the hart may be the L2 or even the L1D/L1I.  In such cases, LL events simply alias to the corresponding L2 or L1D/L1I events.
 
-NOTE: _An implementation may additionally include other, custom caches within the CACHE event hierarchy, such that the cache name does not conform to the standard convention above._
-
-Like all events in this spec, these CACHE events are per-hart.  For caches that may be shared by multiple harts, the CACHE events should increment only for occurrences directly associated with the local hart.
+NOTE: _Implementations with caches that are not represented by the standard caches listed above may opt to include additional, custom events within the CACHE hierarchy._
 
 The second level of the CACHE event hierarchy identifies the access or operation type, as shown in the table below.  Some caches may support only a subset of the defined types.
 
@@ -233,7 +247,7 @@ The second level of the CACHE event hierarchy identifies the access or operation
 | OPREF | Outbound prefetches, for the purpose of pulling lines into the associated cache.
 |===
 
-For caches that may be shared by multiple harts, the lookup events (RD*, WR, RW, PREF, SNOOP) should increment only for requests from the local hart.  FILL and WB events should increment only for fills and writebacks resulting from requests from the local hart.  OPREF events should not increment.
+NOTE: _Like all events in this spec, these CACHE events are per-hart.  For caches that may be shared by multiple harts, the lookup events (RD*, WR, RW) should increment only for requests from the local hart.  FILL and WB events should increment only for fills and writebacks resulting from requests from the local hart.  It is up to implementations whether and how to count PREF, SNOOP, and OPREF events for shared caches._
 
 Some events in the CACHE event hierarchy include additional levels.  For cache lookup access types (RD*, WR, or RW), a third level counts per lookup result.
 
@@ -268,7 +282,7 @@ If neither the LOCAL or REMOTE modifier is included in the event name, then all 
 | MISS   | Snoops that miss
 |===
 
-A reference example of the full set of CACHE events, assuming the example set of caches shown above in <<caches-ex>>, is illustrated in the tables below.
+The full set of CACHE events is illustrated in the table below.
 
 .CACHE Events
 include::adoc_event_tables/cache.adoc[]
@@ -276,22 +290,20 @@ include::adoc_event_tables/cache.adoc[]
 === TLB Events
 :xrefstyle: short
 
-This group contains events for translation lookaside buffers (TLBs).  Events in this group count accesses from the TLB's perspective; if an instruction performs two address translations, they will be counted separately.  Further, all events in this group count speculative accesses.
+This group contains events for translation lookaside buffers (TLBs).  Events in this group count accesses from the TLB's perspective; if an instruction performs two address translations, they will be counted separately.  All events in this group count speculative accesses.
 
-The top level of the TLB event hierarchy identifies the level of the TLB associated with the event.  The naming scheme matches that for caches, see <<CACHE Events>>.
+The top level of the TLB event hierarchy identifies the level of the TLB associated with the event.  
 
-A typical example implementation might include the following TLBs within the TLB event hierarchy.
-
-.TLB Event Caches Example
-[[tlbs-ex]]
+.TLB Event TLBs
+[[tlbs-table]]
 [cols="20%,80%"]
 |===
 | L1D | Level 1 data TLB (DTLB)
 | L1I | Level 1 instruction TLB (ITLB)
-| LL | Level 2 shared TLB (STLB)
+| LL | Last level TLB
 |===
 
-NOTE: _An implementation may additionally include other, custom TLBs within the TLB event hierarchy, such that the cache name does not conform to the standard convention above._
+In some implementations the L1D or L1I TLBs may be the last (only) level of TLB.  In such implementations, the LL TLB events alias to the L1D/L1I TLB events.
 
 The second level of the TLB event hierarchy identifies the access or operation type, as shown in the table below.  Some caches may support only a subset of the defined types.
 
@@ -317,7 +329,7 @@ A third level counts requests per lookup result.
 
 For the LDST and CODE types, there is additionally a MISS.CYCLES event that counts core cycles (at the rate of the Zicntr `cycle` counter) while a load/store or instruction fetch TLB miss, respectively, is outstanding.
 
-A reference example of the full set of TLB events, assuming the example set of TLBs shown above in <<tlbs-ex>>, is illustrated in the tables below.
+The full set of TLB events is illustrated in the tables below.
 
 .TLB Events
 include::adoc_event_tables/tlb.adoc[]
@@ -329,21 +341,24 @@ This group contains events that count instruction fetch requests, broken down by
 .FETCH Event Categories
 [cols="20%,80%"]
 |===
-| DSRC.* | Instruction fetches that accessed data from the specified source (see <<fetch-dsrcs>>).
-| ASRC.* | Instruction fetches whose address translation came from the specified source (see <<fetch-asrcs>>).
+| DSRC | Instruction fetches that accessed data from the specified source (see <<fetch-dsrcs>>).
+| ASRC | Instruction fetches whose address translation came from the specified source (see <<fetch-asrcs>>).
+| DMISS | Instruction fetches whose data access missed the specified source.
+| AMISS | Instruction fetches whose data address translation missed the specified source.
 |===
+
+The standard address and data sources for instruction fetch events are listed below.
 
 .DSRC Event Instruction Fetch Data Sources
 [[fetch-dsrcs]]
 [cols="20%,80%"]
 |===
-| <cache> | Instruction fetches for which the instruction data access hit in the selected cache.  See cache naming standards in <<CACHE Events>>.
-| <cache>.MISS | Instruction fetches for which the instruction data access missed in the selected cache.  See cache naming standards in <<CACHE Events>>.
-| <cache>.MERGE | Instruction fetches for which the instruction data access merged with an outstanding miss in the selected cache.  See cache naming standards in <<CACHE Events>>.
-| LOCAL.MEM | Instruction fetches for which the instruction data access hit in local memory.
-| REMOTE.MEM | Instruction fetches for which the instruction data access hit in remote memory.
-| REMOTE.CACHE | Instruction fetches for which the instruction data access hit in a remote cache.
-| REMOTE.HITM | Instruction fetches for which the instruction data access hit modified data in a remote cache.
+| <cache> | Instruction fetches that hit in the selected cache.  See cache naming standards in <<caches-table>>.
+| SLC | Instruction fetches that hit in the system-level cache.
+| LOCAL.MEM | Instruction fetches that hit in local memory.
+| REMOTE.MEM | Instruction fetches that hit in remote memory.
+| REMOTE.CACHE | Instruction fetches that hit in a remote cache.
+| REMOTE.HITM | Instruction fetches that hit modified data in a remote cache.
 |===
 
 .ASRC Event Instruction Fetch Address Translation Sources
@@ -351,8 +366,12 @@ This group contains events that count instruction fetch requests, broken down by
 [cols="20%,80%"]
 |===
 | <tlb> | Instruction fetches for which the address translation hit in the selected TLB.  See TLB naming standards in <<TLB Events>>.
-| <tlb>.MISS | Instruction fetches for which the address translation missed in the selected.  See TLB naming standards in <<TLB Events>>.
+| WALK | Instruction fetches for which the address translation required a page walk.
 |===
+
+The standard data sources associated with FETCH.DMISS events are the <cache> and SLC sources listed in <<fetch-dsrcs>>.  
+
+The standard address source associated with FETCH.AMISS events is the L1I TLB source listed in <<fetch-asrcs>>.  
 
 .FETCH Events
 include::adoc_event_tables/fetch.adoc[]
@@ -401,9 +420,9 @@ Frontend Bandwidth represents slots where the frontend does not deliver a uop to
 
 The Backend Bound state is broken down into the Core Bound and Memory Bound L2 states.  Memory Bound represents slots where the backend is stalled (cannot accept uops from the frontend) due to stalls resulting from memory operations (loads and stores).  Memory Bound is broken down into the Address and Data standard L3 states.  Memory Address Bound represents slots where the backend is stalled due to waiting for a data address translation; e.g., due to a DTLB miss.  Memory Data Bound represents slots where the backend is stalled due to waiting for a load or store access to complete; e.g., due to an L1D cache miss.  These L3 events may not capture all causes for Memory Bound slots, which could include load/store queue full, pipeline conflicts, or other microarchitectural issues.
 
-Memory Address Bound is broken down into L4 states per implemented TLB (see <<tlbs-ex>>), plus the Page Walk state.  So the Memory Address LL TLB State represents slots where the backend is stalled due to awaiting address translations from the last-level TLB, while the Page Walk state represents slots where the backend is stalled due to awaiting address translations that miss all TLBs and require a page walk.  
+Memory Address Bound is broken down into L4 states per implemented TLB (see <<tlbs-ex>>), plus the Page Walk state.  So the Memory Address LL TLB State represents slots where the backend is stalled due to awaiting address translations from the last level TLB, while the Page Walk state represents slots where the backend is stalled due to awaiting address translations that miss all TLBs and require a page walk.  
 
-Similarly, Memory Data Bound is broken down into L4 states per implemented cache (see <<caches-ex>>), plus the External Memory state.  The External Memory State represents slots where the backend is stalled due to awaiting data for requests that missed the last-level cache. 
+Similarly, Memory Data Bound is broken down into L4 states per implemented cache (see <<caches-table>>), plus the External Memory state.  The External Memory State represents slots where the backend is stalled due to awaiting data for requests that missed the last level cache. 
 
 Counting Memory Bound slots per address or data source can be challenging, since, for example, the source of load data is typically only known once the stall ends and data is returned.  To simplify this counting, the events defined below count slots stalled due to a miss at each TLB or cache level.  This allows analysis tools to compute, for example, the slots attributed to accesses that hit cache L__x__ by counting the slots lost due to misses in cache L__x-1__ minus those lost due to misses in cache L__x__.
 
@@ -441,8 +460,8 @@ The table below provides the list of standard event selector encodings and assoc
 | 0 | No event
 | 1 | CYCLES.HART
 | 2 | INST.RET
-| 3 | CACHE.L1.RD.DATA.ACCESS
-| 4 | CACHE.L1.RD.DATA.MISS
+| 3 | CACHE.L1D.RD.DATA.ACCESS
+| 4 | CACHE.L1D.RD.DATA.MISS
 | 5 | INST.BRJMP.SPEC
 | 6 | INST.MISPRED.SPEC
 | 7 | Reserved, no event
@@ -453,8 +472,8 @@ The table below provides the list of standard event selector encodings and assoc
 | 12 | CACHE.L1I.RD.CODE.MISS
 | 13 | CACHE.LL.RD.DATA.ACCESS
 | 14 | CACHE.LL.RD.DATA.MISS
-| 15 | TLB.L1.LDST.ACCESS
-| 16 | TLB.L1.LDST.MISS
+| 15 | TLB.L1D.LDST.ACCESS
+| 16 | TLB.L1D.LDST.MISS
 | 17 | TLB.L1I.CODE.ACCESS
 | 18 | TLB.L1I.CODE.MISS
 | 19 | INST.BRJMP.TK.RET
@@ -472,8 +491,6 @@ The table below provides the list of standard event selector encodings and assoc
 | 31 | Reserved, no event
 |===
 
-WARNING: _We need to rethink the cache naming, if we're standardizing some of them across implementations.  Maybe get rid of the option for trailing I and D?_
-
 NOTE: _The RISC-V SBI Specification defines encodings for Hardware general events, and the table above uses the same encodings in cases where the events match.  In order to cluster standard encodings together, the CACHE and TLB events use encodings that are undefined in the same SBI Hardware general events type (type 0), rather than non-adjacent encodings from the SBI's Hardware cache events (type 1).  Encodings 19..24 above are associated with events that do not have encodings assigned by the SBI._
 
 [NOTE]
@@ -486,8 +503,8 @@ _The standard encodings above are intended for use with, among other things, Lin
 | Perf HW Event | Enc 
 | CPU_CYCLES | 1 (CYCLES.HART)
 | INSTRUCTIONS | 2 (INST.RET)
-| CACHE_REFERENCES | 3 (CACHE.L1.RD.DATA.ACCESS)
-| CACHE_MISSES | 4 (CACHE.L1.RD.DATA.MISS)
+| CACHE_REFERENCES | 3 (CACHE.L1D.RD.DATA.ACCESS)
+| CACHE_MISSES | 4 (CACHE.L1D.RD.DATA.MISS)
 | BRANCH_INSTRUCTIONS | 5 (INST.BRJMP.SPEC)
 | BRANCH_MISSES | 6 (INST.MISPRED.SPEC)
 | REF_CPU_CYCLES | 10 (CYCLES.REF)
@@ -497,14 +514,14 @@ _The standard encodings above are intended for use with, among other things, Lin
 [options="header",width=80%]
 |===
 | Perf Cache Event | Enc 
-| CACHE_L1D_READ_ACCESS | 3 (CACHE.L1.RD.DATA.ACCESS)
-| CACHE_L1D_READ_MISS | 4 (CACHE.L1.RD.DATA.MISS)
+| CACHE_L1D_READ_ACCESS | 3 (CACHE.L1D.RD.DATA.ACCESS)
+| CACHE_L1D_READ_MISS | 4 (CACHE.L1D.RD.DATA.MISS)
 | CACHE_L1I_READ_ACCESS | 11 (CACHE.L1I.RD.CODE.ACCESS)
 | CACHE_L1I_READ_MISS | 12 (CACHE.L1I.RD.CODE.MISS)
 | CACHE_LL_READ_ACCESS | 13 (CACHE.LL.RD.DATA.ACCESS)
 | CACHE_LL_READ_MISS | 14 (CACHE.LL.RD.DATA.MISS)
-| CACHE_DTLB_READ_ACCESS | 15 (TLB.L1.LDST.ACCESS)
-| CACHE_DTLB_READ_MISS | 16 (TLB.L1.LDST.MISS)
+| CACHE_DTLB_READ_ACCESS | 15 (TLB.L1D.LDST.ACCESS)
+| CACHE_DTLB_READ_MISS | 16 (TLB.L1D.LDST.MISS)
 | CACHE_ITLB_READ_ACCESS | 17 (TLB.L1I.CODE.ACCESS)
 | CACHE_ITLB_READ_MISS | 18 (TLB.L1I.CODE.ACCESS)
 | CACHE_BPU_READ_ACCESS | 5 (INST.BRJMP.SPEC)
@@ -524,20 +541,17 @@ Counting events per instruction can be instructive in understanding how frequent
 
 NOTE: _Confusingly, the "misses" in MPKI can refer to cache misses per 1000 instructions in some contexts, and branch/jump mispredicts per 1000 instructions in others._
 
-It is recommended that non-speculative (.RET) INST events are used as the denominator for such metrics; for instance, last-level cache misses per 1000 instructions could be expressed as follows.
+It is recommended that non-speculative (.RET) INST events are used as the denominator for such metrics; for instance, last level cache misses per 1000 instructions could be expressed as follows.
 
 [source]
 CACHE.LL.RW.MISS * 1000 / INST.RET
-
-Note that this metric counts all last-level cache misses from the hart, which includes speculative accesses and implicit accesses.  If the user prefers to count only non-speculative, explicit last-level cache misses, the metric could be expressed as follows.
-
-[source]
-INST.LDST.LL.MISS.RET * 1000 / INST.RET
 
 Some per-instruction metrics use a denominator that is a subset of all instructions.  For instance, the accuracy of a conditional branch predictor may be expressed as the number of mispredicts per predicted branch.
 
 [source]
 INST.MISPRED.RET / INST.BRJMP.PRED.RET
+
+Unlike the cache misses example above, which included speculative cache misses, this formula counts only non-speculative mispredictions (that is mispredictions on branches and/or jumps that ultimately retire).
 
 Some implementations may not implement non-speculative versions of INST events, aside from INST.RET.  In such cases, speculative events can be used.  
 
@@ -553,7 +567,7 @@ INST.RET / CYCLES.HART
 
 === Per-second Metrics
 
-Some metrics are rates of events relative to wall-clock time.  For such metrics, CYCLES.HART is not appropriate, since the frequency at which CYCLES.HART counts can vary.  Instead CYCLES.REF, which counts at a constant frequency, is recommended.  For example, for an implementation with a 1 GHz reference clock and 64-byte cache lines, bandwidth beyond the last-level cache could be expressed (in MB/s) as follows.
+Some metrics are rates of events relative to wall-clock time.  For such metrics, CYCLES.HART is not appropriate, since the frequency at which CYCLES.HART counts can vary.  Instead CYCLES.REF, which counts at a constant frequency, is recommended.  For example, for an implementation with a 1 GHz reference clock and 64-byte cache lines, bandwidth beyond the last level cache could be expressed (in MB/s) as follows.
 
 [source]
 (CACHE.LL.MISS * 64 / 1048576) / (CYCLES.REF / 1000000000)
@@ -563,7 +577,7 @@ Or, more consisely:
 [source]
 CACHE.LL.MISS * 60992 / CYCLES.REF
 
-NOTE: _The metric above does not account for prefetches or other traffic that might originate from the last-level cache, nor for any accesses that might bypass the last-level cache._
+NOTE: _The metric above does not account for prefetches or other traffic that might originate from the last level cache, nor for any accesses that might bypass the last level cache._
 
 === Common Metrics
 

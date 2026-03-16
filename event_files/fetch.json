@@ -6,34 +6,16 @@
         "PublicDescription": "Instruction fetches that hit in the L1I cache."
     },
     {
-        "EventName": "FETCH.DSRC.L1I.MISS",
+        "EventName": "FETCH.DSRC.L2",
         "EventCode": "0x0",
-        "BriefDescription": "Instruction fetches that missed in the L1I cache.",
-        "PublicDescription": "Instruction fetches that missed in the L1I cache."
-    },
-    {
-        "EventName": "FETCH.DSRC.L1I.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Instruction fetches that merged into an outstanding L1I cache miss request.",
-        "PublicDescription": "Instruction fetches that merged into an outstanding L1I cache miss request."
+        "BriefDescription": "Instruction fetches that hit in the L2 cache.",
+        "PublicDescription": "Instruction fetches that hit in the L2 cache."
     },
     {
         "EventName": "FETCH.DSRC.LL",
         "EventCode": "0x0",
         "BriefDescription": "Instruction fetches that hit in the last level cache.",
         "PublicDescription": "Instruction fetches that hit in the last level cache."
-    },
-    {
-        "EventName": "FETCH.DSRC.LL.MISS",
-        "EventCode": "0x0",
-        "BriefDescription": "Instruction fetches that missed in the last level cache.",
-        "PublicDescription": "Instruction fetches that missed in the last level cache."
-    },
-    {
-        "EventName": "FETCH.DSRC.LL.MERGE",
-        "EventCode": "0x0",
-        "BriefDescription": "Instruction fetches that merged into an outstanding last level cache miss request.",
-        "PublicDescription": "Instruction fetches that merged into an outstanding last level cache miss request."
     },
     {
         "EventName": "FETCH.DSRC.LOCAL.MEM",
@@ -60,22 +42,28 @@
         "PublicDescription": "Instruction fetches that hit a modified line in a remote cache."
     },
     {
-        "EventName": "FETCH.ASRC.L1",
+        "EventName": "FETCH.DMISS.L1I",
         "EventCode": "0x0",
-        "BriefDescription": "Instruction fetch address translation requests that hit in the L1 TLB.",
-        "PublicDescription": "Instruction fetch address translation requests that hit in the L1 TLB."
+        "BriefDescription": "Instruction fetches that missed in the L1I cache.",
+        "PublicDescription": "Instruction fetches that missed in the L1I cache."
     },
     {
-        "EventName": "FETCH.ASRC.L1.MISS",
+        "EventName": "FETCH.DMISS.L2",
         "EventCode": "0x0",
-        "BriefDescription": "Instruction fetch address translation requests that missed in the L1 TLB.",
-        "PublicDescription": "Instruction fetch address translation requests that missed in the L1 TLB."
+        "BriefDescription": "Instruction fetches that missed in the L2 cache.",
+        "PublicDescription": "Instruction fetches that missed in the L2 cache."
     },
     {
-        "EventName": "FETCH.ASRC.L1.MERGE",
+        "EventName": "FETCH.DMISS.LL",
         "EventCode": "0x0",
-        "BriefDescription": "Instruction fetch address translation requests that merged into an outstanding L1 TLB miss request.",
-        "PublicDescription": "Instruction fetch address translation requests that merged into an outstanding L1 TLB miss request."
+        "BriefDescription": "Instruction fetches that missed in the last level cache.",
+        "PublicDescription": "Instruction fetches that missed in the last level cache."
+    },
+    {
+        "EventName": "FETCH.ASRC.L1I",
+        "EventCode": "0x0",
+        "BriefDescription": "Instruction fetch address translation requests that hit in the L1I TLB.",
+        "PublicDescription": "Instruction fetch address translation requests that hit in the L1I TLB."
     },
     {
         "EventName": "FETCH.ASRC.LL",
@@ -84,15 +72,15 @@
         "PublicDescription": "Instruction fetch address translation requests that hit in the last level TLB."
     },
     {
-        "EventName": "FETCH.ASRC.LL.MISS",
+        "EventName": "FETCH.ASRC.WALK",
         "EventCode": "0x0",
-        "BriefDescription": "Instruction fetch address translation requests that missed in the last level TLB.",
-        "PublicDescription": "Instruction fetch address translation requests that missed in the last level TLB."
+        "BriefDescription": "Instruction fetch address translation requests that required a page walk.",
+        "PublicDescription": "Instruction fetch address translation requests that required a page walk."
     },
     {
-        "EventName": "FETCH.ASRC.LL.MERGE",
+        "EventName": "FETCH.AMISS.L1I",
         "EventCode": "0x0",
-        "BriefDescription": "Instruction fetch address translation requests that merged into an outstanding last level TLB miss request.",
-        "PublicDescription": "Instruction fetch address translation requests that merged into an outstanding last level TLB miss request."
+        "BriefDescription": "Instruction fetch address translation requests that missed in the L1I TLB.",
+        "PublicDescription": "Instruction fetch address translation requests that missed in the L1I TLB."
     }
 ]
