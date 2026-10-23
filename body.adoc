@@ -30,6 +30,7 @@ INST events are broken down by instruction categories at the top level of the ev
 | FP | Floating point instructions.  Includes all instructions from the F, D, Q, and Zfa extensions.
 | RVV | Vector instructions.  Includes all instructions from the V extension.
 | RVC | Compressed instructions.  Includes all instructions from the C extension.
+| SWPREFETCH | Cache-block prefetch instructions PREFETCH.I, PREFETCH.R and PREFETCH.W.
 |===
 
 ==== Control Transfer Instruction Events
@@ -168,6 +169,40 @@ The LOAD, STORE, and LDST types include an additional level of hierarchy that al
 | IDXU | Vector indexed-unordered access instructions.
 | STRD | Vector strided access instructions.
 | IDXO | Vector indexed-ordered access instructions.
+|===
+
+==== Cache-Block Prefetch Instruction Events
+
+The top level of the SWPREFETCH event hierarchy identifies the intended type of memory access to prefetch for, with additional levels of hierarchy to allow counting per address source. When no additional qualifier is included in the event name (e.g. INST.SWPREFETCH.RET), all types are counted.
+
+NOTE: _The prefetch instructions retire in program order just like standard non-blocking hint instructions, long before the actual data arrives in the cache. These events simply count the instruction, not the observable outcome._
+
+.SWPREFETCH Event Instruction Types
+[cols="20%,80%"]
+|===
+| FETCH.* | Cache-block prefetch for instruction fetch (see <<swprefetch_event_categories>>).
+| READ.*  | Cache-block prefetch for data read (see <<swprefetch_event_categories>>).
+| WRITE.* | Cache-block prefetch for data write (see <<swprefetch_event_categories>>).
+|===
+
+.SWPREFETCH Event Categories
+[[swprefetch_event_categories]]
+[cols="20%,80%"]
+|===
+| ASRC.* | Instructions whose data address translation came from the specified source (see <<swprefetch_asrcs>>).
+| SUPPRESSED | Instructions that did not generate a prefetch request, due to resource pressure, throttling, redundant work or other implementation-defined conditions.
+| ACCEPTED | Instructions that generated a prefetch request.
+|===
+
+NOTE: _Some instructions may result in multiple events (e.g. a ASRC.L1 and SUPPRESSED)._
+
+.ASRC Event Prefetch Address Translation Sources
+[[swprefetch_asrcs]]
+[cols="20%,80%"]
+|===
+| <tlb> | Prefetches for which the address translation hit in the selected TLB.  See TLB naming standards in <<TLB Events>>.
+| <tlb>.MISS | Prefetches for which the address translation missed in the selected TLB.  See TLB naming standards in <<TLB Events>>.
+| <tlb>.MERGE | Prefetches for which the address translation merged with an outstanding miss in the selected TLB.  See TLB naming standards in <<TLB Events>>.
 |===
 
 ==== INST Event and Metric Tables
@@ -356,6 +391,44 @@ This group contains events that count instruction fetch requests, broken down by
 
 .FETCH Events
 include::adoc_event_tables/fetch.adoc[]
+
+=== SWPREFETCH Events
+
+This group contains events that count observable software prefetch outcomes, broken down by data source (see <<swprefetch_dsrcs>>).
+
+.SWPREFETCH Event Types
+[cols="20%,80%"]
+|===
+| FETCH.* | Cache-block prefetch for instruction fetch (see <<swprefetch_event_categories>>).
+| READ.*  | Cache-block prefetch for data read (see <<swprefetch_event_categories>>).
+| WRITE.* | Cache-block prefetch for data write (see <<swprefetch_event_categories>>).
+|===
+
+.SWPREFETCH Event Categories
+[cols="20%,80%"]
+|===
+| DSRC.* | Instructions that accessed data (for READ and WRITE) or instructions (for FETCH) from the specified source (see <<swprefetch_dsrcs>>).
+|===
+
+.DSRC Event Prefetch Data Sources
+[[swprefetch_dsrcs]]
+[cols="20%,80%"]
+|===
+| <cache> | Prefetches for which the access hit in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| <cache>.MISS | Prefetches for which the access missed in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| <cache>.MERGE | Prefetches for which the access merged with an outstanding miss in the selected cache.  See cache naming standards in <<CACHE Events>>.
+| LOCAL.MEM | Prefetches for which the access hit in local memory.
+| REMOTE.MEM | Prefetches for which the access hit in remote memory.
+| REMOTE.CACHE | Prefetches for which the access hit in a remote cache.
+| REMOTE.HITM | Prefetches for which the instruction data access hit modified data in a remote cache.
+|===
+
+NOTE: _DSRC refers to lookup/source outcomes, not cache placement. Additionally, a prefetch may result in multiple events (e.g. DSRC.L1D.MISS and DSRC.LL)._
+
+NOTE: _What constitutes local vs remote above is left up to implementations.  It is expected that remote accesses incur significantly more latency than local accesses.  A straightforward approach may be for local to imply the same NUMA node, while remote implies a different NUMA node._
+
+.SWPREFETCH Events
+include::adoc_event_tables/swprefetch.adoc[]
 
 === TOPDOWN Microarchitecture Analysis Events
 
