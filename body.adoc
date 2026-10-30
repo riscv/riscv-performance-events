@@ -324,7 +324,9 @@ include::adoc_event_tables/tlb.adoc[]
 
 === FETCH Events
 
-This group contains events that count instruction fetch requests, broken down by the address translation source or the instruction data source.  All events count speculative fetch requests.
+This group contains events that count instruction fetch requests, broken down by the address translation source or the instruction data source.  Each event in this group has both speculative (.SPEC) and non-speculative (.RET) versions, though only the speculative events are listed in the tables below.  In the case of non-speculative fetch events, the counter is incremented only when the first instruction in the effected fetch line retires.
+
+NOTE: _Non-speculative fetch events may allow precise attribution; however, non-speculative fetch events are among the most expensive to implement, as they require staging fetch event indications throughout the hart pipeline.  It is recommended that all implementations support the speculative fetch events, while those that are able additionally support the non-speculative fetch events._
 
 .FETCH Event Categories
 [cols="20%,80%"]
@@ -384,7 +386,7 @@ The full standard hierarchy of TMA states is illustrated below.
 
 [align="center"]
 .Topdown Full Hierarchy
-image::images/tma-full2.svg[TMA Hierarchy]
+image::images/tma-full3.svg[TMA Hierarchy]
 
 [NOTE]
 ====
@@ -395,7 +397,7 @@ _Because of this possible imprecision, it is recommended that lower level TMA ev
 _Implementations may opt to add custom L2+ events, to identify additional bottlenecks specific to the microarchitecture._
 ====
 
-The Frontend Bound state is broken down into Frontend Latency and Frontend Bandwidth L2 states.  Slots that fall into Frontend Latency are cases where the decoders are awaiting fetch data, and hence have no uops to deliver to the backend.  Frontend Latency is broken down into three standard L3 states: Address, Data, and Redirect.  Frontend Address Latency represents slots unfilled due to awaiting the address translation for a fetch line; e.g., due to an ITLB miss.  Frontend Data Latency represents slots unfilled due to awaiting data return for a fetch line; e.g., due to an L1I cache miss.  Frontend Redirect Latency counts frontend pipeline slots discarded due to fetch redirects that can result from control transfers; e.g., due to jumps or taken branches.
+The Frontend Bound state is broken down into Frontend Latency and Frontend Bandwidth L2 states.  Slots that fall into Frontend Latency are cases where the decoders are awaiting fetch data, and hence have no uops to deliver to the backend.  Frontend Latency is broken down into three standard L3 states: Address, Data, and Resteer.  Frontend Address Latency represents slots unfilled due to awaiting the address translation for a fetch line; e.g., due to an ITLB miss.  Frontend Data Latency represents slots unfilled due to awaiting data return for a fetch line; e.g., due to an L1I cache miss.  Frontend Resteer Latency counts frontend pipeline slots discarded due to fetch resteers that can result from control transfers; e.g., due to jumps or taken branches.
 
 Frontend Bandwidth represents slots where the frontend does not deliver a uop to the backend due to decoder restrictions.  This occurs in cycles where the decoders have opcode bytes, and typically are able to deliver some uops to the backend, but are unable to fill all available slots.  As an example, this can occur in cases where there is decoder asymmetry, which can result in reduced decoder bandwidth due to some instructions needing to wait until a capable decoder is available.
 
@@ -426,7 +428,7 @@ NOTE: _CYCLES.HART is expected to count the same cycles counted by the `cycle` c
 
 == Event Selector CSRs
 
-Bits 4:0 in `mhpmevent__X__` comprise the SEL field, which selects the performance event to be counted by the associated counter.
+Bits 4:0 in `mhpmevent__X__` comprise the SEL field, which selects the performance event to be counted by `mhpmcounter__X__`.
 
 NOTE: _The standard `mhpmevent__X__`.SEL field is only wide enough to hold the standard encodings, defined below.  With the exception of the uppermost bits defined by Sscofpmf, the remainder of the event selector register is WARL.  An implementation is free to use the WARL bits in ways that impact what is counted.  When standard software is provided with a custom event encoding, perhaps from an implementation-specific JSON event file or a raw event encoding passed directly by the user, that standard software should assume that the least significant bit of the encoding is written to event selector bit 0, and it should zero-extend the encoding value as needed to cover all WARL bits in the event selector._
 
