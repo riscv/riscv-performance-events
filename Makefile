@@ -35,11 +35,30 @@ REQUIRES := --require=asciidoctor-bibtex \
             --require=asciidoctor-diagram \
             --require=asciidoctor-mathematical
 
-.PHONY: all build clean build-container build-no-container
+DOCS_RESOURCES_CONFIG := docs-resources/global-config.adoc
+
+.PHONY: all build clean build-container build-no-container check-docs-resources
 
 all: build
 
-build: 
+check-docs-resources:
+	@if [ ! -f "$(DOCS_RESOURCES_CONFIG)" ]; then \
+		echo "Notice: docs-resources submodule is missing or uninitialized."; \
+		if command -v git >/dev/null 2>&1 && [ -d .git ]; then \
+			echo "Automatically initializing git submodules..."; \
+			git submodule update --init --recursive || { \
+				echo "ERROR: Failed to update git submodules automatically."; \
+				echo "Please run manually: git submodule update --init --recursive"; \
+				exit 1; \
+			}; \
+		else \
+			echo "ERROR: Missing docs-resources directory and git is unavailable."; \
+			echo "Please clone submodules or run: git submodule update --init --recursive"; \
+			exit 1; \
+		fi; \
+	fi
+
+build: check-docs-resources
 	@echo "Checking if Docker is available..."
 	@if command -v docker >/dev/null 2>&1 ; then \
 		echo "Docker is available, building inside Docker container..."; \
