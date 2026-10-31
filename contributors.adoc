@@ -5,3 +5,4 @@ This RISC-V specification has been contributed to directly or indirectly by:
 [%hardbreaks]
 * Dmitry Ryabtsev <rdb197@gmail.com>
 * Beeman Strong <beeman@rivosinc.com>
+* Andrei Warkentin <awarkent@qti.qualcomm.com>
