@@ -658,5 +658,173 @@
         "EventCode": "0x0",
         "BriefDescription": "Compressed instructions retired.",
         "PublicDescription": "Compressed instructions retired."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch instructions retired.",
+        "PublicDescription": "Cache-block prefetch instructions retired."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.FETCH.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for instruction fetch instructions retired.",
+        "PublicDescription": "Cache-block prefetch for instruction fetch instructions retired."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.FETCH.ASRC.L1.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for instruction fetch instructions retired that hit in the L1 TLB.",
+        "PublicDescription": "Cache-block prefetch for instruction fetch instructions retired that hit in the L1 TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.FETCH.ASRC.L1.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for instruction fetch instructions retired that missed in the L1 TLB.",
+        "PublicDescription": "Cache-block prefetch for instruction fetch instructions retired that missed in the L1 TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.FETCH.ASRC.L1.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for instruction fetch instructions retired that merged into an outstanding L1 TLB miss request.",
+        "PublicDescription": "Cache-block prefetch for instruction fetch instructions retired that merged into an outstanding L1 TLB miss request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.FETCH.ASRC.LL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for instruction fetch instructions retired that hit in the last level TLB.",
+        "PublicDescription": "Cache-block prefetch for instruction fetch instructions retired that hit in the last level TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.FETCH.ASRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for instruction fetch instructions retired that missed in the last level TLB.",
+        "PublicDescription": "Cache-block prefetch for instruction fetch instructions retired that missed in the last level TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.FETCH.ASRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for instruction fetch instructions retired that merged into an outstanding last level TLB miss request.",
+        "PublicDescription": "Cache-block prefetch for instruction fetch instructions retired that merged into an outstanding last level TLB miss request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.FETCH.SUPPRESSED.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for instruction fetch instructions retired that did not generate a prefetch request.",
+        "PublicDescription": "Cache-block prefetch for instruction fetch instructions retired that did not generate a prefetch request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.FETCH.ACCEPTED.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for instruction fetch instructions retired that generated a prefetch request.",
+        "PublicDescription": "Cache-block prefetch for instruction fetch instructions retired that generated a prefetch request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.READ.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data read instructions retired.",
+        "PublicDescription": "Cache-block prefetch for data read instructions retired."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.READ.ASRC.L1.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data read instructions retired that hit in the L1 TLB.",
+        "PublicDescription": "Cache-block prefetch for data read instructions retired that hit in the L1 TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.READ.ASRC.L1.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data read instructions retired that missed in the L1 TLB.",
+        "PublicDescription": "Cache-block prefetch for data read instructions retired that missed in the L1 TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.READ.ASRC.L1.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data read instructions retired that merged into an outstanding L1 TLB miss request.",
+        "PublicDescription": "Cache-block prefetch for data read instructions retired that merged into an outstanding L1 TLB miss request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.READ.ASRC.LL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data read instructions retired that hit in the last level TLB.",
+        "PublicDescription": "Cache-block prefetch for data read instructions retired that hit in the last level TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.READ.ASRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data read instructions retired that missed in the last level TLB.",
+        "PublicDescription": "Cache-block prefetch for data read instructions retired that missed in the last level TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.READ.ASRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data read instructions retired that merged into an outstanding last level TLB miss request.",
+        "PublicDescription": "Cache-block prefetch for data read instructions retired that merged into an outstanding last level TLB miss request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.READ.SUPPRESSED.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data read instructions retired that did not generate a prefetch request.",
+        "PublicDescription": "Cache-block prefetch for data read instructions retired that did not generate a prefetch request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.READ.ACCEPTED.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data read instructions retired that generated a prefetch request.",
+        "PublicDescription": "Cache-block prefetch for data read instructions retired that generated a prefetch request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.WRITE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data write instructions retired.",
+        "PublicDescription": "Cache-block prefetch for data write instructions retired."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.WRITE.ASRC.L1.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data write instructions retired that hit in the L1 TLB.",
+        "PublicDescription": "Cache-block prefetch for data write instructions retired that hit in the L1 TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.WRITE.ASRC.L1.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data write instructions retired that missed in the L1 TLB.",
+        "PublicDescription": "Cache-block prefetch for data write instructions retired that missed in the L1 TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.WRITE.ASRC.L1.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data write instructions retired that merged into an outstanding L1 TLB miss request.",
+        "PublicDescription": "Cache-block prefetch for data write instructions retired that merged into an outstanding L1 TLB miss request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.WRITE.ASRC.LL.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data write instructions retired that hit in the last level TLB.",
+        "PublicDescription": "Cache-block prefetch for data write instructions retired that hit in the last level TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.WRITE.ASRC.LL.MISS.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data write instructions retired that missed in the last level TLB.",
+        "PublicDescription": "Cache-block prefetch for data write instructions retired that missed in the last level TLB."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.WRITE.ASRC.LL.MERGE.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data write instructions retired that merged into an outstanding last level TLB miss request.",
+        "PublicDescription": "Cache-block prefetch for data write instructions retired that merged into an outstanding last level TLB miss request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.WRITE.SUPPRESSED.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data write instructions retired that did not generate a prefetch request.",
+        "PublicDescription": "Cache-block prefetch for data write instructions retired that did not generate a prefetch request."
+    },
+    {
+        "EventName": "INST.SWPREFETCH.WRITE.ACCEPTED.RET",
+        "EventCode": "0x0",
+        "BriefDescription": "Cache-block prefetch for data write instructions retired that generated a prefetch request.",
+        "PublicDescription": "Cache-block prefetch for data write instructions retired that generated a prefetch request."
     }
 ]
