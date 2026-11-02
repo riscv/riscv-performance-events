@@ -353,7 +353,7 @@ NOTE: _Non-speculative fetch events may allow precise attribution; however, non-
 [cols="20%,80%"]
 |===
 | <tlb> | Instruction fetches for which the address translation hit in the selected TLB.  See TLB naming standards in <<TLB Events>>.
-| <tlb>.MISS | Instruction fetches for which the address translation missed in the selected.  See TLB naming standards in <<TLB Events>>.
+| <tlb>.MISS | Instruction fetches for which the address translation missed in the selected TLB.  See TLB naming standards in <<TLB Events>>.
 |===
 
 .FETCH Events
